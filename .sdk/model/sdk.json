@@ -1,19 +1,14 @@
 {
-  "NAME": "CODATPLATFORM",
-  "Name": "Codatplatform",
   "def": "codatplatform-3.0.0-openapi-3.1.0.yaml",
   "main": {
-    "api": {
-      "entity": {},
-      "guide": {}
-    },
-    "custom": {
-      "plurals": {}
-    },
     "def": {
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -25,8 +20,11 @@
         ],
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "repr": "auto"
       },
+      "contributor": {},
+      "docs": {},
       "entity": {
         "access_token": {
           "active": true,
@@ -82,18 +80,21 @@
               "active": true,
               "name": "button",
               "req": false,
+              "short": "Button branding references.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "logo",
               "req": false,
+              "short": "Logo branding references.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sourceId",
               "req": false,
+              "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
               "type": "`$STRING`"
             }
           ],
@@ -162,12 +163,14 @@
               "active": true,
               "name": "created",
               "req": false,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "createdByUserName",
               "req": false,
+              "short": "Name of user that created the company in Codat.",
               "type": "`$STRING`"
             },
             {
@@ -180,18 +183,21 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Additional information about the company.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for your SMB in Codat.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lastSync",
               "req": false,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
@@ -210,42 +216,49 @@
                 }
               },
               "req": true,
+              "short": "The name of the company",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pageNumber",
               "req": true,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": true,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "products",
               "req": false,
+              "short": "An array of products that are currently enabled for the company.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "redirect",
               "req": true,
+              "short": "The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "referenceParentCompany",
               "req": false,
+              "short": "The parent entity or controlling organization of this company.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "referenceSubsidiaryCompanies",
               "req": false,
+              "short": "A list of subsidiary companies owned or controlled by this entity.",
               "type": "`$ARRAY`"
             },
             {
@@ -258,12 +271,14 @@
               "active": true,
               "name": "tags",
               "req": false,
+              "short": "A collection of user-defined key-value pairs that store custom metadata against the company.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": true,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             }
           ],
@@ -710,18 +725,21 @@
               "active": true,
               "name": "accessToken",
               "req": true,
+              "short": "The access token for the company.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "expiresIn",
               "req": true,
+              "short": "The number of seconds until the access token expires.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "tokenType",
               "req": true,
+              "short": "The type of token.",
               "type": "`$STRING`"
             }
           ],
@@ -792,6 +810,7 @@
               "active": true,
               "name": "created",
               "req": true,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
@@ -804,30 +823,35 @@
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for a company's data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "integrationId",
               "req": true,
+              "short": "A Codat ID representing the integration.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "integrationKey",
               "req": true,
+              "short": "A unique four-character ID that identifies the platform of the company's data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lastSync",
               "req": false,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "linkUrl",
               "req": true,
+              "short": "The link URL your customers can use to authorize access to their business application.",
               "type": "`$STRING`"
             },
             {
@@ -840,24 +864,28 @@
               "active": true,
               "name": "pageNumber",
               "req": true,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": true,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "platformKey",
               "req": false,
+              "short": "A unique 4-letter key to represent a platform in each integration.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "platformName",
               "req": true,
+              "short": "Name of integration connected to company.",
               "type": "`$STRING`"
             },
             {
@@ -870,12 +898,14 @@
               "active": true,
               "name": "sourceId",
               "req": true,
+              "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sourceType",
               "req": true,
+              "short": "The type of platform of the connection.",
               "type": "`$STRING`"
             },
             {
@@ -888,12 +918,14 @@
                 }
               },
               "req": true,
+              "short": "The current authorization status of the data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": true,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             }
           ],
@@ -1280,6 +1312,7 @@
               "active": true,
               "name": "accessToken",
               "req": false,
+              "short": "Access token that allows SMBs to manage connections that have access to their data.",
               "type": "`$STRING`"
             }
           ],
@@ -1349,6 +1382,7 @@
               "active": true,
               "name": "allowedOrigins",
               "req": false,
+              "short": "An array of allowed origins (i.e.",
               "type": "`$ARRAY`"
             }
           ],
@@ -1443,30 +1477,35 @@
               "active": true,
               "name": "dataSource",
               "req": false,
+              "short": "Underlying endpoint of the source platform that will serve as a data source for the custom data type.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "keyBy",
               "req": false,
+              "short": "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "pageNumber",
               "req": false,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": false,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "requiredData",
               "req": false,
+              "short": "Properties required to be fetched from the underlying platform for the custom data type that is being configured.",
               "type": "`$OBJECT`"
             },
             {
@@ -1479,12 +1518,14 @@
               "active": true,
               "name": "sourceModifiedDate",
               "req": false,
+              "short": "Property in the source platform nominated by the client that defines the date when a record was last modified there.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": false,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             }
           ],
@@ -1713,258 +1754,301 @@
               "active": true,
               "name": "accountTransactions",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "balanceSheet",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankAccounts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankTransactions",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankingaccountBalances",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankingaccounts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankingtransactionCategories",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bankingtransactions",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "billCreditNotes",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "billPayments",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "bills",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "cashFlowStatement",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "chartOfAccounts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercecompanyInfo",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercecustomers",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercedisputes",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercelocations",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commerceorders",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercepaymentMethods",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercepayments",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commerceproductCategories",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commerceproducts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercetaxComponents",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commercetransactions",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "company",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "creditNotes",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "customers",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "directCosts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "directIncomes",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "invoices",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "itemReceipts",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "items",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "journalEntries",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "journals",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "paymentMethods",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "payments",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "profitAndLoss",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "purchaseOrders",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "salesOrders",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "suppliers",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "taxRates",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "trackingCategories",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "transfers",
               "req": true,
+              "short": "Describes the state of data in the Codat cache for a company and data type",
               "type": "`$OBJECT`"
             }
           ],
@@ -2065,6 +2149,7 @@
               "active": true,
               "name": "dataProvidedBy",
               "req": false,
+              "short": "The name of the data provider.",
               "type": "`$STRING`"
             },
             {
@@ -2077,30 +2162,35 @@
               "active": true,
               "name": "enabled",
               "req": true,
+              "short": "Whether this integration is enabled for your customers to use.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "integrationId",
               "req": false,
+              "short": "A Codat ID representing the integration.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "isBeta",
               "req": false,
+              "short": "`True` if the integration is currently in beta release.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "isOfflineConnector",
               "req": false,
+              "short": "`True` if the integration is to an application installed and run locally on an SMBs computer.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "key",
               "req": true,
+              "short": "A unique 4-letter key to represent a platform in each integration.",
               "type": "`$STRING`"
             },
             {
@@ -2113,24 +2203,28 @@
               "active": true,
               "name": "logoUrl",
               "req": true,
+              "short": "Static url for integration's logo.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of integration.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pageNumber",
               "req": true,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": true,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
@@ -2143,18 +2237,21 @@
               "active": true,
               "name": "sourceId",
               "req": false,
+              "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sourceType",
               "req": false,
+              "short": "The type of platform of the connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": true,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             }
           ],
@@ -2326,42 +2423,49 @@
               "active": true,
               "name": "apiKey",
               "req": false,
+              "short": "The API key for this Codat instance.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "confirmCompanyName",
               "req": false,
+              "short": "`True` if the company name has been confirmed.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "iconUrl",
               "req": false,
+              "short": "Static url to your organization's icon.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "logoUrl",
               "req": false,
+              "short": "Static url to your organization's logo.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "The name given to the instance.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "redirectUrl",
               "req": true,
+              "short": "The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "whiteListUrls",
               "req": false,
+              "short": "A list of urls that are allowed to communicate with Codat.",
               "type": "`$ARRAY`"
             }
           ],
@@ -2424,48 +2528,56 @@
               "active": true,
               "name": "companyId",
               "req": true,
+              "short": "Unique identifier of the company associated to this pull operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "completed",
               "req": false,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "connectionId",
               "req": true,
+              "short": "Unique identifier of the connection associated to this pull operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dataType",
               "req": true,
+              "short": "The data type you are requesting in a pull operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "errorMessage",
               "req": false,
+              "short": "A message about a transient or persistent error returned by Codat or the source platform.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier of the pull operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "isCompleted",
               "req": true,
+              "short": "`True` if the pull operation is completed successfully.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "isErrored",
               "req": true,
+              "short": "`True` if the pull operation entered an error state.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -2478,24 +2590,28 @@
               "active": true,
               "name": "pageNumber",
               "req": true,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": true,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "progress",
               "req": true,
+              "short": "An integer signifying the progress of the pull operation.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "requested",
               "req": true,
+              "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
               "type": "`$STRING`"
             },
             {
@@ -2508,18 +2624,21 @@
               "active": true,
               "name": "status",
               "req": true,
+              "short": "The current status of the dataset.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "statusDescription",
               "req": false,
+              "short": "Additional information about the dataset status.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": true,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             }
           ],
@@ -2837,36 +2956,42 @@
               "active": true,
               "name": "changes",
               "req": false,
+              "short": "Contains a single entry that communicates which record has changed and the manner in which it changed.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "companyId",
               "req": true,
+              "short": "Unique identifier for your SMB in Codat.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "completedOnUtc",
               "req": false,
+              "short": "The datetime when the push was completed, null if Pending.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dataConnectionKey",
               "req": true,
+              "short": "Unique identifier for a company's data connection.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dataType",
               "req": false,
+              "short": "The type of data being pushed, eg invoices, customers.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "errorMessage",
               "req": false,
+              "short": "A message about the error.",
               "type": "`$STRING`"
             },
             {
@@ -2879,24 +3004,28 @@
               "active": true,
               "name": "pageNumber",
               "req": true,
+              "short": "Current page number.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": true,
+              "short": "Number of items to return in results array.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pushOperationKey",
               "req": true,
+              "short": "A unique identifier generated by Codat to represent this single push operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "requestedOnUtc",
               "req": true,
+              "short": "The datetime when the push was requested.",
               "type": "`$STRING`"
             },
             {
@@ -2909,36 +3038,42 @@
               "active": true,
               "name": "status",
               "req": true,
+              "short": "The current status of the push operation.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "statusCode",
               "req": true,
+              "short": "Push status code.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "timeoutInMinutes",
               "req": false,
+              "short": "Number of minutes the push operation must complete within before it times out.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "timeoutInSeconds",
               "req": false,
+              "short": "Number of seconds the push operation must complete within before it times out.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "totalResults",
               "req": true,
+              "short": "Total number of items.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "validation",
               "req": false,
+              "short": "A human-readable object describing validation decisions Codat has made when pushing data into the platform.",
               "type": "`$OBJECT`"
             }
           ],
@@ -3104,12 +3239,14 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A description of the property.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "displayName",
               "req": true,
+              "short": "The property's display name.",
               "type": "`$STRING`"
             },
             {
@@ -3128,12 +3265,14 @@
               "active": true,
               "name": "required",
               "req": true,
+              "short": "The property is required if `True`.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "type",
               "req": true,
+              "short": "The option type.",
               "type": "`$STRING`"
             },
             {
@@ -3312,24 +3451,28 @@
               "active": true,
               "name": "apiKey",
               "req": false,
+              "short": "The API key value used to make authenticated http requests.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "createdDate",
               "req": false,
+              "short": "The date the entity was created.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the API key.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "A meaningful name assigned to the API key.",
               "type": "`$STRING`"
             }
           ],
@@ -3541,18 +3684,21 @@
               "active": true,
               "name": "dataSource",
               "req": false,
+              "short": "The underlying endpoint of the source system which the configuration is targeting.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pullData",
               "req": false,
+              "short": "The additional properties that are required when pulling records.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "pushData",
               "req": false,
+              "short": "The additional properties that are required to create and/or update records.",
               "type": "`$OBJECT`"
             }
           ],
@@ -3651,48 +3797,56 @@
               "active": true,
               "name": "dataType",
               "req": true,
+              "short": "Available data types",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fetchOnFirstLink",
               "req": true,
+              "short": "Whether this data type should be queued after a company has authorized a connection.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "isLocked",
               "req": false,
+              "short": "`True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "monthsToSync",
               "req": false,
+              "short": "Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "syncFromUtc",
               "req": false,
+              "short": "Date from which data should be fetched.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "syncFromWindow",
               "req": false,
+              "short": "Number of months of data to be fetched.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "syncOrder",
               "req": true,
+              "short": "The sync in which data types are queued for a sync.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "syncSchedule",
               "req": true,
+              "short": "Number of hours after which this data type should be refreshed.",
               "type": "`$INTEGER`"
             }
           ],
@@ -3822,30 +3976,35 @@
               "active": true,
               "name": "companyTags",
               "req": false,
+              "short": "Company tags provide an additional way to filter messages, independent of event types.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "disabled",
               "req": false,
+              "short": "Flag that enables or disables the endpoint from receiving events.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "eventTypes",
               "req": false,
+              "short": "An array of event types the webhook consumer subscribes to.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the webhook consumer.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The URL that will consume webhook events dispatched by Codat.",
               "type": "`$STRING`"
             }
           ],
@@ -3992,6 +4151,7 @@
       "feature": {
         "test": {
           "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
@@ -4052,6 +4212,8 @@
             }
           },
           "name": "test",
+          "origname": "",
+          "package": "@voxgig/sdkgen",
           "target": {
             "go": {
               "deps": {}
@@ -5190,18 +5352,44 @@
         "website": "https://codat.io"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5223,13 +5411,19 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "js": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -5241,10 +5435,25 @@
             }
           },
           "ext": "js",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "js",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5266,12 +5475,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "JavaScript"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "--"
           },
@@ -5283,10 +5498,25 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5308,22 +5538,43 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5345,13 +5596,19 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -5363,10 +5620,25 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5388,13 +5660,19 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -5411,10 +5689,25 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5436,13 +5729,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -5465,10 +5763,25 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "codatplatform"
+            "goversion": "",
+            "name": "codatplatform",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -5490,16 +5803,21 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }
   },
   "name": "codatplatform",
-  "name-": "codatplatform",
-  "name_": "codatplatform",
-  "name__orig": "codatplatform",
   "origin": "voxgig-sdk"
 }

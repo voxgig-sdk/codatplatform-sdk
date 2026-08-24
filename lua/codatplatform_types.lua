@@ -62,12 +62,11 @@
 ---@field totalResults? number
 
 ---@class CompanyCreateData
----@field id? string
----@field product_identifier? string
 ---@field created? string
 ---@field createdByUserName? string
 ---@field dataConnections? table
 ---@field description? string
+---@field id string
 ---@field lastSync? string
 ---@field links table
 ---@field name string

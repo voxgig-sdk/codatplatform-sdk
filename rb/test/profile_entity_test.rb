@@ -33,7 +33,7 @@ class ProfileEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -91,7 +91,7 @@ class ProfileEntityTest < Minitest::Test
     profile_ref01_data_up0_up[profile_ref01_markdef_up0_name] = profile_ref01_markdef_up0_value
 
     profile_ref01_resdata_up0_result = profile_ref01_ent.update(profile_ref01_data_up0_up, nil)
-    profile_ref01_resdata_up0 = Helpers.to_map(profile_ref01_resdata_up0_result)
+    profile_ref01_resdata_up0 = Helpers.to_map(profile_ref01_resdata_up0_result.respond_to?(:data_get) ? profile_ref01_resdata_up0_result.data_get : profile_ref01_resdata_up0_result)
     assert !profile_ref01_resdata_up0.nil?
     assert_equal profile_ref01_resdata_up0[profile_ref01_markdef_up0_name], profile_ref01_markdef_up0_value
 

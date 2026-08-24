@@ -56,7 +56,7 @@ class TestCustomEntity:
         custom_ref01_markdef_up0_value = "Mark01-custom_ref01_" + str(setup["now"])
         custom_ref01_data_up0_up[custom_ref01_markdef_up0_name] = custom_ref01_markdef_up0_value
 
-        custom_ref01_resdata_up0 = helpers.to_map(custom_ref01_ent.update(custom_ref01_data_up0_up, None))
+        custom_ref01_resdata_up0 = helpers.to_map(runner.entity_data(custom_ref01_ent.update(custom_ref01_data_up0_up, None)))
         assert custom_ref01_resdata_up0 is not None
         assert custom_ref01_resdata_up0[custom_ref01_markdef_up0_name] == custom_ref01_markdef_up0_value
 

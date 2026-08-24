@@ -64,7 +64,7 @@ describe('SupplementalDataEntity', async () => {
     const supplemental_data_ref01_data_up0: any = {}
     supplemental_data_ref01_data_up0 ['platform_key'] = setup.idmap['platform_key']
 
-    const supplemental_data_ref01_resdata_up0 = await supplemental_data_ref01_ent.update(supplemental_data_ref01_data_up0)
+    const supplemental_data_ref01_resdata_up0 = (await supplemental_data_ref01_ent.update(supplemental_data_ref01_data_up0)).data()
     assert(null != supplemental_data_ref01_resdata_up0)
 
 

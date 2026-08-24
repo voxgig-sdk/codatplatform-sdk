@@ -67,7 +67,7 @@ describe('CustomEntity', async () => {
     const custom_ref01_markdef_up0 = { name: 'dataSource', value: 'Mark01-custom_ref01_' + setup.now }
     ;(custom_ref01_data_up0 as any)[custom_ref01_markdef_up0.name] = custom_ref01_markdef_up0.value
 
-    const custom_ref01_resdata_up0 = await custom_ref01_ent.update(custom_ref01_data_up0)
+    const custom_ref01_resdata_up0 = (await custom_ref01_ent.update(custom_ref01_data_up0)).data()
     assert(null != custom_ref01_resdata_up0)
 
     assert((custom_ref01_resdata_up0 as any)[custom_ref01_markdef_up0.name] === custom_ref01_markdef_up0.value)

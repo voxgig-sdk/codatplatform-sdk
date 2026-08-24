@@ -39,7 +39,7 @@ describe("WebhookEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -82,7 +82,7 @@ describe("WebhookEntity", function()
 
     local webhook_ref01_data_result, err = webhook_ref01_ent:create(webhook_ref01_data, nil)
     assert.is_nil(err)
-    webhook_ref01_data = helpers.to_map(webhook_ref01_data_result)
+    webhook_ref01_data = helpers.to_map(type(webhook_ref01_data_result) == 'table' and webhook_ref01_data_result.data_get and webhook_ref01_data_result:data_get() or webhook_ref01_data_result)
     assert.is_not_nil(webhook_ref01_data)
     assert.is_not_nil(webhook_ref01_data["id"])
 

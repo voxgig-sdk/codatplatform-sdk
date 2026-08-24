@@ -40,7 +40,7 @@ class SettingEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -83,7 +83,7 @@ class SettingEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.setting"), "setting_ref01"));
 
         $setting_ref01_data_result = $setting_ref01_ent->create($setting_ref01_data, null);
-        $setting_ref01_data = Helpers::to_map($setting_ref01_data_result);
+        $setting_ref01_data = Helpers::to_map(is_object($setting_ref01_data_result) && method_exists($setting_ref01_data_result, 'data_get') ? $setting_ref01_data_result->data_get() : $setting_ref01_data_result);
         $this->assertNotNull($setting_ref01_data);
         $this->assertNotNull($setting_ref01_data["id"]);
 

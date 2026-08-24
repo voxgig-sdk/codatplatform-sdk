@@ -42,7 +42,7 @@ describe("RefreshDataEntity", function()
 
     local refresh_data_ref01_data_result, err = refresh_data_ref01_ent:create(refresh_data_ref01_data, nil)
     assert.is_nil(err)
-    refresh_data_ref01_data = helpers.to_map(refresh_data_ref01_data_result)
+    refresh_data_ref01_data = helpers.to_map(type(refresh_data_ref01_data_result) == 'table' and refresh_data_ref01_data_result.data_get and refresh_data_ref01_data_result:data_get() or refresh_data_ref01_data_result)
     assert.is_not_nil(refresh_data_ref01_data)
 
   end)

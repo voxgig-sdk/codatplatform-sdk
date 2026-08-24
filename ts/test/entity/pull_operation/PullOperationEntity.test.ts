@@ -64,7 +64,7 @@ describe('PullOperationEntity', async () => {
     pull_operation_ref01_data['company_id'] = setup.idmap['company01']
     pull_operation_ref01_data['data_type'] = setup.idmap['data_type01']
 
-    pull_operation_ref01_data = await pull_operation_ref01_ent.create(pull_operation_ref01_data)
+    pull_operation_ref01_data = (await pull_operation_ref01_ent.create(pull_operation_ref01_data)).data()
     assert(null != pull_operation_ref01_data.id)
 
 
@@ -72,7 +72,7 @@ describe('PullOperationEntity', async () => {
     const pull_operation_ref01_match: any = {}
     pull_operation_ref01_match['company_id'] = setup.idmap['company01']
 
-    const pull_operation_ref01_list = await pull_operation_ref01_ent.list(pull_operation_ref01_match)
+    const pull_operation_ref01_list = (await pull_operation_ref01_ent.list(pull_operation_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(pull_operation_ref01_list, { id: pull_operation_ref01_data.id })))
 
@@ -80,7 +80,7 @@ describe('PullOperationEntity', async () => {
     // LOAD
     const pull_operation_ref01_match_dt0: any = {}
     pull_operation_ref01_match_dt0.id = pull_operation_ref01_data.id
-    const pull_operation_ref01_data_dt0 = await pull_operation_ref01_ent.load(pull_operation_ref01_match_dt0)
+    const pull_operation_ref01_data_dt0 = (await pull_operation_ref01_ent.load(pull_operation_ref01_match_dt0)).data()
     assert(pull_operation_ref01_data_dt0.id === pull_operation_ref01_data.id)
 
 

@@ -40,7 +40,7 @@ class PullOperationEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -85,7 +85,7 @@ class PullOperationEntityTest extends TestCase
         $pull_operation_ref01_data["data_type"] = $setup["idmap"]["data_type01"];
 
         $pull_operation_ref01_data_result = $pull_operation_ref01_ent->create($pull_operation_ref01_data, null);
-        $pull_operation_ref01_data = Helpers::to_map($pull_operation_ref01_data_result);
+        $pull_operation_ref01_data = Helpers::to_map(is_object($pull_operation_ref01_data_result) && method_exists($pull_operation_ref01_data_result, 'data_get') ? $pull_operation_ref01_data_result->data_get() : $pull_operation_ref01_data_result);
         $this->assertNotNull($pull_operation_ref01_data);
         $this->assertNotNull($pull_operation_ref01_data["id"]);
 
@@ -107,7 +107,7 @@ class PullOperationEntityTest extends TestCase
             "id" => $pull_operation_ref01_data["id"],
         ];
         $pull_operation_ref01_data_dt0_loaded = $pull_operation_ref01_ent->load($pull_operation_ref01_match_dt0, null);
-        $pull_operation_ref01_data_dt0_load_result = Helpers::to_map($pull_operation_ref01_data_dt0_loaded);
+        $pull_operation_ref01_data_dt0_load_result = Helpers::to_map(is_object($pull_operation_ref01_data_dt0_loaded) && method_exists($pull_operation_ref01_data_dt0_loaded, 'data_get') ? $pull_operation_ref01_data_dt0_loaded->data_get() : $pull_operation_ref01_data_dt0_loaded);
         $this->assertNotNull($pull_operation_ref01_data_dt0_load_result);
         $this->assertEquals($pull_operation_ref01_data_dt0_load_result["id"], $pull_operation_ref01_data["id"]);
 

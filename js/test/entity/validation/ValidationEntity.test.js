@@ -47,7 +47,7 @@ describe('ValidationEntity', async () => {
     validation_ref01_match['company_id'] = setup.idmap['company01']
     validation_ref01_match['sync_id'] = setup.idmap['sync01']
 
-    const validation_ref01_list = await validation_ref01_ent.list(validation_ref01_match)
+    const validation_ref01_list = (await validation_ref01_ent.list(validation_ref01_match)).map((e) => e.data())
 
 
   })

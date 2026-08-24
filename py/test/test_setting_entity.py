@@ -42,8 +42,8 @@ class TestSettingEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -78,7 +78,7 @@ class TestSettingEntity:
         setting_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.setting"), "setting_ref01"))
 
-        setting_ref01_data = helpers.to_map(setting_ref01_ent.create(setting_ref01_data, None))
+        setting_ref01_data = helpers.to_map(runner.entity_data(setting_ref01_ent.create(setting_ref01_data, None)))
         assert setting_ref01_data is not None
         assert setting_ref01_data["id"] is not None
 

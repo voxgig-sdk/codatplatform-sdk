@@ -38,7 +38,7 @@ class RefreshDataEntityTest < Minitest::Test
     refresh_data_ref01_data["company_id"] = setup[:idmap]["company01"]
 
     refresh_data_ref01_data_result = refresh_data_ref01_ent.create(refresh_data_ref01_data, nil)
-    refresh_data_ref01_data = Helpers.to_map(refresh_data_ref01_data_result)
+    refresh_data_ref01_data = Helpers.to_map(refresh_data_ref01_data_result.respond_to?(:data_get) ? refresh_data_ref01_data_result.data_get : refresh_data_ref01_data_result)
     assert !refresh_data_ref01_data.nil?
 
   end

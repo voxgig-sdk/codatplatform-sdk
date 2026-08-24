@@ -37,7 +37,7 @@ class ValidationEntity extends CodatplatformEntityBase<Validation> {
 
 
 
-  async list(this: any, reqmatch?: ValidationListMatch, ctrl?: Control): Promise<Validation[]> {
+  async list(this: any, reqmatch?: ValidationListMatch, ctrl?: Control): Promise<ValidationEntity[]> {
 
     const utility = this._utility
 

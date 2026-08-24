@@ -57,7 +57,7 @@ class CustomEntityTest extends TestCase
         $custom_ref01_data_up0_up[$custom_ref01_markdef_up0_name] = $custom_ref01_markdef_up0_value;
 
         $custom_ref01_resdata_up0_result = $custom_ref01_ent->update($custom_ref01_data_up0_up, null);
-        $custom_ref01_resdata_up0 = Helpers::to_map($custom_ref01_resdata_up0_result);
+        $custom_ref01_resdata_up0 = Helpers::to_map(is_object($custom_ref01_resdata_up0_result) && method_exists($custom_ref01_resdata_up0_result, 'data_get') ? $custom_ref01_resdata_up0_result->data_get() : $custom_ref01_resdata_up0_result);
         $this->assertNotNull($custom_ref01_resdata_up0);
         $this->assertEquals($custom_ref01_resdata_up0[$custom_ref01_markdef_up0_name], $custom_ref01_markdef_up0_value);
 

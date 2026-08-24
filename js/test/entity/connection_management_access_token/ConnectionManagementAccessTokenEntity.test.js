@@ -44,7 +44,7 @@ describe('ConnectionManagementAccessTokenEntity', async () => {
     // LOAD
     const connection_management_access_token_ref01_ent = client.ConnectionManagementAccessToken()
     const connection_management_access_token_ref01_match_dt0 = {}
-    const connection_management_access_token_ref01_data_dt0 = await connection_management_access_token_ref01_ent.load(connection_management_access_token_ref01_match_dt0)
+    const connection_management_access_token_ref01_data_dt0 = (await connection_management_access_token_ref01_ent.load(connection_management_access_token_ref01_match_dt0)).data()
     assert(null != connection_management_access_token_ref01_data_dt0)
 
 

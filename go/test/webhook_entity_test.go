@@ -51,7 +51,7 @@ func TestWebhookEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -106,7 +106,7 @@ func TestWebhookEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		webhookRef01Data = core.ToMapAny(webhookRef01DataResult)
+		webhookRef01Data = core.ToMapAny(entityData(webhookRef01DataResult))
 		if webhookRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

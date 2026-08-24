@@ -44,7 +44,7 @@ describe('CompanyAccessTokenEntity', async () => {
     // LOAD
     const company_access_token_ref01_ent = client.CompanyAccessToken()
     const company_access_token_ref01_match_dt0 = {}
-    const company_access_token_ref01_data_dt0 = await company_access_token_ref01_ent.load(company_access_token_ref01_match_dt0)
+    const company_access_token_ref01_data_dt0 = (await company_access_token_ref01_ent.load(company_access_token_ref01_match_dt0)).data()
     assert(null != company_access_token_ref01_data_dt0)
 
 

@@ -44,7 +44,7 @@ describe('BrandingEntity', async () => {
     // LOAD
     const branding_ref01_ent = client.Branding()
     const branding_ref01_match_dt0 = {}
-    const branding_ref01_data_dt0 = await branding_ref01_ent.load(branding_ref01_match_dt0)
+    const branding_ref01_data_dt0 = (await branding_ref01_ent.load(branding_ref01_match_dt0)).data()
     assert(null != branding_ref01_data_dt0)
 
 

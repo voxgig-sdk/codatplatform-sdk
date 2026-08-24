@@ -44,7 +44,7 @@ describe('DataStatusEntity', async () => {
     // LOAD
     const data_status_ref01_ent = client.DataStatus()
     const data_status_ref01_match_dt0 = {}
-    const data_status_ref01_data_dt0 = await data_status_ref01_ent.load(data_status_ref01_match_dt0)
+    const data_status_ref01_data_dt0 = (await data_status_ref01_ent.load(data_status_ref01_match_dt0)).data()
     assert(null != data_status_ref01_data_dt0)
 
 

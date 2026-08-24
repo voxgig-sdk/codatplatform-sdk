@@ -37,7 +37,7 @@ class WebhookZapierKeyEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.webhook_zapier_key"), "webhook_zapier_key_ref01"))
 
     webhook_zapier_key_ref01_data_result = webhook_zapier_key_ref01_ent.create(webhook_zapier_key_ref01_data, nil)
-    webhook_zapier_key_ref01_data = Helpers.to_map(webhook_zapier_key_ref01_data_result)
+    webhook_zapier_key_ref01_data = Helpers.to_map(webhook_zapier_key_ref01_data_result.respond_to?(:data_get) ? webhook_zapier_key_ref01_data_result.data_get : webhook_zapier_key_ref01_data_result)
     assert !webhook_zapier_key_ref01_data.nil?
 
   end

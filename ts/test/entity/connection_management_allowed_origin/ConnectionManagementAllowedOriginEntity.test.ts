@@ -62,14 +62,14 @@ describe('ConnectionManagementAllowedOriginEntity', async () => {
     const connection_management_allowed_origin_ref01_ent = client.ConnectionManagementAllowedOrigin()
     let connection_management_allowed_origin_ref01_data = setup.data.new.connection_management_allowed_origin['connection_management_allowed_origin_ref01']
 
-    connection_management_allowed_origin_ref01_data = await connection_management_allowed_origin_ref01_ent.create(connection_management_allowed_origin_ref01_data)
+    connection_management_allowed_origin_ref01_data = (await connection_management_allowed_origin_ref01_ent.create(connection_management_allowed_origin_ref01_data)).data()
     assert(null != connection_management_allowed_origin_ref01_data)
 
 
     // LIST
     const connection_management_allowed_origin_ref01_match: any = {}
 
-    const connection_management_allowed_origin_ref01_list = await connection_management_allowed_origin_ref01_ent.list(connection_management_allowed_origin_ref01_match)
+    const connection_management_allowed_origin_ref01_list = (await connection_management_allowed_origin_ref01_ent.list(connection_management_allowed_origin_ref01_match)).map((e: any) => e.data())
 
 
   })

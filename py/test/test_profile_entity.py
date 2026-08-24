@@ -42,8 +42,8 @@ class TestProfileEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -95,7 +95,7 @@ class TestProfileEntity:
         profile_ref01_markdef_up0_value = "Mark01-profile_ref01_" + str(setup["now"])
         profile_ref01_data_up0_up[profile_ref01_markdef_up0_name] = profile_ref01_markdef_up0_value
 
-        profile_ref01_resdata_up0 = helpers.to_map(profile_ref01_ent.update(profile_ref01_data_up0_up, None))
+        profile_ref01_resdata_up0 = helpers.to_map(runner.entity_data(profile_ref01_ent.update(profile_ref01_data_up0_up, None)))
         assert profile_ref01_resdata_up0 is not None
         assert profile_ref01_resdata_up0[profile_ref01_markdef_up0_name] == profile_ref01_markdef_up0_value
 

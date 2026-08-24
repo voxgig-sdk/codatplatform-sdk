@@ -39,7 +39,7 @@ describe("SettingEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -82,7 +82,7 @@ describe("SettingEntity", function()
 
     local setting_ref01_data_result, err = setting_ref01_ent:create(setting_ref01_data, nil)
     assert.is_nil(err)
-    setting_ref01_data = helpers.to_map(setting_ref01_data_result)
+    setting_ref01_data = helpers.to_map(type(setting_ref01_data_result) == 'table' and setting_ref01_data_result.data_get and setting_ref01_data_result:data_get() or setting_ref01_data_result)
     assert.is_not_nil(setting_ref01_data)
     assert.is_not_nil(setting_ref01_data["id"])
 

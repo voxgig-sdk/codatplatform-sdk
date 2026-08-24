@@ -59,7 +59,7 @@ func TestRefreshDataEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		refreshDataRef01Data = core.ToMapAny(refreshDataRef01DataResult)
+		refreshDataRef01Data = core.ToMapAny(entityData(refreshDataRef01DataResult))
 		if refreshDataRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -317,9 +317,9 @@ $branding = $client->Branding();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `button` | `array` | No |  |
-| `logo` | `array` | No |  |
-| `sourceId` | `string` | No |  |
+| `button` | `array` | No | Button branding references. |
+| `logo` | `array` | No | Logo branding references. |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 ### Operations
 
@@ -371,23 +371,23 @@ $company = $client->Company();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created` | `string` | No |  |
-| `createdByUserName` | `string` | No |  |
+| `created` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | `string` | No | Name of user that created the company in Codat. |
 | `dataConnections` | `array` | No |  |
-| `description` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
+| `description` | `string` | No | Additional information about the company. |
+| `id` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` | `array` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `products` | `array` | No |  |
-| `redirect` | `string` | Yes |  |
-| `referenceParentCompany` | `array` | No |  |
-| `referenceSubsidiaryCompanies` | `array` | No |  |
+| `name` | `string` | Yes | The name of the company |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `products` | `array` | No | An array of products that are currently enabled for the company. |
+| `redirect` | `string` | Yes | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | `array` | No | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | `array` | No | A list of subsidiary companies owned or controlled by this entity. |
 | `results` | `array` | No |  |
-| `tags` | `array` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `tags` | `array` | No | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -419,6 +419,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Company()->create([
+  "id" => null, // string
   "links" => null, // array
   "name" => null, // string
   "pageNumber" => null, // int
@@ -503,9 +504,9 @@ $company_access_token = $client->CompanyAccessToken();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | Yes |  |
-| `expiresIn` | `int` | Yes |  |
-| `tokenType` | `string` | Yes |  |
+| `accessToken` | `string` | Yes | The access token for the company. |
+| `expiresIn` | `int` | Yes | The number of seconds until the access token expires. |
+| `tokenType` | `string` | Yes | The type of token. |
 
 ### Operations
 
@@ -558,23 +559,23 @@ $connection = $client->Connection();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `connectionInfo` | `array` | No |  |
-| `created` | `string` | Yes |  |
+| `created` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` | `array` | No |  |
-| `id` | `string` | Yes |  |
-| `integrationId` | `string` | Yes |  |
-| `integrationKey` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
-| `linkUrl` | `string` | Yes |  |
+| `id` | `string` | Yes | Unique identifier for a company's data connection. |
+| `integrationId` | `string` | Yes | A Codat ID representing the integration. |
+| `integrationKey` | `string` | Yes | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | `string` | Yes | The link URL your customers can use to authorize access to their business application. |
 | `links` | `array` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `platformKey` | `string` | No |  |
-| `platformName` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `platformKey` | `string` | No | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | `string` | Yes | Name of integration connected to company. |
 | `results` | `array` | No |  |
-| `sourceId` | `string` | Yes |  |
-| `sourceType` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `string` | Yes | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | Yes | The type of platform of the connection. |
+| `status` | `string` | Yes | The current authorization status of the data connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -700,7 +701,7 @@ $connection_management_access_token = $client->ConnectionManagementAccessToken()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | No |  |
+| `accessToken` | `string` | No | Access token that allows SMBs to manage connections that have access to their data. |
 
 ### Operations
 
@@ -752,7 +753,7 @@ $connection_management_allowed_origin = $client->ConnectionManagementAllowedOrig
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allowedOrigins` | `array` | No |  |
+| `allowedOrigins` | `array` | No | An array of allowed origins (i.e. |
 
 ### Operations
 
@@ -813,14 +814,14 @@ $custom = $client->Custom();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `keyBy` | `array` | No |  |
-| `pageNumber` | `int` | No |  |
-| `pageSize` | `int` | No |  |
-| `requiredData` | `array` | No |  |
+| `dataSource` | `string` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | `array` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | `int` | No | Current page number. |
+| `pageSize` | `int` | No | Number of items to return in results array. |
+| `requiredData` | `array` | No | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` | `array` | No |  |
-| `sourceModifiedDate` | `array` | No |  |
-| `totalResults` | `int` | No |  |
+| `sourceModifiedDate` | `array` | No | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | `int` | No | Total number of items. |
 
 ### Operations
 
@@ -884,49 +885,49 @@ $data_status = $client->DataStatus();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accountTransactions` | `array` | Yes |  |
-| `balanceSheet` | `array` | Yes |  |
-| `bankAccounts` | `array` | Yes |  |
-| `bankTransactions` | `array` | Yes |  |
-| `bankingaccountBalances` | `array` | Yes |  |
-| `bankingaccounts` | `array` | Yes |  |
-| `bankingtransactionCategories` | `array` | Yes |  |
-| `bankingtransactions` | `array` | Yes |  |
-| `billCreditNotes` | `array` | Yes |  |
-| `billPayments` | `array` | Yes |  |
-| `bills` | `array` | Yes |  |
-| `cashFlowStatement` | `array` | Yes |  |
-| `chartOfAccounts` | `array` | Yes |  |
-| `commercecompanyInfo` | `array` | Yes |  |
-| `commercecustomers` | `array` | Yes |  |
-| `commercedisputes` | `array` | Yes |  |
-| `commercelocations` | `array` | Yes |  |
-| `commerceorders` | `array` | Yes |  |
-| `commercepaymentMethods` | `array` | Yes |  |
-| `commercepayments` | `array` | Yes |  |
-| `commerceproductCategories` | `array` | Yes |  |
-| `commerceproducts` | `array` | Yes |  |
-| `commercetaxComponents` | `array` | Yes |  |
-| `commercetransactions` | `array` | Yes |  |
-| `company` | `array` | Yes |  |
-| `creditNotes` | `array` | Yes |  |
-| `customers` | `array` | Yes |  |
-| `directCosts` | `array` | Yes |  |
-| `directIncomes` | `array` | Yes |  |
-| `invoices` | `array` | Yes |  |
-| `itemReceipts` | `array` | Yes |  |
-| `items` | `array` | Yes |  |
-| `journalEntries` | `array` | Yes |  |
-| `journals` | `array` | Yes |  |
-| `paymentMethods` | `array` | Yes |  |
-| `payments` | `array` | Yes |  |
-| `profitAndLoss` | `array` | Yes |  |
-| `purchaseOrders` | `array` | Yes |  |
-| `salesOrders` | `array` | Yes |  |
-| `suppliers` | `array` | Yes |  |
-| `taxRates` | `array` | Yes |  |
-| `trackingCategories` | `array` | Yes |  |
-| `transfers` | `array` | Yes |  |
+| `accountTransactions` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `company` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `items` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | `array` | Yes | Describes the state of data in the Codat cache for a company and data type |
 
 ### Operations
 
@@ -1050,22 +1051,22 @@ $integration = $client->Integration();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataProvidedBy` | `string` | No |  |
+| `dataProvidedBy` | `string` | No | The name of the data provider. |
 | `datatypeFeatures` | `array` | No |  |
-| `enabled` | `bool` | Yes |  |
-| `integrationId` | `string` | No |  |
-| `isBeta` | `bool` | No |  |
-| `isOfflineConnector` | `bool` | No |  |
-| `key` | `string` | Yes |  |
+| `enabled` | `bool` | Yes | Whether this integration is enabled for your customers to use. |
+| `integrationId` | `string` | No | A Codat ID representing the integration. |
+| `isBeta` | `bool` | No | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `bool` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | `string` | Yes | A unique 4-letter key to represent a platform in each integration. |
 | `links` | `array` | Yes |  |
-| `logoUrl` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
+| `logoUrl` | `string` | Yes | Static url for integration's logo. |
+| `name` | `string` | Yes | Name of integration. |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
 | `results` | `array` | No |  |
-| `sourceId` | `string` | No |  |
-| `sourceType` | `string` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | No | The type of platform of the connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1197,13 +1198,13 @@ $profile = $client->Profile();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `confirmCompanyName` | `bool` | No |  |
-| `iconUrl` | `string` | No |  |
-| `logoUrl` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `redirectUrl` | `string` | Yes |  |
-| `whiteListUrls` | `array` | No |  |
+| `apiKey` | `string` | No | The API key for this Codat instance. |
+| `confirmCompanyName` | `bool` | No | `True` if the company name has been confirmed. |
+| `iconUrl` | `string` | No | Static url to your organization's icon. |
+| `logoUrl` | `string` | No | Static url to your organization's logo. |
+| `name` | `string` | Yes | The name given to the instance. |
+| `redirectUrl` | `string` | Yes | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | `array` | No | A list of urls that are allowed to communicate with Codat. |
 
 ### Operations
 
@@ -1265,23 +1266,23 @@ $pull_operation = $client->PullOperation();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyId` | `string` | Yes |  |
-| `completed` | `string` | No |  |
-| `connectionId` | `string` | Yes |  |
-| `dataType` | `string` | Yes |  |
-| `errorMessage` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `isCompleted` | `bool` | Yes |  |
-| `isErrored` | `bool` | Yes |  |
+| `companyId` | `string` | Yes | Unique identifier of the company associated to this pull operation. |
+| `completed` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | `string` | Yes | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | `string` | Yes | The data type you are requesting in a pull operation. |
+| `errorMessage` | `string` | No | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | `string` | Yes | Unique identifier of the pull operation. |
+| `isCompleted` | `bool` | Yes | `True` if the pull operation is completed successfully. |
+| `isErrored` | `bool` | Yes | `True` if the pull operation entered an error state. |
 | `links` | `array` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `progress` | `int` | Yes |  |
-| `requested` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `progress` | `int` | Yes | An integer signifying the progress of the pull operation. |
+| `requested` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` | `array` | No |  |
-| `status` | `string` | Yes |  |
-| `statusDescription` | `string` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `status` | `string` | Yes | The current status of the dataset. |
+| `statusDescription` | `string` | No | Additional information about the dataset status. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1364,24 +1365,24 @@ $push = $client->Push();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `changes` | `array` | No |  |
-| `companyId` | `string` | Yes |  |
-| `completedOnUtc` | `string` | No |  |
-| `dataConnectionKey` | `string` | Yes |  |
-| `dataType` | `string` | No |  |
-| `errorMessage` | `string` | No |  |
+| `changes` | `array` | No | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | `string` | No | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | `string` | Yes | Unique identifier for a company's data connection. |
+| `dataType` | `string` | No | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | `string` | No | A message about the error. |
 | `links` | `array` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `pushOperationKey` | `string` | Yes |  |
-| `requestedOnUtc` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `pushOperationKey` | `string` | Yes | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | `string` | Yes | The datetime when the push was requested. |
 | `results` | `array` | No |  |
-| `status` | `string` | Yes |  |
-| `statusCode` | `int` | Yes |  |
-| `timeoutInMinutes` | `int` | No |  |
-| `timeoutInSeconds` | `int` | No |  |
-| `totalResults` | `int` | Yes |  |
-| `validation` | `array` | No |  |
+| `status` | `string` | Yes | The current status of the push operation. |
+| `statusCode` | `int` | Yes | Push status code. |
+| `timeoutInMinutes` | `int` | No | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | `int` | No | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | `int` | Yes | Total number of items. |
+| `validation` | `array` | No | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 ### Operations
 
@@ -1441,12 +1442,12 @@ $push_option = $client->PushOption();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | Yes |  |
+| `description` | `string` | No | A description of the property. |
+| `displayName` | `string` | Yes | The property's display name. |
 | `options` | `array` | No |  |
 | `properties` | `array` | No |  |
-| `required` | `bool` | Yes |  |
-| `type` | `string` | Yes |  |
+| `required` | `bool` | Yes | The property is required if `True`. |
+| `type` | `string` | Yes | The option type. |
 | `validation` | `array` | No |  |
 
 ### Operations
@@ -1583,10 +1584,10 @@ $setting = $client->Setting();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `createdDate` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
+| `apiKey` | `string` | No | The API key value used to make authenticated http requests. |
+| `createdDate` | `string` | No | The date the entity was created. |
+| `id` | `string` | No | Unique identifier for the API key. |
+| `name` | `string` | No | A meaningful name assigned to the API key. |
 
 ### Operations
 
@@ -1711,9 +1712,9 @@ $supplemental_data_config = $client->SupplementalDataConfig();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `pullData` | `array` | No |  |
-| `pushData` | `array` | No |  |
+| `dataSource` | `string` | No | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | `array` | No | The additional properties that are required when pulling records. |
+| `pushData` | `array` | No | The additional properties that are required to create and/or update records. |
 
 ### Operations
 
@@ -1801,14 +1802,14 @@ $sync_setting = $client->SyncSetting();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataType` | `string` | Yes |  |
-| `fetchOnFirstLink` | `bool` | Yes |  |
-| `isLocked` | `bool` | No |  |
-| `monthsToSync` | `int` | No |  |
-| `syncFromUtc` | `string` | No |  |
-| `syncFromWindow` | `int` | No |  |
-| `syncOrder` | `int` | Yes |  |
-| `syncSchedule` | `int` | Yes |  |
+| `dataType` | `string` | Yes | Available data types |
+| `fetchOnFirstLink` | `bool` | Yes | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `bool` | No | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | `int` | No | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | `string` | No | Date from which data should be fetched. |
+| `syncFromWindow` | `int` | No | Number of months of data to be fetched. |
+| `syncOrder` | `int` | Yes | The sync in which data types are queued for a sync. |
+| `syncSchedule` | `int` | Yes | Number of hours after which this data type should be refreshed. |
 
 ### Operations
 
@@ -1913,11 +1914,11 @@ $webhook = $client->Webhook();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyTags` | `array` | No |  |
-| `disabled` | `bool` | No |  |
-| `eventTypes` | `array` | No |  |
-| `id` | `string` | No |  |
-| `url` | `string` | No |  |
+| `companyTags` | `array` | No | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | `bool` | No | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | `array` | No | An array of event types the webhook consumer subscribes to. |
+| `id` | `string` | No | Unique identifier for the webhook consumer. |
+| `url` | `string` | No | The URL that will consume webhook events dispatched by Codat. |
 
 ### Operations
 

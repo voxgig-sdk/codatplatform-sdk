@@ -46,12 +46,12 @@ describe('PushEntity', async () => {
     const push_ref01_match = {}
     push_ref01_match['company_id'] = setup.idmap['company01']
 
-    const push_ref01_list = await push_ref01_ent.list(push_ref01_match)
+    const push_ref01_list = (await push_ref01_ent.list(push_ref01_match)).map((e) => e.data())
 
 
     // LOAD
     const push_ref01_match_dt0 = {}
-    const push_ref01_data_dt0 = await push_ref01_ent.load(push_ref01_match_dt0)
+    const push_ref01_data_dt0 = (await push_ref01_ent.load(push_ref01_match_dt0)).data()
     assert(null != push_ref01_data_dt0)
 
 

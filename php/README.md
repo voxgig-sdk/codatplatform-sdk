@@ -39,7 +39,7 @@ Branding is nested under platform_key, so provide the `platform_key`.
 
 ```php
 try {
-    // load() returns the bare Branding record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Branding record (throws on error).
     $branding = $client->Branding()->load(["platform_key" => "example_platform_key"]);
     print_r($branding);
 } catch (\Throwable $err) {
@@ -130,7 +130,8 @@ $client = CodatplatformSDK::test([
     "entity" => ["pushoption" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $pushoption = $client->PushOption()->load(["id" => "test01", "company_id" => "example", "connection_id" => "example"]);
 print_r($pushoption);
 ```
@@ -264,7 +265,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -313,9 +314,9 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `button` |  |
-| `logo` |  |
-| `sourceId` |  |
+| `button` | Button branding references. |
+| `logo` | Logo branding references. |
+| `sourceId` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 Operations: Load.
 
@@ -325,23 +326,23 @@ API path: `/integrations/{platformKey}/branding`
 
 | Field | Description |
 | --- | --- |
-| `created` |  |
-| `createdByUserName` |  |
+| `created` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | Name of user that created the company in Codat. |
 | `dataConnections` |  |
-| `description` |  |
-| `id` |  |
-| `lastSync` |  |
+| `description` | Additional information about the company. |
+| `id` | Unique identifier for your SMB in Codat. |
+| `lastSync` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` |  |
-| `name` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
-| `products` |  |
-| `redirect` |  |
-| `referenceParentCompany` |  |
-| `referenceSubsidiaryCompanies` |  |
+| `name` | The name of the company |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
+| `products` | An array of products that are currently enabled for the company. |
+| `redirect` | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | A list of subsidiary companies owned or controlled by this entity. |
 | `results` |  |
-| `tags` |  |
-| `totalResults` |  |
+| `tags` | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | Total number of items. |
 
 Operations: Create, List, Load, Patch, Remove, Update.
 
@@ -351,9 +352,9 @@ API path: `/companies/{companyId}/products/{productIdentifier}/refresh`
 
 | Field | Description |
 | --- | --- |
-| `accessToken` |  |
-| `expiresIn` |  |
-| `tokenType` |  |
+| `accessToken` | The access token for the company. |
+| `expiresIn` | The number of seconds until the access token expires. |
+| `tokenType` | The type of token. |
 
 Operations: Load.
 
@@ -364,23 +365,23 @@ API path: `/companies/{companyId}/accessToken`
 | Field | Description |
 | --- | --- |
 | `connectionInfo` |  |
-| `created` |  |
+| `created` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` |  |
-| `id` |  |
-| `integrationId` |  |
-| `integrationKey` |  |
-| `lastSync` |  |
-| `linkUrl` |  |
+| `id` | Unique identifier for a company's data connection. |
+| `integrationId` | A Codat ID representing the integration. |
+| `integrationKey` | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | The link URL your customers can use to authorize access to their business application. |
 | `links` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
-| `platformKey` |  |
-| `platformName` |  |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
+| `platformKey` | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | Name of integration connected to company. |
 | `results` |  |
-| `sourceId` |  |
-| `sourceType` |  |
-| `status` |  |
-| `totalResults` |  |
+| `sourceId` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | The type of platform of the connection. |
+| `status` | The current authorization status of the data connection. |
+| `totalResults` | Total number of items. |
 
 Operations: Create, List, Load, Patch, Remove, Update.
 
@@ -390,7 +391,7 @@ API path: `/companies/{companyId}/connections`
 
 | Field | Description |
 | --- | --- |
-| `accessToken` |  |
+| `accessToken` | Access token that allows SMBs to manage connections that have access to their data. |
 
 Operations: Load.
 
@@ -400,7 +401,7 @@ API path: `/companies/{companyId}/connectionManagement/accessToken`
 
 | Field | Description |
 | --- | --- |
-| `allowedOrigins` |  |
+| `allowedOrigins` | An array of allowed origins (i.e. |
 
 Operations: Create, List.
 
@@ -410,14 +411,14 @@ API path: `/connectionManagement/corsSettings`
 
 | Field | Description |
 | --- | --- |
-| `dataSource` |  |
-| `keyBy` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
-| `requiredData` |  |
+| `dataSource` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
+| `requiredData` | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` |  |
-| `sourceModifiedDate` |  |
-| `totalResults` |  |
+| `sourceModifiedDate` | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | Total number of items. |
 
 Operations: Load, Update.
 
@@ -427,49 +428,49 @@ API path: `/companies/{companyId}/connections/{connectionId}/data/custom/{custom
 
 | Field | Description |
 | --- | --- |
-| `accountTransactions` |  |
-| `balanceSheet` |  |
-| `bankAccounts` |  |
-| `bankTransactions` |  |
-| `bankingaccountBalances` |  |
-| `bankingaccounts` |  |
-| `bankingtransactionCategories` |  |
-| `bankingtransactions` |  |
-| `billCreditNotes` |  |
-| `billPayments` |  |
-| `bills` |  |
-| `cashFlowStatement` |  |
-| `chartOfAccounts` |  |
-| `commercecompanyInfo` |  |
-| `commercecustomers` |  |
-| `commercedisputes` |  |
-| `commercelocations` |  |
-| `commerceorders` |  |
-| `commercepaymentMethods` |  |
-| `commercepayments` |  |
-| `commerceproductCategories` |  |
-| `commerceproducts` |  |
-| `commercetaxComponents` |  |
-| `commercetransactions` |  |
-| `company` |  |
-| `creditNotes` |  |
-| `customers` |  |
-| `directCosts` |  |
-| `directIncomes` |  |
-| `invoices` |  |
-| `itemReceipts` |  |
-| `items` |  |
-| `journalEntries` |  |
-| `journals` |  |
-| `paymentMethods` |  |
-| `payments` |  |
-| `profitAndLoss` |  |
-| `purchaseOrders` |  |
-| `salesOrders` |  |
-| `suppliers` |  |
-| `taxRates` |  |
-| `trackingCategories` |  |
-| `transfers` |  |
+| `accountTransactions` | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | Describes the state of data in the Codat cache for a company and data type |
+| `company` | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | Describes the state of data in the Codat cache for a company and data type |
+| `items` | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | Describes the state of data in the Codat cache for a company and data type |
 
 Operations: Load.
 
@@ -497,22 +498,22 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `dataProvidedBy` |  |
+| `dataProvidedBy` | The name of the data provider. |
 | `datatypeFeatures` |  |
-| `enabled` |  |
-| `integrationId` |  |
-| `isBeta` |  |
-| `isOfflineConnector` |  |
-| `key` |  |
+| `enabled` | Whether this integration is enabled for your customers to use. |
+| `integrationId` | A Codat ID representing the integration. |
+| `isBeta` | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | A unique 4-letter key to represent a platform in each integration. |
 | `links` |  |
-| `logoUrl` |  |
-| `name` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
+| `logoUrl` | Static url for integration's logo. |
+| `name` | Name of integration. |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
 | `results` |  |
-| `sourceId` |  |
-| `sourceType` |  |
-| `totalResults` |  |
+| `sourceId` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | The type of platform of the connection. |
+| `totalResults` | Total number of items. |
 
 Operations: List, Load.
 
@@ -540,13 +541,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `apiKey` |  |
-| `confirmCompanyName` |  |
-| `iconUrl` |  |
-| `logoUrl` |  |
-| `name` |  |
-| `redirectUrl` |  |
-| `whiteListUrls` |  |
+| `apiKey` | The API key for this Codat instance. |
+| `confirmCompanyName` | `True` if the company name has been confirmed. |
+| `iconUrl` | Static url to your organization's icon. |
+| `logoUrl` | Static url to your organization's logo. |
+| `name` | The name given to the instance. |
+| `redirectUrl` | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | A list of urls that are allowed to communicate with Codat. |
 
 Operations: List, Update.
 
@@ -556,23 +557,23 @@ API path: `/profile`
 
 | Field | Description |
 | --- | --- |
-| `companyId` |  |
-| `completed` |  |
-| `connectionId` |  |
-| `dataType` |  |
-| `errorMessage` |  |
-| `id` |  |
-| `isCompleted` |  |
-| `isErrored` |  |
+| `companyId` | Unique identifier of the company associated to this pull operation. |
+| `completed` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | The data type you are requesting in a pull operation. |
+| `errorMessage` | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | Unique identifier of the pull operation. |
+| `isCompleted` | `True` if the pull operation is completed successfully. |
+| `isErrored` | `True` if the pull operation entered an error state. |
 | `links` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
-| `progress` |  |
-| `requested` |  |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
+| `progress` | An integer signifying the progress of the pull operation. |
+| `requested` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` |  |
-| `status` |  |
-| `statusDescription` |  |
-| `totalResults` |  |
+| `status` | The current status of the dataset. |
+| `statusDescription` | Additional information about the dataset status. |
+| `totalResults` | Total number of items. |
 
 Operations: Create, List, Load.
 
@@ -582,24 +583,24 @@ API path: `/companies/{companyId}/connections/{connectionId}/data/queue/custom/{
 
 | Field | Description |
 | --- | --- |
-| `changes` |  |
-| `companyId` |  |
-| `completedOnUtc` |  |
-| `dataConnectionKey` |  |
-| `dataType` |  |
-| `errorMessage` |  |
+| `changes` | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | Unique identifier for a company's data connection. |
+| `dataType` | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | A message about the error. |
 | `links` |  |
-| `pageNumber` |  |
-| `pageSize` |  |
-| `pushOperationKey` |  |
-| `requestedOnUtc` |  |
+| `pageNumber` | Current page number. |
+| `pageSize` | Number of items to return in results array. |
+| `pushOperationKey` | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | The datetime when the push was requested. |
 | `results` |  |
-| `status` |  |
-| `statusCode` |  |
-| `timeoutInMinutes` |  |
-| `timeoutInSeconds` |  |
-| `totalResults` |  |
-| `validation` |  |
+| `status` | The current status of the push operation. |
+| `statusCode` | Push status code. |
+| `timeoutInMinutes` | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | Total number of items. |
+| `validation` | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 Operations: List, Load.
 
@@ -609,12 +610,12 @@ API path: `/companies/{companyId}/push`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
+| `description` | A description of the property. |
+| `displayName` | The property's display name. |
 | `options` |  |
 | `properties` |  |
-| `required` |  |
-| `type` |  |
+| `required` | The property is required if `True`. |
+| `type` | The option type. |
 | `validation` |  |
 
 Operations: Load.
@@ -643,10 +644,10 @@ API path: `/companies/{companyId}/data/all`
 
 | Field | Description |
 | --- | --- |
-| `apiKey` |  |
-| `createdDate` |  |
-| `id` |  |
-| `name` |  |
+| `apiKey` | The API key value used to make authenticated http requests. |
+| `createdDate` | The date the entity was created. |
+| `id` | Unique identifier for the API key. |
+| `name` | A meaningful name assigned to the API key. |
 
 Operations: Create, List, Remove.
 
@@ -666,9 +667,9 @@ API path: `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConf
 
 | Field | Description |
 | --- | --- |
-| `dataSource` |  |
-| `pullData` |  |
-| `pushData` |  |
+| `dataSource` | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | The additional properties that are required when pulling records. |
+| `pushData` | The additional properties that are required to create and/or update records. |
 
 Operations: Load.
 
@@ -687,14 +688,14 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `dataType` |  |
-| `fetchOnFirstLink` |  |
-| `isLocked` |  |
-| `monthsToSync` |  |
-| `syncFromUtc` |  |
-| `syncFromWindow` |  |
-| `syncOrder` |  |
-| `syncSchedule` |  |
+| `dataType` | Available data types |
+| `fetchOnFirstLink` | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | Date from which data should be fetched. |
+| `syncFromWindow` | Number of months of data to be fetched. |
+| `syncOrder` | The sync in which data types are queued for a sync. |
+| `syncSchedule` | Number of hours after which this data type should be refreshed. |
 
 Operations: List.
 
@@ -715,11 +716,11 @@ API path: `/companies/{companyId}/sync/{datasetId}/validation`
 
 | Field | Description |
 | --- | --- |
-| `companyTags` |  |
-| `disabled` |  |
-| `eventTypes` |  |
-| `id` |  |
-| `url` |  |
+| `companyTags` | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | An array of event types the webhook consumer subscribes to. |
+| `id` | Unique identifier for the webhook consumer. |
+| `url` | The URL that will consume webhook events dispatched by Codat. |
 
 Operations: Create, List, Remove.
 
@@ -769,14 +770,14 @@ Create an instance: `$branding = $client->Branding();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `button` | `array` |  |
-| `logo` | `array` |  |
-| `sourceId` | `string` |  |
+| `button` | `array` | Button branding references. |
+| `logo` | `array` | Logo branding references. |
+| `sourceId` | `string` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Branding record (throws on error).
+// load() returns the ENTITY — call data_get() for the Branding record (throws on error).
 $branding = $client->Branding()->load(["platform_key" => "platform_key"]);
 ```
 
@@ -799,28 +800,28 @@ Create an instance: `$company = $client->Company();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created` | `string` |  |
-| `createdByUserName` | `string` |  |
+| `created` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | `string` | Name of user that created the company in Codat. |
 | `dataConnections` | `array` |  |
-| `description` | `string` |  |
-| `id` | `string` |  |
-| `lastSync` | `string` |  |
+| `description` | `string` | Additional information about the company. |
+| `id` | `string` | Unique identifier for your SMB in Codat. |
+| `lastSync` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` | `array` |  |
-| `name` | `string` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
-| `products` | `array` |  |
-| `redirect` | `string` |  |
-| `referenceParentCompany` | `array` |  |
-| `referenceSubsidiaryCompanies` | `array` |  |
+| `name` | `string` | The name of the company |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
+| `products` | `array` | An array of products that are currently enabled for the company. |
+| `redirect` | `string` | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | `array` | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | `array` | A list of subsidiary companies owned or controlled by this entity. |
 | `results` | `array` |  |
-| `tags` | `array` |  |
-| `totalResults` | `int` |  |
+| `tags` | `array` | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | `int` | Total number of items. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Company record (throws on error).
+// load() returns the ENTITY — call data_get() for the Company record (throws on error).
 $company = $client->Company()->load(["id" => "company_id"]);
 ```
 
@@ -835,6 +836,7 @@ $companys = $client->Company()->list();
 
 ```php
 $company = $client->Company()->create([
+    "id" => null, // string
     "links" => null, // array
     "name" => null, // string
     "pageNumber" => null, // int
@@ -859,14 +861,14 @@ Create an instance: `$company_access_token = $client->CompanyAccessToken();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessToken` | `string` |  |
-| `expiresIn` | `int` |  |
-| `tokenType` | `string` |  |
+| `accessToken` | `string` | The access token for the company. |
+| `expiresIn` | `int` | The number of seconds until the access token expires. |
+| `tokenType` | `string` | The type of token. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare CompanyAccessToken record (throws on error).
+// load() returns the ENTITY — call data_get() for the CompanyAccessToken record (throws on error).
 $company_access_token = $client->CompanyAccessToken()->load(["id" => "company_access_token_id"]);
 ```
 
@@ -890,28 +892,28 @@ Create an instance: `$connection = $client->Connection();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `connectionInfo` | `array` |  |
-| `created` | `string` |  |
+| `created` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` | `array` |  |
-| `id` | `string` |  |
-| `integrationId` | `string` |  |
-| `integrationKey` | `string` |  |
-| `lastSync` | `string` |  |
-| `linkUrl` | `string` |  |
+| `id` | `string` | Unique identifier for a company's data connection. |
+| `integrationId` | `string` | A Codat ID representing the integration. |
+| `integrationKey` | `string` | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | `string` | The link URL your customers can use to authorize access to their business application. |
 | `links` | `array` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
-| `platformKey` | `string` |  |
-| `platformName` | `string` |  |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
+| `platformKey` | `string` | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | `string` | Name of integration connected to company. |
 | `results` | `array` |  |
-| `sourceId` | `string` |  |
-| `sourceType` | `string` |  |
-| `status` | `string` |  |
-| `totalResults` | `int` |  |
+| `sourceId` | `string` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | The type of platform of the connection. |
+| `status` | `string` | The current authorization status of the data connection. |
+| `totalResults` | `int` | Total number of items. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Connection record (throws on error).
+// load() returns the ENTITY — call data_get() for the Connection record (throws on error).
 $connection = $client->Connection()->load(["id" => "connection_id", "company_id" => "company_id"]);
 ```
 
@@ -958,12 +960,12 @@ Create an instance: `$connection_management_access_token = $client->ConnectionMa
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessToken` | `string` |  |
+| `accessToken` | `string` | Access token that allows SMBs to manage connections that have access to their data. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ConnectionManagementAccessToken record (throws on error).
+// load() returns the ENTITY — call data_get() for the ConnectionManagementAccessToken record (throws on error).
 $connection_management_access_token = $client->ConnectionManagementAccessToken()->load(["company_id" => "company_id"]);
 ```
 
@@ -983,7 +985,7 @@ Create an instance: `$connection_management_allowed_origin = $client->Connection
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `allowedOrigins` | `array` |  |
+| `allowedOrigins` | `array` | An array of allowed origins (i.e. |
 
 #### Example: List
 
@@ -1015,19 +1017,19 @@ Create an instance: `$custom = $client->Custom();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dataSource` | `string` |  |
-| `keyBy` | `array` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
-| `requiredData` | `array` |  |
+| `dataSource` | `string` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | `array` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
+| `requiredData` | `array` | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` | `array` |  |
-| `sourceModifiedDate` | `array` |  |
-| `totalResults` | `int` |  |
+| `sourceModifiedDate` | `array` | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | `int` | Total number of items. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Custom record (throws on error).
+// load() returns the ENTITY — call data_get() for the Custom record (throws on error).
 $custom = $client->Custom()->load(["id" => "custom_id"]);
 ```
 
@@ -1046,54 +1048,54 @@ Create an instance: `$data_status = $client->DataStatus();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accountTransactions` | `array` |  |
-| `balanceSheet` | `array` |  |
-| `bankAccounts` | `array` |  |
-| `bankTransactions` | `array` |  |
-| `bankingaccountBalances` | `array` |  |
-| `bankingaccounts` | `array` |  |
-| `bankingtransactionCategories` | `array` |  |
-| `bankingtransactions` | `array` |  |
-| `billCreditNotes` | `array` |  |
-| `billPayments` | `array` |  |
-| `bills` | `array` |  |
-| `cashFlowStatement` | `array` |  |
-| `chartOfAccounts` | `array` |  |
-| `commercecompanyInfo` | `array` |  |
-| `commercecustomers` | `array` |  |
-| `commercedisputes` | `array` |  |
-| `commercelocations` | `array` |  |
-| `commerceorders` | `array` |  |
-| `commercepaymentMethods` | `array` |  |
-| `commercepayments` | `array` |  |
-| `commerceproductCategories` | `array` |  |
-| `commerceproducts` | `array` |  |
-| `commercetaxComponents` | `array` |  |
-| `commercetransactions` | `array` |  |
-| `company` | `array` |  |
-| `creditNotes` | `array` |  |
-| `customers` | `array` |  |
-| `directCosts` | `array` |  |
-| `directIncomes` | `array` |  |
-| `invoices` | `array` |  |
-| `itemReceipts` | `array` |  |
-| `items` | `array` |  |
-| `journalEntries` | `array` |  |
-| `journals` | `array` |  |
-| `paymentMethods` | `array` |  |
-| `payments` | `array` |  |
-| `profitAndLoss` | `array` |  |
-| `purchaseOrders` | `array` |  |
-| `salesOrders` | `array` |  |
-| `suppliers` | `array` |  |
-| `taxRates` | `array` |  |
-| `trackingCategories` | `array` |  |
-| `transfers` | `array` |  |
+| `accountTransactions` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `company` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `items` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | `array` | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | `array` | Describes the state of data in the Codat cache for a company and data type |
 
 #### Example: Load
 
 ```php
-// load() returns the bare DataStatus record (throws on error).
+// load() returns the ENTITY — call data_get() for the DataStatus record (throws on error).
 $data_status = $client->DataStatus()->load(["company_id" => "company_id"]);
 ```
 
@@ -1123,27 +1125,27 @@ Create an instance: `$integration = $client->Integration();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dataProvidedBy` | `string` |  |
+| `dataProvidedBy` | `string` | The name of the data provider. |
 | `datatypeFeatures` | `array` |  |
-| `enabled` | `bool` |  |
-| `integrationId` | `string` |  |
-| `isBeta` | `bool` |  |
-| `isOfflineConnector` | `bool` |  |
-| `key` | `string` |  |
+| `enabled` | `bool` | Whether this integration is enabled for your customers to use. |
+| `integrationId` | `string` | A Codat ID representing the integration. |
+| `isBeta` | `bool` | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `bool` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | `string` | A unique 4-letter key to represent a platform in each integration. |
 | `links` | `array` |  |
-| `logoUrl` | `string` |  |
-| `name` | `string` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
+| `logoUrl` | `string` | Static url for integration's logo. |
+| `name` | `string` | Name of integration. |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
 | `results` | `array` |  |
-| `sourceId` | `string` |  |
-| `sourceType` | `string` |  |
-| `totalResults` | `int` |  |
+| `sourceId` | `string` | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | The type of platform of the connection. |
+| `totalResults` | `int` | Total number of items. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Integration record (throws on error).
+// load() returns the ENTITY — call data_get() for the Integration record (throws on error).
 $integration = $client->Integration()->load(["id" => "integration_id"]);
 ```
 
@@ -1180,13 +1182,13 @@ Create an instance: `$profile = $client->Profile();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apiKey` | `string` |  |
-| `confirmCompanyName` | `bool` |  |
-| `iconUrl` | `string` |  |
-| `logoUrl` | `string` |  |
-| `name` | `string` |  |
-| `redirectUrl` | `string` |  |
-| `whiteListUrls` | `array` |  |
+| `apiKey` | `string` | The API key for this Codat instance. |
+| `confirmCompanyName` | `bool` | `True` if the company name has been confirmed. |
+| `iconUrl` | `string` | Static url to your organization's icon. |
+| `logoUrl` | `string` | Static url to your organization's logo. |
+| `name` | `string` | The name given to the instance. |
+| `redirectUrl` | `string` | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | `array` | A list of urls that are allowed to communicate with Codat. |
 
 #### Example: List
 
@@ -1212,28 +1214,28 @@ Create an instance: `$pull_operation = $client->PullOperation();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `companyId` | `string` |  |
-| `completed` | `string` |  |
-| `connectionId` | `string` |  |
-| `dataType` | `string` |  |
-| `errorMessage` | `string` |  |
-| `id` | `string` |  |
-| `isCompleted` | `bool` |  |
-| `isErrored` | `bool` |  |
+| `companyId` | `string` | Unique identifier of the company associated to this pull operation. |
+| `completed` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | `string` | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | `string` | The data type you are requesting in a pull operation. |
+| `errorMessage` | `string` | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | `string` | Unique identifier of the pull operation. |
+| `isCompleted` | `bool` | `True` if the pull operation is completed successfully. |
+| `isErrored` | `bool` | `True` if the pull operation entered an error state. |
 | `links` | `array` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
-| `progress` | `int` |  |
-| `requested` | `string` |  |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
+| `progress` | `int` | An integer signifying the progress of the pull operation. |
+| `requested` | `string` | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` | `array` |  |
-| `status` | `string` |  |
-| `statusDescription` | `string` |  |
-| `totalResults` | `int` |  |
+| `status` | `string` | The current status of the dataset. |
+| `statusDescription` | `string` | Additional information about the dataset status. |
+| `totalResults` | `int` | Total number of items. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare PullOperation record (throws on error).
+// load() returns the ENTITY — call data_get() for the PullOperation record (throws on error).
 $pull_operation = $client->PullOperation()->load(["company_id" => "company_id", "dataset_id" => "dataset_id"]);
 ```
 
@@ -1281,29 +1283,29 @@ Create an instance: `$push = $client->Push();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `changes` | `array` |  |
-| `companyId` | `string` |  |
-| `completedOnUtc` | `string` |  |
-| `dataConnectionKey` | `string` |  |
-| `dataType` | `string` |  |
-| `errorMessage` | `string` |  |
+| `changes` | `array` | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | `string` | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | `string` | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | `string` | Unique identifier for a company's data connection. |
+| `dataType` | `string` | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | `string` | A message about the error. |
 | `links` | `array` |  |
-| `pageNumber` | `int` |  |
-| `pageSize` | `int` |  |
-| `pushOperationKey` | `string` |  |
-| `requestedOnUtc` | `string` |  |
+| `pageNumber` | `int` | Current page number. |
+| `pageSize` | `int` | Number of items to return in results array. |
+| `pushOperationKey` | `string` | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | `string` | The datetime when the push was requested. |
 | `results` | `array` |  |
-| `status` | `string` |  |
-| `statusCode` | `int` |  |
-| `timeoutInMinutes` | `int` |  |
-| `timeoutInSeconds` | `int` |  |
-| `totalResults` | `int` |  |
-| `validation` | `array` |  |
+| `status` | `string` | The current status of the push operation. |
+| `statusCode` | `int` | Push status code. |
+| `timeoutInMinutes` | `int` | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | `int` | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | `int` | Total number of items. |
+| `validation` | `array` | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Push record (throws on error).
+// load() returns the ENTITY — call data_get() for the Push record (throws on error).
 $push = $client->Push()->load(["id" => "push_id", "company_id" => "company_id"]);
 ```
 
@@ -1329,18 +1331,18 @@ Create an instance: `$push_option = $client->PushOption();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `displayName` | `string` |  |
+| `description` | `string` | A description of the property. |
+| `displayName` | `string` | The property's display name. |
 | `options` | `array` |  |
 | `properties` | `array` |  |
-| `required` | `bool` |  |
-| `type` | `string` |  |
+| `required` | `bool` | The property is required if `True`. |
+| `type` | `string` | The option type. |
 | `validation` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare PushOption record (throws on error).
+// load() returns the ENTITY — call data_get() for the PushOption record (throws on error).
 $push_option = $client->PushOption()->load(["id" => "push_option_id", "company_id" => "company_id", "connection_id" => "connection_id"]);
 ```
 
@@ -1385,10 +1387,10 @@ Create an instance: `$setting = $client->Setting();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apiKey` | `string` |  |
-| `createdDate` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
+| `apiKey` | `string` | The API key value used to make authenticated http requests. |
+| `createdDate` | `string` | The date the entity was created. |
+| `id` | `string` | Unique identifier for the API key. |
+| `name` | `string` | A meaningful name assigned to the API key. |
 
 #### Example: List
 
@@ -1436,14 +1438,14 @@ Create an instance: `$supplemental_data_config = $client->SupplementalDataConfig
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dataSource` | `string` |  |
-| `pullData` | `array` |  |
-| `pushData` | `array` |  |
+| `dataSource` | `string` | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | `array` | The additional properties that are required when pulling records. |
+| `pushData` | `array` | The additional properties that are required to create and/or update records. |
 
 #### Example: Load
 
 ```php
-// load() returns the bare SupplementalDataConfig record (throws on error).
+// load() returns the ENTITY — call data_get() for the SupplementalDataConfig record (throws on error).
 $supplemental_data_config = $client->SupplementalDataConfig()->load(["data_type_id" => "data_type_id", "platform_key" => "platform_key"]);
 ```
 
@@ -1467,14 +1469,14 @@ Create an instance: `$sync_setting = $client->SyncSetting();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dataType` | `string` |  |
-| `fetchOnFirstLink` | `bool` |  |
-| `isLocked` | `bool` |  |
-| `monthsToSync` | `int` |  |
-| `syncFromUtc` | `string` |  |
-| `syncFromWindow` | `int` |  |
-| `syncOrder` | `int` |  |
-| `syncSchedule` | `int` |  |
+| `dataType` | `string` | Available data types |
+| `fetchOnFirstLink` | `bool` | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `bool` | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | `int` | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | `string` | Date from which data should be fetched. |
+| `syncFromWindow` | `int` | Number of months of data to be fetched. |
+| `syncOrder` | `int` | The sync in which data types are queued for a sync. |
+| `syncSchedule` | `int` | Number of hours after which this data type should be refreshed. |
 
 #### Example: List
 
@@ -1525,11 +1527,11 @@ Create an instance: `$webhook = $client->Webhook();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `companyTags` | `array` |  |
-| `disabled` | `bool` |  |
-| `eventTypes` | `array` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
+| `companyTags` | `array` | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | `bool` | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | `array` | An array of event types the webhook consumer subscribes to. |
+| `id` | `string` | Unique identifier for the webhook consumer. |
+| `url` | `string` | The URL that will consume webhook events dispatched by Codat. |
 
 #### Example: List
 

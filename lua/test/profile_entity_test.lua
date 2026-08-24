@@ -39,7 +39,7 @@ describe("ProfileEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -101,7 +101,7 @@ describe("ProfileEntity", function()
 
     local profile_ref01_resdata_up0_result, err = profile_ref01_ent:update(profile_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local profile_ref01_resdata_up0 = helpers.to_map(profile_ref01_resdata_up0_result)
+    local profile_ref01_resdata_up0 = helpers.to_map(type(profile_ref01_resdata_up0_result) == 'table' and profile_ref01_resdata_up0_result.data_get and profile_ref01_resdata_up0_result:data_get() or profile_ref01_resdata_up0_result)
     assert.is_not_nil(profile_ref01_resdata_up0)
     assert.are.equal(profile_ref01_resdata_up0[profile_ref01_markdef_up0_name], profile_ref01_markdef_up0_value)
 

@@ -44,7 +44,7 @@ describe('PushOptionEntity', async () => {
     // LOAD
     const push_option_ref01_ent = client.PushOption()
     const push_option_ref01_match_dt0 = {}
-    const push_option_ref01_data_dt0 = await push_option_ref01_ent.load(push_option_ref01_match_dt0)
+    const push_option_ref01_data_dt0 = (await push_option_ref01_ent.load(push_option_ref01_match_dt0)).data()
     assert(null != push_option_ref01_data_dt0)
 
 

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from codatplatform_sdk.config import make_config
+from codatplatform_sdk.config import shared_config
 from codatplatform_sdk.features import _make_feature
 from codatplatform_sdk.core.control import CodatplatformControl
 from codatplatform_sdk.core.error import CodatplatformError
@@ -24,7 +24,7 @@ from codatplatform_sdk.core.spec import CodatplatformSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

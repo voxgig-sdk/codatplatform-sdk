@@ -58,7 +58,7 @@ func TestWebhookZapierKeyEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		webhookZapierKeyRef01Data = core.ToMapAny(webhookZapierKeyRef01DataResult)
+		webhookZapierKeyRef01Data = core.ToMapAny(entityData(webhookZapierKeyRef01DataResult))
 		if webhookZapierKeyRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

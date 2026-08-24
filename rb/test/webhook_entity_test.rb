@@ -33,7 +33,7 @@ class WebhookEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -73,7 +73,7 @@ class WebhookEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.webhook"), "webhook_ref01"))
 
     webhook_ref01_data_result = webhook_ref01_ent.create(webhook_ref01_data, nil)
-    webhook_ref01_data = Helpers.to_map(webhook_ref01_data_result)
+    webhook_ref01_data = Helpers.to_map(webhook_ref01_data_result.respond_to?(:data_get) ? webhook_ref01_data_result.data_get : webhook_ref01_data_result)
     assert !webhook_ref01_data.nil?
     assert !webhook_ref01_data["id"].nil?
 

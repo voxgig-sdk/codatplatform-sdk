@@ -33,7 +33,7 @@ class SettingEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -73,7 +73,7 @@ class SettingEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.setting"), "setting_ref01"))
 
     setting_ref01_data_result = setting_ref01_ent.create(setting_ref01_data, nil)
-    setting_ref01_data = Helpers.to_map(setting_ref01_data_result)
+    setting_ref01_data = Helpers.to_map(setting_ref01_data_result.respond_to?(:data_get) ? setting_ref01_data_result.data_get : setting_ref01_data_result)
     assert !setting_ref01_data.nil?
     assert !setting_ref01_data["id"].nil?
 

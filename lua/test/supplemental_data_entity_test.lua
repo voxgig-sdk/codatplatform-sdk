@@ -50,7 +50,7 @@ describe("SupplementalDataEntity", function()
 
     local supplemental_data_ref01_resdata_up0_result, err = supplemental_data_ref01_ent:update(supplemental_data_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local supplemental_data_ref01_resdata_up0 = helpers.to_map(supplemental_data_ref01_resdata_up0_result)
+    local supplemental_data_ref01_resdata_up0 = helpers.to_map(type(supplemental_data_ref01_resdata_up0_result) == 'table' and supplemental_data_ref01_resdata_up0_result.data_get and supplemental_data_ref01_resdata_up0_result:data_get() or supplemental_data_ref01_resdata_up0_result)
     assert.is_not_nil(supplemental_data_ref01_resdata_up0)
 
   end)

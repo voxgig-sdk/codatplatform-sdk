@@ -45,7 +45,7 @@ class TestRefreshDataEntity:
             vs.getpath(setup["data"], "new.refresh_data"), "refresh_data_ref01"))
         refresh_data_ref01_data["company_id"] = setup["idmap"]["company01"]
 
-        refresh_data_ref01_data = helpers.to_map(refresh_data_ref01_ent.create(refresh_data_ref01_data, None))
+        refresh_data_ref01_data = helpers.to_map(runner.entity_data(refresh_data_ref01_ent.create(refresh_data_ref01_data, None)))
         assert refresh_data_ref01_data is not None
 
 

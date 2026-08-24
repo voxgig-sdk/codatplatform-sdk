@@ -41,7 +41,7 @@ describe("WebhookZapierKeyEntity", function()
 
     local webhook_zapier_key_ref01_data_result, err = webhook_zapier_key_ref01_ent:create(webhook_zapier_key_ref01_data, nil)
     assert.is_nil(err)
-    webhook_zapier_key_ref01_data = helpers.to_map(webhook_zapier_key_ref01_data_result)
+    webhook_zapier_key_ref01_data = helpers.to_map(type(webhook_zapier_key_ref01_data_result) == 'table' and webhook_zapier_key_ref01_data_result.data_get and webhook_zapier_key_ref01_data_result:data_get() or webhook_zapier_key_ref01_data_result)
     assert.is_not_nil(webhook_zapier_key_ref01_data)
 
   end)

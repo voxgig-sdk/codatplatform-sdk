@@ -52,7 +52,7 @@ class TestSupplementalDataEntity:
             "platform_key": setup["idmap"]["platform_key"],
         }
 
-        supplemental_data_ref01_resdata_up0 = helpers.to_map(supplemental_data_ref01_ent.update(supplemental_data_ref01_data_up0_up, None))
+        supplemental_data_ref01_resdata_up0 = helpers.to_map(runner.entity_data(supplemental_data_ref01_ent.update(supplemental_data_ref01_data_up0_up, None)))
         assert supplemental_data_ref01_resdata_up0 is not None
 
 

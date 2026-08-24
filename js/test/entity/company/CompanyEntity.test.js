@@ -44,14 +44,14 @@ describe('CompanyEntity', async () => {
     const company_ref01_ent = client.Company()
     let company_ref01_data = setup.data.new.company['company_ref01']
 
-    company_ref01_data = await company_ref01_ent.create(company_ref01_data)
+    company_ref01_data = (await company_ref01_ent.create(company_ref01_data)).data()
     assert(null != company_ref01_data.id)
 
 
     // LIST
     const company_ref01_match = {}
 
-    const company_ref01_list = await company_ref01_ent.list(company_ref01_match)
+    const company_ref01_list = (await company_ref01_ent.list(company_ref01_match)).map((e) => e.data())
 
     assert(!isempty(select(company_ref01_list, { id: company_ref01_data.id })))
 
@@ -63,7 +63,7 @@ describe('CompanyEntity', async () => {
     const company_ref01_markdef_up0 = { name: 'created', value: 'Mark01-company_ref01_' + setup.now }
     company_ref01_data_up0 [company_ref01_markdef_up0.name] = company_ref01_markdef_up0.value
 
-    const company_ref01_resdata_up0 = await company_ref01_ent.update(company_ref01_data_up0)
+    const company_ref01_resdata_up0 = (await company_ref01_ent.update(company_ref01_data_up0)).data()
     assert(company_ref01_resdata_up0.id === company_ref01_data_up0.id)
 
     assert(company_ref01_resdata_up0[company_ref01_markdef_up0.name] === company_ref01_markdef_up0.value)
@@ -72,7 +72,7 @@ describe('CompanyEntity', async () => {
     // LOAD
     const company_ref01_match_dt0 = {}
     company_ref01_match_dt0.id = company_ref01_data.id
-    const company_ref01_data_dt0 = await company_ref01_ent.load(company_ref01_match_dt0)
+    const company_ref01_data_dt0 = (await company_ref01_ent.load(company_ref01_match_dt0)).data()
     assert(company_ref01_data_dt0.id === company_ref01_data.id)
 
 
@@ -85,7 +85,7 @@ describe('CompanyEntity', async () => {
     // LIST
     const company_ref01_match_rt0 = {}
 
-    const company_ref01_list_rt0 = await company_ref01_ent.list(company_ref01_match_rt0)
+    const company_ref01_list_rt0 = (await company_ref01_ent.list(company_ref01_match_rt0)).map((e) => e.data())
 
     assert(isempty(select(company_ref01_list_rt0, { id: company_ref01_data.id })))
 

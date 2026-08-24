@@ -308,9 +308,9 @@ fmt.Println(branding.GetName()) // "branding"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `button` | `map[string]any` | No |  |
-| `logo` | `map[string]any` | No |  |
-| `sourceId` | `string` | No |  |
+| `button` | `map[string]any` | No | Button branding references. |
+| `logo` | `map[string]any` | No | Logo branding references. |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 ### Operations
 
@@ -361,23 +361,23 @@ fmt.Println(company.GetName()) // "company"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created` | `string` | No |  |
-| `createdByUserName` | `string` | No |  |
+| `created` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | `string` | No | Name of user that created the company in Codat. |
 | `dataConnections` | `[]any` | No |  |
-| `description` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
+| `description` | `string` | No | Additional information about the company. |
+| `id` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` | `map[string]any` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `products` | `[]any` | No |  |
-| `redirect` | `string` | Yes |  |
-| `referenceParentCompany` | `map[string]any` | No |  |
-| `referenceSubsidiaryCompanies` | `[]any` | No |  |
+| `name` | `string` | Yes | The name of the company |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `products` | `[]any` | No | An array of products that are currently enabled for the company. |
+| `redirect` | `string` | Yes | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | `map[string]any` | No | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | `[]any` | No | A list of subsidiary companies owned or controlled by this entity. |
 | `results` | `[]any` | No |  |
-| `tags` | `map[string]any` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `tags` | `map[string]any` | No | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -433,6 +433,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Company(nil).Create(map[string]any{
+    "id": "example_id",
     "links": map[string]any{},
     "name": "example_name",
     "pageNumber": 1,
@@ -508,9 +509,9 @@ fmt.Println(companyAccessToken.GetName()) // "company_access_token"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | Yes |  |
-| `expiresIn` | `int` | Yes |  |
-| `tokenType` | `string` | Yes |  |
+| `accessToken` | `string` | Yes | The access token for the company. |
+| `expiresIn` | `int` | Yes | The number of seconds until the access token expires. |
+| `tokenType` | `string` | Yes | The type of token. |
 
 ### Operations
 
@@ -562,23 +563,23 @@ fmt.Println(connection.GetName()) // "connection"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `connectionInfo` | `map[string]any` | No |  |
-| `created` | `string` | Yes |  |
+| `created` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` | `[]any` | No |  |
-| `id` | `string` | Yes |  |
-| `integrationId` | `string` | Yes |  |
-| `integrationKey` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
-| `linkUrl` | `string` | Yes |  |
+| `id` | `string` | Yes | Unique identifier for a company's data connection. |
+| `integrationId` | `string` | Yes | A Codat ID representing the integration. |
+| `integrationKey` | `string` | Yes | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | `string` | Yes | The link URL your customers can use to authorize access to their business application. |
 | `links` | `map[string]any` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `platformKey` | `string` | No |  |
-| `platformName` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `platformKey` | `string` | No | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | `string` | Yes | Name of integration connected to company. |
 | `results` | `[]any` | No |  |
-| `sourceId` | `string` | Yes |  |
-| `sourceType` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `string` | Yes | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | Yes | The type of platform of the connection. |
+| `status` | `string` | Yes | The current authorization status of the data connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -719,7 +720,7 @@ fmt.Println(connectionManagementAccessToken.GetName()) // "connection_management
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | No |  |
+| `accessToken` | `string` | No | Access token that allows SMBs to manage connections that have access to their data. |
 
 ### Operations
 
@@ -770,7 +771,7 @@ fmt.Println(connectionManagementAllowedOrigin.GetName()) // "connection_manageme
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allowedOrigins` | `[]any` | No |  |
+| `allowedOrigins` | `[]any` | No | An array of allowed origins (i.e. |
 
 ### Operations
 
@@ -834,14 +835,14 @@ fmt.Println(custom.GetName()) // "custom"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `keyBy` | `[]any` | No |  |
-| `pageNumber` | `int` | No |  |
-| `pageSize` | `int` | No |  |
-| `requiredData` | `map[string]any` | No |  |
+| `dataSource` | `string` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | `[]any` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | `int` | No | Current page number. |
+| `pageSize` | `int` | No | Number of items to return in results array. |
+| `requiredData` | `map[string]any` | No | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` | `[]any` | No |  |
-| `sourceModifiedDate` | `[]any` | No |  |
-| `totalResults` | `int` | No |  |
+| `sourceModifiedDate` | `[]any` | No | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | `int` | No | Total number of items. |
 
 ### Operations
 
@@ -908,49 +909,49 @@ fmt.Println(dataStatus.GetName()) // "data_status"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accountTransactions` | `map[string]any` | Yes |  |
-| `balanceSheet` | `map[string]any` | Yes |  |
-| `bankAccounts` | `map[string]any` | Yes |  |
-| `bankTransactions` | `map[string]any` | Yes |  |
-| `bankingaccountBalances` | `map[string]any` | Yes |  |
-| `bankingaccounts` | `map[string]any` | Yes |  |
-| `bankingtransactionCategories` | `map[string]any` | Yes |  |
-| `bankingtransactions` | `map[string]any` | Yes |  |
-| `billCreditNotes` | `map[string]any` | Yes |  |
-| `billPayments` | `map[string]any` | Yes |  |
-| `bills` | `map[string]any` | Yes |  |
-| `cashFlowStatement` | `map[string]any` | Yes |  |
-| `chartOfAccounts` | `map[string]any` | Yes |  |
-| `commercecompanyInfo` | `map[string]any` | Yes |  |
-| `commercecustomers` | `map[string]any` | Yes |  |
-| `commercedisputes` | `map[string]any` | Yes |  |
-| `commercelocations` | `map[string]any` | Yes |  |
-| `commerceorders` | `map[string]any` | Yes |  |
-| `commercepaymentMethods` | `map[string]any` | Yes |  |
-| `commercepayments` | `map[string]any` | Yes |  |
-| `commerceproductCategories` | `map[string]any` | Yes |  |
-| `commerceproducts` | `map[string]any` | Yes |  |
-| `commercetaxComponents` | `map[string]any` | Yes |  |
-| `commercetransactions` | `map[string]any` | Yes |  |
-| `company` | `map[string]any` | Yes |  |
-| `creditNotes` | `map[string]any` | Yes |  |
-| `customers` | `map[string]any` | Yes |  |
-| `directCosts` | `map[string]any` | Yes |  |
-| `directIncomes` | `map[string]any` | Yes |  |
-| `invoices` | `map[string]any` | Yes |  |
-| `itemReceipts` | `map[string]any` | Yes |  |
-| `items` | `map[string]any` | Yes |  |
-| `journalEntries` | `map[string]any` | Yes |  |
-| `journals` | `map[string]any` | Yes |  |
-| `paymentMethods` | `map[string]any` | Yes |  |
-| `payments` | `map[string]any` | Yes |  |
-| `profitAndLoss` | `map[string]any` | Yes |  |
-| `purchaseOrders` | `map[string]any` | Yes |  |
-| `salesOrders` | `map[string]any` | Yes |  |
-| `suppliers` | `map[string]any` | Yes |  |
-| `taxRates` | `map[string]any` | Yes |  |
-| `trackingCategories` | `map[string]any` | Yes |  |
-| `transfers` | `map[string]any` | Yes |  |
+| `accountTransactions` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `company` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `items` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | `map[string]any` | Yes | Describes the state of data in the Codat cache for a company and data type |
 
 ### Operations
 
@@ -1063,22 +1064,22 @@ fmt.Println(integration.GetName()) // "integration"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataProvidedBy` | `string` | No |  |
+| `dataProvidedBy` | `string` | No | The name of the data provider. |
 | `datatypeFeatures` | `[]any` | No |  |
-| `enabled` | `bool` | Yes |  |
-| `integrationId` | `string` | No |  |
-| `isBeta` | `bool` | No |  |
-| `isOfflineConnector` | `bool` | No |  |
-| `key` | `string` | Yes |  |
+| `enabled` | `bool` | Yes | Whether this integration is enabled for your customers to use. |
+| `integrationId` | `string` | No | A Codat ID representing the integration. |
+| `isBeta` | `bool` | No | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `bool` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | `string` | Yes | A unique 4-letter key to represent a platform in each integration. |
 | `links` | `map[string]any` | Yes |  |
-| `logoUrl` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
+| `logoUrl` | `string` | Yes | Static url for integration's logo. |
+| `name` | `string` | Yes | Name of integration. |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
 | `results` | `[]any` | No |  |
-| `sourceId` | `string` | No |  |
-| `sourceType` | `string` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | No | The type of platform of the connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1203,13 +1204,13 @@ fmt.Println(profile.GetName()) // "profile"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `confirmCompanyName` | `bool` | No |  |
-| `iconUrl` | `string` | No |  |
-| `logoUrl` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `redirectUrl` | `string` | Yes |  |
-| `whiteListUrls` | `[]any` | No |  |
+| `apiKey` | `string` | No | The API key for this Codat instance. |
+| `confirmCompanyName` | `bool` | No | `True` if the company name has been confirmed. |
+| `iconUrl` | `string` | No | Static url to your organization's icon. |
+| `logoUrl` | `string` | No | Static url to your organization's logo. |
+| `name` | `string` | Yes | The name given to the instance. |
+| `redirectUrl` | `string` | Yes | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | `[]any` | No | A list of urls that are allowed to communicate with Codat. |
 
 ### Operations
 
@@ -1274,23 +1275,23 @@ fmt.Println(pullOperation.GetName()) // "pull_operation"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyId` | `string` | Yes |  |
-| `completed` | `string` | No |  |
-| `connectionId` | `string` | Yes |  |
-| `dataType` | `string` | Yes |  |
-| `errorMessage` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `isCompleted` | `bool` | Yes |  |
-| `isErrored` | `bool` | Yes |  |
+| `companyId` | `string` | Yes | Unique identifier of the company associated to this pull operation. |
+| `completed` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | `string` | Yes | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | `string` | Yes | The data type you are requesting in a pull operation. |
+| `errorMessage` | `string` | No | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | `string` | Yes | Unique identifier of the pull operation. |
+| `isCompleted` | `bool` | Yes | `True` if the pull operation is completed successfully. |
+| `isErrored` | `bool` | Yes | `True` if the pull operation entered an error state. |
 | `links` | `map[string]any` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `progress` | `int` | Yes |  |
-| `requested` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `progress` | `int` | Yes | An integer signifying the progress of the pull operation. |
+| `requested` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` | `[]any` | No |  |
-| `status` | `string` | Yes |  |
-| `statusDescription` | `string` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `status` | `string` | Yes | The current status of the dataset. |
+| `statusDescription` | `string` | No | Additional information about the dataset status. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1380,24 +1381,24 @@ fmt.Println(push.GetName()) // "push"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `changes` | `[]any` | No |  |
-| `companyId` | `string` | Yes |  |
-| `completedOnUtc` | `string` | No |  |
-| `dataConnectionKey` | `string` | Yes |  |
-| `dataType` | `string` | No |  |
-| `errorMessage` | `string` | No |  |
+| `changes` | `[]any` | No | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | `string` | No | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | `string` | Yes | Unique identifier for a company's data connection. |
+| `dataType` | `string` | No | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | `string` | No | A message about the error. |
 | `links` | `map[string]any` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `pushOperationKey` | `string` | Yes |  |
-| `requestedOnUtc` | `string` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `pushOperationKey` | `string` | Yes | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | `string` | Yes | The datetime when the push was requested. |
 | `results` | `[]any` | No |  |
-| `status` | `string` | Yes |  |
-| `statusCode` | `int` | Yes |  |
-| `timeoutInMinutes` | `int` | No |  |
-| `timeoutInSeconds` | `int` | No |  |
-| `totalResults` | `int` | Yes |  |
-| `validation` | `map[string]any` | No |  |
+| `status` | `string` | Yes | The current status of the push operation. |
+| `statusCode` | `int` | Yes | Push status code. |
+| `timeoutInMinutes` | `int` | No | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | `int` | No | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | `int` | Yes | Total number of items. |
+| `validation` | `map[string]any` | No | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 ### Operations
 
@@ -1460,12 +1461,12 @@ fmt.Println(pushOption.GetName()) // "push_option"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | Yes |  |
+| `description` | `string` | No | A description of the property. |
+| `displayName` | `string` | Yes | The property's display name. |
 | `options` | `[]any` | No |  |
 | `properties` | `map[string]any` | No |  |
-| `required` | `bool` | Yes |  |
-| `type` | `string` | Yes |  |
+| `required` | `bool` | Yes | The property is required if `True`. |
+| `type` | `string` | Yes | The option type. |
 | `validation` | `map[string]any` | No |  |
 
 ### Operations
@@ -1595,10 +1596,10 @@ fmt.Println(setting.GetName()) // "setting"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `createdDate` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
+| `apiKey` | `string` | No | The API key value used to make authenticated http requests. |
+| `createdDate` | `string` | No | The date the entity was created. |
+| `id` | `string` | No | Unique identifier for the API key. |
+| `name` | `string` | No | A meaningful name assigned to the API key. |
 
 ### Operations
 
@@ -1729,9 +1730,9 @@ fmt.Println(supplementalDataConfig.GetName()) // "supplemental_data_config"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `pullData` | `map[string]any` | No |  |
-| `pushData` | `map[string]any` | No |  |
+| `dataSource` | `string` | No | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | `map[string]any` | No | The additional properties that are required when pulling records. |
+| `pushData` | `map[string]any` | No | The additional properties that are required to create and/or update records. |
 
 ### Operations
 
@@ -1813,14 +1814,14 @@ fmt.Println(syncSetting.GetName()) // "sync_setting"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataType` | `string` | Yes |  |
-| `fetchOnFirstLink` | `bool` | Yes |  |
-| `isLocked` | `bool` | No |  |
-| `monthsToSync` | `int` | No |  |
-| `syncFromUtc` | `string` | No |  |
-| `syncFromWindow` | `int` | No |  |
-| `syncOrder` | `int` | Yes |  |
-| `syncSchedule` | `int` | Yes |  |
+| `dataType` | `string` | Yes | Available data types |
+| `fetchOnFirstLink` | `bool` | Yes | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `bool` | No | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | `int` | No | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | `string` | No | Date from which data should be fetched. |
+| `syncFromWindow` | `int` | No | Number of months of data to be fetched. |
+| `syncOrder` | `int` | Yes | The sync in which data types are queued for a sync. |
+| `syncSchedule` | `int` | Yes | Number of hours after which this data type should be refreshed. |
 
 ### Operations
 
@@ -1923,11 +1924,11 @@ fmt.Println(webhook.GetName()) // "webhook"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyTags` | `[]any` | No |  |
-| `disabled` | `bool` | No |  |
-| `eventTypes` | `[]any` | No |  |
-| `id` | `string` | No |  |
-| `url` | `string` | No |  |
+| `companyTags` | `[]any` | No | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | `bool` | No | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | `[]any` | No | An array of event types the webhook consumer subscribes to. |
+| `id` | `string` | No | Unique identifier for the webhook consumer. |
+| `url` | `string` | No | The URL that will consume webhook events dispatched by Codat. |
 
 ### Operations
 

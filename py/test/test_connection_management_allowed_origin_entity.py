@@ -42,8 +42,8 @@ class TestConnectionManagementAllowedOriginEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -78,7 +78,7 @@ class TestConnectionManagementAllowedOriginEntity:
         connection_management_allowed_origin_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.connection_management_allowed_origin"), "connection_management_allowed_origin_ref01"))
 
-        connection_management_allowed_origin_ref01_data = helpers.to_map(connection_management_allowed_origin_ref01_ent.create(connection_management_allowed_origin_ref01_data, None))
+        connection_management_allowed_origin_ref01_data = helpers.to_map(runner.entity_data(connection_management_allowed_origin_ref01_ent.create(connection_management_allowed_origin_ref01_data, None)))
         assert connection_management_allowed_origin_ref01_data is not None
 
         # LIST

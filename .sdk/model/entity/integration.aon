@@ -1,0 +1,216 @@
+# Entity: integration
+
+main: kit: entity: integration: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "dataProvidedBy"
+      req: false
+      short: "The name of the data provider."
+      type: "`$STRING`"
+    }
+    {
+      name: "datatypeFeatures"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "enabled"
+      req: true
+      short: "Whether this integration is enabled for your customers to use."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "integrationId"
+      req: false
+      short: "A Codat ID representing the integration."
+      type: "`$STRING`"
+    }
+    {
+      name: "isBeta"
+      req: false
+      short: "`True` if the integration is currently in beta release."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "isOfflineConnector"
+      req: false
+      short: "`True` if the integration is to an application installed and run locally on an SMBs computer."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "key"
+      req: true
+      short: "A unique 4-letter key to represent a platform in each integration."
+      type: "`$STRING`"
+    }
+    {
+      name: "links"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "logoUrl"
+      req: true
+      short: "Static url for integration's logo."
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: true
+      short: "Name of integration."
+      type: "`$STRING`"
+    }
+    {
+      name: "pageNumber"
+      req: true
+      short: "Current page number."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "pageSize"
+      req: true
+      short: "Number of items to return in results array."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "results"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "sourceId"
+      req: false
+      short: "A source-specific ID used to distinguish between different sources originating from the same data connection."
+      type: "`$STRING`"
+    }
+    {
+      name: "sourceType"
+      req: false
+      short: "The type of platform of the connection."
+      type: "`$STRING`"
+    }
+    {
+      name: "totalResults"
+      req: true
+      short: "Total number of items."
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "integration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "-modifiedDate"
+                kind: "query"
+                name: "order_by"
+                orig: "order_by"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 100
+                kind: "query"
+                name: "page_size"
+                orig: "page_size"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+                kind: "query"
+                name: "query"
+                orig: "query"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/integrations"
+          parts: [
+            "integrations"
+          ]
+          select: {
+            exist: [
+              "order_by"
+              "page"
+              "page_size"
+              "query"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "gbol"
+                kind: "param"
+                name: "id"
+                orig: "platform_key"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/integrations/{platformKey}"
+          parts: [
+            "integrations"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              platformKey: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "integration"
+      ]
+    ]
+  }
+
+
+
+}

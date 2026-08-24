@@ -40,7 +40,7 @@ class ConnectionEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -84,7 +84,7 @@ class ConnectionEntityTest extends TestCase
         $connection_ref01_data["company_id"] = $setup["idmap"]["company01"];
 
         $connection_ref01_data_result = $connection_ref01_ent->create($connection_ref01_data, null);
-        $connection_ref01_data = Helpers::to_map($connection_ref01_data_result);
+        $connection_ref01_data = Helpers::to_map(is_object($connection_ref01_data_result) && method_exists($connection_ref01_data_result, 'data_get') ? $connection_ref01_data_result->data_get() : $connection_ref01_data_result);
         $this->assertNotNull($connection_ref01_data);
         $this->assertNotNull($connection_ref01_data["id"]);
 
@@ -112,7 +112,7 @@ class ConnectionEntityTest extends TestCase
         $connection_ref01_data_up0_up[$connection_ref01_markdef_up0_name] = $connection_ref01_markdef_up0_value;
 
         $connection_ref01_resdata_up0_result = $connection_ref01_ent->update($connection_ref01_data_up0_up, null);
-        $connection_ref01_resdata_up0 = Helpers::to_map($connection_ref01_resdata_up0_result);
+        $connection_ref01_resdata_up0 = Helpers::to_map(is_object($connection_ref01_resdata_up0_result) && method_exists($connection_ref01_resdata_up0_result, 'data_get') ? $connection_ref01_resdata_up0_result->data_get() : $connection_ref01_resdata_up0_result);
         $this->assertNotNull($connection_ref01_resdata_up0);
         $this->assertEquals($connection_ref01_resdata_up0["id"], $connection_ref01_data_up0_up["id"]);
         $this->assertEquals($connection_ref01_resdata_up0[$connection_ref01_markdef_up0_name], $connection_ref01_markdef_up0_value);
@@ -122,7 +122,7 @@ class ConnectionEntityTest extends TestCase
             "id" => $connection_ref01_data["id"],
         ];
         $connection_ref01_data_dt0_loaded = $connection_ref01_ent->load($connection_ref01_match_dt0, null);
-        $connection_ref01_data_dt0_load_result = Helpers::to_map($connection_ref01_data_dt0_loaded);
+        $connection_ref01_data_dt0_load_result = Helpers::to_map(is_object($connection_ref01_data_dt0_loaded) && method_exists($connection_ref01_data_dt0_loaded, 'data_get') ? $connection_ref01_data_dt0_loaded->data_get() : $connection_ref01_data_dt0_loaded);
         $this->assertNotNull($connection_ref01_data_dt0_load_result);
         $this->assertEquals($connection_ref01_data_dt0_load_result["id"], $connection_ref01_data["id"]);
 

@@ -46,7 +46,7 @@ class SupplementalDataEntityTest < Minitest::Test
     }
 
     supplemental_data_ref01_resdata_up0_result = supplemental_data_ref01_ent.update(supplemental_data_ref01_data_up0_up, nil)
-    supplemental_data_ref01_resdata_up0 = Helpers.to_map(supplemental_data_ref01_resdata_up0_result)
+    supplemental_data_ref01_resdata_up0 = Helpers.to_map(supplemental_data_ref01_resdata_up0_result.respond_to?(:data_get) ? supplemental_data_ref01_resdata_up0_result.data_get : supplemental_data_ref01_resdata_up0_result)
     assert !supplemental_data_ref01_resdata_up0.nil?
 
   end

@@ -42,8 +42,8 @@ class TestCompanyEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -78,7 +78,7 @@ class TestCompanyEntity:
         company_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.company"), "company_ref01"))
 
-        company_ref01_data = helpers.to_map(company_ref01_ent.create(company_ref01_data, None))
+        company_ref01_data = helpers.to_map(runner.entity_data(company_ref01_ent.create(company_ref01_data, None)))
         assert company_ref01_data is not None
         assert company_ref01_data["id"] is not None
 
@@ -102,7 +102,7 @@ class TestCompanyEntity:
         company_ref01_markdef_up0_value = "Mark01-company_ref01_" + str(setup["now"])
         company_ref01_data_up0_up[company_ref01_markdef_up0_name] = company_ref01_markdef_up0_value
 
-        company_ref01_resdata_up0 = helpers.to_map(company_ref01_ent.update(company_ref01_data_up0_up, None))
+        company_ref01_resdata_up0 = helpers.to_map(runner.entity_data(company_ref01_ent.update(company_ref01_data_up0_up, None)))
         assert company_ref01_resdata_up0 is not None
         assert company_ref01_resdata_up0["id"] == company_ref01_data_up0_up["id"]
         assert company_ref01_resdata_up0[company_ref01_markdef_up0_name] == company_ref01_markdef_up0_value
@@ -112,7 +112,7 @@ class TestCompanyEntity:
             "id": company_ref01_data["id"],
         }
         company_ref01_data_dt0_loaded = company_ref01_ent.load(company_ref01_match_dt0, None)
-        company_ref01_data_dt0_load_result = helpers.to_map(company_ref01_data_dt0_loaded)
+        company_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(company_ref01_data_dt0_loaded))
         assert company_ref01_data_dt0_load_result is not None
         assert company_ref01_data_dt0_load_result["id"] == company_ref01_data["id"]
 

@@ -309,9 +309,9 @@ branding = client.Branding()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `button` | `dict` | No |  |
-| `logo` | `dict` | No |  |
-| `sourceId` | `str` | No |  |
+| `button` | `dict` | No | Button branding references. |
+| `logo` | `dict` | No | Logo branding references. |
+| `sourceId` | `str` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 ### Operations
 
@@ -362,23 +362,23 @@ company = client.Company()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created` | `str` | No |  |
-| `createdByUserName` | `str` | No |  |
+| `created` | `str` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | `str` | No | Name of user that created the company in Codat. |
 | `dataConnections` | `list` | No |  |
-| `description` | `str` | No |  |
-| `id` | `str` | Yes |  |
-| `lastSync` | `str` | No |  |
+| `description` | `str` | No | Additional information about the company. |
+| `id` | `str` | Yes | Unique identifier for your SMB in Codat. |
+| `lastSync` | `str` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` | `dict` | Yes |  |
-| `name` | `str` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `products` | `list` | No |  |
-| `redirect` | `str` | Yes |  |
-| `referenceParentCompany` | `dict` | No |  |
-| `referenceSubsidiaryCompanies` | `list` | No |  |
+| `name` | `str` | Yes | The name of the company |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `products` | `list` | No | An array of products that are currently enabled for the company. |
+| `redirect` | `str` | Yes | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | `dict` | No | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | `list` | No | A list of subsidiary companies owned or controlled by this entity. |
 | `results` | `list` | No |  |
-| `tags` | `dict` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `tags` | `dict` | No | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -410,6 +410,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Company().create({
+    "id": "example_id",  # str
     "links": {},  # dict
     "name": "example_name",  # str
     "pageNumber": 1,  # int
@@ -495,9 +496,9 @@ company_access_token = client.CompanyAccessToken()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `str` | Yes |  |
-| `expiresIn` | `int` | Yes |  |
-| `tokenType` | `str` | Yes |  |
+| `accessToken` | `str` | Yes | The access token for the company. |
+| `expiresIn` | `int` | Yes | The number of seconds until the access token expires. |
+| `tokenType` | `str` | Yes | The type of token. |
 
 ### Operations
 
@@ -549,23 +550,23 @@ connection = client.Connection()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `connectionInfo` | `dict` | No |  |
-| `created` | `str` | Yes |  |
+| `created` | `str` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` | `list` | No |  |
-| `id` | `str` | Yes |  |
-| `integrationId` | `str` | Yes |  |
-| `integrationKey` | `str` | Yes |  |
-| `lastSync` | `str` | No |  |
-| `linkUrl` | `str` | Yes |  |
+| `id` | `str` | Yes | Unique identifier for a company's data connection. |
+| `integrationId` | `str` | Yes | A Codat ID representing the integration. |
+| `integrationKey` | `str` | Yes | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | `str` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | `str` | Yes | The link URL your customers can use to authorize access to their business application. |
 | `links` | `dict` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `platformKey` | `str` | No |  |
-| `platformName` | `str` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `platformKey` | `str` | No | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | `str` | Yes | Name of integration connected to company. |
 | `results` | `list` | No |  |
-| `sourceId` | `str` | Yes |  |
-| `sourceType` | `str` | Yes |  |
-| `status` | `str` | Yes |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `str` | Yes | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `str` | Yes | The type of platform of the connection. |
+| `status` | `str` | Yes | The current authorization status of the data connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -620,7 +621,7 @@ result = client.Connection().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Connection().list()
+results = client.Connection().list({"company_id": "example"})
 for connection in results:
     print(connection)
 ```
@@ -692,7 +693,7 @@ connection_management_access_token = client.ConnectionManagementAccessToken()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `str` | No |  |
+| `accessToken` | `str` | No | Access token that allows SMBs to manage connections that have access to their data. |
 
 ### Operations
 
@@ -743,7 +744,7 @@ connection_management_allowed_origin = client.ConnectionManagementAllowedOrigin(
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allowedOrigins` | `list` | No |  |
+| `allowedOrigins` | `list` | No | An array of allowed origins (i.e. |
 
 ### Operations
 
@@ -805,14 +806,14 @@ custom = client.Custom()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `str` | No |  |
-| `keyBy` | `list` | No |  |
-| `pageNumber` | `int` | No |  |
-| `pageSize` | `int` | No |  |
-| `requiredData` | `dict` | No |  |
+| `dataSource` | `str` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | `list` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | `int` | No | Current page number. |
+| `pageSize` | `int` | No | Number of items to return in results array. |
+| `requiredData` | `dict` | No | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` | `list` | No |  |
-| `sourceModifiedDate` | `list` | No |  |
-| `totalResults` | `int` | No |  |
+| `sourceModifiedDate` | `list` | No | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | `int` | No | Total number of items. |
 
 ### Operations
 
@@ -875,49 +876,49 @@ data_status = client.DataStatus()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accountTransactions` | `dict` | Yes |  |
-| `balanceSheet` | `dict` | Yes |  |
-| `bankAccounts` | `dict` | Yes |  |
-| `bankTransactions` | `dict` | Yes |  |
-| `bankingaccountBalances` | `dict` | Yes |  |
-| `bankingaccounts` | `dict` | Yes |  |
-| `bankingtransactionCategories` | `dict` | Yes |  |
-| `bankingtransactions` | `dict` | Yes |  |
-| `billCreditNotes` | `dict` | Yes |  |
-| `billPayments` | `dict` | Yes |  |
-| `bills` | `dict` | Yes |  |
-| `cashFlowStatement` | `dict` | Yes |  |
-| `chartOfAccounts` | `dict` | Yes |  |
-| `commercecompanyInfo` | `dict` | Yes |  |
-| `commercecustomers` | `dict` | Yes |  |
-| `commercedisputes` | `dict` | Yes |  |
-| `commercelocations` | `dict` | Yes |  |
-| `commerceorders` | `dict` | Yes |  |
-| `commercepaymentMethods` | `dict` | Yes |  |
-| `commercepayments` | `dict` | Yes |  |
-| `commerceproductCategories` | `dict` | Yes |  |
-| `commerceproducts` | `dict` | Yes |  |
-| `commercetaxComponents` | `dict` | Yes |  |
-| `commercetransactions` | `dict` | Yes |  |
-| `company` | `dict` | Yes |  |
-| `creditNotes` | `dict` | Yes |  |
-| `customers` | `dict` | Yes |  |
-| `directCosts` | `dict` | Yes |  |
-| `directIncomes` | `dict` | Yes |  |
-| `invoices` | `dict` | Yes |  |
-| `itemReceipts` | `dict` | Yes |  |
-| `items` | `dict` | Yes |  |
-| `journalEntries` | `dict` | Yes |  |
-| `journals` | `dict` | Yes |  |
-| `paymentMethods` | `dict` | Yes |  |
-| `payments` | `dict` | Yes |  |
-| `profitAndLoss` | `dict` | Yes |  |
-| `purchaseOrders` | `dict` | Yes |  |
-| `salesOrders` | `dict` | Yes |  |
-| `suppliers` | `dict` | Yes |  |
-| `taxRates` | `dict` | Yes |  |
-| `trackingCategories` | `dict` | Yes |  |
-| `transfers` | `dict` | Yes |  |
+| `accountTransactions` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `company` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `items` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | `dict` | Yes | Describes the state of data in the Codat cache for a company and data type |
 
 ### Operations
 
@@ -1038,22 +1039,22 @@ integration = client.Integration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataProvidedBy` | `str` | No |  |
+| `dataProvidedBy` | `str` | No | The name of the data provider. |
 | `datatypeFeatures` | `list` | No |  |
-| `enabled` | `bool` | Yes |  |
-| `integrationId` | `str` | No |  |
-| `isBeta` | `bool` | No |  |
-| `isOfflineConnector` | `bool` | No |  |
-| `key` | `str` | Yes |  |
+| `enabled` | `bool` | Yes | Whether this integration is enabled for your customers to use. |
+| `integrationId` | `str` | No | A Codat ID representing the integration. |
+| `isBeta` | `bool` | No | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `bool` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | `str` | Yes | A unique 4-letter key to represent a platform in each integration. |
 | `links` | `dict` | Yes |  |
-| `logoUrl` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
+| `logoUrl` | `str` | Yes | Static url for integration's logo. |
+| `name` | `str` | Yes | Name of integration. |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
 | `results` | `list` | No |  |
-| `sourceId` | `str` | No |  |
-| `sourceType` | `str` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `sourceId` | `str` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `str` | No | The type of platform of the connection. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1184,13 +1185,13 @@ profile = client.Profile()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `str` | No |  |
-| `confirmCompanyName` | `bool` | No |  |
-| `iconUrl` | `str` | No |  |
-| `logoUrl` | `str` | No |  |
-| `name` | `str` | Yes |  |
-| `redirectUrl` | `str` | Yes |  |
-| `whiteListUrls` | `list` | No |  |
+| `apiKey` | `str` | No | The API key for this Codat instance. |
+| `confirmCompanyName` | `bool` | No | `True` if the company name has been confirmed. |
+| `iconUrl` | `str` | No | Static url to your organization's icon. |
+| `logoUrl` | `str` | No | Static url to your organization's logo. |
+| `name` | `str` | Yes | The name given to the instance. |
+| `redirectUrl` | `str` | Yes | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | `list` | No | A list of urls that are allowed to communicate with Codat. |
 
 ### Operations
 
@@ -1253,23 +1254,23 @@ pull_operation = client.PullOperation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyId` | `str` | Yes |  |
-| `completed` | `str` | No |  |
-| `connectionId` | `str` | Yes |  |
-| `dataType` | `str` | Yes |  |
-| `errorMessage` | `str` | No |  |
-| `id` | `str` | Yes |  |
-| `isCompleted` | `bool` | Yes |  |
-| `isErrored` | `bool` | Yes |  |
+| `companyId` | `str` | Yes | Unique identifier of the company associated to this pull operation. |
+| `completed` | `str` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | `str` | Yes | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | `str` | Yes | The data type you are requesting in a pull operation. |
+| `errorMessage` | `str` | No | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | `str` | Yes | Unique identifier of the pull operation. |
+| `isCompleted` | `bool` | Yes | `True` if the pull operation is completed successfully. |
+| `isErrored` | `bool` | Yes | `True` if the pull operation entered an error state. |
 | `links` | `dict` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `progress` | `int` | Yes |  |
-| `requested` | `str` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `progress` | `int` | Yes | An integer signifying the progress of the pull operation. |
+| `requested` | `str` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` | `list` | No |  |
-| `status` | `str` | Yes |  |
-| `statusDescription` | `str` | No |  |
-| `totalResults` | `int` | Yes |  |
+| `status` | `str` | Yes | The current status of the dataset. |
+| `statusDescription` | `str` | No | Additional information about the dataset status. |
+| `totalResults` | `int` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1301,7 +1302,7 @@ result = client.PullOperation().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.PullOperation().list()
+results = client.PullOperation().list({"company_id": "example"})
 for pull_operation in results:
     print(pull_operation)
 ```
@@ -1353,24 +1354,24 @@ push = client.Push()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `changes` | `list` | No |  |
-| `companyId` | `str` | Yes |  |
-| `completedOnUtc` | `str` | No |  |
-| `dataConnectionKey` | `str` | Yes |  |
-| `dataType` | `str` | No |  |
-| `errorMessage` | `str` | No |  |
+| `changes` | `list` | No | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | `str` | Yes | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | `str` | No | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | `str` | Yes | Unique identifier for a company's data connection. |
+| `dataType` | `str` | No | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | `str` | No | A message about the error. |
 | `links` | `dict` | Yes |  |
-| `pageNumber` | `int` | Yes |  |
-| `pageSize` | `int` | Yes |  |
-| `pushOperationKey` | `str` | Yes |  |
-| `requestedOnUtc` | `str` | Yes |  |
+| `pageNumber` | `int` | Yes | Current page number. |
+| `pageSize` | `int` | Yes | Number of items to return in results array. |
+| `pushOperationKey` | `str` | Yes | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | `str` | Yes | The datetime when the push was requested. |
 | `results` | `list` | No |  |
-| `status` | `str` | Yes |  |
-| `statusCode` | `int` | Yes |  |
-| `timeoutInMinutes` | `int` | No |  |
-| `timeoutInSeconds` | `int` | No |  |
-| `totalResults` | `int` | Yes |  |
-| `validation` | `dict` | No |  |
+| `status` | `str` | Yes | The current status of the push operation. |
+| `statusCode` | `int` | Yes | Push status code. |
+| `timeoutInMinutes` | `int` | No | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | `int` | No | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | `int` | Yes | Total number of items. |
+| `validation` | `dict` | No | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 ### Operations
 
@@ -1379,7 +1380,7 @@ push = client.Push()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Push().list()
+results = client.Push().list({"company_id": "example"})
 for push in results:
     print(push)
 ```
@@ -1431,12 +1432,12 @@ push_option = client.PushOption()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `displayName` | `str` | Yes |  |
+| `description` | `str` | No | A description of the property. |
+| `displayName` | `str` | Yes | The property's display name. |
 | `options` | `list` | No |  |
 | `properties` | `dict` | No |  |
-| `required` | `bool` | Yes |  |
-| `type` | `str` | Yes |  |
+| `required` | `bool` | Yes | The property is required if `True`. |
+| `type` | `str` | Yes | The option type. |
 | `validation` | `dict` | No |  |
 
 ### Operations
@@ -1570,10 +1571,10 @@ setting = client.Setting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `str` | No |  |
-| `createdDate` | `str` | No |  |
-| `id` | `str` | No |  |
-| `name` | `str` | No |  |
+| `apiKey` | `str` | No | The API key value used to make authenticated http requests. |
+| `createdDate` | `str` | No | The date the entity was created. |
+| `id` | `str` | No | Unique identifier for the API key. |
+| `name` | `str` | No | A meaningful name assigned to the API key. |
 
 ### Operations
 
@@ -1698,9 +1699,9 @@ supplemental_data_config = client.SupplementalDataConfig()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `str` | No |  |
-| `pullData` | `dict` | No |  |
-| `pushData` | `dict` | No |  |
+| `dataSource` | `str` | No | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | `dict` | No | The additional properties that are required when pulling records. |
+| `pushData` | `dict` | No | The additional properties that are required to create and/or update records. |
 
 ### Operations
 
@@ -1786,14 +1787,14 @@ sync_setting = client.SyncSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataType` | `str` | Yes |  |
-| `fetchOnFirstLink` | `bool` | Yes |  |
-| `isLocked` | `bool` | No |  |
-| `monthsToSync` | `int` | No |  |
-| `syncFromUtc` | `str` | No |  |
-| `syncFromWindow` | `int` | No |  |
-| `syncOrder` | `int` | Yes |  |
-| `syncSchedule` | `int` | Yes |  |
+| `dataType` | `str` | Yes | Available data types |
+| `fetchOnFirstLink` | `bool` | Yes | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `bool` | No | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | `int` | No | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | `str` | No | Date from which data should be fetched. |
+| `syncFromWindow` | `int` | No | Number of months of data to be fetched. |
+| `syncOrder` | `int` | Yes | The sync in which data types are queued for a sync. |
+| `syncSchedule` | `int` | Yes | Number of hours after which this data type should be refreshed. |
 
 ### Operations
 
@@ -1856,7 +1857,7 @@ validation = client.Validation()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Validation().list()
+results = client.Validation().list({"company_id": "example", "sync_id": "example"})
 for validation in results:
     print(validation)
 ```
@@ -1900,11 +1901,11 @@ webhook = client.Webhook()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyTags` | `list` | No |  |
-| `disabled` | `bool` | No |  |
-| `eventTypes` | `list` | No |  |
-| `id` | `str` | No |  |
-| `url` | `str` | No |  |
+| `companyTags` | `list` | No | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | `bool` | No | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | `list` | No | An array of event types the webhook consumer subscribes to. |
+| `id` | `str` | No | Unique identifier for the webhook consumer. |
+| `url` | `str` | No | The URL that will consume webhook events dispatched by Codat. |
 
 ### Operations
 

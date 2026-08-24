@@ -44,7 +44,7 @@ describe('SupplementalDataConfigEntity', async () => {
     // LOAD
     const supplemental_data_config_ref01_ent = client.SupplementalDataConfig()
     const supplemental_data_config_ref01_match_dt0 = {}
-    const supplemental_data_config_ref01_data_dt0 = await supplemental_data_config_ref01_ent.load(supplemental_data_config_ref01_match_dt0)
+    const supplemental_data_config_ref01_data_dt0 = (await supplemental_data_config_ref01_ent.load(supplemental_data_config_ref01_match_dt0)).data()
     assert(null != supplemental_data_config_ref01_data_dt0)
 
 

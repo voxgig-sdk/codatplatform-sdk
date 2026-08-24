@@ -69,7 +69,7 @@ func TestSupplementalDataEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		supplementalDataRef01ResdataUp0 := core.ToMapAny(supplementalDataRef01ResdataUp0Result)
+		supplementalDataRef01ResdataUp0 := core.ToMapAny(entityData(supplementalDataRef01ResdataUp0Result))
 		if supplementalDataRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

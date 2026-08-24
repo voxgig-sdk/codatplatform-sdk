@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(fn) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Codatplatform',
+        slug: "codatplatform",
+    version: "0.0.1",
+    target: "js",
+
   }
 
 
@@ -36,7 +47,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.codat.io',
+    base: "https://api.codat.io",
 
     auth: {
       prefix: '',
@@ -178,25 +189,19 @@ class Config {
     "branding": {
       "fields": [
         {
-          "active": true,
           "name": "button",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "short": "Button branding references.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "logo",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "short": "Logo branding references.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sourceId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
+          "type": "`$STRING`"
         }
       ],
       "name": "branding",
@@ -206,18 +211,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "platform_key",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -242,11 +244,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -260,129 +260,98 @@ class Config {
     "company": {
       "fields": [
         {
-          "active": true,
           "name": "created",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "createdByUserName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "Name of user that created the company in Codat.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataConnections",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "Additional information about the company.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "Unique identifier for your SMB in Codat.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "lastSync",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "links",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "name",
           "op": {
             "patch": {
-              "req": false,
               "type": "`$STRING`"
             }
           },
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "short": "The name of the company",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "pageNumber",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "products",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 10
+          "short": "An array of products that are currently enabled for the company.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "redirect",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "short": "The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "referenceParentCompany",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 12
+          "short": "The parent entity or controlling organization of this company.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "referenceSubsidiaryCompanies",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 13
+          "short": "A list of subsidiary companies owned or controlled by this entity.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 14
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "tags",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 15
+          "short": "A collection of user-defined key-value pairs that store custom metadata against the company.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "totalResults",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "company",
@@ -392,27 +361,22 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "product_identifier",
                     "orig": "product_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -441,11 +405,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -457,63 +419,50 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "-modifiedDate",
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "region=uk && team=invoice-finance",
                     "kind": "query",
                     "name": "tag",
                     "orig": "tag",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -536,29 +485,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -582,22 +526,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "patch": {
           "input": "data",
           "name": "patch",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
@@ -627,38 +567,31 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "patch"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "product_identifier",
                     "orig": "product_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -686,22 +619,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -725,38 +654,31 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "product_identifier",
                     "orig": "product_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -784,22 +706,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -823,11 +741,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -841,25 +757,22 @@ class Config {
     "company_access_token": {
       "fields": [
         {
-          "active": true,
           "name": "accessToken",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "The access token for the company.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "expiresIn",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "short": "The number of seconds until the access token expires.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tokenType",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "The type of token.",
+          "type": "`$STRING`"
         }
       ],
       "name": "company_access_token",
@@ -869,18 +782,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -905,11 +815,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -919,136 +827,108 @@ class Config {
     "connection": {
       "fields": [
         {
-          "active": true,
           "name": "connectionInfo",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "created",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataConnectionErrors",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "Unique identifier for a company's data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "integrationId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "A Codat ID representing the integration.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "integrationKey",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "A unique four-character ID that identifies the platform of the company's data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "lastSync",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "linkUrl",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "short": "The link URL your customers can use to authorize access to their business application.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "links",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "pageNumber",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "platformKey",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "short": "A unique 4-letter key to represent a platform in each integration.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "platformName",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "short": "Name of integration connected to company.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 13
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "sourceId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "sourceType",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 15
+          "short": "The type of platform of the connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "status",
           "op": {
             "patch": {
-              "req": false,
               "type": "`$STRING`"
             }
           },
           "req": true,
-          "type": "`$STRING`",
-          "index$": 16
+          "short": "The current authorization status of the data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "totalResults",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 17
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "connection",
@@ -1058,18 +938,15 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1094,66 +971,53 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "-modifiedDate",
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1183,39 +1047,32 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1243,22 +1100,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "patch": {
           "input": "data",
           "name": "patch",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
@@ -1267,7 +1120,6 @@ class Config {
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "id",
@@ -1303,39 +1155,32 @@ class Config {
                   "status": "`reqdata.status`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "patch"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1363,39 +1208,32 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1425,11 +1263,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -1443,11 +1279,9 @@ class Config {
     "connection_management_access_token": {
       "fields": [
         {
-          "active": true,
           "name": "accessToken",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "Access token that allows SMBs to manage connections that have access to their data.",
+          "type": "`$STRING`"
         }
       ],
       "name": "connection_management_access_token",
@@ -1457,18 +1291,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1494,11 +1325,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1512,11 +1341,9 @@ class Config {
     "connection_management_allowed_origin": {
       "fields": [
         {
-          "active": true,
           "name": "allowedOrigins",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "short": "An array of allowed origins (i.e.",
+          "type": "`$ARRAY`"
         }
       ],
       "name": "connection_management_allowed_origin",
@@ -1526,7 +1353,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1539,11 +1365,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1555,18 +1379,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1579,11 +1400,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.allowedOrigins`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1595,11 +1414,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.allowedOrigins`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -1609,60 +1426,43 @@ class Config {
     "custom": {
       "fields": [
         {
-          "active": true,
           "name": "dataSource",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "Underlying endpoint of the source platform that will serve as a data source for the custom data type.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "keyBy",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "short": "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "pageNumber",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "requiredData",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "short": "Properties required to be fetched from the underlying platform for the custom data type that is being configured.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "sourceModifiedDate",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 6
+          "short": "Property in the source platform nominated by the client that defines the date when a record was last modified there.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "totalResults",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "custom",
@@ -1672,57 +1472,46 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "connection_id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "DynamicsPurchaseOrders",
                     "kind": "param",
                     "name": "id",
                     "orig": "custom_data_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -1758,32 +1547,26 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "DynamicsPurchaseOrders",
                     "kind": "param",
                     "name": "id",
                     "orig": "custom_data_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "platform_key",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1812,39 +1595,32 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "DynamicsPurchaseOrders",
                     "kind": "param",
                     "name": "id",
                     "orig": "custom_data_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "platform_key",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1873,11 +1649,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -1895,305 +1669,262 @@ class Config {
     "data_status": {
       "fields": [
         {
-          "active": true,
           "name": "accountTransactions",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "balanceSheet",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankAccounts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 2
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankTransactions",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankingaccountBalances",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankingaccounts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankingtransactionCategories",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bankingtransactions",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "billCreditNotes",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "billPayments",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 9
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "bills",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 10
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "cashFlowStatement",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 11
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "chartOfAccounts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 12
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercecompanyInfo",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 13
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercecustomers",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 14
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercedisputes",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 15
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercelocations",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 16
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commerceorders",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 17
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercepaymentMethods",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 18
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercepayments",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 19
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commerceproductCategories",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 20
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commerceproducts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 21
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercetaxComponents",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 22
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "commercetransactions",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 23
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "company",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 24
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "creditNotes",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 25
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "customers",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 26
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "directCosts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 27
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "directIncomes",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 28
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "invoices",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 29
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "itemReceipts",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 30
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "items",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 31
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "journalEntries",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 32
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "journals",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 33
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "paymentMethods",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 34
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "payments",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 35
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "profitAndLoss",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 36
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "purchaseOrders",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 37
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "salesOrders",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 38
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "suppliers",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 39
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "taxRates",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 40
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "trackingCategories",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 41
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "transfers",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 42
+          "short": "Describes the state of data in the Codat cache for a company and data type",
+          "type": "`$OBJECT`"
         }
       ],
       "name": "data_status",
@@ -2203,18 +1934,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2239,11 +1967,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2281,116 +2007,89 @@ class Config {
     "integration": {
       "fields": [
         {
-          "active": true,
           "name": "dataProvidedBy",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "The name of the data provider.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "datatypeFeatures",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "enabled",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 2
+          "short": "Whether this integration is enabled for your customers to use.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "integrationId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "A Codat ID representing the integration.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "isBeta",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "short": "`True` if the integration is currently in beta release.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "isOfflineConnector",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 5
+          "short": "`True` if the integration is to an application installed and run locally on an SMBs computer.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "key",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "short": "A unique 4-letter key to represent a platform in each integration.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "links",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "logoUrl",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "short": "Static url for integration's logo.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "short": "Name of integration.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "pageNumber",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 11
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 12
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "sourceId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 13
+          "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "sourceType",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "short": "The type of platform of the connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "totalResults",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 15
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "integration",
@@ -2400,43 +2099,34 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "-modifiedDate",
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2458,29 +2148,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "id",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2504,11 +2189,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2551,53 +2234,41 @@ class Config {
     "profile": {
       "fields": [
         {
-          "active": true,
           "name": "apiKey",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "The API key for this Codat instance.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "confirmCompanyName",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "short": "`True` if the company name has been confirmed.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "iconUrl",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "Static url to your organization's icon.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "logoUrl",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "Static url to your organization's logo.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "The name given to the instance.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "redirectUrl",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "whiteListUrls",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 6
+          "short": "A list of urls that are allowed to communicate with Codat.",
+          "type": "`$ARRAY`"
         }
       ],
       "name": "profile",
@@ -2607,7 +2278,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2619,18 +2289,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.whiteListUrls`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "update": {
           "input": "data",
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "PUT",
@@ -2642,11 +2309,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -2656,123 +2321,100 @@ class Config {
     "pull_operation": {
       "fields": [
         {
-          "active": true,
           "name": "companyId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "Unique identifier of the company associated to this pull operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "completed",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "connectionId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "Unique identifier of the connection associated to this pull operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataType",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "The data type you are requesting in a pull operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "errorMessage",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "A message about a transient or persistent error returned by Codat or the source platform.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "Unique identifier of the pull operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "isCompleted",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "short": "`True` if the pull operation is completed successfully.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "isErrored",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 7
+          "short": "`True` if the pull operation entered an error state.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "links",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "pageNumber",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "progress",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 11
+          "short": "An integer signifying the progress of the pull operation.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "requested",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "short": "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 13
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "status",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "short": "The current status of the dataset.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "statusDescription",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "short": "Additional information about the dataset status.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "totalResults",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "pull_operation",
@@ -2782,38 +2424,31 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "connection_id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "DynamicsPurchaseOrders",
                     "kind": "param",
                     "name": "custom_data_identifier",
                     "orig": "custom_data_identifier",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2847,41 +2482,33 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "invoices",
                     "kind": "param",
                     "name": "data_type",
                     "orig": "data_type",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "connection_id",
                     "orig": "connection_id",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2912,66 +2539,53 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "-modifiedDate",
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -3002,38 +2616,31 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "dataset_id",
                     "orig": "dataset_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3062,11 +2669,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3093,130 +2698,102 @@ class Config {
     "push": {
       "fields": [
         {
-          "active": true,
           "name": "changes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "short": "Contains a single entry that communicates which record has changed and the manner in which it changed.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "companyId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "Unique identifier for your SMB in Codat.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "completedOnUtc",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "The datetime when the push was completed, null if Pending.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataConnectionKey",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "Unique identifier for a company's data connection.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataType",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "The type of data being pushed, eg invoices, customers.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "errorMessage",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "A message about the error.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "links",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "pageNumber",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "short": "Current page number.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pageSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "short": "Number of items to return in results array.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pushOperationKey",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "short": "A unique identifier generated by Codat to represent this single push operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "requestedOnUtc",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "short": "The datetime when the push was requested.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "results",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 11
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "status",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "short": "The current status of the push operation.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "statusCode",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 13
+          "short": "Push status code.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "timeoutInMinutes",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 14
+          "short": "Number of minutes the push operation must complete within before it times out.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "timeoutInSeconds",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 15
+          "short": "Number of seconds the push operation must complete within before it times out.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "totalResults",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "short": "Total number of items.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "validation",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 17
+          "short": "A human-readable object describing validation decisions Codat has made when pushing data into the platform.",
+          "type": "`$OBJECT`"
         }
       ],
       "name": "push",
@@ -3226,55 +2803,44 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "-modifiedDate",
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 100,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -3304,38 +2870,31 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "push_operation_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3363,11 +2922,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3381,53 +2938,39 @@ class Config {
     "push_option": {
       "fields": [
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "A description of the property.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "displayName",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "The property's display name.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "options",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "properties",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "required",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "short": "The property is required if `True`.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "type",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "short": "The option type.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "validation",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         }
       ],
       "name": "push_option",
@@ -3437,38 +2980,31 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
                     "kind": "param",
                     "name": "connection_id",
                     "orig": "connection_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "invoices",
                     "kind": "param",
                     "name": "id",
                     "orig": "data_type",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3500,11 +3036,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3537,18 +3071,15 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3574,11 +3105,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3592,32 +3121,24 @@ class Config {
     "setting": {
       "fields": [
         {
-          "active": true,
           "name": "apiKey",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "The API key value used to make authenticated http requests.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "createdDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "short": "The date the entity was created.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "short": "Unique identifier for the API key.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "A meaningful name assigned to the API key.",
+          "type": "`$STRING`"
         }
       ],
       "name": "setting",
@@ -3627,7 +3148,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3639,11 +3159,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3656,18 +3174,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -3679,29 +3194,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "api_key_id",
                     "orig": "api_key_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3725,11 +3235,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         }
       },
       "relations": {
@@ -3743,11 +3251,8 @@ class Config {
     "supplemental_data": {
       "fields": [
         {
-          "active": true,
           "name": "supplementalDataConfig",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         }
       ],
       "name": "supplemental_data",
@@ -3757,28 +3262,23 @@ class Config {
           "name": "update",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "invoices",
                     "kind": "param",
                     "name": "data_type_id",
                     "orig": "data_type",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "platform_key",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3807,11 +3307,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "update"
+          ]
         }
       },
       "relations": {
@@ -3826,25 +3324,19 @@ class Config {
     "supplemental_data_config": {
       "fields": [
         {
-          "active": true,
           "name": "dataSource",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "The underlying endpoint of the source system which the configuration is targeting.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "pullData",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "short": "The additional properties that are required when pulling records.",
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "pushData",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 2
+          "short": "The additional properties that are required to create and/or update records.",
+          "type": "`$OBJECT`"
         }
       ],
       "name": "supplemental_data_config",
@@ -3854,28 +3346,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "invoices",
                     "kind": "param",
                     "name": "data_type_id",
                     "orig": "data_type",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "gbol",
                     "kind": "param",
                     "name": "platform_key",
                     "orig": "platform_key",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -3904,11 +3391,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.supplementalDataConfig`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3935,60 +3420,48 @@ class Config {
     "sync_setting": {
       "fields": [
         {
-          "active": true,
           "name": "dataType",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "short": "Available data types",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "fetchOnFirstLink",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "short": "Whether this data type should be queued after a company has authorized a connection.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "isLocked",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 2
+          "short": "`True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "monthsToSync",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "short": "Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "syncFromUtc",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "Date from which data should be fetched.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "syncFromWindow",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "short": "Number of months of data to be fetched.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "syncOrder",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "short": "The sync in which data types are queued for a sync.",
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "syncSchedule",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "short": "Number of hours after which this data type should be refreshed.",
+          "type": "`$INTEGER`"
         }
       ],
       "name": "sync_setting",
@@ -3998,7 +3471,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -4011,11 +3483,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.settings`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -4025,18 +3495,12 @@ class Config {
     "validation": {
       "fields": [
         {
-          "active": true,
           "name": "errors",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "warnings",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         }
       ],
       "name": "validation",
@@ -4046,27 +3510,22 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "company_id",
                     "orig": "company_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "sync_id",
                     "orig": "dataset_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -4095,11 +3554,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -4114,39 +3571,29 @@ class Config {
     "webhook": {
       "fields": [
         {
-          "active": true,
           "name": "companyTags",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "short": "Company tags provide an additional way to filter messages, independent of event types.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "disabled",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "short": "Flag that enables or disables the endpoint from receiving events.",
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "eventTypes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "short": "An array of event types the webhook consumer subscribes to.",
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "short": "Unique identifier for the webhook consumer.",
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "url",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "short": "The URL that will consume webhook events dispatched by Codat.",
+          "type": "`$STRING`"
         }
       ],
       "name": "webhook",
@@ -4156,7 +3603,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4168,18 +3614,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -4191,29 +3634,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "remove": {
           "input": "data",
           "name": "remove",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
                     "kind": "param",
                     "name": "id",
                     "orig": "webhook_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -4237,11 +3675,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "remove"
+          ]
         }
       },
       "relations": {
@@ -4251,11 +3687,8 @@ class Config {
     "webhook_zapier_key": {
       "fields": [
         {
-          "active": true,
           "name": "key",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         }
       ],
       "name": "webhook_zapier_key",
@@ -4265,7 +3698,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4279,11 +3711,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

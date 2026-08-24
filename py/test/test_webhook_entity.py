@@ -42,8 +42,8 @@ class TestWebhookEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -78,7 +78,7 @@ class TestWebhookEntity:
         webhook_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.webhook"), "webhook_ref01"))
 
-        webhook_ref01_data = helpers.to_map(webhook_ref01_ent.create(webhook_ref01_data, None))
+        webhook_ref01_data = helpers.to_map(runner.entity_data(webhook_ref01_ent.create(webhook_ref01_data, None)))
         assert webhook_ref01_data is not None
         assert webhook_ref01_data["id"] is not None
 

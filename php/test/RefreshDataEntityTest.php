@@ -45,7 +45,7 @@ class RefreshDataEntityTest extends TestCase
         $refresh_data_ref01_data["company_id"] = $setup["idmap"]["company01"];
 
         $refresh_data_ref01_data_result = $refresh_data_ref01_ent->create($refresh_data_ref01_data, null);
-        $refresh_data_ref01_data = Helpers::to_map($refresh_data_ref01_data_result);
+        $refresh_data_ref01_data = Helpers::to_map(is_object($refresh_data_ref01_data_result) && method_exists($refresh_data_ref01_data_result, 'data_get') ? $refresh_data_ref01_data_result->data_get() : $refresh_data_ref01_data_result);
         $this->assertNotNull($refresh_data_ref01_data);
 
     }

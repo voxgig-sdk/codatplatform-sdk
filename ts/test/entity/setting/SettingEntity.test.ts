@@ -62,14 +62,14 @@ describe('SettingEntity', async () => {
     const setting_ref01_ent = client.Setting()
     let setting_ref01_data = setup.data.new.setting['setting_ref01']
 
-    setting_ref01_data = await setting_ref01_ent.create(setting_ref01_data)
+    setting_ref01_data = (await setting_ref01_ent.create(setting_ref01_data)).data()
     assert(null != setting_ref01_data.id)
 
 
     // LIST
     const setting_ref01_match: any = {}
 
-    const setting_ref01_list = await setting_ref01_ent.list(setting_ref01_match)
+    const setting_ref01_list = (await setting_ref01_ent.list(setting_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(setting_ref01_list, { id: setting_ref01_data.id })))
 
@@ -82,7 +82,7 @@ describe('SettingEntity', async () => {
     // LIST
     const setting_ref01_match_rt0: any = {}
 
-    const setting_ref01_list_rt0 = await setting_ref01_ent.list(setting_ref01_match_rt0)
+    const setting_ref01_list_rt0 = (await setting_ref01_ent.list(setting_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(setting_ref01_list_rt0, { id: setting_ref01_data.id })))
 

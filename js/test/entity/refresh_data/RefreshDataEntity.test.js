@@ -45,7 +45,7 @@ describe('RefreshDataEntity', async () => {
     let refresh_data_ref01_data = setup.data.new.refresh_data['refresh_data_ref01']
     refresh_data_ref01_data['company_id'] = setup.idmap['company01']
 
-    refresh_data_ref01_data = await refresh_data_ref01_ent.create(refresh_data_ref01_data)
+    refresh_data_ref01_data = (await refresh_data_ref01_ent.create(refresh_data_ref01_data)).data()
     assert(null != refresh_data_ref01_data)
 
 

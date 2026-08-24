@@ -64,7 +64,7 @@ describe('PushEntity', async () => {
     const push_ref01_match: any = {}
     push_ref01_match['company_id'] = setup.idmap['company01']
 
-    const push_ref01_list = await push_ref01_ent.list(push_ref01_match)
+    const push_ref01_list = (await push_ref01_ent.list(push_ref01_match)).map((e: any) => e.data())
 
 
 

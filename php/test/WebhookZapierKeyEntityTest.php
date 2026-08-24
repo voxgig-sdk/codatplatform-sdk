@@ -44,7 +44,7 @@ class WebhookZapierKeyEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.webhook_zapier_key"), "webhook_zapier_key_ref01"));
 
         $webhook_zapier_key_ref01_data_result = $webhook_zapier_key_ref01_ent->create($webhook_zapier_key_ref01_data, null);
-        $webhook_zapier_key_ref01_data = Helpers::to_map($webhook_zapier_key_ref01_data_result);
+        $webhook_zapier_key_ref01_data = Helpers::to_map(is_object($webhook_zapier_key_ref01_data_result) && method_exists($webhook_zapier_key_ref01_data_result, 'data_get') ? $webhook_zapier_key_ref01_data_result->data_get() : $webhook_zapier_key_ref01_data_result);
         $this->assertNotNull($webhook_zapier_key_ref01_data);
 
     }

@@ -45,7 +45,7 @@ describe('ConnectionEntity', async () => {
     let connection_ref01_data = setup.data.new.connection['connection_ref01']
     connection_ref01_data['company_id'] = setup.idmap['company01']
 
-    connection_ref01_data = await connection_ref01_ent.create(connection_ref01_data)
+    connection_ref01_data = (await connection_ref01_ent.create(connection_ref01_data)).data()
     assert(null != connection_ref01_data.id)
 
 
@@ -53,7 +53,7 @@ describe('ConnectionEntity', async () => {
     const connection_ref01_match = {}
     connection_ref01_match['company_id'] = setup.idmap['company01']
 
-    const connection_ref01_list = await connection_ref01_ent.list(connection_ref01_match)
+    const connection_ref01_list = (await connection_ref01_ent.list(connection_ref01_match)).map((e) => e.data())
 
     assert(!isempty(select(connection_ref01_list, { id: connection_ref01_data.id })))
 
@@ -66,7 +66,7 @@ describe('ConnectionEntity', async () => {
     const connection_ref01_markdef_up0 = { name: 'created', value: 'Mark01-connection_ref01_' + setup.now }
     connection_ref01_data_up0 [connection_ref01_markdef_up0.name] = connection_ref01_markdef_up0.value
 
-    const connection_ref01_resdata_up0 = await connection_ref01_ent.update(connection_ref01_data_up0)
+    const connection_ref01_resdata_up0 = (await connection_ref01_ent.update(connection_ref01_data_up0)).data()
     assert(connection_ref01_resdata_up0.id === connection_ref01_data_up0.id)
 
     assert(connection_ref01_resdata_up0[connection_ref01_markdef_up0.name] === connection_ref01_markdef_up0.value)
@@ -75,7 +75,7 @@ describe('ConnectionEntity', async () => {
     // LOAD
     const connection_ref01_match_dt0 = {}
     connection_ref01_match_dt0.id = connection_ref01_data.id
-    const connection_ref01_data_dt0 = await connection_ref01_ent.load(connection_ref01_match_dt0)
+    const connection_ref01_data_dt0 = (await connection_ref01_ent.load(connection_ref01_match_dt0)).data()
     assert(connection_ref01_data_dt0.id === connection_ref01_data.id)
 
 
@@ -89,7 +89,7 @@ describe('ConnectionEntity', async () => {
     const connection_ref01_match_rt0 = {}
     connection_ref01_match_rt0['company_id'] = setup.idmap['company01']
 
-    const connection_ref01_list_rt0 = await connection_ref01_ent.list(connection_ref01_match_rt0)
+    const connection_ref01_list_rt0 = (await connection_ref01_ent.list(connection_ref01_match_rt0)).map((e) => e.data())
 
     assert(isempty(select(connection_ref01_list_rt0, { id: connection_ref01_data.id })))
 

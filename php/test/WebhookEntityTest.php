@@ -40,7 +40,7 @@ class WebhookEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -83,7 +83,7 @@ class WebhookEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.webhook"), "webhook_ref01"));
 
         $webhook_ref01_data_result = $webhook_ref01_ent->create($webhook_ref01_data, null);
-        $webhook_ref01_data = Helpers::to_map($webhook_ref01_data_result);
+        $webhook_ref01_data = Helpers::to_map(is_object($webhook_ref01_data_result) && method_exists($webhook_ref01_data_result, 'data_get') ? $webhook_ref01_data_result->data_get() : $webhook_ref01_data_result);
         $this->assertNotNull($webhook_ref01_data);
         $this->assertNotNull($webhook_ref01_data["id"]);
 

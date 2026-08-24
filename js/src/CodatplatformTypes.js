@@ -79,12 +79,11 @@
 
 /**
  * @typedef {Object} CompanyCreateData
- * @property {string} [id]
- * @property {string} [product_identifier]
  * @property {string} [created]
  * @property {string} [createdByUserName]
  * @property {Array} [dataConnections]
  * @property {string} [description]
+ * @property {string} id
  * @property {string} [lastSync]
  * @property {Object} links
  * @property {string} name

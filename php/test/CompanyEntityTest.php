@@ -40,7 +40,7 @@ class CompanyEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -83,7 +83,7 @@ class CompanyEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.company"), "company_ref01"));
 
         $company_ref01_data_result = $company_ref01_ent->create($company_ref01_data, null);
-        $company_ref01_data = Helpers::to_map($company_ref01_data_result);
+        $company_ref01_data = Helpers::to_map(is_object($company_ref01_data_result) && method_exists($company_ref01_data_result, 'data_get') ? $company_ref01_data_result->data_get() : $company_ref01_data_result);
         $this->assertNotNull($company_ref01_data);
         $this->assertNotNull($company_ref01_data["id"]);
 
@@ -108,7 +108,7 @@ class CompanyEntityTest extends TestCase
         $company_ref01_data_up0_up[$company_ref01_markdef_up0_name] = $company_ref01_markdef_up0_value;
 
         $company_ref01_resdata_up0_result = $company_ref01_ent->update($company_ref01_data_up0_up, null);
-        $company_ref01_resdata_up0 = Helpers::to_map($company_ref01_resdata_up0_result);
+        $company_ref01_resdata_up0 = Helpers::to_map(is_object($company_ref01_resdata_up0_result) && method_exists($company_ref01_resdata_up0_result, 'data_get') ? $company_ref01_resdata_up0_result->data_get() : $company_ref01_resdata_up0_result);
         $this->assertNotNull($company_ref01_resdata_up0);
         $this->assertEquals($company_ref01_resdata_up0["id"], $company_ref01_data_up0_up["id"]);
         $this->assertEquals($company_ref01_resdata_up0[$company_ref01_markdef_up0_name], $company_ref01_markdef_up0_value);
@@ -118,7 +118,7 @@ class CompanyEntityTest extends TestCase
             "id" => $company_ref01_data["id"],
         ];
         $company_ref01_data_dt0_loaded = $company_ref01_ent->load($company_ref01_match_dt0, null);
-        $company_ref01_data_dt0_load_result = Helpers::to_map($company_ref01_data_dt0_loaded);
+        $company_ref01_data_dt0_load_result = Helpers::to_map(is_object($company_ref01_data_dt0_loaded) && method_exists($company_ref01_data_dt0_loaded, 'data_get') ? $company_ref01_data_dt0_loaded->data_get() : $company_ref01_data_dt0_loaded);
         $this->assertNotNull($company_ref01_data_dt0_load_result);
         $this->assertEquals($company_ref01_data_dt0_load_result["id"], $company_ref01_data["id"]);
 

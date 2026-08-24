@@ -33,7 +33,7 @@ class ConnectionManagementAllowedOriginEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -73,7 +73,7 @@ class ConnectionManagementAllowedOriginEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.connection_management_allowed_origin"), "connection_management_allowed_origin_ref01"))
 
     connection_management_allowed_origin_ref01_data_result = connection_management_allowed_origin_ref01_ent.create(connection_management_allowed_origin_ref01_data, nil)
-    connection_management_allowed_origin_ref01_data = Helpers.to_map(connection_management_allowed_origin_ref01_data_result)
+    connection_management_allowed_origin_ref01_data = Helpers.to_map(connection_management_allowed_origin_ref01_data_result.respond_to?(:data_get) ? connection_management_allowed_origin_ref01_data_result.data_get : connection_management_allowed_origin_ref01_data_result)
     assert !connection_management_allowed_origin_ref01_data.nil?
 
     # LIST

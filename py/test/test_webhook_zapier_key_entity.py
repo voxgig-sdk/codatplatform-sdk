@@ -44,7 +44,7 @@ class TestWebhookZapierKeyEntity:
         webhook_zapier_key_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.webhook_zapier_key"), "webhook_zapier_key_ref01"))
 
-        webhook_zapier_key_ref01_data = helpers.to_map(webhook_zapier_key_ref01_ent.create(webhook_zapier_key_ref01_data, None))
+        webhook_zapier_key_ref01_data = helpers.to_map(runner.entity_data(webhook_zapier_key_ref01_ent.create(webhook_zapier_key_ref01_data, None)))
         assert webhook_zapier_key_ref01_data is not None
 
 

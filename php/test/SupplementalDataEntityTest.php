@@ -53,7 +53,7 @@ class SupplementalDataEntityTest extends TestCase
         ];
 
         $supplemental_data_ref01_resdata_up0_result = $supplemental_data_ref01_ent->update($supplemental_data_ref01_data_up0_up, null);
-        $supplemental_data_ref01_resdata_up0 = Helpers::to_map($supplemental_data_ref01_resdata_up0_result);
+        $supplemental_data_ref01_resdata_up0 = Helpers::to_map(is_object($supplemental_data_ref01_resdata_up0_result) && method_exists($supplemental_data_ref01_resdata_up0_result, 'data_get') ? $supplemental_data_ref01_resdata_up0_result->data_get() : $supplemental_data_ref01_resdata_up0_result);
         $this->assertNotNull($supplemental_data_ref01_resdata_up0);
 
     }

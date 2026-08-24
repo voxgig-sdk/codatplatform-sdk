@@ -69,12 +69,11 @@ export interface CompanyListMatch {
 }
 
 export interface CompanyCreateData {
-  id?: string
-  product_identifier?: string
   created?: string
   createdByUserName?: string
   dataConnections?: any[]
   description?: string
+  id: string
   lastSync?: string
   links: Record<string, any>
   name: string
@@ -197,6 +196,12 @@ export interface ConnectionUpdateData {
   sourceType?: string
   status?: string
   totalResults?: number
+
+  // Selects a custom action instead of the plain update:
+  //   'authorization'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ConnectionRemoveMatch {

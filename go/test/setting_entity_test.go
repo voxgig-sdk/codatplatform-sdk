@@ -51,7 +51,7 @@ func TestSettingEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -106,7 +106,7 @@ func TestSettingEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		settingRef01Data = core.ToMapAny(settingRef01DataResult)
+		settingRef01Data = core.ToMapAny(entityData(settingRef01DataResult))
 		if settingRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

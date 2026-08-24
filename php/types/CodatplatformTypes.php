@@ -94,12 +94,11 @@ class CompanyListMatch
 /** Request payload for Company#create. */
 class CompanyCreateData
 {
-    public ?string $id = null;
-    public ?string $product_identifier = null;
     public ?string $created = null;
     public ?string $createdByUserName = null;
     public ?array $dataConnections = null;
     public ?string $description = null;
+    public string $id;
     public ?string $lastSync = null;
     public array $links;
     public string $name;

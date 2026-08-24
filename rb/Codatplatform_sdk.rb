@@ -28,7 +28,7 @@ class CodatplatformSDK
     utility = CodatplatformUtility.new
     @_utility = utility
 
-    config = CodatplatformConfig.make_config
+    config = CodatplatformConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

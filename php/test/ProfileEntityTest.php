@@ -40,7 +40,7 @@ class ProfileEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -101,7 +101,7 @@ class ProfileEntityTest extends TestCase
         $profile_ref01_data_up0_up[$profile_ref01_markdef_up0_name] = $profile_ref01_markdef_up0_value;
 
         $profile_ref01_resdata_up0_result = $profile_ref01_ent->update($profile_ref01_data_up0_up, null);
-        $profile_ref01_resdata_up0 = Helpers::to_map($profile_ref01_resdata_up0_result);
+        $profile_ref01_resdata_up0 = Helpers::to_map(is_object($profile_ref01_resdata_up0_result) && method_exists($profile_ref01_resdata_up0_result, 'data_get') ? $profile_ref01_resdata_up0_result->data_get() : $profile_ref01_resdata_up0_result);
         $this->assertNotNull($profile_ref01_resdata_up0);
         $this->assertEquals($profile_ref01_resdata_up0[$profile_ref01_markdef_up0_name], $profile_ref01_markdef_up0_value);
 

@@ -74,7 +74,7 @@ func TestCustomEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		customRef01ResdataUp0 := core.ToMapAny(customRef01ResdataUp0Result)
+		customRef01ResdataUp0 := core.ToMapAny(entityData(customRef01ResdataUp0Result))
 		if customRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

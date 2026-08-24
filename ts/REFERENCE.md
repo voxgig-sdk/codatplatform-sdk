@@ -567,9 +567,9 @@ const branding = client.Branding()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `button` | `Record<string, any>` | No |  |
-| `logo` | `Record<string, any>` | No |  |
-| `sourceId` | `string` | No |  |
+| `button` | `Record<string, any>` | No | Button branding references. |
+| `logo` | `Record<string, any>` | No | Logo branding references. |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
 
 ### Operations
 
@@ -619,23 +619,23 @@ const company = client.Company()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created` | `string` | No |  |
-| `createdByUserName` | `string` | No |  |
+| `created` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `createdByUserName` | `string` | No | Name of user that created the company in Codat. |
 | `dataConnections` | `any[]` | No |  |
-| `description` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
+| `description` | `string` | No | Additional information about the company. |
+| `id` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `links` | `Record<string, any>` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `number` | Yes |  |
-| `pageSize` | `number` | Yes |  |
-| `products` | `any[]` | No |  |
-| `redirect` | `string` | Yes |  |
-| `referenceParentCompany` | `Record<string, any>` | No |  |
-| `referenceSubsidiaryCompanies` | `any[]` | No |  |
+| `name` | `string` | Yes | The name of the company |
+| `pageNumber` | `number` | Yes | Current page number. |
+| `pageSize` | `number` | Yes | Number of items to return in results array. |
+| `products` | `any[]` | No | An array of products that are currently enabled for the company. |
+| `redirect` | `string` | Yes | The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company. |
+| `referenceParentCompany` | `Record<string, any>` | No | The parent entity or controlling organization of this company. |
+| `referenceSubsidiaryCompanies` | `any[]` | No | A list of subsidiary companies owned or controlled by this entity. |
 | `results` | `any[]` | No |  |
-| `tags` | `Record<string, any>` | No |  |
-| `totalResults` | `number` | Yes |  |
+| `tags` | `Record<string, any>` | No | A collection of user-defined key-value pairs that store custom metadata against the company. |
+| `totalResults` | `number` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -667,6 +667,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Company().create({
+  id: 'example_id',
   links: {},
   name: 'example_name',
   pageNumber: 1,
@@ -749,9 +750,9 @@ const company_access_token = client.CompanyAccessToken()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | Yes |  |
-| `expiresIn` | `number` | Yes |  |
-| `tokenType` | `string` | Yes |  |
+| `accessToken` | `string` | Yes | The access token for the company. |
+| `expiresIn` | `number` | Yes | The number of seconds until the access token expires. |
+| `tokenType` | `string` | Yes | The type of token. |
 
 ### Operations
 
@@ -802,23 +803,23 @@ const connection = client.Connection()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `connectionInfo` | `Record<string, any>` | No |  |
-| `created` | `string` | Yes |  |
+| `created` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `dataConnectionErrors` | `any[]` | No |  |
-| `id` | `string` | Yes |  |
-| `integrationId` | `string` | Yes |  |
-| `integrationKey` | `string` | Yes |  |
-| `lastSync` | `string` | No |  |
-| `linkUrl` | `string` | Yes |  |
+| `id` | `string` | Yes | Unique identifier for a company's data connection. |
+| `integrationId` | `string` | Yes | A Codat ID representing the integration. |
+| `integrationKey` | `string` | Yes | A unique four-character ID that identifies the platform of the company's data connection. |
+| `lastSync` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `linkUrl` | `string` | Yes | The link URL your customers can use to authorize access to their business application. |
 | `links` | `Record<string, any>` | Yes |  |
-| `pageNumber` | `number` | Yes |  |
-| `pageSize` | `number` | Yes |  |
-| `platformKey` | `string` | No |  |
-| `platformName` | `string` | Yes |  |
+| `pageNumber` | `number` | Yes | Current page number. |
+| `pageSize` | `number` | Yes | Number of items to return in results array. |
+| `platformKey` | `string` | No | A unique 4-letter key to represent a platform in each integration. |
+| `platformName` | `string` | Yes | Name of integration connected to company. |
 | `results` | `any[]` | No |  |
-| `sourceId` | `string` | Yes |  |
-| `sourceType` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `totalResults` | `number` | Yes |  |
+| `sourceId` | `string` | Yes | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | Yes | The type of platform of the connection. |
+| `status` | `string` | Yes | The current authorization status of the data connection. |
+| `totalResults` | `number` | Yes | Total number of items. |
 
 ### Field Usage by Operation
 
@@ -842,6 +843,26 @@ const connection = client.Connection()
 | `sourceType` | - | - | - | - | - |
 | `status` | - | - | - | - | - |
 | `totalResults` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorization` | `/companies/{companyId}/connections/{connectionId}/authorization` | `client.Connection().update({ $action: 'authorization', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Connection record — check the API definition for its shape.
+
+```ts
+const result = await client.Connection().update({
+  $action: 'authorization',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -873,7 +894,7 @@ const result = await client.Connection().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Connection().list()
+const results = await client.Connection().list({ company_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -942,7 +963,7 @@ const connection_management_access_token = client.ConnectionManagementAccessToke
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessToken` | `string` | No |  |
+| `accessToken` | `string` | No | Access token that allows SMBs to manage connections that have access to their data. |
 
 ### Operations
 
@@ -992,7 +1013,7 @@ const connection_management_allowed_origin = client.ConnectionManagementAllowedO
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `allowedOrigins` | `any[]` | No |  |
+| `allowedOrigins` | `any[]` | No | An array of allowed origins (i.e. |
 
 ### Operations
 
@@ -1051,14 +1072,14 @@ const custom = client.Custom()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `keyBy` | `any[]` | No |  |
-| `pageNumber` | `number` | No |  |
-| `pageSize` | `number` | No |  |
-| `requiredData` | `Record<string, any>` | No |  |
+| `dataSource` | `string` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `keyBy` | `any[]` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
+| `pageNumber` | `number` | No | Current page number. |
+| `pageSize` | `number` | No | Number of items to return in results array. |
+| `requiredData` | `Record<string, any>` | No | Properties required to be fetched from the underlying platform for the custom data type that is being configured. |
 | `results` | `any[]` | No |  |
-| `sourceModifiedDate` | `any[]` | No |  |
-| `totalResults` | `number` | No |  |
+| `sourceModifiedDate` | `any[]` | No | Property in the source platform nominated by the client that defines the date when a record was last modified there. |
+| `totalResults` | `number` | No | Total number of items. |
 
 ### Operations
 
@@ -1120,49 +1141,49 @@ const data_status = client.DataStatus()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accountTransactions` | `Record<string, any>` | Yes |  |
-| `balanceSheet` | `Record<string, any>` | Yes |  |
-| `bankAccounts` | `Record<string, any>` | Yes |  |
-| `bankTransactions` | `Record<string, any>` | Yes |  |
-| `bankingaccountBalances` | `Record<string, any>` | Yes |  |
-| `bankingaccounts` | `Record<string, any>` | Yes |  |
-| `bankingtransactionCategories` | `Record<string, any>` | Yes |  |
-| `bankingtransactions` | `Record<string, any>` | Yes |  |
-| `billCreditNotes` | `Record<string, any>` | Yes |  |
-| `billPayments` | `Record<string, any>` | Yes |  |
-| `bills` | `Record<string, any>` | Yes |  |
-| `cashFlowStatement` | `Record<string, any>` | Yes |  |
-| `chartOfAccounts` | `Record<string, any>` | Yes |  |
-| `commercecompanyInfo` | `Record<string, any>` | Yes |  |
-| `commercecustomers` | `Record<string, any>` | Yes |  |
-| `commercedisputes` | `Record<string, any>` | Yes |  |
-| `commercelocations` | `Record<string, any>` | Yes |  |
-| `commerceorders` | `Record<string, any>` | Yes |  |
-| `commercepaymentMethods` | `Record<string, any>` | Yes |  |
-| `commercepayments` | `Record<string, any>` | Yes |  |
-| `commerceproductCategories` | `Record<string, any>` | Yes |  |
-| `commerceproducts` | `Record<string, any>` | Yes |  |
-| `commercetaxComponents` | `Record<string, any>` | Yes |  |
-| `commercetransactions` | `Record<string, any>` | Yes |  |
-| `company` | `Record<string, any>` | Yes |  |
-| `creditNotes` | `Record<string, any>` | Yes |  |
-| `customers` | `Record<string, any>` | Yes |  |
-| `directCosts` | `Record<string, any>` | Yes |  |
-| `directIncomes` | `Record<string, any>` | Yes |  |
-| `invoices` | `Record<string, any>` | Yes |  |
-| `itemReceipts` | `Record<string, any>` | Yes |  |
-| `items` | `Record<string, any>` | Yes |  |
-| `journalEntries` | `Record<string, any>` | Yes |  |
-| `journals` | `Record<string, any>` | Yes |  |
-| `paymentMethods` | `Record<string, any>` | Yes |  |
-| `payments` | `Record<string, any>` | Yes |  |
-| `profitAndLoss` | `Record<string, any>` | Yes |  |
-| `purchaseOrders` | `Record<string, any>` | Yes |  |
-| `salesOrders` | `Record<string, any>` | Yes |  |
-| `suppliers` | `Record<string, any>` | Yes |  |
-| `taxRates` | `Record<string, any>` | Yes |  |
-| `trackingCategories` | `Record<string, any>` | Yes |  |
-| `transfers` | `Record<string, any>` | Yes |  |
+| `accountTransactions` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `balanceSheet` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankAccounts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankTransactions` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccountBalances` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingaccounts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactionCategories` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bankingtransactions` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billCreditNotes` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `billPayments` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `bills` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `cashFlowStatement` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `chartOfAccounts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecompanyInfo` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercecustomers` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercedisputes` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercelocations` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceorders` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepaymentMethods` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercepayments` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproductCategories` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commerceproducts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetaxComponents` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `commercetransactions` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `company` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `creditNotes` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `customers` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directCosts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `directIncomes` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `invoices` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `itemReceipts` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `items` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journalEntries` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `journals` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `paymentMethods` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `payments` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `profitAndLoss` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `purchaseOrders` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `salesOrders` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `suppliers` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `taxRates` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `trackingCategories` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
+| `transfers` | `Record<string, any>` | Yes | Describes the state of data in the Codat cache for a company and data type |
 
 ### Operations
 
@@ -1280,22 +1301,22 @@ const integration = client.Integration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataProvidedBy` | `string` | No |  |
+| `dataProvidedBy` | `string` | No | The name of the data provider. |
 | `datatypeFeatures` | `any[]` | No |  |
-| `enabled` | `boolean` | Yes |  |
-| `integrationId` | `string` | No |  |
-| `isBeta` | `boolean` | No |  |
-| `isOfflineConnector` | `boolean` | No |  |
-| `key` | `string` | Yes |  |
+| `enabled` | `boolean` | Yes | Whether this integration is enabled for your customers to use. |
+| `integrationId` | `string` | No | A Codat ID representing the integration. |
+| `isBeta` | `boolean` | No | `True` if the integration is currently in beta release. |
+| `isOfflineConnector` | `boolean` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
+| `key` | `string` | Yes | A unique 4-letter key to represent a platform in each integration. |
 | `links` | `Record<string, any>` | Yes |  |
-| `logoUrl` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `pageNumber` | `number` | Yes |  |
-| `pageSize` | `number` | Yes |  |
+| `logoUrl` | `string` | Yes | Static url for integration's logo. |
+| `name` | `string` | Yes | Name of integration. |
+| `pageNumber` | `number` | Yes | Current page number. |
+| `pageSize` | `number` | Yes | Number of items to return in results array. |
 | `results` | `any[]` | No |  |
-| `sourceId` | `string` | No |  |
-| `sourceType` | `string` | No |  |
-| `totalResults` | `number` | Yes |  |
+| `sourceId` | `string` | No | A source-specific ID used to distinguish between different sources originating from the same data connection. |
+| `sourceType` | `string` | No | The type of platform of the connection. |
+| `totalResults` | `number` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1421,13 +1442,13 @@ const profile = client.Profile()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `confirmCompanyName` | `boolean` | No |  |
-| `iconUrl` | `string` | No |  |
-| `logoUrl` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `redirectUrl` | `string` | Yes |  |
-| `whiteListUrls` | `any[]` | No |  |
+| `apiKey` | `string` | No | The API key for this Codat instance. |
+| `confirmCompanyName` | `boolean` | No | `True` if the company name has been confirmed. |
+| `iconUrl` | `string` | No | Static url to your organization's icon. |
+| `logoUrl` | `string` | No | Static url to your organization's logo. |
+| `name` | `string` | Yes | The name given to the instance. |
+| `redirectUrl` | `string` | Yes | The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB. |
+| `whiteListUrls` | `any[]` | No | A list of urls that are allowed to communicate with Codat. |
 
 ### Operations
 
@@ -1487,23 +1508,23 @@ const pull_operation = client.PullOperation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyId` | `string` | Yes |  |
-| `completed` | `string` | No |  |
-| `connectionId` | `string` | Yes |  |
-| `dataType` | `string` | Yes |  |
-| `errorMessage` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `isCompleted` | `boolean` | Yes |  |
-| `isErrored` | `boolean` | Yes |  |
+| `companyId` | `string` | Yes | Unique identifier of the company associated to this pull operation. |
+| `completed` | `string` | No | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
+| `connectionId` | `string` | Yes | Unique identifier of the connection associated to this pull operation. |
+| `dataType` | `string` | Yes | The data type you are requesting in a pull operation. |
+| `errorMessage` | `string` | No | A message about a transient or persistent error returned by Codat or the source platform. |
+| `id` | `string` | Yes | Unique identifier of the pull operation. |
+| `isCompleted` | `boolean` | Yes | `True` if the pull operation is completed successfully. |
+| `isErrored` | `boolean` | Yes | `True` if the pull operation entered an error state. |
 | `links` | `Record<string, any>` | Yes |  |
-| `pageNumber` | `number` | Yes |  |
-| `pageSize` | `number` | Yes |  |
-| `progress` | `number` | Yes |  |
-| `requested` | `string` | Yes |  |
+| `pageNumber` | `number` | Yes | Current page number. |
+| `pageSize` | `number` | Yes | Number of items to return in results array. |
+| `progress` | `number` | Yes | An integer signifying the progress of the pull operation. |
+| `requested` | `string` | Yes | In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. |
 | `results` | `any[]` | No |  |
-| `status` | `string` | Yes |  |
-| `statusDescription` | `string` | No |  |
-| `totalResults` | `number` | Yes |  |
+| `status` | `string` | Yes | The current status of the dataset. |
+| `statusDescription` | `string` | No | Additional information about the dataset status. |
+| `totalResults` | `number` | Yes | Total number of items. |
 
 ### Operations
 
@@ -1535,7 +1556,7 @@ const result = await client.PullOperation().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.PullOperation().list()
+const results = await client.PullOperation().list({ company_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1584,24 +1605,24 @@ const push = client.Push()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `changes` | `any[]` | No |  |
-| `companyId` | `string` | Yes |  |
-| `completedOnUtc` | `string` | No |  |
-| `dataConnectionKey` | `string` | Yes |  |
-| `dataType` | `string` | No |  |
-| `errorMessage` | `string` | No |  |
+| `changes` | `any[]` | No | Contains a single entry that communicates which record has changed and the manner in which it changed. |
+| `companyId` | `string` | Yes | Unique identifier for your SMB in Codat. |
+| `completedOnUtc` | `string` | No | The datetime when the push was completed, null if Pending. |
+| `dataConnectionKey` | `string` | Yes | Unique identifier for a company's data connection. |
+| `dataType` | `string` | No | The type of data being pushed, eg invoices, customers. |
+| `errorMessage` | `string` | No | A message about the error. |
 | `links` | `Record<string, any>` | Yes |  |
-| `pageNumber` | `number` | Yes |  |
-| `pageSize` | `number` | Yes |  |
-| `pushOperationKey` | `string` | Yes |  |
-| `requestedOnUtc` | `string` | Yes |  |
+| `pageNumber` | `number` | Yes | Current page number. |
+| `pageSize` | `number` | Yes | Number of items to return in results array. |
+| `pushOperationKey` | `string` | Yes | A unique identifier generated by Codat to represent this single push operation. |
+| `requestedOnUtc` | `string` | Yes | The datetime when the push was requested. |
 | `results` | `any[]` | No |  |
-| `status` | `string` | Yes |  |
-| `statusCode` | `number` | Yes |  |
-| `timeoutInMinutes` | `number` | No |  |
-| `timeoutInSeconds` | `number` | No |  |
-| `totalResults` | `number` | Yes |  |
-| `validation` | `Record<string, any>` | No |  |
+| `status` | `string` | Yes | The current status of the push operation. |
+| `statusCode` | `number` | Yes | Push status code. |
+| `timeoutInMinutes` | `number` | No | Number of minutes the push operation must complete within before it times out. |
+| `timeoutInSeconds` | `number` | No | Number of seconds the push operation must complete within before it times out. |
+| `totalResults` | `number` | Yes | Total number of items. |
+| `validation` | `Record<string, any>` | No | A human-readable object describing validation decisions Codat has made when pushing data into the platform. |
 
 ### Operations
 
@@ -1610,7 +1631,7 @@ const push = client.Push()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Push().list()
+const results = await client.Push().list({ company_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1659,12 +1680,12 @@ const push_option = client.PushOption()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | Yes |  |
+| `description` | `string` | No | A description of the property. |
+| `displayName` | `string` | Yes | The property's display name. |
 | `options` | `any[]` | No |  |
 | `properties` | `Record<string, any>` | No |  |
-| `required` | `boolean` | Yes |  |
-| `type` | `string` | Yes |  |
+| `required` | `boolean` | Yes | The property is required if `True`. |
+| `type` | `string` | Yes | The option type. |
 | `validation` | `Record<string, any>` | No |  |
 
 ### Operations
@@ -1795,10 +1816,10 @@ const setting = client.Setting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string` | No |  |
-| `createdDate` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
+| `apiKey` | `string` | No | The API key value used to make authenticated http requests. |
+| `createdDate` | `string` | No | The date the entity was created. |
+| `id` | `string` | No | Unique identifier for the API key. |
+| `name` | `string` | No | A meaningful name assigned to the API key. |
 
 ### Operations
 
@@ -1919,9 +1940,9 @@ const supplemental_data_config = client.SupplementalDataConfig()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataSource` | `string` | No |  |
-| `pullData` | `Record<string, any>` | No |  |
-| `pushData` | `Record<string, any>` | No |  |
+| `dataSource` | `string` | No | The underlying endpoint of the source system which the configuration is targeting. |
+| `pullData` | `Record<string, any>` | No | The additional properties that are required when pulling records. |
+| `pushData` | `Record<string, any>` | No | The additional properties that are required to create and/or update records. |
 
 ### Operations
 
@@ -2005,14 +2026,14 @@ const sync_setting = client.SyncSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dataType` | `string` | Yes |  |
-| `fetchOnFirstLink` | `boolean` | Yes |  |
-| `isLocked` | `boolean` | No |  |
-| `monthsToSync` | `number` | No |  |
-| `syncFromUtc` | `string` | No |  |
-| `syncFromWindow` | `number` | No |  |
-| `syncOrder` | `number` | Yes |  |
-| `syncSchedule` | `number` | Yes |  |
+| `dataType` | `string` | Yes | Available data types |
+| `fetchOnFirstLink` | `boolean` | Yes | Whether this data type should be queued after a company has authorized a connection. |
+| `isLocked` | `boolean` | No | `True` if the [sync setting](https://docs.codat.io/knowledge-base/advanced-sync-settings) is locked. |
+| `monthsToSync` | `number` | No | Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only. |
+| `syncFromUtc` | `string` | No | Date from which data should be fetched. |
+| `syncFromWindow` | `number` | No | Number of months of data to be fetched. |
+| `syncOrder` | `number` | Yes | The sync in which data types are queued for a sync. |
+| `syncSchedule` | `number` | Yes | Number of hours after which this data type should be refreshed. |
 
 ### Operations
 
@@ -2072,7 +2093,7 @@ const validation = client.Validation()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Validation().list()
+const results = await client.Validation().list({ company_id: "example", sync_id: "example" })
 ```
 
 ### Common Methods
@@ -2113,11 +2134,11 @@ const webhook = client.Webhook()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `companyTags` | `any[]` | No |  |
-| `disabled` | `boolean` | No |  |
-| `eventTypes` | `any[]` | No |  |
-| `id` | `string` | No |  |
-| `url` | `string` | No |  |
+| `companyTags` | `any[]` | No | Company tags provide an additional way to filter messages, independent of event types. |
+| `disabled` | `boolean` | No | Flag that enables or disables the endpoint from receiving events. |
+| `eventTypes` | `any[]` | No | An array of event types the webhook consumer subscribes to. |
+| `id` | `string` | No | Unique identifier for the webhook consumer. |
+| `url` | `string` | No | The URL that will consume webhook events dispatched by Codat. |
 
 ### Operations
 

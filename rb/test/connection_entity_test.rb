@@ -33,7 +33,7 @@ class ConnectionEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -74,7 +74,7 @@ class ConnectionEntityTest < Minitest::Test
     connection_ref01_data["company_id"] = setup[:idmap]["company01"]
 
     connection_ref01_data_result = connection_ref01_ent.create(connection_ref01_data, nil)
-    connection_ref01_data = Helpers.to_map(connection_ref01_data_result)
+    connection_ref01_data = Helpers.to_map(connection_ref01_data_result.respond_to?(:data_get) ? connection_ref01_data_result.data_get : connection_ref01_data_result)
     assert !connection_ref01_data.nil?
     assert !connection_ref01_data["id"].nil?
 
@@ -102,7 +102,7 @@ class ConnectionEntityTest < Minitest::Test
     connection_ref01_data_up0_up[connection_ref01_markdef_up0_name] = connection_ref01_markdef_up0_value
 
     connection_ref01_resdata_up0_result = connection_ref01_ent.update(connection_ref01_data_up0_up, nil)
-    connection_ref01_resdata_up0 = Helpers.to_map(connection_ref01_resdata_up0_result)
+    connection_ref01_resdata_up0 = Helpers.to_map(connection_ref01_resdata_up0_result.respond_to?(:data_get) ? connection_ref01_resdata_up0_result.data_get : connection_ref01_resdata_up0_result)
     assert !connection_ref01_resdata_up0.nil?
     assert_equal connection_ref01_resdata_up0["id"], connection_ref01_data_up0_up["id"]
     assert_equal connection_ref01_resdata_up0[connection_ref01_markdef_up0_name], connection_ref01_markdef_up0_value
@@ -112,7 +112,7 @@ class ConnectionEntityTest < Minitest::Test
       "id" => connection_ref01_data["id"],
     }
     connection_ref01_data_dt0_loaded = connection_ref01_ent.load(connection_ref01_match_dt0, nil)
-    connection_ref01_data_dt0_load_result = Helpers.to_map(connection_ref01_data_dt0_loaded)
+    connection_ref01_data_dt0_load_result = Helpers.to_map(connection_ref01_data_dt0_loaded.respond_to?(:data_get) ? connection_ref01_data_dt0_loaded.data_get : connection_ref01_data_dt0_loaded)
     assert !connection_ref01_data_dt0_load_result.nil?
     assert_equal connection_ref01_data_dt0_load_result["id"], connection_ref01_data["id"]
 

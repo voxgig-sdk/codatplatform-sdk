@@ -42,8 +42,8 @@ class TestConnectionEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -79,7 +79,7 @@ class TestConnectionEntity:
             vs.getpath(setup["data"], "new.connection"), "connection_ref01"))
         connection_ref01_data["company_id"] = setup["idmap"]["company01"]
 
-        connection_ref01_data = helpers.to_map(connection_ref01_ent.create(connection_ref01_data, None))
+        connection_ref01_data = helpers.to_map(runner.entity_data(connection_ref01_ent.create(connection_ref01_data, None)))
         assert connection_ref01_data is not None
         assert connection_ref01_data["id"] is not None
 
@@ -106,7 +106,7 @@ class TestConnectionEntity:
         connection_ref01_markdef_up0_value = "Mark01-connection_ref01_" + str(setup["now"])
         connection_ref01_data_up0_up[connection_ref01_markdef_up0_name] = connection_ref01_markdef_up0_value
 
-        connection_ref01_resdata_up0 = helpers.to_map(connection_ref01_ent.update(connection_ref01_data_up0_up, None))
+        connection_ref01_resdata_up0 = helpers.to_map(runner.entity_data(connection_ref01_ent.update(connection_ref01_data_up0_up, None)))
         assert connection_ref01_resdata_up0 is not None
         assert connection_ref01_resdata_up0["id"] == connection_ref01_data_up0_up["id"]
         assert connection_ref01_resdata_up0[connection_ref01_markdef_up0_name] == connection_ref01_markdef_up0_value
@@ -116,7 +116,7 @@ class TestConnectionEntity:
             "id": connection_ref01_data["id"],
         }
         connection_ref01_data_dt0_loaded = connection_ref01_ent.load(connection_ref01_match_dt0, None)
-        connection_ref01_data_dt0_load_result = helpers.to_map(connection_ref01_data_dt0_loaded)
+        connection_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(connection_ref01_data_dt0_loaded))
         assert connection_ref01_data_dt0_load_result is not None
         assert connection_ref01_data_dt0_load_result["id"] == connection_ref01_data["id"]
 

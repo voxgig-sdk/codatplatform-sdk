@@ -63,7 +63,7 @@ describe('ProfileEntity', async () => {
     const profile_ref01_ent = client.Profile()
     const profile_ref01_match: any = {}
 
-    const profile_ref01_list = await profile_ref01_ent.list(profile_ref01_match)
+    const profile_ref01_list = (await profile_ref01_ent.list(profile_ref01_match)).map((e: any) => e.data())
 
 
     // UPDATE
@@ -72,7 +72,7 @@ describe('ProfileEntity', async () => {
     const profile_ref01_markdef_up0 = { name: 'apiKey', value: 'Mark01-profile_ref01_' + setup.now }
     ;(profile_ref01_data_up0 as any)[profile_ref01_markdef_up0.name] = profile_ref01_markdef_up0.value
 
-    const profile_ref01_resdata_up0 = await profile_ref01_ent.update(profile_ref01_data_up0)
+    const profile_ref01_resdata_up0 = (await profile_ref01_ent.update(profile_ref01_data_up0)).data()
     assert(null != profile_ref01_resdata_up0)
 
     assert((profile_ref01_resdata_up0 as any)[profile_ref01_markdef_up0.name] === profile_ref01_markdef_up0.value)

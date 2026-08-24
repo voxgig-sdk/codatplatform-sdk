@@ -33,7 +33,7 @@ class PullOperationEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -75,7 +75,7 @@ class PullOperationEntityTest < Minitest::Test
     pull_operation_ref01_data["data_type"] = setup[:idmap]["data_type01"]
 
     pull_operation_ref01_data_result = pull_operation_ref01_ent.create(pull_operation_ref01_data, nil)
-    pull_operation_ref01_data = Helpers.to_map(pull_operation_ref01_data_result)
+    pull_operation_ref01_data = Helpers.to_map(pull_operation_ref01_data_result.respond_to?(:data_get) ? pull_operation_ref01_data_result.data_get : pull_operation_ref01_data_result)
     assert !pull_operation_ref01_data.nil?
     assert !pull_operation_ref01_data["id"].nil?
 
@@ -97,7 +97,7 @@ class PullOperationEntityTest < Minitest::Test
       "id" => pull_operation_ref01_data["id"],
     }
     pull_operation_ref01_data_dt0_loaded = pull_operation_ref01_ent.load(pull_operation_ref01_match_dt0, nil)
-    pull_operation_ref01_data_dt0_load_result = Helpers.to_map(pull_operation_ref01_data_dt0_loaded)
+    pull_operation_ref01_data_dt0_load_result = Helpers.to_map(pull_operation_ref01_data_dt0_loaded.respond_to?(:data_get) ? pull_operation_ref01_data_dt0_loaded.data_get : pull_operation_ref01_data_dt0_loaded)
     assert !pull_operation_ref01_data_dt0_load_result.nil?
     assert_equal pull_operation_ref01_data_dt0_load_result["id"], pull_operation_ref01_data["id"]
 

@@ -45,7 +45,7 @@ describe('SyncSettingEntity', async () => {
     const sync_setting_ref01_ent = client.SyncSetting()
     const sync_setting_ref01_match = {}
 
-    const sync_setting_ref01_list = await sync_setting_ref01_ent.list(sync_setting_ref01_match)
+    const sync_setting_ref01_list = (await sync_setting_ref01_ent.list(sync_setting_ref01_match)).map((e) => e.data())
 
 
   })

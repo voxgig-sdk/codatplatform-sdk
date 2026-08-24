@@ -39,7 +39,7 @@ describe("CompanyEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -82,7 +82,7 @@ describe("CompanyEntity", function()
 
     local company_ref01_data_result, err = company_ref01_ent:create(company_ref01_data, nil)
     assert.is_nil(err)
-    company_ref01_data = helpers.to_map(company_ref01_data_result)
+    company_ref01_data = helpers.to_map(type(company_ref01_data_result) == 'table' and company_ref01_data_result.data_get and company_ref01_data_result:data_get() or company_ref01_data_result)
     assert.is_not_nil(company_ref01_data)
     assert.is_not_nil(company_ref01_data["id"])
 
@@ -109,7 +109,7 @@ describe("CompanyEntity", function()
 
     local company_ref01_resdata_up0_result, err = company_ref01_ent:update(company_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local company_ref01_resdata_up0 = helpers.to_map(company_ref01_resdata_up0_result)
+    local company_ref01_resdata_up0 = helpers.to_map(type(company_ref01_resdata_up0_result) == 'table' and company_ref01_resdata_up0_result.data_get and company_ref01_resdata_up0_result:data_get() or company_ref01_resdata_up0_result)
     assert.is_not_nil(company_ref01_resdata_up0)
     assert.are.equal(company_ref01_resdata_up0["id"], company_ref01_data_up0_up["id"])
     assert.are.equal(company_ref01_resdata_up0[company_ref01_markdef_up0_name], company_ref01_markdef_up0_value)
@@ -120,7 +120,7 @@ describe("CompanyEntity", function()
     }
     local company_ref01_data_dt0_loaded, err = company_ref01_ent:load(company_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local company_ref01_data_dt0_load_result = helpers.to_map(company_ref01_data_dt0_loaded)
+    local company_ref01_data_dt0_load_result = helpers.to_map(type(company_ref01_data_dt0_loaded) == 'table' and company_ref01_data_dt0_loaded.data_get and company_ref01_data_dt0_loaded:data_get() or company_ref01_data_dt0_loaded)
     assert.is_not_nil(company_ref01_data_dt0_load_result)
     assert.are.equal(company_ref01_data_dt0_load_result["id"], company_ref01_data["id"])
 

@@ -203,12 +203,6 @@ CompanyListMatch = Struct.new(
 
 # Request payload for Company#create.
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] product_identifier
-#   @return [String, nil]
-#
 # @!attribute [rw] created
 #   @return [String, nil]
 #
@@ -220,6 +214,9 @@ CompanyListMatch = Struct.new(
 #
 # @!attribute [rw] description
 #   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
 #
 # @!attribute [rw] lastSync
 #   @return [String, nil]
@@ -257,12 +254,11 @@ CompanyListMatch = Struct.new(
 # @!attribute [rw] totalResults
 #   @return [Integer]
 CompanyCreateData = Struct.new(
-  :id,
-  :product_identifier,
   :created,
   :createdByUserName,
   :dataConnections,
   :description,
+  :id,
   :lastSync,
   :links,
   :name,

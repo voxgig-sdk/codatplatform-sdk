@@ -86,6 +86,7 @@ class CompanyListMatch(TypedDict, total=False):
 
 
 class CompanyCreateDataRequired(TypedDict):
+    id: str
     links: dict
     name: str
     pageNumber: int
@@ -95,8 +96,6 @@ class CompanyCreateDataRequired(TypedDict):
 
 
 class CompanyCreateData(CompanyCreateDataRequired, total=False):
-    id: str
-    product_identifier: str
     created: str
     createdByUserName: str
     dataConnections: list

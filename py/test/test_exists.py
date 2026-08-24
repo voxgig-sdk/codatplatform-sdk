@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Codatplatform SDK exists test
 
 import pytest
 from codatplatform_sdk import CodatplatformSDK

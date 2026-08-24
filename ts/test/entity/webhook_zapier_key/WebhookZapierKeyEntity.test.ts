@@ -62,7 +62,7 @@ describe('WebhookZapierKeyEntity', async () => {
     const webhook_zapier_key_ref01_ent = client.WebhookZapierKey()
     let webhook_zapier_key_ref01_data = setup.data.new.webhook_zapier_key['webhook_zapier_key_ref01']
 
-    webhook_zapier_key_ref01_data = await webhook_zapier_key_ref01_ent.create(webhook_zapier_key_ref01_data)
+    webhook_zapier_key_ref01_data = (await webhook_zapier_key_ref01_ent.create(webhook_zapier_key_ref01_data)).data()
     assert(null != webhook_zapier_key_ref01_data)
 
 

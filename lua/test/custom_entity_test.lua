@@ -54,7 +54,7 @@ describe("CustomEntity", function()
 
     local custom_ref01_resdata_up0_result, err = custom_ref01_ent:update(custom_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local custom_ref01_resdata_up0 = helpers.to_map(custom_ref01_resdata_up0_result)
+    local custom_ref01_resdata_up0 = helpers.to_map(type(custom_ref01_resdata_up0_result) == 'table' and custom_ref01_resdata_up0_result.data_get and custom_ref01_resdata_up0_result:data_get() or custom_ref01_resdata_up0_result)
     assert.is_not_nil(custom_ref01_resdata_up0)
     assert.are.equal(custom_ref01_resdata_up0[custom_ref01_markdef_up0_name], custom_ref01_markdef_up0_value)
 

@@ -33,7 +33,7 @@ class CompanyEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CodatplatformConfig.make_config
+    cfg = CodatplatformConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CodatplatformSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -73,7 +73,7 @@ class CompanyEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.company"), "company_ref01"))
 
     company_ref01_data_result = company_ref01_ent.create(company_ref01_data, nil)
-    company_ref01_data = Helpers.to_map(company_ref01_data_result)
+    company_ref01_data = Helpers.to_map(company_ref01_data_result.respond_to?(:data_get) ? company_ref01_data_result.data_get : company_ref01_data_result)
     assert !company_ref01_data.nil?
     assert !company_ref01_data["id"].nil?
 
@@ -98,7 +98,7 @@ class CompanyEntityTest < Minitest::Test
     company_ref01_data_up0_up[company_ref01_markdef_up0_name] = company_ref01_markdef_up0_value
 
     company_ref01_resdata_up0_result = company_ref01_ent.update(company_ref01_data_up0_up, nil)
-    company_ref01_resdata_up0 = Helpers.to_map(company_ref01_resdata_up0_result)
+    company_ref01_resdata_up0 = Helpers.to_map(company_ref01_resdata_up0_result.respond_to?(:data_get) ? company_ref01_resdata_up0_result.data_get : company_ref01_resdata_up0_result)
     assert !company_ref01_resdata_up0.nil?
     assert_equal company_ref01_resdata_up0["id"], company_ref01_data_up0_up["id"]
     assert_equal company_ref01_resdata_up0[company_ref01_markdef_up0_name], company_ref01_markdef_up0_value
@@ -108,7 +108,7 @@ class CompanyEntityTest < Minitest::Test
       "id" => company_ref01_data["id"],
     }
     company_ref01_data_dt0_loaded = company_ref01_ent.load(company_ref01_match_dt0, nil)
-    company_ref01_data_dt0_load_result = Helpers.to_map(company_ref01_data_dt0_loaded)
+    company_ref01_data_dt0_load_result = Helpers.to_map(company_ref01_data_dt0_loaded.respond_to?(:data_get) ? company_ref01_data_dt0_loaded.data_get : company_ref01_data_dt0_loaded)
     assert !company_ref01_data_dt0_load_result.nil?
     assert_equal company_ref01_data_dt0_load_result["id"], company_ref01_data["id"]
 

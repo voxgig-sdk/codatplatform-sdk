@@ -40,7 +40,7 @@ class ConnectionManagementAllowedOriginEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CodatplatformConfig::make_config();
+        $cfg = CodatplatformConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CodatplatformSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -83,7 +83,7 @@ class ConnectionManagementAllowedOriginEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.connection_management_allowed_origin"), "connection_management_allowed_origin_ref01"));
 
         $connection_management_allowed_origin_ref01_data_result = $connection_management_allowed_origin_ref01_ent->create($connection_management_allowed_origin_ref01_data, null);
-        $connection_management_allowed_origin_ref01_data = Helpers::to_map($connection_management_allowed_origin_ref01_data_result);
+        $connection_management_allowed_origin_ref01_data = Helpers::to_map(is_object($connection_management_allowed_origin_ref01_data_result) && method_exists($connection_management_allowed_origin_ref01_data_result, 'data_get') ? $connection_management_allowed_origin_ref01_data_result->data_get() : $connection_management_allowed_origin_ref01_data_result);
         $this->assertNotNull($connection_management_allowed_origin_ref01_data);
 
         // LIST

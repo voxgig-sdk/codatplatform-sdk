@@ -37,7 +37,7 @@ class SyncSettingEntity extends CodatplatformEntityBase<SyncSetting> {
 
 
 
-  async list(this: any, reqmatch?: SyncSettingListMatch, ctrl?: Control): Promise<SyncSetting[]> {
+  async list(this: any, reqmatch?: SyncSettingListMatch, ctrl?: Control): Promise<SyncSettingEntity[]> {
 
     const utility = this._utility
 

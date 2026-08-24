@@ -42,8 +42,8 @@ class TestPullOperationEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from codatplatform_sdk.config import make_config
-        cfg = make_config()
+        from codatplatform_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = CodatplatformSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -80,7 +80,7 @@ class TestPullOperationEntity:
         pull_operation_ref01_data["company_id"] = setup["idmap"]["company01"]
         pull_operation_ref01_data["data_type"] = setup["idmap"]["data_type01"]
 
-        pull_operation_ref01_data = helpers.to_map(pull_operation_ref01_ent.create(pull_operation_ref01_data, None))
+        pull_operation_ref01_data = helpers.to_map(runner.entity_data(pull_operation_ref01_ent.create(pull_operation_ref01_data, None)))
         assert pull_operation_ref01_data is not None
         assert pull_operation_ref01_data["id"] is not None
 
@@ -102,7 +102,7 @@ class TestPullOperationEntity:
             "id": pull_operation_ref01_data["id"],
         }
         pull_operation_ref01_data_dt0_loaded = pull_operation_ref01_ent.load(pull_operation_ref01_match_dt0, None)
-        pull_operation_ref01_data_dt0_load_result = helpers.to_map(pull_operation_ref01_data_dt0_loaded)
+        pull_operation_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(pull_operation_ref01_data_dt0_loaded))
         assert pull_operation_ref01_data_dt0_load_result is not None
         assert pull_operation_ref01_data_dt0_load_result["id"] == pull_operation_ref01_data["id"]
 
