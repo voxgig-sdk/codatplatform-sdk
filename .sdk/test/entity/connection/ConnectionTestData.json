@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "connection": {
+      "CONNECTION00": {
+        "connectionInfo": {},
+        "created": "sb5",
+        "dataConnectionErrors": [],
+        "id": "CONNECTION00",
+        "integrationId": "sb8",
+        "integrationKey": "sb9",
+        "lastSync": "sba",
+        "linkUrl": "sbb",
+        "links": {},
+        "pageNumber": "sbd",
+        "pageSize": "sbe",
+        "platformKey": "sbf",
+        "platformName": "sc0",
+        "results": [],
+        "sourceId": "sc2",
+        "sourceType": "sc3",
+        "status": "sc4",
+        "totalResults": "sc5",
+        "company_id": "COMPANY01"
+      },
+      "CONNECTION01": {
+        "connectionInfo": {},
+        "created": "s169",
+        "dataConnectionErrors": [],
+        "id": "CONNECTION01",
+        "integrationId": "s16c",
+        "integrationKey": "s16d",
+        "lastSync": "s16e",
+        "linkUrl": "s16f",
+        "links": {},
+        "pageNumber": "s171",
+        "pageSize": "s172",
+        "platformKey": "s173",
+        "platformName": "s174",
+        "results": [],
+        "sourceId": "s176",
+        "sourceType": "s177",
+        "status": "s178",
+        "totalResults": "s179",
+        "company_id": "COMPANY01"
+      },
+      "CONNECTION02": {
+        "connectionInfo": {},
+        "created": "s21d",
+        "dataConnectionErrors": [],
+        "id": "CONNECTION02",
+        "integrationId": "s220",
+        "integrationKey": "s221",
+        "lastSync": "s222",
+        "linkUrl": "s223",
+        "links": {},
+        "pageNumber": "s225",
+        "pageSize": "s226",
+        "platformKey": "s227",
+        "platformName": "s228",
+        "results": [],
+        "sourceId": "s22a",
+        "sourceType": "s22b",
+        "status": "s22c",
+        "totalResults": "s22d",
+        "company_id": "COMPANY01"
+      }
+    }
+  },
+  "new": {
+    "connection": {
+      "connection_ref01": {
+        "connectionInfo": {},
+        "created": "s2d1",
+        "dataConnectionErrors": [],
+        "integrationId": "s2d4",
+        "integrationKey": "s2d5",
+        "lastSync": "s2d6",
+        "linkUrl": "s2d7",
+        "links": {},
+        "pageNumber": "s2d9",
+        "pageSize": "s2da",
+        "platformKey": "s2db",
+        "platformName": "s2dc",
+        "results": [],
+        "sourceId": "s2de",
+        "sourceType": "s2df",
+        "status": "s2e0",
+        "totalResults": "s2e1"
+      }
+    }
+  }
+}

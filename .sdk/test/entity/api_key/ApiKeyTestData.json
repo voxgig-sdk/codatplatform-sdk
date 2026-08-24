@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "api_key": {
+      "API_KEY00": {},
+      "API_KEY01": {},
+      "API_KEY02": {}
+    }
+  },
+  "new": {
+    "api_key": {
+      "api_key_ref01": {}
+    }
+  }
+}

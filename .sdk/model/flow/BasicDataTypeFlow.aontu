@@ -1,0 +1,9 @@
+# BasicDataTypeFlow
+
+main: kit: flow: BasicDataTypeFlow:
+{
+  entity: "data_type",
+  kind: "basic",
+  name: "BasicDataTypeFlow",
+  "key$": "BasicDataTypeFlow"
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "queue": {
+      "QUEUE00": {},
+      "QUEUE01": {},
+      "QUEUE02": {}
+    }
+  },
+  "new": {
+    "queue": {
+      "queue_ref01": {}
+    }
+  }
+}

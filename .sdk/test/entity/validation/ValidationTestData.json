@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "validation": {
+      "VALIDATION00": {
+        "errors": [],
+        "warnings": [],
+        "company_id": "COMPANY01",
+        "sync_id": "SYNC01"
+      },
+      "VALIDATION01": {
+        "errors": [],
+        "warnings": [],
+        "company_id": "COMPANY01",
+        "sync_id": "SYNC01"
+      },
+      "VALIDATION02": {
+        "errors": [],
+        "warnings": [],
+        "company_id": "COMPANY01",
+        "sync_id": "SYNC01"
+      }
+    }
+  },
+  "new": {
+    "validation": {
+      "validation_ref01": {
+        "errors": [],
+        "warnings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "custom": {
+      "CUSTOM00": {
+        "dataSource": "s50",
+        "keyBy": [],
+        "pageNumber": "s52",
+        "pageSize": "s53",
+        "requiredData": {},
+        "results": [],
+        "sourceModifiedDate": [],
+        "totalResults": "s57",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "CUSTOM00"
+      },
+      "CUSTOM01": {
+        "dataSource": "sa0",
+        "keyBy": [],
+        "pageNumber": "sa2",
+        "pageSize": "sa3",
+        "requiredData": {},
+        "results": [],
+        "sourceModifiedDate": [],
+        "totalResults": "sa7",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "CUSTOM01"
+      },
+      "CUSTOM02": {
+        "dataSource": "sf0",
+        "keyBy": [],
+        "pageNumber": "sf2",
+        "pageSize": "sf3",
+        "requiredData": {},
+        "results": [],
+        "sourceModifiedDate": [],
+        "totalResults": "sf7",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "CUSTOM02"
+      }
+    }
+  },
+  "new": {
+    "custom": {
+      "custom_ref01": {
+        "dataSource": "s140",
+        "keyBy": [],
+        "pageNumber": "s142",
+        "pageSize": "s143",
+        "requiredData": {},
+        "results": [],
+        "sourceModifiedDate": [],
+        "totalResults": "s147"
+      }
+    }
+  }
+}

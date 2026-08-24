@@ -1,0 +1,9 @@
+# BasicQueueFlow
+
+main: kit: flow: BasicQueueFlow:
+{
+  entity: "queue",
+  kind: "basic",
+  name: "BasicQueueFlow",
+  "key$": "BasicQueueFlow"
+}

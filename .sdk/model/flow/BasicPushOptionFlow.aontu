@@ -1,0 +1,34 @@
+# BasicPushOptionFlow
+
+main: kit: flow: BasicPushOptionFlow:
+{
+  entity: "push_option",
+  kind: "basic",
+  name: "BasicPushOptionFlow",
+  step: [
+    {
+      input: {
+        ref: "push_option_ref01",
+        srcdatavar: "push_option_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        company_id: "company01",
+        connection_id: "connection01",
+        id: "push_option01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-push_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPushOptionFlow"
+}

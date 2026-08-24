@@ -1,0 +1,19 @@
+# Entity: option
+
+main: kit: entity: option: {
+
+  alias: field: {}
+
+  name: "option"
+  relations: {
+    ancestors: [
+      [
+        "company"
+        "connection"
+      ]
+    ]
+  }
+
+
+
+}

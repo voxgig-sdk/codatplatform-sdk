@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "push": {
+      "PUSH00": {
+        "changes": [],
+        "companyId": "sb5",
+        "completedOnUtc": "sb6",
+        "dataConnectionKey": "sb7",
+        "dataType": "sb8",
+        "errorMessage": "sb9",
+        "links": {},
+        "pageNumber": "sbb",
+        "pageSize": "sbc",
+        "pushOperationKey": "sbd",
+        "requestedOnUtc": "sbe",
+        "results": [],
+        "status": "sc0",
+        "statusCode": "sc1",
+        "timeoutInMinutes": "sc2",
+        "timeoutInSeconds": "sc3",
+        "totalResults": "sc4",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "id": "PUSH00"
+      },
+      "PUSH01": {
+        "changes": [],
+        "companyId": "s169",
+        "completedOnUtc": "s16a",
+        "dataConnectionKey": "s16b",
+        "dataType": "s16c",
+        "errorMessage": "s16d",
+        "links": {},
+        "pageNumber": "s16f",
+        "pageSize": "s170",
+        "pushOperationKey": "s171",
+        "requestedOnUtc": "s172",
+        "results": [],
+        "status": "s174",
+        "statusCode": "s175",
+        "timeoutInMinutes": "s176",
+        "timeoutInSeconds": "s177",
+        "totalResults": "s178",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "id": "PUSH01"
+      },
+      "PUSH02": {
+        "changes": [],
+        "companyId": "s21d",
+        "completedOnUtc": "s21e",
+        "dataConnectionKey": "s21f",
+        "dataType": "s220",
+        "errorMessage": "s221",
+        "links": {},
+        "pageNumber": "s223",
+        "pageSize": "s224",
+        "pushOperationKey": "s225",
+        "requestedOnUtc": "s226",
+        "results": [],
+        "status": "s228",
+        "statusCode": "s229",
+        "timeoutInMinutes": "s22a",
+        "timeoutInSeconds": "s22b",
+        "totalResults": "s22c",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "id": "PUSH02"
+      }
+    }
+  },
+  "new": {
+    "push": {
+      "push_ref01": {
+        "changes": [],
+        "companyId": "s2d1",
+        "completedOnUtc": "s2d2",
+        "dataConnectionKey": "s2d3",
+        "dataType": "s2d4",
+        "errorMessage": "s2d5",
+        "links": {},
+        "pageNumber": "s2d7",
+        "pageSize": "s2d8",
+        "pushOperationKey": "s2d9",
+        "requestedOnUtc": "s2da",
+        "results": [],
+        "status": "s2dc",
+        "statusCode": "s2dd",
+        "timeoutInMinutes": "s2de",
+        "timeoutInSeconds": "s2df",
+        "totalResults": "s2e0",
+        "validation": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "integration": {
+      "INTEGRATION00": {
+        "dataProvidedBy": "sa0",
+        "datatypeFeatures": [],
+        "enabled": true,
+        "integrationId": "sa3",
+        "isBeta": true,
+        "isOfflineConnector": false,
+        "key": "sa6",
+        "links": {},
+        "logoUrl": "sa8",
+        "name": "sa9",
+        "pageNumber": "saa",
+        "pageSize": "sab",
+        "results": [],
+        "sourceId": "sad",
+        "sourceType": "sae",
+        "totalResults": "saf",
+        "id": "INTEGRATION00"
+      },
+      "INTEGRATION01": {
+        "dataProvidedBy": "s140",
+        "datatypeFeatures": [],
+        "enabled": true,
+        "integrationId": "s143",
+        "isBeta": true,
+        "isOfflineConnector": false,
+        "key": "s146",
+        "links": {},
+        "logoUrl": "s148",
+        "name": "s149",
+        "pageNumber": "s14a",
+        "pageSize": "s14b",
+        "results": [],
+        "sourceId": "s14d",
+        "sourceType": "s14e",
+        "totalResults": "s14f",
+        "id": "INTEGRATION01"
+      },
+      "INTEGRATION02": {
+        "dataProvidedBy": "s1e0",
+        "datatypeFeatures": [],
+        "enabled": true,
+        "integrationId": "s1e3",
+        "isBeta": true,
+        "isOfflineConnector": false,
+        "key": "s1e6",
+        "links": {},
+        "logoUrl": "s1e8",
+        "name": "s1e9",
+        "pageNumber": "s1ea",
+        "pageSize": "s1eb",
+        "results": [],
+        "sourceId": "s1ed",
+        "sourceType": "s1ee",
+        "totalResults": "s1ef",
+        "id": "INTEGRATION02"
+      }
+    }
+  },
+  "new": {
+    "integration": {
+      "integration_ref01": {
+        "dataProvidedBy": "s280",
+        "datatypeFeatures": [],
+        "enabled": true,
+        "integrationId": "s283",
+        "isBeta": true,
+        "isOfflineConnector": false,
+        "key": "s286",
+        "links": {},
+        "logoUrl": "s288",
+        "name": "s289",
+        "pageNumber": "s28a",
+        "pageSize": "s28b",
+        "results": [],
+        "sourceId": "s28d",
+        "sourceType": "s28e",
+        "totalResults": "s28f"
+      }
+    }
+  }
+}

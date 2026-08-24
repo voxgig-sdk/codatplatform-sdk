@@ -1,0 +1,18 @@
+# Entity: queue
+
+main: kit: entity: queue: {
+
+  alias: field: {}
+
+  name: "queue"
+  relations: {
+    ancestors: [
+      [
+        "company"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,9 @@
+# BasicOptionFlow
+
+main: kit: flow: BasicOptionFlow:
+{
+  entity: "option",
+  kind: "basic",
+  name: "BasicOptionFlow",
+  "key$": "BasicOptionFlow"
+}

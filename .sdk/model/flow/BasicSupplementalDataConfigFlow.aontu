@@ -1,0 +1,33 @@
+# BasicSupplementalDataConfigFlow
+
+main: kit: flow: BasicSupplementalDataConfigFlow:
+{
+  entity: "supplemental_data_config",
+  kind: "basic",
+  name: "BasicSupplementalDataConfigFlow",
+  step: [
+    {
+      input: {
+        ref: "supplemental_data_config_ref01",
+        srcdatavar: "supplemental_data_config_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "supplemental_data_config01",
+        platform_key: "platform_key01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-supplemental_data_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSupplementalDataConfigFlow"
+}

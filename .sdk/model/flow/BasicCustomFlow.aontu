@@ -1,0 +1,56 @@
+# BasicCustomFlow
+
+main: kit: flow: BasicCustomFlow:
+{
+  entity: "custom",
+  kind: "basic",
+  name: "BasicCustomFlow",
+  step: [
+    {
+      data: {
+        platform_key: "platform_key01"
+      }
+
+      input: {
+        ref: "custom_ref01",
+        srcdatavar: "custom_ref01_data",
+        suffix: "_up0",
+        textfield: "dataSource"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "custom_ref01",
+        srcdatavar: "custom_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "custom01",
+        platform_key: "platform_key01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomFlow"
+}

@@ -1,0 +1,9 @@
+# BasicSyncFlow
+
+main: kit: flow: BasicSyncFlow:
+{
+  entity: "sync",
+  kind: "basic",
+  name: "BasicSyncFlow",
+  "key$": "BasicSyncFlow"
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "refresh_data": {
+      "REFRESH_DATA00": {
+        "company_id": "COMPANY01",
+        "id": "REFRESH_DATA00"
+      },
+      "REFRESH_DATA01": {
+        "company_id": "COMPANY01",
+        "id": "REFRESH_DATA01"
+      },
+      "REFRESH_DATA02": {
+        "company_id": "COMPANY01",
+        "id": "REFRESH_DATA02"
+      }
+    }
+  },
+  "new": {
+    "refresh_data": {
+      "refresh_data_ref01": {}
+    }
+  }
+}

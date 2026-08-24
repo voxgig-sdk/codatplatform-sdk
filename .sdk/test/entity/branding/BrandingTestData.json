@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "branding": {
+      "BRANDING00": {
+        "button": {},
+        "logo": {},
+        "sourceId": "s20",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "BRANDING00"
+      },
+      "BRANDING01": {
+        "button": {},
+        "logo": {},
+        "sourceId": "s3e",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "BRANDING01"
+      },
+      "BRANDING02": {
+        "button": {},
+        "logo": {},
+        "sourceId": "s5c",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "BRANDING02"
+      }
+    }
+  },
+  "new": {
+    "branding": {
+      "branding_ref01": {
+        "button": {},
+        "logo": {},
+        "sourceId": "s7a"
+      }
+    }
+  }
+}

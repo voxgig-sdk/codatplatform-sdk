@@ -1,0 +1,330 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 30
+  metrics: count: path: 34
+  metrics: count: method: 50
+
+  entity: access_token: {
+    path: "/companies/{companyId}/connectionManagement/accessToken": {
+      rename: param: "companyId": *"company_id"
+    }
+  }
+
+  entity: all: {
+    path: "/companies/{companyId}/data/all": {
+      rename: param: "companyId": *"company_id"
+    }
+  }
+
+  entity: api_key: {
+  }
+
+  entity: branding: {
+    path: "/integrations/{platformKey}/branding": {
+      rename: param: "platformKey": *"platform_key"
+      op: load: method: *GET
+    }
+  }
+
+  entity: company: {
+    path: "/companies": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/companies/{companyId}": {
+      rename: param: "companyId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/companies/{companyId}/dataStatus": {
+      action: "data_status": {}
+      rename: param: "companyId": *"id"
+    }
+    path: "/companies/{companyId}/products/{productIdentifier}": {
+      rename: param: "companyId": *"id"
+      rename: param: "productIdentifier": *"product_identifier"
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/companies/{companyId}/products/{productIdentifier}/refresh": {
+      rename: param: "companyId": *"id"
+      rename: param: "productIdentifier": *"product_identifier"
+      op: create: method: *POST
+    }
+    path: "/companies/{companyId}/push": {
+      action: "push": {}
+      rename: param: "companyId": *"id"
+    }
+  }
+
+  entity: company_access_token: {
+    path: "/companies/{companyId}/accessToken": {
+      rename: param: "companyId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: connection: {
+    path: "/companies/{companyId}/connections": {
+      rename: param: "companyId": *"company_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/companies/{companyId}/connections/{connectionId}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: patch: transform: req: "status": *("`reqdata.status`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/companies/{companyId}/connections/{connectionId}/authorization": {
+      action: "authorization": {}
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: connection_management_access_token: {
+    path: "/companies/{companyId}/connectionManagement/accessToken": {
+      rename: param: "companyId": *"company_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: connection_management_allowed_origin: {
+    path: "/connectionManagement/corsSettings": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.allowedOrigins`")|top
+    }
+    path: "/corsSettings": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.allowedOrigins`")|top
+    }
+  }
+
+  entity: custom: {
+    path: "/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"connection_id"
+      rename: param: "customDataIdentifier": *"id"
+      op: load: method: *GET
+    }
+    path: "/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"connection_id"
+      rename: param: "customDataIdentifier": *"id"
+    }
+    path: "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}": {
+      rename: param: "customDataIdentifier": *"id"
+      rename: param: "platformKey": *"platform_key"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: data_status: {
+    path: "/companies/{companyId}/dataStatus": {
+      rename: param: "companyId": *"company_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: data_type: {
+    path: "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig": {
+      action: "supplemental_data_config": {}
+      rename: param: "dataType": *"id"
+      rename: param: "platformKey": *"platform_key"
+    }
+  }
+
+  entity: history: {
+    path: "/companies/{companyId}/data/history": {
+      rename: param: "companyId": *"company_id"
+    }
+    path: "/companies/{companyId}/data/history/{datasetId}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "datasetId": *"id"
+    }
+  }
+
+  entity: integration: {
+    path: "/integrations": {
+      op: list: method: *GET
+    }
+    path: "/integrations/{platformKey}": {
+      rename: param: "platformKey": *"id"
+      op: load: method: *GET
+    }
+    path: "/integrations/{platformKey}/branding": {
+      action: "branding": {}
+      rename: param: "platformKey": *"platform_key"
+    }
+  }
+
+  entity: option: {
+    path: "/companies/{companyId}/connections/{connectionId}/options/{dataType}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"connection_id"
+      rename: param: "dataType": *"id"
+    }
+  }
+
+  entity: product: {
+    path: "/companies/{companyId}/products/{productIdentifier}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "productIdentifier": *"id"
+    }
+    path: "/companies/{companyId}/products/{productIdentifier}/refresh": {
+      action: "refresh": {}
+      rename: param: "companyId": *"company_id"
+      rename: param: "productIdentifier": *"product_identifier"
+    }
+  }
+
+  entity: profile: {
+    path: "/profile": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.whiteListUrls`")|top
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pull_operation: {
+    path: "/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"connection_id"
+      rename: param: "customDataIdentifier": *"custom_data_identifier"
+      op: create: method: *POST
+    }
+    path: "/companies/{companyId}/data/history": {
+      rename: param: "companyId": *"company_id"
+      op: list: method: *GET
+    }
+    path: "/companies/{companyId}/data/history/{datasetId}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "datasetId": *"dataset_id"
+      op: load: method: *GET
+    }
+    path: "/companies/{companyId}/data/queue/{dataType}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "dataType": *"data_type"
+      op: create: method: *POST
+    }
+  }
+
+  entity: push: {
+    path: "/companies/{companyId}/push": {
+      rename: param: "companyId": *"company_id"
+      op: list: method: *GET
+    }
+    path: "/companies/{companyId}/push/{pushOperationKey}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "pushOperationKey": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: push_option: {
+    path: "/companies/{companyId}/connections/{connectionId}/options/{dataType}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "connectionId": *"connection_id"
+      rename: param: "dataType": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: queue: {
+    path: "/companies/{companyId}/data/queue/{dataType}": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "dataType": *"id"
+    }
+  }
+
+  entity: refresh_data: {
+    path: "/companies/{companyId}/data/all": {
+      rename: param: "companyId": *"company_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: setting: {
+    path: "/apiKeys": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+    path: "/apiKeys/{apiKeyId}": {
+      rename: param: "apiKeyId": *"api_key_id"
+      op: remove: method: *DELETE
+    }
+    path: "/profile/syncSettings": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: supplemental_data: {
+    path: "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig": {
+      rename: param: "dataType": *"data_type_id"
+      rename: param: "platformKey": *"platform_key"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: supplemental_data_config: {
+    path: "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig": {
+      rename: param: "dataType": *"data_type_id"
+      rename: param: "platformKey": *"platform_key"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.supplementalDataConfig`")|top
+    }
+  }
+
+  entity: sync: {
+    path: "/companies/{companyId}/sync/{datasetId}/validation": {
+      action: "validation": {}
+      rename: param: "companyId": *"company_id"
+      rename: param: "datasetId": *"id"
+    }
+  }
+
+  entity: sync_setting: {
+    path: "/profile/syncSettings": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.settings`")|top
+    }
+  }
+
+  entity: validation: {
+    path: "/companies/{companyId}/sync/{datasetId}/validation": {
+      rename: param: "companyId": *"company_id"
+      rename: param: "datasetId": *"sync_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: webhook: {
+    path: "/webhooks": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+    path: "/webhooks/{webhookId}": {
+      rename: param: "webhookId": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: webhook_zapier_key: {
+    path: "/webhooks/integrationKeys/zapier": {
+      op: create: method: *POST
+    }
+  }
+
+}

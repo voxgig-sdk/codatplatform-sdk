@@ -1,0 +1,100 @@
+{
+  "existing": {
+    "pull_operation": {
+      "PULL_OPERATION00": {
+        "companyId": "saa",
+        "completed": "sab",
+        "connectionId": "sac",
+        "dataType": "sad",
+        "errorMessage": "sae",
+        "id": "PULL_OPERATION00",
+        "isCompleted": true,
+        "isErrored": false,
+        "links": {},
+        "pageNumber": "sb3",
+        "pageSize": "sb4",
+        "progress": "sb5",
+        "requested": "sb6",
+        "results": [],
+        "status": "sb8",
+        "statusDescription": "sb9",
+        "totalResults": "sba",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "custom_data_identifier": "CUSTOM_DATA_IDENTIFIER01",
+        "data_type": "DATA_TYPE01",
+        "dataset_id": "DATASET01"
+      },
+      "PULL_OPERATION01": {
+        "companyId": "s154",
+        "completed": "s155",
+        "connectionId": "s156",
+        "dataType": "s157",
+        "errorMessage": "s158",
+        "id": "PULL_OPERATION01",
+        "isCompleted": true,
+        "isErrored": false,
+        "links": {},
+        "pageNumber": "s15d",
+        "pageSize": "s15e",
+        "progress": "s15f",
+        "requested": "s160",
+        "results": [],
+        "status": "s162",
+        "statusDescription": "s163",
+        "totalResults": "s164",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "custom_data_identifier": "CUSTOM_DATA_IDENTIFIER01",
+        "data_type": "DATA_TYPE01",
+        "dataset_id": "DATASET01"
+      },
+      "PULL_OPERATION02": {
+        "companyId": "s1fe",
+        "completed": "s1ff",
+        "connectionId": "s200",
+        "dataType": "s201",
+        "errorMessage": "s202",
+        "id": "PULL_OPERATION02",
+        "isCompleted": true,
+        "isErrored": false,
+        "links": {},
+        "pageNumber": "s207",
+        "pageSize": "s208",
+        "progress": "s209",
+        "requested": "s20a",
+        "results": [],
+        "status": "s20c",
+        "statusDescription": "s20d",
+        "totalResults": "s20e",
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "custom_data_identifier": "CUSTOM_DATA_IDENTIFIER01",
+        "data_type": "DATA_TYPE01",
+        "dataset_id": "DATASET01"
+      }
+    }
+  },
+  "new": {
+    "pull_operation": {
+      "pull_operation_ref01": {
+        "companyId": "s2a8",
+        "completed": "s2a9",
+        "connectionId": "s2aa",
+        "dataType": "s2ab",
+        "errorMessage": "s2ac",
+        "isCompleted": true,
+        "isErrored": false,
+        "links": {},
+        "pageNumber": "s2b1",
+        "pageSize": "s2b2",
+        "progress": "s2b3",
+        "requested": "s2b4",
+        "results": [],
+        "status": "s2b6",
+        "statusDescription": "s2b7",
+        "totalResults": "s2b8"
+      }
+    }
+  }
+}

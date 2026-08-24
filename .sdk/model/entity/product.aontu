@@ -1,0 +1,22 @@
+# Entity: product
+
+main: kit: entity: product: {
+
+  alias: field: {}
+
+  name: "product"
+  relations: {
+    ancestors: [
+      [
+        "company"
+      ]
+      [
+        "company"
+        "product"
+      ]
+    ]
+  }
+
+
+
+}

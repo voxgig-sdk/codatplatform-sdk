@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "webhook": {
+      "WEBHOOK00": {
+        "companyTags": [],
+        "disabled": false,
+        "eventTypes": [],
+        "id": "WEBHOOK00",
+        "url": "s36"
+      },
+      "WEBHOOK01": {
+        "companyTags": [],
+        "disabled": false,
+        "eventTypes": [],
+        "id": "WEBHOOK01",
+        "url": "s68"
+      },
+      "WEBHOOK02": {
+        "companyTags": [],
+        "disabled": false,
+        "eventTypes": [],
+        "id": "WEBHOOK02",
+        "url": "s9a"
+      }
+    }
+  },
+  "new": {
+    "webhook": {
+      "webhook_ref01": {
+        "companyTags": [],
+        "disabled": false,
+        "eventTypes": [],
+        "url": "scc"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "sync_setting": {
+      "SYNC_SETTING00": {
+        "dataType": "s50",
+        "fetchOnFirstLink": false,
+        "isLocked": true,
+        "monthsToSync": "s53",
+        "syncFromUtc": "s54",
+        "syncFromWindow": "s55",
+        "syncOrder": "s56",
+        "syncSchedule": "s57"
+      },
+      "SYNC_SETTING01": {
+        "dataType": "sa0",
+        "fetchOnFirstLink": false,
+        "isLocked": true,
+        "monthsToSync": "sa3",
+        "syncFromUtc": "sa4",
+        "syncFromWindow": "sa5",
+        "syncOrder": "sa6",
+        "syncSchedule": "sa7"
+      },
+      "SYNC_SETTING02": {
+        "dataType": "sf0",
+        "fetchOnFirstLink": false,
+        "isLocked": true,
+        "monthsToSync": "sf3",
+        "syncFromUtc": "sf4",
+        "syncFromWindow": "sf5",
+        "syncOrder": "sf6",
+        "syncSchedule": "sf7"
+      }
+    }
+  },
+  "new": {
+    "sync_setting": {
+      "sync_setting_ref01": {
+        "dataType": "s140",
+        "fetchOnFirstLink": false,
+        "isLocked": true,
+        "monthsToSync": "s143",
+        "syncFromUtc": "s144",
+        "syncFromWindow": "s145",
+        "syncOrder": "s146",
+        "syncSchedule": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "history": {
+      "HISTORY00": {},
+      "HISTORY01": {},
+      "HISTORY02": {}
+    }
+  },
+  "new": {
+    "history": {
+      "history_ref01": {}
+    }
+  }
+}

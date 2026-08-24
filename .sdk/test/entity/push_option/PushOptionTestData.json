@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "push_option": {
+      "PUSH_OPTION00": {
+        "description": "s46",
+        "displayName": "s47",
+        "options": [],
+        "properties": {},
+        "required": true,
+        "type": "s4b",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "id": "PUSH_OPTION00"
+      },
+      "PUSH_OPTION01": {
+        "description": "s8c",
+        "displayName": "s8d",
+        "options": [],
+        "properties": {},
+        "required": true,
+        "type": "s91",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "id": "PUSH_OPTION01"
+      },
+      "PUSH_OPTION02": {
+        "description": "sd2",
+        "displayName": "sd3",
+        "options": [],
+        "properties": {},
+        "required": true,
+        "type": "sd7",
+        "validation": {},
+        "company_id": "COMPANY01",
+        "connection_id": "CONNECTION01",
+        "id": "PUSH_OPTION02"
+      }
+    }
+  },
+  "new": {
+    "push_option": {
+      "push_option_ref01": {
+        "description": "s118",
+        "displayName": "s119",
+        "options": [],
+        "properties": {},
+        "required": true,
+        "type": "s11d",
+        "validation": {}
+      }
+    }
+  }
+}

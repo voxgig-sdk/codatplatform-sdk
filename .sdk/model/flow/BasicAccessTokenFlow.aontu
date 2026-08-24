@@ -1,0 +1,9 @@
+# BasicAccessTokenFlow
+
+main: kit: flow: BasicAccessTokenFlow:
+{
+  entity: "access_token",
+  kind: "basic",
+  name: "BasicAccessTokenFlow",
+  "key$": "BasicAccessTokenFlow"
+}

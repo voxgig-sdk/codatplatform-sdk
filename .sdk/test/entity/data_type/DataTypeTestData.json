@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "data_type": {
+      "DATA_TYPE00": {},
+      "DATA_TYPE01": {},
+      "DATA_TYPE02": {}
+    }
+  },
+  "new": {
+    "data_type": {
+      "data_type_ref01": {}
+    }
+  }
+}

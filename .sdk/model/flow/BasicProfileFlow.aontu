@@ -1,0 +1,41 @@
+# BasicProfileFlow
+
+main: kit: flow: BasicProfileFlow:
+{
+  entity: "profile",
+  kind: "basic",
+  name: "BasicProfileFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "profile_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "profile_ref01",
+        srcdatavar: "profile_ref01_data",
+        suffix: "_up0",
+        textfield: "apiKey"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-profile_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProfileFlow"
+}

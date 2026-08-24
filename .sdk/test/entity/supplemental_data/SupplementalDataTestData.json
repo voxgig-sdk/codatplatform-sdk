@@ -1,0 +1,31 @@
+{
+  "existing": {
+    "supplemental_data": {
+      "SUPPLEMENTAL_DATA00": {
+        "supplementalDataConfig": {},
+        "data_type_id": "DATA_TYPE01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "SUPPLEMENTAL_DATA00"
+      },
+      "SUPPLEMENTAL_DATA01": {
+        "supplementalDataConfig": {},
+        "data_type_id": "DATA_TYPE01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "SUPPLEMENTAL_DATA01"
+      },
+      "SUPPLEMENTAL_DATA02": {
+        "supplementalDataConfig": {},
+        "data_type_id": "DATA_TYPE01",
+        "platform_key": "PLATFORM_KEY01",
+        "id": "SUPPLEMENTAL_DATA02"
+      }
+    }
+  },
+  "new": {
+    "supplemental_data": {
+      "supplemental_data_ref01": {
+        "supplementalDataConfig": {}
+      }
+    }
+  }
+}

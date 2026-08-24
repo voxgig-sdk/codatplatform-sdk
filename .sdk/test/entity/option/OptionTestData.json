@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "option": {
+      "OPTION00": {},
+      "OPTION01": {},
+      "OPTION02": {}
+    }
+  },
+  "new": {
+    "option": {
+      "option_ref01": {}
+    }
+  }
+}

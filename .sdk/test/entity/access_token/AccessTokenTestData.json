@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "access_token": {
+      "ACCESS_TOKEN00": {},
+      "ACCESS_TOKEN01": {},
+      "ACCESS_TOKEN02": {}
+    }
+  },
+  "new": {
+    "access_token": {
+      "access_token_ref01": {}
+    }
+  }
+}

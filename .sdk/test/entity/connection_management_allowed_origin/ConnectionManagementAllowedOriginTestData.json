@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "connection_management_allowed_origin": {
+      "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN00": {
+        "allowedOrigins": [],
+        "id": "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN00"
+      },
+      "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN01": {
+        "allowedOrigins": [],
+        "id": "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN01"
+      },
+      "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN02": {
+        "allowedOrigins": [],
+        "id": "CONNECTION_MANAGEMENT_ALLOWED_ORIGIN02"
+      }
+    }
+  },
+  "new": {
+    "connection_management_allowed_origin": {
+      "connection_management_allowed_origin_ref01": {
+        "allowedOrigins": []
+      }
+    }
+  }
+}

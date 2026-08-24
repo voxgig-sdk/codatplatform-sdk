@@ -1,0 +1,22 @@
+# BasicRefreshDataFlow
+
+main: kit: flow: BasicRefreshDataFlow:
+{
+  entity: "refresh_data",
+  kind: "basic",
+  name: "BasicRefreshDataFlow",
+  step: [
+    {
+      input: {
+        ref: "refresh_data_ref01"
+      }
+
+      match: {
+        company_id: "company01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicRefreshDataFlow"
+}

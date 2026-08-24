@@ -1,0 +1,18 @@
+# Entity: access_token
+
+main: kit: entity: access_token: {
+
+  alias: field: {}
+
+  name: "access_token"
+  relations: {
+    ancestors: [
+      [
+        "company"
+      ]
+    ]
+  }
+
+
+
+}

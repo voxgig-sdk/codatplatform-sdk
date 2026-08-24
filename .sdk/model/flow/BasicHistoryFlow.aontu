@@ -1,0 +1,9 @@
+# BasicHistoryFlow
+
+main: kit: flow: BasicHistoryFlow:
+{
+  entity: "history",
+  kind: "basic",
+  name: "BasicHistoryFlow",
+  "key$": "BasicHistoryFlow"
+}

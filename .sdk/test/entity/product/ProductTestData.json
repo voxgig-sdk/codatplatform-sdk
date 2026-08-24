@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {},
+      "PRODUCT01": {},
+      "PRODUCT02": {}
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {}
+    }
+  }
+}

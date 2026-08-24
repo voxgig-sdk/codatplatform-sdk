@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "sync": {
+      "SYNC00": {},
+      "SYNC01": {},
+      "SYNC02": {}
+    }
+  },
+  "new": {
+    "sync": {
+      "sync_ref01": {}
+    }
+  }
+}

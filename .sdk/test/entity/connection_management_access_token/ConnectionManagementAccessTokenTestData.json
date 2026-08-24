@@ -1,0 +1,28 @@
+{
+  "existing": {
+    "connection_management_access_token": {
+      "CONNECTION_MANAGEMENT_ACCESS_TOKEN00": {
+        "accessToken": "sa",
+        "company_id": "COMPANY01",
+        "id": "CONNECTION_MANAGEMENT_ACCESS_TOKEN00"
+      },
+      "CONNECTION_MANAGEMENT_ACCESS_TOKEN01": {
+        "accessToken": "s14",
+        "company_id": "COMPANY01",
+        "id": "CONNECTION_MANAGEMENT_ACCESS_TOKEN01"
+      },
+      "CONNECTION_MANAGEMENT_ACCESS_TOKEN02": {
+        "accessToken": "s1e",
+        "company_id": "COMPANY01",
+        "id": "CONNECTION_MANAGEMENT_ACCESS_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "connection_management_access_token": {
+      "connection_management_access_token_ref01": {
+        "accessToken": "s28"
+      }
+    }
+  }
+}

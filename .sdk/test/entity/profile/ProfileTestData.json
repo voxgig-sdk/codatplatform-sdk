@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "profile": {
+      "PROFILE00": {
+        "apiKey": "s46",
+        "confirmCompanyName": false,
+        "iconUrl": "s48",
+        "logoUrl": "s49",
+        "name": "s4a",
+        "redirectUrl": "s4b",
+        "whiteListUrls": [],
+        "id": "PROFILE00"
+      },
+      "PROFILE01": {
+        "apiKey": "s8c",
+        "confirmCompanyName": false,
+        "iconUrl": "s8e",
+        "logoUrl": "s8f",
+        "name": "s90",
+        "redirectUrl": "s91",
+        "whiteListUrls": [],
+        "id": "PROFILE01"
+      },
+      "PROFILE02": {
+        "apiKey": "sd2",
+        "confirmCompanyName": false,
+        "iconUrl": "sd4",
+        "logoUrl": "sd5",
+        "name": "sd6",
+        "redirectUrl": "sd7",
+        "whiteListUrls": [],
+        "id": "PROFILE02"
+      }
+    }
+  },
+  "new": {
+    "profile": {
+      "profile_ref01": {
+        "apiKey": "s118",
+        "confirmCompanyName": false,
+        "iconUrl": "s11a",
+        "logoUrl": "s11b",
+        "name": "s11c",
+        "redirectUrl": "s11d",
+        "whiteListUrls": []
+      }
+    }
+  }
+}

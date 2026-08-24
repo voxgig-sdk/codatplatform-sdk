@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "setting": {
+      "SETTING00": {
+        "apiKey": "s28",
+        "createdDate": "s29",
+        "id": "SETTING00",
+        "name": "s2b",
+        "api_key_id": "API_KEY01"
+      },
+      "SETTING01": {
+        "apiKey": "s50",
+        "createdDate": "s51",
+        "id": "SETTING01",
+        "name": "s53",
+        "api_key_id": "API_KEY01"
+      },
+      "SETTING02": {
+        "apiKey": "s78",
+        "createdDate": "s79",
+        "id": "SETTING02",
+        "name": "s7b",
+        "api_key_id": "API_KEY01"
+      }
+    }
+  },
+  "new": {
+    "setting": {
+      "setting_ref01": {
+        "apiKey": "sa0",
+        "createdDate": "sa1",
+        "name": "sa3"
+      }
+    }
+  }
+}

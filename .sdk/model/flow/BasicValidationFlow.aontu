@@ -1,0 +1,27 @@
+# BasicValidationFlow
+
+main: kit: flow: BasicValidationFlow:
+{
+  entity: "validation",
+  kind: "basic",
+  name: "BasicValidationFlow",
+  step: [
+    {
+      match: {
+        company_id: "company01",
+        sync_id: "sync01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "validation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicValidationFlow"
+}

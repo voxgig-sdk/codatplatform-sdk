@@ -1,0 +1,18 @@
+# Entity: all
+
+main: kit: entity: all: {
+
+  alias: field: {}
+
+  name: "all"
+  relations: {
+    ancestors: [
+      [
+        "company"
+      ]
+    ]
+  }
+
+
+
+}

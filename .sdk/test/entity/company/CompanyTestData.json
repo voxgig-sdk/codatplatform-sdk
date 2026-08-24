@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "company": {
+      "COMPANY00": {
+        "created": "saa",
+        "createdByUserName": "sab",
+        "dataConnections": [],
+        "description": "sad",
+        "id": "COMPANY00",
+        "lastSync": "saf",
+        "links": {},
+        "name": "sb1",
+        "pageNumber": "sb2",
+        "pageSize": "sb3",
+        "products": [],
+        "redirect": "sb5",
+        "referenceParentCompany": {},
+        "referenceSubsidiaryCompanies": [],
+        "results": [],
+        "tags": {},
+        "totalResults": "sba",
+        "product_identifier": "PRODUCT_IDENTIFIER01"
+      },
+      "COMPANY01": {
+        "created": "s154",
+        "createdByUserName": "s155",
+        "dataConnections": [],
+        "description": "s157",
+        "id": "COMPANY01",
+        "lastSync": "s159",
+        "links": {},
+        "name": "s15b",
+        "pageNumber": "s15c",
+        "pageSize": "s15d",
+        "products": [],
+        "redirect": "s15f",
+        "referenceParentCompany": {},
+        "referenceSubsidiaryCompanies": [],
+        "results": [],
+        "tags": {},
+        "totalResults": "s164",
+        "product_identifier": "PRODUCT_IDENTIFIER01"
+      },
+      "COMPANY02": {
+        "created": "s1fe",
+        "createdByUserName": "s1ff",
+        "dataConnections": [],
+        "description": "s201",
+        "id": "COMPANY02",
+        "lastSync": "s203",
+        "links": {},
+        "name": "s205",
+        "pageNumber": "s206",
+        "pageSize": "s207",
+        "products": [],
+        "redirect": "s209",
+        "referenceParentCompany": {},
+        "referenceSubsidiaryCompanies": [],
+        "results": [],
+        "tags": {},
+        "totalResults": "s20e",
+        "product_identifier": "PRODUCT_IDENTIFIER01"
+      }
+    }
+  },
+  "new": {
+    "company": {
+      "company_ref01": {
+        "created": "s2a8",
+        "createdByUserName": "s2a9",
+        "dataConnections": [],
+        "description": "s2ab",
+        "lastSync": "s2ad",
+        "links": {},
+        "name": "s2af",
+        "pageNumber": "s2b0",
+        "pageSize": "s2b1",
+        "products": [],
+        "redirect": "s2b3",
+        "referenceParentCompany": {},
+        "referenceSubsidiaryCompanies": [],
+        "results": [],
+        "tags": {},
+        "totalResults": "s2b8"
+      }
+    }
+  }
+}

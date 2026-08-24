@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "company_access_token": {
+      "COMPANY_ACCESS_TOKEN00": {
+        "accessToken": "s1e",
+        "expiresIn": "s1f",
+        "tokenType": "s20",
+        "id": "COMPANY_ACCESS_TOKEN00"
+      },
+      "COMPANY_ACCESS_TOKEN01": {
+        "accessToken": "s3c",
+        "expiresIn": "s3d",
+        "tokenType": "s3e",
+        "id": "COMPANY_ACCESS_TOKEN01"
+      },
+      "COMPANY_ACCESS_TOKEN02": {
+        "accessToken": "s5a",
+        "expiresIn": "s5b",
+        "tokenType": "s5c",
+        "id": "COMPANY_ACCESS_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "company_access_token": {
+      "company_access_token_ref01": {
+        "accessToken": "s78",
+        "expiresIn": "s79",
+        "tokenType": "s7a"
+      }
+    }
+  }
+}
