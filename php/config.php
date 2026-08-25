@@ -42,6 +42,7 @@ class CodatplatformConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

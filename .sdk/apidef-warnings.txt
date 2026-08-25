@@ -1,6 +1,6 @@
 {
   point: "warning"
-  when: 1787612207365
+  when: 1787643138518
   note: "No paths defined for entity=api_key"
   entm: {
     name: "api_key"
