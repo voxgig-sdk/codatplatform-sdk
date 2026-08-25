@@ -77,6 +77,11 @@ const utility_1 = require("../../utility");
         const push_ref01_match = {};
         push_ref01_match['company_id'] = setup.idmap['company01'];
         const push_ref01_list = (await push_ref01_ent.list(push_ref01_match)).map((e) => e.data());
+        // LOAD
+        const push_ref01_match_dt0 = {};
+        push_ref01_match_dt0.id = push_ref01_data.id;
+        const push_ref01_data_dt0 = (await push_ref01_ent.load(push_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(push_ref01_data_dt0.id === push_ref01_data.id);
     });
 });
 function basicSetup(extra) {

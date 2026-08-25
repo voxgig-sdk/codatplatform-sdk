@@ -48,9 +48,13 @@ class TestPushOptionEntity:
 
         # LOAD
         push_option_ref01_ent = client.PushOption(None)
-        push_option_ref01_match_dt0 = {}
+        push_option_ref01_match_dt0 = {
+            "id": push_option_ref01_data["id"],
+        }
         push_option_ref01_data_dt0_loaded = push_option_ref01_ent.load(push_option_ref01_match_dt0, None)
-        assert push_option_ref01_data_dt0_loaded is not None
+        push_option_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(push_option_ref01_data_dt0_loaded))
+        assert push_option_ref01_data_dt0_load_result is not None
+        assert push_option_ref01_data_dt0_load_result["id"] == push_option_ref01_data["id"]
 
 
 

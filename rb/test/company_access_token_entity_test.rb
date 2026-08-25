@@ -41,9 +41,13 @@ class CompanyAccessTokenEntityTest < Minitest::Test
 
     # LOAD
     company_access_token_ref01_ent = client.CompanyAccessToken(nil)
-    company_access_token_ref01_match_dt0 = {}
+    company_access_token_ref01_match_dt0 = {
+      "id" => company_access_token_ref01_data["id"],
+    }
     company_access_token_ref01_data_dt0_loaded = company_access_token_ref01_ent.load(company_access_token_ref01_match_dt0, nil)
-    assert !company_access_token_ref01_data_dt0_loaded.nil?
+    company_access_token_ref01_data_dt0_load_result = Helpers.to_map(company_access_token_ref01_data_dt0_loaded.respond_to?(:data_get) ? company_access_token_ref01_data_dt0_loaded.data_get : company_access_token_ref01_data_dt0_loaded)
+    assert !company_access_token_ref01_data_dt0_load_result.nil?
+    assert_equal company_access_token_ref01_data_dt0_load_result["id"], company_access_token_ref01_data["id"]
 
   end
 end

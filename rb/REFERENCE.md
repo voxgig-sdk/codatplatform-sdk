@@ -507,6 +507,7 @@ company_access_token = client.CompanyAccessToken
 | --- | --- | --- | --- |
 | `accessToken` | `String` | Yes | The access token for the company. |
 | `expiresIn` | `Integer` | Yes | The number of seconds until the access token expires. |
+| `id` | `String` | No |  |
 | `tokenType` | `String` | Yes | The type of token. |
 
 ### Operations
@@ -816,6 +817,7 @@ custom = client.Custom
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `dataSource` | `String` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` | `String` | No |  |
 | `keyBy` | `Array` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | `Integer` | No | Current page number. |
 | `pageSize` | `Integer` | No | Number of items to return in results array. |
@@ -1055,6 +1057,7 @@ integration = client.Integration
 | `dataProvidedBy` | `String` | No | The name of the data provider. |
 | `datatypeFeatures` | `Array` | No |  |
 | `enabled` | `Boolean` | Yes | Whether this integration is enabled for your customers to use. |
+| `id` | `String` | No |  |
 | `integrationId` | `String` | No | A Codat ID representing the integration. |
 | `isBeta` | `Boolean` | No | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `Boolean` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -1372,6 +1375,7 @@ push = client.Push
 | `dataConnectionKey` | `String` | Yes | Unique identifier for a company's data connection. |
 | `dataType` | `String` | No | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | `String` | No | A message about the error. |
+| `id` | `String` | No |  |
 | `links` | `Hash` | Yes |  |
 | `pageNumber` | `Integer` | Yes | Current page number. |
 | `pageSize` | `Integer` | Yes | Number of items to return in results array. |
@@ -1445,6 +1449,7 @@ push_option = client.PushOption
 | --- | --- | --- | --- |
 | `description` | `String` | No | A description of the property. |
 | `displayName` | `String` | Yes | The property's display name. |
+| `id` | `String` | No |  |
 | `options` | `Array` | No |  |
 | `properties` | `Hash` | No |  |
 | `required` | `Boolean` | Yes | The property is required if `True`. |

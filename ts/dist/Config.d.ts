@@ -459,12 +459,17 @@ declare class Config {
             };
         };
         company_access_token: {
-            fields: {
+            fields: ({
                 name: string;
                 req: boolean;
                 short: string;
                 type: string;
-            }[];
+            } | {
+                name: string;
+                type: string;
+                req?: undefined;
+                short?: undefined;
+            })[];
             name: string;
             op: {
                 load: {
@@ -1393,14 +1398,14 @@ declare class Config {
                 type: string;
             } | {
                 name: string;
-                req: boolean;
-                type: string;
-                short?: undefined;
-            } | {
-                name: string;
                 type: string;
                 short?: undefined;
                 req?: undefined;
+            } | {
+                name: string;
+                req: boolean;
+                type: string;
+                short?: undefined;
             })[];
             name: string;
             op: {

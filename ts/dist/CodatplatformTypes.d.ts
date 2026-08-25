@@ -99,6 +99,7 @@ export interface CompanyRemoveMatch {
 export interface CompanyAccessToken {
     accessToken: string;
     expiresIn: number;
+    id?: string;
     tokenType: string;
 }
 export interface CompanyAccessTokenLoadMatch {
@@ -196,6 +197,7 @@ export interface ConnectionManagementAllowedOriginCreateData {
 }
 export interface Custom {
     dataSource?: string;
+    id?: string;
     keyBy?: any[];
     pageNumber?: number;
     pageSize?: number;
@@ -278,6 +280,7 @@ export interface Integration {
     dataProvidedBy?: string;
     datatypeFeatures?: any[];
     enabled: boolean;
+    id?: string;
     integrationId?: string;
     isBeta?: boolean;
     isOfflineConnector?: boolean;
@@ -299,6 +302,7 @@ export interface IntegrationListMatch {
     dataProvidedBy?: string;
     datatypeFeatures?: any[];
     enabled?: boolean;
+    id?: string;
     integrationId?: string;
     isBeta?: boolean;
     isOfflineConnector?: boolean;
@@ -400,6 +404,7 @@ export interface Push {
     dataConnectionKey: string;
     dataType?: string;
     errorMessage?: string;
+    id?: string;
     links: Record<string, any>;
     pageNumber: number;
     pageSize: number;
@@ -423,6 +428,7 @@ export interface PushListMatch {
 export interface PushOption {
     description?: string;
     displayName: string;
+    id?: string;
     options?: any[];
     properties?: Record<string, any>;
     required: boolean;

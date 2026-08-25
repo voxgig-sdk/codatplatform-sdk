@@ -344,6 +344,7 @@ API path: `/companies/{companyId}/products/{productIdentifier}/refresh`
 | --- | --- |
 | `accessToken` | The access token for the company. |
 | `expiresIn` | The number of seconds until the access token expires. |
+| `id` |  |
 | `tokenType` | The type of token. |
 
 Operations: Load.
@@ -402,6 +403,7 @@ API path: `/connectionManagement/corsSettings`
 | Field | Description |
 | --- | --- |
 | `dataSource` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` |  |
 | `keyBy` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | Current page number. |
 | `pageSize` | Number of items to return in results array. |
@@ -491,6 +493,7 @@ API path: ``
 | `dataProvidedBy` | The name of the data provider. |
 | `datatypeFeatures` |  |
 | `enabled` | Whether this integration is enabled for your customers to use. |
+| `id` |  |
 | `integrationId` | A Codat ID representing the integration. |
 | `isBeta` | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -579,6 +582,7 @@ API path: `/companies/{companyId}/connections/{connectionId}/data/queue/custom/{
 | `dataConnectionKey` | Unique identifier for a company's data connection. |
 | `dataType` | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | A message about the error. |
+| `id` |  |
 | `links` |  |
 | `pageNumber` | Current page number. |
 | `pageSize` | Number of items to return in results array. |
@@ -602,6 +606,7 @@ API path: `/companies/{companyId}/push`
 | --- | --- |
 | `description` | A description of the property. |
 | `displayName` | The property's display name. |
+| `id` |  |
 | `options` |  |
 | `properties` |  |
 | `required` | The property is required if `True`. |
@@ -853,6 +858,7 @@ Create an instance: `company_access_token = client.CompanyAccessToken`
 | --- | --- | --- |
 | `accessToken` | `String` | The access token for the company. |
 | `expiresIn` | `Integer` | The number of seconds until the access token expires. |
+| `id` | `String` |  |
 | `tokenType` | `String` | The type of token. |
 
 #### Example: Load
@@ -1008,6 +1014,7 @@ Create an instance: `custom = client.Custom`
 | Field | Type | Description |
 | --- | --- | --- |
 | `dataSource` | `String` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` | `String` |  |
 | `keyBy` | `Array` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | `Integer` | Current page number. |
 | `pageSize` | `Integer` | Number of items to return in results array. |
@@ -1118,6 +1125,7 @@ Create an instance: `integration = client.Integration`
 | `dataProvidedBy` | `String` | The name of the data provider. |
 | `datatypeFeatures` | `Array` |  |
 | `enabled` | `Boolean` | Whether this integration is enabled for your customers to use. |
+| `id` | `String` |  |
 | `integrationId` | `String` | A Codat ID representing the integration. |
 | `isBeta` | `Boolean` | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `Boolean` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -1279,6 +1287,7 @@ Create an instance: `push = client.Push`
 | `dataConnectionKey` | `String` | Unique identifier for a company's data connection. |
 | `dataType` | `String` | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | `String` | A message about the error. |
+| `id` | `String` |  |
 | `links` | `Hash` |  |
 | `pageNumber` | `Integer` | Current page number. |
 | `pageSize` | `Integer` | Number of items to return in results array. |
@@ -1323,6 +1332,7 @@ Create an instance: `push_option = client.PushOption`
 | --- | --- | --- |
 | `description` | `String` | A description of the property. |
 | `displayName` | `String` | The property's display name. |
+| `id` | `String` |  |
 | `options` | `Array` |  |
 | `properties` | `Hash` |  |
 | `required` | `Boolean` | The property is required if `True`. |

@@ -107,6 +107,7 @@
 ---@class CompanyAccessToken
 ---@field accessToken string
 ---@field expiresIn number
+---@field id? string
 ---@field tokenType string
 
 ---@class CompanyAccessTokenLoadMatch
@@ -202,6 +203,7 @@
 
 ---@class Custom
 ---@field dataSource? string
+---@field id? string
 ---@field keyBy? table
 ---@field pageNumber? number
 ---@field pageSize? number
@@ -284,6 +286,7 @@
 ---@field dataProvidedBy? string
 ---@field datatypeFeatures? table
 ---@field enabled boolean
+---@field id? string
 ---@field integrationId? string
 ---@field isBeta? boolean
 ---@field isOfflineConnector? boolean
@@ -305,6 +308,7 @@
 ---@field dataProvidedBy? string
 ---@field datatypeFeatures? table
 ---@field enabled? boolean
+---@field id? string
 ---@field integrationId? string
 ---@field isBeta? boolean
 ---@field isOfflineConnector? boolean
@@ -406,6 +410,7 @@
 ---@field dataConnectionKey string
 ---@field dataType? string
 ---@field errorMessage? string
+---@field id? string
 ---@field links table
 ---@field pageNumber number
 ---@field pageSize number
@@ -429,6 +434,7 @@
 ---@class PushOption
 ---@field description? string
 ---@field displayName string
+---@field id? string
 ---@field options? table
 ---@field properties? table
 ---@field required boolean

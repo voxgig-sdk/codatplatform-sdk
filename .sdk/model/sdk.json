@@ -737,12 +737,22 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "tokenType",
               "req": true,
               "short": "The type of token.",
               "type": "`$STRING`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "company_access_token",
           "op": {
             "load": {
@@ -1482,6 +1492,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "keyBy",
               "req": false,
               "short": "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
@@ -1529,6 +1545,10 @@
               "type": "`$INTEGER`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "custom",
           "op": {
             "load": {
@@ -2167,6 +2187,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "integrationId",
               "req": false,
               "short": "A Codat ID representing the integration.",
@@ -2255,6 +2281,10 @@
               "type": "`$INTEGER`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "integration",
           "op": {
             "list": {
@@ -2996,6 +3026,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "links",
               "req": true,
               "type": "`$OBJECT`"
@@ -3077,6 +3113,10 @@
               "type": "`$OBJECT`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "push",
           "op": {
             "list": {
@@ -3251,6 +3291,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "options",
               "req": false,
               "type": "`$ARRAY`"
@@ -3282,6 +3328,10 @@
               "type": "`$OBJECT`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "push_option",
           "op": {
             "load": {

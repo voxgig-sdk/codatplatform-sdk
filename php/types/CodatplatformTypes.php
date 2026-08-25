@@ -148,6 +148,7 @@ class CompanyAccessToken
 {
     public string $accessToken;
     public int $expiresIn;
+    public ?string $id = null;
     public string $tokenType;
 }
 
@@ -282,6 +283,7 @@ class ConnectionManagementAllowedOriginCreateData
 class Custom
 {
     public ?string $dataSource = null;
+    public ?string $id = null;
     public ?array $keyBy = null;
     public ?int $pageNumber = null;
     public ?int $pageSize = null;
@@ -385,6 +387,7 @@ class Integration
     public ?string $dataProvidedBy = null;
     public ?array $datatypeFeatures = null;
     public bool $enabled;
+    public ?string $id = null;
     public ?string $integrationId = null;
     public ?bool $isBeta = null;
     public ?bool $isOfflineConnector = null;
@@ -412,6 +415,7 @@ class IntegrationListMatch
     public ?string $dataProvidedBy = null;
     public ?array $datatypeFeatures = null;
     public ?bool $enabled = null;
+    public ?string $id = null;
     public ?string $integrationId = null;
     public ?bool $isBeta = null;
     public ?bool $isOfflineConnector = null;
@@ -543,6 +547,7 @@ class Push
     public string $dataConnectionKey;
     public ?string $dataType = null;
     public ?string $errorMessage = null;
+    public ?string $id = null;
     public array $links;
     public int $pageNumber;
     public int $pageSize;
@@ -575,6 +580,7 @@ class PushOption
 {
     public ?string $description = null;
     public string $displayName;
+    public ?string $id = null;
     public ?array $options = null;
     public ?array $properties = null;
     public bool $required;

@@ -94,10 +94,14 @@ describe("PushEntity", function()
     assert.is_table(push_ref01_list_result)
 
     -- LOAD
-    local push_ref01_match_dt0 = {}
+    local push_ref01_match_dt0 = {
+      id = push_ref01_data["id"],
+    }
     local push_ref01_data_dt0_loaded, err = push_ref01_ent:load(push_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(push_ref01_data_dt0_loaded)
+    local push_ref01_data_dt0_load_result = helpers.to_map(type(push_ref01_data_dt0_loaded) == 'table' and push_ref01_data_dt0_loaded.data_get and push_ref01_data_dt0_loaded:data_get() or push_ref01_data_dt0_loaded)
+    assert.is_not_nil(push_ref01_data_dt0_load_result)
+    assert.are.equal(push_ref01_data_dt0_load_result["id"], push_ref01_data["id"])
 
   end)
 end)

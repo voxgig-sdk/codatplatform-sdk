@@ -75,12 +75,18 @@ const utility_1 = require("../../utility");
         // UPDATE
         const custom_ref01_ent = client.Custom();
         const custom_ref01_data_up0 = {};
+        custom_ref01_data_up0.id = custom_ref01_data.id;
         custom_ref01_data_up0['platform_key'] = setup.idmap['platform_key'];
         const custom_ref01_markdef_up0 = { name: 'dataSource', value: 'Mark01-custom_ref01_' + setup.now };
         custom_ref01_data_up0[custom_ref01_markdef_up0.name] = custom_ref01_markdef_up0.value;
         const custom_ref01_resdata_up0 = (await custom_ref01_ent.update(custom_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != custom_ref01_resdata_up0);
+        (0, node_assert_1.default)(custom_ref01_resdata_up0.id === custom_ref01_data_up0.id);
         (0, node_assert_1.default)(custom_ref01_resdata_up0[custom_ref01_markdef_up0.name] === custom_ref01_markdef_up0.value);
+        // LOAD
+        const custom_ref01_match_dt0 = {};
+        custom_ref01_match_dt0.id = custom_ref01_data.id;
+        const custom_ref01_data_dt0 = (await custom_ref01_ent.load(custom_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(custom_ref01_data_dt0.id === custom_ref01_data.id);
     });
 });
 function basicSetup(extra) {

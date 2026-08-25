@@ -48,9 +48,13 @@ class TestCompanyAccessTokenEntity:
 
         # LOAD
         company_access_token_ref01_ent = client.CompanyAccessToken(None)
-        company_access_token_ref01_match_dt0 = {}
+        company_access_token_ref01_match_dt0 = {
+            "id": company_access_token_ref01_data["id"],
+        }
         company_access_token_ref01_data_dt0_loaded = company_access_token_ref01_ent.load(company_access_token_ref01_match_dt0, None)
-        assert company_access_token_ref01_data_dt0_loaded is not None
+        company_access_token_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(company_access_token_ref01_data_dt0_loaded))
+        assert company_access_token_ref01_data_dt0_load_result is not None
+        assert company_access_token_ref01_data_dt0_load_result["id"] == company_access_token_ref01_data["id"]
 
 
 

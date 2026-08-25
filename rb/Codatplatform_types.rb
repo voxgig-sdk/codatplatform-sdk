@@ -372,11 +372,15 @@ CompanyRemoveMatch = Struct.new(
 # @!attribute [rw] expiresIn
 #   @return [Integer]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] tokenType
 #   @return [String]
 CompanyAccessToken = Struct.new(
   :accessToken,
   :expiresIn,
+  :id,
   :tokenType,
   keyword_init: true
 )
@@ -714,6 +718,9 @@ ConnectionManagementAllowedOriginCreateData = Struct.new(
 # @!attribute [rw] dataSource
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] keyBy
 #   @return [Array, nil]
 #
@@ -736,6 +743,7 @@ ConnectionManagementAllowedOriginCreateData = Struct.new(
 #   @return [Integer, nil]
 Custom = Struct.new(
   :dataSource,
+  :id,
   :keyBy,
   :pageNumber,
   :pageSize,
@@ -1017,6 +1025,9 @@ end
 # @!attribute [rw] enabled
 #   @return [Boolean]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] integrationId
 #   @return [String, nil]
 #
@@ -1059,6 +1070,7 @@ Integration = Struct.new(
   :dataProvidedBy,
   :datatypeFeatures,
   :enabled,
+  :id,
   :integrationId,
   :isBeta,
   :isOfflineConnector,
@@ -1094,6 +1106,9 @@ IntegrationLoadMatch = Struct.new(
 #
 # @!attribute [rw] enabled
 #   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] integrationId
 #   @return [String, nil]
@@ -1137,6 +1152,7 @@ IntegrationListMatch = Struct.new(
   :dataProvidedBy,
   :datatypeFeatures,
   :enabled,
+  :id,
   :integrationId,
   :isBeta,
   :isOfflineConnector,
@@ -1464,6 +1480,9 @@ PullOperationCreateData = Struct.new(
 # @!attribute [rw] errorMessage
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash]
 #
@@ -1506,6 +1525,7 @@ Push = Struct.new(
   :dataConnectionKey,
   :dataType,
   :errorMessage,
+  :id,
   :links,
   :pageNumber,
   :pageSize,
@@ -1551,6 +1571,9 @@ PushListMatch = Struct.new(
 # @!attribute [rw] displayName
 #   @return [String]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] options
 #   @return [Array, nil]
 #
@@ -1568,6 +1591,7 @@ PushListMatch = Struct.new(
 PushOption = Struct.new(
   :description,
   :displayName,
+  :id,
   :options,
   :properties,
   :required,

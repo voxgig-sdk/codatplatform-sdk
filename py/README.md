@@ -347,6 +347,7 @@ API path: `/companies/{companyId}/products/{productIdentifier}/refresh`
 | --- | --- |
 | `accessToken` | The access token for the company. |
 | `expiresIn` | The number of seconds until the access token expires. |
+| `id` |  |
 | `tokenType` | The type of token. |
 
 Operations: Load.
@@ -405,6 +406,7 @@ API path: `/connectionManagement/corsSettings`
 | Field | Description |
 | --- | --- |
 | `dataSource` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` |  |
 | `keyBy` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | Current page number. |
 | `pageSize` | Number of items to return in results array. |
@@ -494,6 +496,7 @@ API path: ``
 | `dataProvidedBy` | The name of the data provider. |
 | `datatypeFeatures` |  |
 | `enabled` | Whether this integration is enabled for your customers to use. |
+| `id` |  |
 | `integrationId` | A Codat ID representing the integration. |
 | `isBeta` | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -582,6 +585,7 @@ API path: `/companies/{companyId}/connections/{connectionId}/data/queue/custom/{
 | `dataConnectionKey` | Unique identifier for a company's data connection. |
 | `dataType` | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | A message about the error. |
+| `id` |  |
 | `links` |  |
 | `pageNumber` | Current page number. |
 | `pageSize` | Number of items to return in results array. |
@@ -605,6 +609,7 @@ API path: `/companies/{companyId}/push`
 | --- | --- |
 | `description` | A description of the property. |
 | `displayName` | The property's display name. |
+| `id` |  |
 | `options` |  |
 | `properties` |  |
 | `required` | The property is required if `True`. |
@@ -853,6 +858,7 @@ Create an instance: `company_access_token = client.CompanyAccessToken()`
 | --- | --- | --- |
 | `accessToken` | `str` | The access token for the company. |
 | `expiresIn` | `int` | The number of seconds until the access token expires. |
+| `id` | `str` |  |
 | `tokenType` | `str` | The type of token. |
 
 #### Example: Load
@@ -1003,6 +1009,7 @@ Create an instance: `custom = client.Custom()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `dataSource` | `str` | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` | `str` |  |
 | `keyBy` | `list` | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | `int` | Current page number. |
 | `pageSize` | `int` | Number of items to return in results array. |
@@ -1111,6 +1118,7 @@ Create an instance: `integration = client.Integration()`
 | `dataProvidedBy` | `str` | The name of the data provider. |
 | `datatypeFeatures` | `list` |  |
 | `enabled` | `bool` | Whether this integration is enabled for your customers to use. |
+| `id` | `str` |  |
 | `integrationId` | `str` | A Codat ID representing the integration. |
 | `isBeta` | `bool` | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `bool` | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -1267,6 +1275,7 @@ Create an instance: `push = client.Push()`
 | `dataConnectionKey` | `str` | Unique identifier for a company's data connection. |
 | `dataType` | `str` | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | `str` | A message about the error. |
+| `id` | `str` |  |
 | `links` | `dict` |  |
 | `pageNumber` | `int` | Current page number. |
 | `pageSize` | `int` | Number of items to return in results array. |
@@ -1309,6 +1318,7 @@ Create an instance: `push_option = client.PushOption()`
 | --- | --- | --- |
 | `description` | `str` | A description of the property. |
 | `displayName` | `str` | The property's display name. |
+| `id` | `str` |  |
 | `options` | `list` |  |
 | `properties` | `dict` |  |
 | `required` | `bool` | The property is required if `True`. |

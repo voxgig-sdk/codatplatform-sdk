@@ -48,9 +48,13 @@ class CompanyAccessTokenEntityTest extends TestCase
 
         // LOAD
         $company_access_token_ref01_ent = $client->CompanyAccessToken(null);
-        $company_access_token_ref01_match_dt0 = [];
+        $company_access_token_ref01_match_dt0 = [
+            "id" => $company_access_token_ref01_data["id"],
+        ];
         $company_access_token_ref01_data_dt0_loaded = $company_access_token_ref01_ent->load($company_access_token_ref01_match_dt0, null);
-        $this->assertNotNull($company_access_token_ref01_data_dt0_loaded);
+        $company_access_token_ref01_data_dt0_load_result = Helpers::to_map(is_object($company_access_token_ref01_data_dt0_loaded) && method_exists($company_access_token_ref01_data_dt0_loaded, 'data_get') ? $company_access_token_ref01_data_dt0_loaded->data_get() : $company_access_token_ref01_data_dt0_loaded);
+        $this->assertNotNull($company_access_token_ref01_data_dt0_load_result);
+        $this->assertEquals($company_access_token_ref01_data_dt0_load_result["id"], $company_access_token_ref01_data["id"]);
 
     }
 }

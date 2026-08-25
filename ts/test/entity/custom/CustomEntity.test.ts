@@ -62,16 +62,23 @@ describe('CustomEntity', async () => {
     // UPDATE
     const custom_ref01_ent = client.Custom()
     const custom_ref01_data_up0: any = {}
+    custom_ref01_data_up0.id = custom_ref01_data.id
     custom_ref01_data_up0 ['platform_key'] = setup.idmap['platform_key']
 
     const custom_ref01_markdef_up0 = { name: 'dataSource', value: 'Mark01-custom_ref01_' + setup.now }
     ;(custom_ref01_data_up0 as any)[custom_ref01_markdef_up0.name] = custom_ref01_markdef_up0.value
 
     const custom_ref01_resdata_up0 = (await custom_ref01_ent.update(custom_ref01_data_up0)).data()
-    assert(null != custom_ref01_resdata_up0)
+    assert(custom_ref01_resdata_up0.id === custom_ref01_data_up0.id)
 
     assert((custom_ref01_resdata_up0 as any)[custom_ref01_markdef_up0.name] === custom_ref01_markdef_up0.value)
 
+
+    // LOAD
+    const custom_ref01_match_dt0: any = {}
+    custom_ref01_match_dt0.id = custom_ref01_data.id
+    const custom_ref01_data_dt0 = (await custom_ref01_ent.load(custom_ref01_match_dt0)).data()
+    assert(custom_ref01_data_dt0.id === custom_ref01_data.id)
 
 
   })

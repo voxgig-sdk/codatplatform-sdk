@@ -67,6 +67,12 @@ describe('PushEntity', async () => {
     const push_ref01_list = (await push_ref01_ent.list(push_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const push_ref01_match_dt0: any = {}
+    push_ref01_match_dt0.id = push_ref01_data.id
+    const push_ref01_data_dt0 = (await push_ref01_ent.load(push_ref01_match_dt0)).data()
+    assert(push_ref01_data_dt0.id === push_ref01_data.id)
+
 
   })
 })

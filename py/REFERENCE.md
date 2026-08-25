@@ -498,6 +498,7 @@ company_access_token = client.CompanyAccessToken()
 | --- | --- | --- | --- |
 | `accessToken` | `str` | Yes | The access token for the company. |
 | `expiresIn` | `int` | Yes | The number of seconds until the access token expires. |
+| `id` | `str` | No |  |
 | `tokenType` | `str` | Yes | The type of token. |
 
 ### Operations
@@ -807,6 +808,7 @@ custom = client.Custom()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `dataSource` | `str` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` | `str` | No |  |
 | `keyBy` | `list` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | `int` | No | Current page number. |
 | `pageSize` | `int` | No | Number of items to return in results array. |
@@ -1042,6 +1044,7 @@ integration = client.Integration()
 | `dataProvidedBy` | `str` | No | The name of the data provider. |
 | `datatypeFeatures` | `list` | No |  |
 | `enabled` | `bool` | Yes | Whether this integration is enabled for your customers to use. |
+| `id` | `str` | No |  |
 | `integrationId` | `str` | No | A Codat ID representing the integration. |
 | `isBeta` | `bool` | No | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `bool` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -1360,6 +1363,7 @@ push = client.Push()
 | `dataConnectionKey` | `str` | Yes | Unique identifier for a company's data connection. |
 | `dataType` | `str` | No | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | `str` | No | A message about the error. |
+| `id` | `str` | No |  |
 | `links` | `dict` | Yes |  |
 | `pageNumber` | `int` | Yes | Current page number. |
 | `pageSize` | `int` | Yes | Number of items to return in results array. |
@@ -1434,6 +1438,7 @@ push_option = client.PushOption()
 | --- | --- | --- | --- |
 | `description` | `str` | No | A description of the property. |
 | `displayName` | `str` | Yes | The property's display name. |
+| `id` | `str` | No |  |
 | `options` | `list` | No |  |
 | `properties` | `dict` | No |  |
 | `required` | `bool` | Yes | The property is required if `True`. |

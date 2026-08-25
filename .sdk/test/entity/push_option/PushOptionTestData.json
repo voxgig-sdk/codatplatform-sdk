@@ -2,52 +2,52 @@
   "existing": {
     "push_option": {
       "PUSH_OPTION00": {
-        "description": "s46",
-        "displayName": "s47",
+        "description": "s50",
+        "displayName": "s51",
+        "id": "PUSH_OPTION00",
         "options": [],
         "properties": {},
-        "required": true,
-        "type": "s4b",
+        "required": false,
+        "type": "s56",
         "validation": {},
         "company_id": "COMPANY01",
-        "connection_id": "CONNECTION01",
-        "id": "PUSH_OPTION00"
+        "connection_id": "CONNECTION01"
       },
       "PUSH_OPTION01": {
-        "description": "s8c",
-        "displayName": "s8d",
+        "description": "sa0",
+        "displayName": "sa1",
+        "id": "PUSH_OPTION01",
         "options": [],
         "properties": {},
-        "required": true,
-        "type": "s91",
+        "required": false,
+        "type": "sa6",
         "validation": {},
         "company_id": "COMPANY01",
-        "connection_id": "CONNECTION01",
-        "id": "PUSH_OPTION01"
+        "connection_id": "CONNECTION01"
       },
       "PUSH_OPTION02": {
-        "description": "sd2",
-        "displayName": "sd3",
+        "description": "sf0",
+        "displayName": "sf1",
+        "id": "PUSH_OPTION02",
         "options": [],
         "properties": {},
-        "required": true,
-        "type": "sd7",
+        "required": false,
+        "type": "sf6",
         "validation": {},
         "company_id": "COMPANY01",
-        "connection_id": "CONNECTION01",
-        "id": "PUSH_OPTION02"
+        "connection_id": "CONNECTION01"
       }
     }
   },
   "new": {
     "push_option": {
       "push_option_ref01": {
-        "description": "s118",
-        "displayName": "s119",
+        "description": "s140",
+        "displayName": "s141",
         "options": [],
         "properties": {},
-        "required": true,
-        "type": "s11d",
+        "required": false,
+        "type": "s146",
         "validation": {}
       }
     }

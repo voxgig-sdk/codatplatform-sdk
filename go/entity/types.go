@@ -136,6 +136,7 @@ type CompanyRemoveMatch struct {
 type CompanyAccessToken struct {
 	AccessToken string `json:"accessToken"`
 	ExpiresIn int `json:"expiresIn"`
+	Id *string `json:"id,omitempty"`
 	TokenType string `json:"tokenType"`
 }
 
@@ -257,6 +258,7 @@ type ConnectionManagementAllowedOriginCreateData struct {
 // Custom is the typed data model for the custom entity.
 type Custom struct {
 	DataSource *string `json:"dataSource,omitempty"`
+	Id *string `json:"id,omitempty"`
 	KeyBy *[]any `json:"keyBy,omitempty"`
 	PageNumber *int `json:"pageNumber,omitempty"`
 	PageSize *int `json:"pageSize,omitempty"`
@@ -353,6 +355,7 @@ type Integration struct {
 	DataProvidedBy *string `json:"dataProvidedBy,omitempty"`
 	DatatypeFeatures *[]any `json:"datatypeFeatures,omitempty"`
 	Enabled bool `json:"enabled"`
+	Id *string `json:"id,omitempty"`
 	IntegrationId *string `json:"integrationId,omitempty"`
 	IsBeta *bool `json:"isBeta,omitempty"`
 	IsOfflineConnector *bool `json:"isOfflineConnector,omitempty"`
@@ -378,6 +381,7 @@ type IntegrationListMatch struct {
 	DataProvidedBy *string `json:"dataProvidedBy,omitempty"`
 	DatatypeFeatures *[]any `json:"datatypeFeatures,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
+	Id *string `json:"id,omitempty"`
 	IntegrationId *string `json:"integrationId,omitempty"`
 	IsBeta *bool `json:"isBeta,omitempty"`
 	IsOfflineConnector *bool `json:"isOfflineConnector,omitempty"`
@@ -499,6 +503,7 @@ type Push struct {
 	DataConnectionKey string `json:"dataConnectionKey"`
 	DataType *string `json:"dataType,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links map[string]any `json:"links"`
 	PageNumber int `json:"pageNumber"`
 	PageSize int `json:"pageSize"`
@@ -528,6 +533,7 @@ type PushListMatch struct {
 type PushOption struct {
 	Description *string `json:"description,omitempty"`
 	DisplayName string `json:"displayName"`
+	Id *string `json:"id,omitempty"`
 	Options *[]any `json:"options,omitempty"`
 	Properties *map[string]any `json:"properties,omitempty"`
 	Required bool `json:"required"`

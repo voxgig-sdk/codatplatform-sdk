@@ -44,10 +44,14 @@ describe("CompanyAccessTokenEntity", function()
 
     -- LOAD
     local company_access_token_ref01_ent = client:CompanyAccessToken(nil)
-    local company_access_token_ref01_match_dt0 = {}
+    local company_access_token_ref01_match_dt0 = {
+      id = company_access_token_ref01_data["id"],
+    }
     local company_access_token_ref01_data_dt0_loaded, err = company_access_token_ref01_ent:load(company_access_token_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(company_access_token_ref01_data_dt0_loaded)
+    local company_access_token_ref01_data_dt0_load_result = helpers.to_map(type(company_access_token_ref01_data_dt0_loaded) == 'table' and company_access_token_ref01_data_dt0_loaded.data_get and company_access_token_ref01_data_dt0_loaded:data_get() or company_access_token_ref01_data_dt0_loaded)
+    assert.is_not_nil(company_access_token_ref01_data_dt0_load_result)
+    assert.are.equal(company_access_token_ref01_data_dt0_load_result["id"], company_access_token_ref01_data["id"])
 
   end)
 end)

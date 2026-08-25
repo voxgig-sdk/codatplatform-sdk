@@ -63,6 +63,7 @@ func TestCustomEntity(t *testing.T) {
 		// UPDATE
 		customRef01Ent := client.Custom(nil)
 		customRef01DataUp0Up := map[string]any{
+			"id": customRef01Data["id"],
 			"platform_key": setup.idmap["platform_key"],
 		}
 
@@ -78,18 +79,27 @@ func TestCustomEntity(t *testing.T) {
 		if customRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if customRef01ResdataUp0["id"] != customRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 		if customRef01ResdataUp0[customRef01MarkdefUp0Name] != customRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", customRef01MarkdefUp0Name, customRef01ResdataUp0[customRef01MarkdefUp0Name])
 		}
 
 		// LOAD
-		customRef01MatchDt0 := map[string]any{}
+		customRef01MatchDt0 := map[string]any{
+			"id": customRef01Data["id"],
+		}
 		customRef01DataDt0Loaded, err := customRef01Ent.Load(customRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if customRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		customRef01DataDt0LoadResult := core.ToMapAny(entityData(customRef01DataDt0Loaded))
+		if customRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if customRef01DataDt0LoadResult["id"] != customRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -61,13 +61,19 @@ func TestPushOptionEntity(t *testing.T) {
 
 		// LOAD
 		pushOptionRef01Ent := client.PushOption(nil)
-		pushOptionRef01MatchDt0 := map[string]any{}
+		pushOptionRef01MatchDt0 := map[string]any{
+			"id": pushOptionRef01Data["id"],
+		}
 		pushOptionRef01DataDt0Loaded, err := pushOptionRef01Ent.Load(pushOptionRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if pushOptionRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		pushOptionRef01DataDt0LoadResult := core.ToMapAny(entityData(pushOptionRef01DataDt0Loaded))
+		if pushOptionRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if pushOptionRef01DataDt0LoadResult["id"] != pushOptionRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -95,9 +95,13 @@ class PushEntityTest extends TestCase
         $this->assertIsArray($push_ref01_list_result);
 
         // LOAD
-        $push_ref01_match_dt0 = [];
+        $push_ref01_match_dt0 = [
+            "id" => $push_ref01_data["id"],
+        ];
         $push_ref01_data_dt0_loaded = $push_ref01_ent->load($push_ref01_match_dt0, null);
-        $this->assertNotNull($push_ref01_data_dt0_loaded);
+        $push_ref01_data_dt0_load_result = Helpers::to_map(is_object($push_ref01_data_dt0_loaded) && method_exists($push_ref01_data_dt0_loaded, 'data_get') ? $push_ref01_data_dt0_loaded->data_get() : $push_ref01_data_dt0_loaded);
+        $this->assertNotNull($push_ref01_data_dt0_load_result);
+        $this->assertEquals($push_ref01_data_dt0_load_result["id"], $push_ref01_data["id"]);
 
     }
 }

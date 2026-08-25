@@ -83,9 +83,13 @@ class IntegrationEntityTest < Minitest::Test
     assert integration_ref01_list_result.is_a?(Array)
 
     # LOAD
-    integration_ref01_match_dt0 = {}
+    integration_ref01_match_dt0 = {
+      "id" => integration_ref01_data["id"],
+    }
     integration_ref01_data_dt0_loaded = integration_ref01_ent.load(integration_ref01_match_dt0, nil)
-    assert !integration_ref01_data_dt0_loaded.nil?
+    integration_ref01_data_dt0_load_result = Helpers.to_map(integration_ref01_data_dt0_loaded.respond_to?(:data_get) ? integration_ref01_data_dt0_loaded.data_get : integration_ref01_data_dt0_loaded)
+    assert !integration_ref01_data_dt0_load_result.nil?
+    assert_equal integration_ref01_data_dt0_load_result["id"], integration_ref01_data["id"]
 
   end
 end

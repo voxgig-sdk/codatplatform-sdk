@@ -18,12 +18,22 @@ main: kit: entity: company_access_token: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "tokenType"
       req: true
       short: "The type of token."
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "company_access_token"
   op: {

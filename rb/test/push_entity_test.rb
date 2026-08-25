@@ -85,9 +85,13 @@ class PushEntityTest < Minitest::Test
     assert push_ref01_list_result.is_a?(Array)
 
     # LOAD
-    push_ref01_match_dt0 = {}
+    push_ref01_match_dt0 = {
+      "id" => push_ref01_data["id"],
+    }
     push_ref01_data_dt0_loaded = push_ref01_ent.load(push_ref01_match_dt0, nil)
-    assert !push_ref01_data_dt0_loaded.nil?
+    push_ref01_data_dt0_load_result = Helpers.to_map(push_ref01_data_dt0_loaded.respond_to?(:data_get) ? push_ref01_data_dt0_loaded.data_get : push_ref01_data_dt0_loaded)
+    assert !push_ref01_data_dt0_load_result.nil?
+    assert_equal push_ref01_data_dt0_load_result["id"], push_ref01_data["id"]
 
   end
 end

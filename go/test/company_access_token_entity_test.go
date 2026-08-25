@@ -61,13 +61,19 @@ func TestCompanyAccessTokenEntity(t *testing.T) {
 
 		// LOAD
 		companyAccessTokenRef01Ent := client.CompanyAccessToken(nil)
-		companyAccessTokenRef01MatchDt0 := map[string]any{}
+		companyAccessTokenRef01MatchDt0 := map[string]any{
+			"id": companyAccessTokenRef01Data["id"],
+		}
 		companyAccessTokenRef01DataDt0Loaded, err := companyAccessTokenRef01Ent.Load(companyAccessTokenRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if companyAccessTokenRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		companyAccessTokenRef01DataDt0LoadResult := core.ToMapAny(entityData(companyAccessTokenRef01DataDt0Loaded))
+		if companyAccessTokenRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if companyAccessTokenRef01DataDt0LoadResult["id"] != companyAccessTokenRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

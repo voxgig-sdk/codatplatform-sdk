@@ -66,6 +66,12 @@ describe('IntegrationEntity', async () => {
     const integration_ref01_list = (await integration_ref01_ent.list(integration_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const integration_ref01_match_dt0: any = {}
+    integration_ref01_match_dt0.id = integration_ref01_data.id
+    const integration_ref01_data_dt0 = (await integration_ref01_ent.load(integration_ref01_match_dt0)).data()
+    assert(integration_ref01_data_dt0.id === integration_ref01_data.id)
+
 
   })
 })

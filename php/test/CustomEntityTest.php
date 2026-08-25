@@ -49,6 +49,7 @@ class CustomEntityTest extends TestCase
         // UPDATE
         $custom_ref01_ent = $client->Custom(null);
         $custom_ref01_data_up0_up = [
+            "id" => $custom_ref01_data["id"],
             "platform_key" => $setup["idmap"]["platform_key"],
         ];
 
@@ -59,12 +60,17 @@ class CustomEntityTest extends TestCase
         $custom_ref01_resdata_up0_result = $custom_ref01_ent->update($custom_ref01_data_up0_up, null);
         $custom_ref01_resdata_up0 = Helpers::to_map(is_object($custom_ref01_resdata_up0_result) && method_exists($custom_ref01_resdata_up0_result, 'data_get') ? $custom_ref01_resdata_up0_result->data_get() : $custom_ref01_resdata_up0_result);
         $this->assertNotNull($custom_ref01_resdata_up0);
+        $this->assertEquals($custom_ref01_resdata_up0["id"], $custom_ref01_data_up0_up["id"]);
         $this->assertEquals($custom_ref01_resdata_up0[$custom_ref01_markdef_up0_name], $custom_ref01_markdef_up0_value);
 
         // LOAD
-        $custom_ref01_match_dt0 = [];
+        $custom_ref01_match_dt0 = [
+            "id" => $custom_ref01_data["id"],
+        ];
         $custom_ref01_data_dt0_loaded = $custom_ref01_ent->load($custom_ref01_match_dt0, null);
-        $this->assertNotNull($custom_ref01_data_dt0_loaded);
+        $custom_ref01_data_dt0_load_result = Helpers::to_map(is_object($custom_ref01_data_dt0_loaded) && method_exists($custom_ref01_data_dt0_loaded, 'data_get') ? $custom_ref01_data_dt0_loaded->data_get() : $custom_ref01_data_dt0_loaded);
+        $this->assertNotNull($custom_ref01_data_dt0_load_result);
+        $this->assertEquals($custom_ref01_data_dt0_load_result["id"], $custom_ref01_data["id"]);
 
     }
 }

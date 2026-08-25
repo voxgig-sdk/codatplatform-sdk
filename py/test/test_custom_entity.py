@@ -49,6 +49,7 @@ class TestCustomEntity:
         # UPDATE
         custom_ref01_ent = client.Custom(None)
         custom_ref01_data_up0_up = {
+            "id": custom_ref01_data["id"],
             "platform_key": setup["idmap"]["platform_key"],
         }
 
@@ -58,12 +59,17 @@ class TestCustomEntity:
 
         custom_ref01_resdata_up0 = helpers.to_map(runner.entity_data(custom_ref01_ent.update(custom_ref01_data_up0_up, None)))
         assert custom_ref01_resdata_up0 is not None
+        assert custom_ref01_resdata_up0["id"] == custom_ref01_data_up0_up["id"]
         assert custom_ref01_resdata_up0[custom_ref01_markdef_up0_name] == custom_ref01_markdef_up0_value
 
         # LOAD
-        custom_ref01_match_dt0 = {}
+        custom_ref01_match_dt0 = {
+            "id": custom_ref01_data["id"],
+        }
         custom_ref01_data_dt0_loaded = custom_ref01_ent.load(custom_ref01_match_dt0, None)
-        assert custom_ref01_data_dt0_loaded is not None
+        custom_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(custom_ref01_data_dt0_loaded))
+        assert custom_ref01_data_dt0_load_result is not None
+        assert custom_ref01_data_dt0_load_result["id"] == custom_ref01_data["id"]
 
 
 

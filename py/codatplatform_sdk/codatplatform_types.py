@@ -140,10 +140,14 @@ class CompanyRemoveMatch(CompanyRemoveMatchRequired, total=False):
     product_identifier: str
 
 
-class CompanyAccessToken(TypedDict):
+class CompanyAccessTokenRequired(TypedDict):
     accessToken: str
     expiresIn: int
     tokenType: str
+
+
+class CompanyAccessToken(CompanyAccessTokenRequired, total=False):
+    id: str
 
 
 class CompanyAccessTokenLoadMatch(TypedDict):
@@ -260,6 +264,7 @@ class ConnectionManagementAllowedOriginCreateData(TypedDict, total=False):
 
 class Custom(TypedDict, total=False):
     dataSource: str
+    id: str
     keyBy: list
     pageNumber: int
     pageSize: int
@@ -367,6 +372,7 @@ class IntegrationRequired(TypedDict):
 class Integration(IntegrationRequired, total=False):
     dataProvidedBy: str
     datatypeFeatures: list
+    id: str
     integrationId: str
     isBeta: bool
     isOfflineConnector: bool
@@ -383,6 +389,7 @@ class IntegrationListMatch(TypedDict, total=False):
     dataProvidedBy: str
     datatypeFeatures: list
     enabled: bool
+    id: str
     integrationId: str
     isBeta: bool
     isOfflineConnector: bool
@@ -516,6 +523,7 @@ class Push(PushRequired, total=False):
     completedOnUtc: str
     dataType: str
     errorMessage: str
+    id: str
     results: list
     timeoutInMinutes: int
     timeoutInSeconds: int
@@ -539,6 +547,7 @@ class PushOptionRequired(TypedDict):
 
 class PushOption(PushOptionRequired, total=False):
     description: str
+    id: str
     options: list
     properties: dict
     validation: dict

@@ -76,6 +76,11 @@ const utility_1 = require("../../utility");
         const integration_ref01_ent = client.Integration();
         const integration_ref01_match = {};
         const integration_ref01_list = (await integration_ref01_ent.list(integration_ref01_match)).map((e) => e.data());
+        // LOAD
+        const integration_ref01_match_dt0 = {};
+        integration_ref01_match_dt0.id = integration_ref01_data.id;
+        const integration_ref01_data_dt0 = (await integration_ref01_ent.load(integration_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(integration_ref01_data_dt0.id === integration_ref01_data.id);
     });
 });
 function basicSetup(extra) {

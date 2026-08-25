@@ -130,6 +130,7 @@
  * @typedef {Object} CompanyAccessToken
  * @property {string} accessToken
  * @property {number} expiresIn
+ * @property {string} [id]
  * @property {string} tokenType
  */
 
@@ -251,6 +252,7 @@
 /**
  * @typedef {Object} Custom
  * @property {string} [dataSource]
+ * @property {string} [id]
  * @property {Array} [keyBy]
  * @property {number} [pageNumber]
  * @property {number} [pageSize]
@@ -347,6 +349,7 @@
  * @property {string} [dataProvidedBy]
  * @property {Array} [datatypeFeatures]
  * @property {boolean} enabled
+ * @property {string} [id]
  * @property {string} [integrationId]
  * @property {boolean} [isBeta]
  * @property {boolean} [isOfflineConnector]
@@ -372,6 +375,7 @@
  * @property {string} [dataProvidedBy]
  * @property {Array} [datatypeFeatures]
  * @property {boolean} [enabled]
+ * @property {string} [id]
  * @property {string} [integrationId]
  * @property {boolean} [isBeta]
  * @property {boolean} [isOfflineConnector]
@@ -493,6 +497,7 @@
  * @property {string} dataConnectionKey
  * @property {string} [dataType]
  * @property {string} [errorMessage]
+ * @property {string} [id]
  * @property {Object} links
  * @property {number} pageNumber
  * @property {number} pageSize
@@ -522,6 +527,7 @@
  * @typedef {Object} PushOption
  * @property {string} [description]
  * @property {string} displayName
+ * @property {string} [id]
  * @property {Array} [options]
  * @property {Object} [properties]
  * @property {boolean} required

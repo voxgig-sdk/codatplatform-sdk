@@ -12,6 +12,11 @@ main: kit: entity: custom: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "keyBy"
       req: false
       short: "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type."
@@ -53,6 +58,11 @@ main: kit: entity: custom: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "custom"
   op: {

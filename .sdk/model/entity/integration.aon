@@ -23,6 +23,11 @@ main: kit: entity: integration: {
       type: "`$BOOLEAN`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "integrationId"
       req: false
       short: "A Codat ID representing the integration."
@@ -99,6 +104,11 @@ main: kit: entity: integration: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "integration"
   op: {

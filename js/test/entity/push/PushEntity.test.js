@@ -51,8 +51,9 @@ describe('PushEntity', async () => {
 
     // LOAD
     const push_ref01_match_dt0 = {}
+    push_ref01_match_dt0.id = push_ref01_data.id
     const push_ref01_data_dt0 = (await push_ref01_ent.load(push_ref01_match_dt0)).data()
-    assert(null != push_ref01_data_dt0)
+    assert(push_ref01_data_dt0.id === push_ref01_data.id)
 
 
   })

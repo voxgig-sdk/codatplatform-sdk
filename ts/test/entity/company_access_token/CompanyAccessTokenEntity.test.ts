@@ -59,9 +59,12 @@ describe('CompanyAccessTokenEntity', async () => {
 
     let company_access_token_ref01_data = Object.values(setup.data.existing.company_access_token)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const company_access_token_ref01_ent = client.CompanyAccessToken()
+    const company_access_token_ref01_match_dt0: any = {}
+    company_access_token_ref01_match_dt0.id = company_access_token_ref01_data.id
+    const company_access_token_ref01_data_dt0 = (await company_access_token_ref01_ent.load(company_access_token_ref01_match_dt0)).data()
+    assert(company_access_token_ref01_data_dt0.id === company_access_token_ref01_data.id)
 
 
   })

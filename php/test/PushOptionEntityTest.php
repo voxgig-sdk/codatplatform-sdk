@@ -48,9 +48,13 @@ class PushOptionEntityTest extends TestCase
 
         // LOAD
         $push_option_ref01_ent = $client->PushOption(null);
-        $push_option_ref01_match_dt0 = [];
+        $push_option_ref01_match_dt0 = [
+            "id" => $push_option_ref01_data["id"],
+        ];
         $push_option_ref01_data_dt0_loaded = $push_option_ref01_ent->load($push_option_ref01_match_dt0, null);
-        $this->assertNotNull($push_option_ref01_data_dt0_loaded);
+        $push_option_ref01_data_dt0_load_result = Helpers::to_map(is_object($push_option_ref01_data_dt0_loaded) && method_exists($push_option_ref01_data_dt0_loaded, 'data_get') ? $push_option_ref01_data_dt0_loaded->data_get() : $push_option_ref01_data_dt0_loaded);
+        $this->assertNotNull($push_option_ref01_data_dt0_load_result);
+        $this->assertEquals($push_option_ref01_data_dt0_load_result["id"], $push_option_ref01_data["id"]);
 
     }
 }

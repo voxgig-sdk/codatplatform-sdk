@@ -688,6 +688,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "tokenType",
               "req" => true,
               "short" => "The type of token.",
@@ -1350,6 +1354,10 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "keyBy",
               "short" => "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
               "type" => "`$ARRAY`",
@@ -1939,6 +1947,10 @@ module CodatplatformConfig
               "req" => true,
               "short" => "Whether this integration is enabled for your customers to use.",
               "type" => "`$BOOLEAN`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "integrationId",
@@ -2649,6 +2661,10 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "links",
               "req" => true,
               "type" => "`$OBJECT`",
@@ -2865,6 +2881,10 @@ module CodatplatformConfig
               "name" => "displayName",
               "req" => true,
               "short" => "The property's display name.",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

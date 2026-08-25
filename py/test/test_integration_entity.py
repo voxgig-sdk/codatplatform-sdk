@@ -88,9 +88,13 @@ class TestIntegrationEntity:
         assert isinstance(integration_ref01_list_result, list)
 
         # LOAD
-        integration_ref01_match_dt0 = {}
+        integration_ref01_match_dt0 = {
+            "id": integration_ref01_data["id"],
+        }
         integration_ref01_data_dt0_loaded = integration_ref01_ent.load(integration_ref01_match_dt0, None)
-        assert integration_ref01_data_dt0_loaded is not None
+        integration_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(integration_ref01_data_dt0_loaded))
+        assert integration_ref01_data_dt0_load_result is not None
+        assert integration_ref01_data_dt0_load_result["id"] == integration_ref01_data["id"]
 
 
 

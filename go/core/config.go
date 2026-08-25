@@ -680,6 +680,10 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "tokenType",
 						"req": true,
 						"short": "The type of token.",
@@ -1342,6 +1346,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "keyBy",
 						"short": "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
 						"type": "`$ARRAY`",
@@ -1931,6 +1939,10 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"short": "Whether this integration is enabled for your customers to use.",
 						"type": "`$BOOLEAN`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "integrationId",
@@ -2641,6 +2653,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "links",
 						"req": true,
 						"type": "`$OBJECT`",
@@ -2857,6 +2873,10 @@ func MakeConfig() map[string]any {
 						"name": "displayName",
 						"req": true,
 						"short": "The property's display name.",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

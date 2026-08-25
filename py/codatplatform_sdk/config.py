@@ -697,6 +697,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "tokenType",
             "req": True,
             "short": "The type of token.",
@@ -1359,6 +1363,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "keyBy",
             "short": "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type.",
             "type": "`$ARRAY`",
@@ -1948,6 +1956,10 @@ def make_config():
             "req": True,
             "short": "Whether this integration is enabled for your customers to use.",
             "type": "`$BOOLEAN`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "integrationId",
@@ -2658,6 +2670,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "links",
             "req": True,
             "type": "`$OBJECT`",
@@ -2874,6 +2890,10 @@ def make_config():
             "name": "displayName",
             "req": True,
             "short": "The property's display name.",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

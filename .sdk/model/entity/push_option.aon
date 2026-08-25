@@ -18,6 +18,11 @@ main: kit: entity: push_option: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "options"
       req: false
       type: "`$ARRAY`"
@@ -45,6 +50,11 @@ main: kit: entity: push_option: {
       type: "`$OBJECT`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "push_option"
   op: {

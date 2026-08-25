@@ -752,6 +752,7 @@ const company_access_token = client.CompanyAccessToken()
 | --- | --- | --- | --- |
 | `accessToken` | `string` | Yes | The access token for the company. |
 | `expiresIn` | `number` | Yes | The number of seconds until the access token expires. |
+| `id` | `string` | No |  |
 | `tokenType` | `string` | Yes | The type of token. |
 
 ### Operations
@@ -1053,6 +1054,7 @@ const custom = client.Custom()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `dataSource` | `string` | No | Underlying endpoint of the source platform that will serve as a data source for the custom data type. |
+| `id` | `string` | No |  |
 | `keyBy` | `Array` | No | An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. |
 | `pageNumber` | `number` | No | Current page number. |
 | `pageSize` | `number` | No | Number of items to return in results array. |
@@ -1284,6 +1286,7 @@ const integration = client.Integration()
 | `dataProvidedBy` | `string` | No | The name of the data provider. |
 | `datatypeFeatures` | `Array` | No |  |
 | `enabled` | `boolean` | Yes | Whether this integration is enabled for your customers to use. |
+| `id` | `string` | No |  |
 | `integrationId` | `string` | No | A Codat ID representing the integration. |
 | `isBeta` | `boolean` | No | `True` if the integration is currently in beta release. |
 | `isOfflineConnector` | `boolean` | No | `True` if the integration is to an application installed and run locally on an SMBs computer. |
@@ -1591,6 +1594,7 @@ const push = client.Push()
 | `dataConnectionKey` | `string` | Yes | Unique identifier for a company's data connection. |
 | `dataType` | `string` | No | The type of data being pushed, eg invoices, customers. |
 | `errorMessage` | `string` | No | A message about the error. |
+| `id` | `string` | No |  |
 | `links` | `Object` | Yes |  |
 | `pageNumber` | `number` | Yes | Current page number. |
 | `pageSize` | `number` | Yes | Number of items to return in results array. |
@@ -1662,6 +1666,7 @@ const push_option = client.PushOption()
 | --- | --- | --- | --- |
 | `description` | `string` | No | A description of the property. |
 | `displayName` | `string` | Yes | The property's display name. |
+| `id` | `string` | No |  |
 | `options` | `Array` | No |  |
 | `properties` | `Object` | No |  |
 | `required` | `boolean` | Yes | The property is required if `True`. |

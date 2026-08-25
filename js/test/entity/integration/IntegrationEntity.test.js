@@ -50,8 +50,9 @@ describe('IntegrationEntity', async () => {
 
     // LOAD
     const integration_ref01_match_dt0 = {}
+    integration_ref01_match_dt0.id = integration_ref01_data.id
     const integration_ref01_data_dt0 = (await integration_ref01_ent.load(integration_ref01_match_dt0)).data()
-    assert(null != integration_ref01_data_dt0)
+    assert(integration_ref01_data_dt0.id === integration_ref01_data.id)
 
 
   })

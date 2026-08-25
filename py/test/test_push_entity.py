@@ -90,9 +90,13 @@ class TestPushEntity:
         assert isinstance(push_ref01_list_result, list)
 
         # LOAD
-        push_ref01_match_dt0 = {}
+        push_ref01_match_dt0 = {
+            "id": push_ref01_data["id"],
+        }
         push_ref01_data_dt0_loaded = push_ref01_ent.load(push_ref01_match_dt0, None)
-        assert push_ref01_data_dt0_loaded is not None
+        push_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(push_ref01_data_dt0_loaded))
+        assert push_ref01_data_dt0_load_result is not None
+        assert push_ref01_data_dt0_load_result["id"] == push_ref01_data["id"]
 
 
 
