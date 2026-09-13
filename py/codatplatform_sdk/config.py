@@ -1,6 +1,14 @@
 # Codatplatform SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -127,6 +135,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "uuid",
             "name": "sourceId",
             "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
             "type": "`$STRING`",
@@ -154,16 +163,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/integrations/{platformKey}/branding",
-                "parts": [
-                  "integrations",
-                  "{platform_key}",
-                  "branding",
-                ],
                 "rename": {
                   "param": {
                     "platformKey": "platform_key",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "platform_key",
+                  },
+                  {
+                    "lit": "branding",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "platform_key",
@@ -173,6 +188,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                  "{platform_key}",
+                  "branding",
+                ],
               },
             ],
           },
@@ -207,6 +227,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "id",
             "req": True,
             "short": "Unique identifier for your SMB in Codat.",
@@ -251,6 +272,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uri",
             "name": "redirect",
             "req": True,
             "short": "The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company.",
@@ -282,6 +304,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "company",
         "op": {
           "create": {
@@ -311,20 +337,31 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies/{companyId}/products/{productIdentifier}/refresh",
-                "parts": [
-                  "companies",
-                  "{id}",
-                  "products",
-                  "{product_identifier}",
-                  "refresh",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                     "productIdentifier": "product_identifier",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "product_identifier",
+                  },
+                  {
+                    "lit": "refresh",
+                  },
+                ],
                 "select": {
+                  "$action": "refresh",
                   "exist": [
                     "id",
                     "product_identifier",
@@ -334,20 +371,32 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                  "products",
+                  "{product_identifier}",
+                  "refresh",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies",
-                "parts": [
-                  "companies",
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                ],
               },
             ],
           },
@@ -398,8 +447,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies",
-                "parts": [
-                  "companies",
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -414,6 +465,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                ],
               },
             ],
           },
@@ -437,15 +491,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -455,6 +513,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -478,15 +540,19 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/companies/{companyId}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -496,6 +562,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -526,18 +596,26 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/companies/{companyId}/products/{productIdentifier}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                  "products",
-                  "{product_identifier}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                     "productIdentifier": "product_identifier",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "product_identifier",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -548,6 +626,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                  "products",
+                  "{product_identifier}",
+                ],
               },
               {
                 "args": {
@@ -565,15 +649,19 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/companies/{companyId}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -583,6 +671,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -613,18 +705,26 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/companies/{companyId}/products/{productIdentifier}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                  "products",
-                  "{product_identifier}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                     "productIdentifier": "product_identifier",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "product_identifier",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -635,6 +735,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                  "products",
+                  "{product_identifier}",
+                ],
               },
               {
                 "args": {
@@ -652,15 +758,19 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/companies/{companyId}",
-                "parts": [
-                  "companies",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -670,6 +780,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -707,6 +821,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "company_access_token",
         "op": {
           "load": {
@@ -729,16 +847,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/accessToken",
-                "parts": [
-                  "companies",
-                  "{id}",
-                  "accessToken",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "accessToken",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -748,6 +872,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{id}",
+                  "accessToken",
+                ],
               },
             ],
           },
@@ -773,12 +902,14 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uuid",
             "name": "id",
             "req": True,
             "short": "Unique identifier for a company's data connection.",
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "integrationId",
             "req": True,
             "short": "A Codat ID representing the integration.",
@@ -796,6 +927,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "linkUrl",
             "req": True,
             "short": "The link URL your customers can use to authorize access to their business application.",
@@ -834,6 +966,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uuid",
             "name": "sourceId",
             "req": True,
             "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
@@ -848,7 +981,7 @@ def make_config():
           {
             "name": "status",
             "op": {
-              "patch": {
+              "update": {
                 "type": "`$STRING`",
               },
             },
@@ -863,6 +996,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "connection",
         "op": {
           "create": {
@@ -885,16 +1022,22 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies/{companyId}/connections",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -904,6 +1047,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                ],
               },
             ],
           },
@@ -957,16 +1105,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/connections",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -980,6 +1134,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                ],
               },
             ],
           },
@@ -1011,18 +1170,26 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/connections/{connectionId}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "connectionId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -1033,61 +1200,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-              },
-            ],
-          },
-          "patch": {
-            "input": "data",
-            "name": "patch",
-            "points": [
-              {
-                "args": {
-                  "params": [
-                    {
-                      "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
-                      "kind": "param",
-                      "name": "company_id",
-                      "orig": "company_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "connection_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
-                "kind": "http",
-                "method": "PATCH",
-                "orig": "/companies/{companyId}/connections/{connectionId}",
                 "parts": [
                   "companies",
                   "{company_id}",
                   "connections",
                   "{id}",
                 ],
-                "rename": {
-                  "param": {
-                    "companyId": "company_id",
-                    "connectionId": "id",
-                  },
-                },
-                "select": {
-                  "exist": [
-                    "company_id",
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": {
-                    "status": "`reqdata.status`",
-                  },
-                  "res": "`body`",
-                },
               },
             ],
           },
@@ -1119,18 +1237,26 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/companies/{companyId}/connections/{connectionId}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "connectionId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -1141,6 +1267,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1170,21 +1302,94 @@ def make_config():
                   ],
                 },
                 "kind": "http",
-                "method": "PUT",
-                "orig": "/companies/{companyId}/connections/{connectionId}/authorization",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{id}",
-                  "authorization",
-                ],
+                "method": "PATCH",
+                "orig": "/companies/{companyId}/connections/{connectionId}",
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "connectionId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
+                "select": {
+                  "exist": [
+                    "company_id",
+                    "id",
+                  ],
+                },
+                "transform": {
+                  "req": {
+                    "status": "`reqdata.status`",
+                  },
+                  "res": "`body`",
+                },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{id}",
+                ],
+              },
+              {
+                "args": {
+                  "params": [
+                    {
+                      "example": "8a210b68-6988-11ed-a1eb-0242ac120002",
+                      "kind": "param",
+                      "name": "company_id",
+                      "orig": "company_id",
+                      "reqd": True,
+                      "type": "`$STRING`",
+                    },
+                    {
+                      "example": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                      "kind": "param",
+                      "name": "id",
+                      "orig": "connection_id",
+                      "reqd": True,
+                      "type": "`$STRING`",
+                    },
+                  ],
+                },
+                "kind": "http",
+                "method": "PUT",
+                "orig": "/companies/{companyId}/connections/{connectionId}/authorization",
+                "rename": {
+                  "param": {
+                    "companyId": "company_id",
+                    "connectionId": "id",
+                  },
+                },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "authorization",
+                  },
+                ],
                 "select": {
                   "$action": "authorization",
                   "exist": [
@@ -1196,6 +1401,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{id}",
+                  "authorization",
+                ],
               },
             ],
           },
@@ -1238,17 +1450,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/connectionManagement/accessToken",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connectionManagement",
-                  "accessToken",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connectionManagement",
+                  },
+                  {
+                    "lit": "accessToken",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -1258,6 +1478,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connectionManagement",
+                  "accessToken",
+                ],
               },
             ],
           },
@@ -1289,29 +1515,42 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/connectionManagement/corsSettings",
-                "parts": [
-                  "connectionManagement",
-                  "corsSettings",
+                "segments": [
+                  {
+                    "lit": "connectionManagement",
+                  },
+                  {
+                    "lit": "corsSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "connectionManagement",
+                  "corsSettings",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/corsSettings",
-                "parts": [
-                  "corsSettings",
+                "segments": [
+                  {
+                    "lit": "corsSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "corsSettings",
+                ],
               },
             ],
           },
@@ -1324,29 +1563,42 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/connectionManagement/corsSettings",
-                "parts": [
-                  "connectionManagement",
-                  "corsSettings",
+                "segments": [
+                  {
+                    "lit": "connectionManagement",
+                  },
+                  {
+                    "lit": "corsSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.allowedOrigins`",
                 },
+                "parts": [
+                  "connectionManagement",
+                  "corsSettings",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/corsSettings",
-                "parts": [
-                  "corsSettings",
+                "segments": [
+                  {
+                    "lit": "corsSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.allowedOrigins`",
                 },
+                "parts": [
+                  "corsSettings",
+                ],
               },
             ],
           },
@@ -1401,6 +1653,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "custom",
         "op": {
           "load": {
@@ -1455,15 +1711,6 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{connection_id}",
-                  "data",
-                  "custom",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
@@ -1471,6 +1718,29 @@ def make_config():
                     "customDataIdentifier": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "connection_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "custom",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -1484,6 +1754,15 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{connection_id}",
+                  "data",
+                  "custom",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -1509,19 +1788,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
-                "parts": [
-                  "integrations",
-                  "{platform_key}",
-                  "dataTypes",
-                  "custom",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "customDataIdentifier": "id",
                     "platformKey": "platform_key",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "platform_key",
+                  },
+                  {
+                    "lit": "dataTypes",
+                  },
+                  {
+                    "lit": "custom",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -1532,6 +1821,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                  "{platform_key}",
+                  "dataTypes",
+                  "custom",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1563,19 +1859,29 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
-                "parts": [
-                  "integrations",
-                  "{platform_key}",
-                  "dataTypes",
-                  "custom",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "customDataIdentifier": "id",
                     "platformKey": "platform_key",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "platform_key",
+                  },
+                  {
+                    "lit": "dataTypes",
+                  },
+                  {
+                    "lit": "custom",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -1586,6 +1892,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                  "{platform_key}",
+                  "dataTypes",
+                  "custom",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1885,16 +2198,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/dataStatus",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "dataStatus",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "dataStatus",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -1904,6 +2223,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "dataStatus",
+                ],
               },
             ],
           },
@@ -1962,6 +2286,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "integrationId",
             "short": "A Codat ID representing the integration.",
             "type": "`$STRING`",
@@ -1988,6 +2313,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "uri",
             "name": "logoUrl",
             "req": True,
             "short": "Static url for integration's logo.",
@@ -2016,6 +2342,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uuid",
             "name": "sourceId",
             "short": "A source-specific ID used to distinguish between different sources originating from the same data connection.",
             "type": "`$STRING`",
@@ -2032,6 +2359,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "integration",
         "op": {
           "list": {
@@ -2074,8 +2405,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/integrations",
-                "parts": [
-                  "integrations",
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -2089,6 +2422,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                ],
               },
             ],
           },
@@ -2112,15 +2448,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/integrations/{platformKey}",
-                "parts": [
-                  "integrations",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "platformKey": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -2130,6 +2470,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -2174,11 +2518,13 @@ def make_config():
       "profile": {
         "fields": [
           {
+            "deprecated": True,
             "name": "apiKey",
             "short": "The API key for this Codat instance.",
             "type": "`$STRING`",
           },
           {
+            "deprecated": True,
             "name": "confirmCompanyName",
             "short": "`True` if the company name has been confirmed.",
             "type": "`$BOOLEAN`",
@@ -2222,14 +2568,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/profile",
-                "parts": [
-                  "profile",
+                "segments": [
+                  {
+                    "lit": "profile",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.whiteListUrls`",
                 },
+                "parts": [
+                  "profile",
+                ],
               },
             ],
           },
@@ -2242,14 +2593,19 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/profile",
-                "parts": [
-                  "profile",
+                "segments": [
+                  {
+                    "lit": "profile",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "profile",
+                ],
               },
             ],
           },
@@ -2261,6 +2617,7 @@ def make_config():
       "pull_operation": {
         "fields": [
           {
+            "format": "uuid",
             "name": "companyId",
             "req": True,
             "short": "Unique identifier of the company associated to this pull operation.",
@@ -2272,6 +2629,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "connectionId",
             "req": True,
             "short": "Unique identifier of the connection associated to this pull operation.",
@@ -2289,6 +2647,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "id",
             "req": True,
             "short": "Unique identifier of the pull operation.",
@@ -2357,6 +2716,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "pull_operation",
         "op": {
           "create": {
@@ -2395,16 +2758,6 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{connection_id}",
-                  "data",
-                  "queue",
-                  "custom",
-                  "{custom_data_identifier}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
@@ -2412,6 +2765,32 @@ def make_config():
                     "customDataIdentifier": "custom_data_identifier",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "connection_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "queue",
+                  },
+                  {
+                    "lit": "custom",
+                  },
+                  {
+                    "var": "custom_data_identifier",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2423,6 +2802,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{connection_id}",
+                  "data",
+                  "queue",
+                  "custom",
+                  "{custom_data_identifier}",
+                ],
               },
               {
                 "args": {
@@ -2456,19 +2845,29 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies/{companyId}/data/queue/{dataType}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "data",
-                  "queue",
-                  "{data_type}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "dataType": "data_type",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "queue",
+                  },
+                  {
+                    "var": "data_type",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2480,6 +2879,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "data",
+                  "queue",
+                  "{data_type}",
+                ],
               },
             ],
           },
@@ -2533,17 +2939,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/data/history",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "data",
-                  "history",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "history",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2557,6 +2971,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "data",
+                  "history",
+                ],
               },
             ],
           },
@@ -2587,19 +3007,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/data/history/{datasetId}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "data",
-                  "history",
-                  "{dataset_id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "datasetId": "dataset_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "history",
+                  },
+                  {
+                    "var": "dataset_id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2610,6 +3040,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "data",
+                  "history",
+                  "{dataset_id}",
+                ],
               },
             ],
           },
@@ -2643,6 +3080,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uuid",
             "name": "companyId",
             "req": True,
             "short": "Unique identifier for your SMB in Codat.",
@@ -2654,6 +3092,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uuid",
             "name": "dataConnectionKey",
             "req": True,
             "short": "Unique identifier for a company's data connection.",
@@ -2691,6 +3130,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uuid",
             "name": "pushOperationKey",
             "req": True,
             "short": "A unique identifier generated by Codat to represent this single push operation.",
@@ -2719,11 +3159,14 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "int32",
             "name": "timeoutInMinutes",
             "short": "Number of minutes the push operation must complete within before it times out.",
             "type": "`$INTEGER`",
           },
           {
+            "deprecated": True,
+            "format": "int32",
             "name": "timeoutInSeconds",
             "short": "Number of seconds the push operation must complete within before it times out.",
             "type": "`$INTEGER`",
@@ -2740,6 +3183,10 @@ def make_config():
             "type": "`$OBJECT`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "push",
         "op": {
           "list": {
@@ -2792,16 +3239,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/push",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "push",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "push",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2815,6 +3268,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "push",
+                ],
               },
             ],
           },
@@ -2845,18 +3303,26 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/push/{pushOperationKey}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "push",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "pushOperationKey": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "push",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2867,6 +3333,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "push",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -2921,6 +3393,10 @@ def make_config():
             "type": "`$OBJECT`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "push_option",
         "op": {
           "load": {
@@ -2959,14 +3435,6 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/connections/{connectionId}/options/{dataType}",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "connections",
-                  "{connection_id}",
-                  "options",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
@@ -2974,6 +3442,26 @@ def make_config():
                     "dataType": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "connections",
+                  },
+                  {
+                    "var": "connection_id",
+                  },
+                  {
+                    "lit": "options",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -2985,6 +3473,14 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "connections",
+                  "{connection_id}",
+                  "options",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -3034,17 +3530,25 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/companies/{companyId}/data/all",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "data",
-                  "all",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "data",
+                  },
+                  {
+                    "lit": "all",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -3054,6 +3558,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "data",
+                  "all",
+                ],
               },
             ],
           },
@@ -3089,6 +3599,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "setting",
         "op": {
           "create": {
@@ -3100,29 +3614,42 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/apiKeys",
-                "parts": [
-                  "apiKeys",
+                "segments": [
+                  {
+                    "lit": "apiKeys",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "apiKeys",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/profile/syncSettings",
-                "parts": [
-                  "profile",
-                  "syncSettings",
+                "segments": [
+                  {
+                    "lit": "profile",
+                  },
+                  {
+                    "lit": "syncSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "profile",
+                  "syncSettings",
+                ],
               },
             ],
           },
@@ -3135,14 +3662,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/apiKeys",
-                "parts": [
-                  "apiKeys",
+                "segments": [
+                  {
+                    "lit": "apiKeys",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "apiKeys",
+                ],
               },
             ],
           },
@@ -3166,15 +3698,19 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/apiKeys/{apiKeyId}",
-                "parts": [
-                  "apiKeys",
-                  "{api_key_id}",
-                ],
                 "rename": {
                   "param": {
                     "apiKeyId": "api_key_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "apiKeys",
+                  },
+                  {
+                    "var": "api_key_id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "api_key_id",
@@ -3184,6 +3720,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "apiKeys",
+                  "{api_key_id}",
+                ],
               },
             ],
           },
@@ -3233,19 +3773,29 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig",
-                "parts": [
-                  "integrations",
-                  "{platform_key}",
-                  "dataTypes",
-                  "{data_type_id}",
-                  "supplementalDataConfig",
-                ],
                 "rename": {
                   "param": {
                     "dataType": "data_type_id",
                     "platformKey": "platform_key",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "platform_key",
+                  },
+                  {
+                    "lit": "dataTypes",
+                  },
+                  {
+                    "var": "data_type_id",
+                  },
+                  {
+                    "lit": "supplementalDataConfig",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "data_type_id",
@@ -3256,6 +3806,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "integrations",
+                  "{platform_key}",
+                  "dataTypes",
+                  "{data_type_id}",
+                  "supplementalDataConfig",
+                ],
               },
             ],
           },
@@ -3317,19 +3874,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig",
-                "parts": [
-                  "integrations",
-                  "{platform_key}",
-                  "dataTypes",
-                  "{data_type_id}",
-                  "supplementalDataConfig",
-                ],
                 "rename": {
                   "param": {
                     "dataType": "data_type_id",
                     "platformKey": "platform_key",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "integrations",
+                  },
+                  {
+                    "var": "platform_key",
+                  },
+                  {
+                    "lit": "dataTypes",
+                  },
+                  {
+                    "var": "data_type_id",
+                  },
+                  {
+                    "lit": "supplementalDataConfig",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "data_type_id",
@@ -3340,6 +3907,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.supplementalDataConfig`",
                 },
+                "parts": [
+                  "integrations",
+                  "{platform_key}",
+                  "dataTypes",
+                  "{data_type_id}",
+                  "supplementalDataConfig",
+                ],
               },
             ],
           },
@@ -3423,15 +3997,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/profile/syncSettings",
-                "parts": [
-                  "profile",
-                  "syncSettings",
+                "segments": [
+                  {
+                    "lit": "profile",
+                  },
+                  {
+                    "lit": "syncSettings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.settings`",
                 },
+                "parts": [
+                  "profile",
+                  "syncSettings",
+                ],
               },
             ],
           },
@@ -3480,19 +4062,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/companies/{companyId}/sync/{datasetId}/validation",
-                "parts": [
-                  "companies",
-                  "{company_id}",
-                  "sync",
-                  "{sync_id}",
-                  "validation",
-                ],
                 "rename": {
                   "param": {
                     "companyId": "company_id",
                     "datasetId": "sync_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "companies",
+                  },
+                  {
+                    "var": "company_id",
+                  },
+                  {
+                    "lit": "sync",
+                  },
+                  {
+                    "var": "sync_id",
+                  },
+                  {
+                    "lit": "validation",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "company_id",
@@ -3503,6 +4095,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "companies",
+                  "{company_id}",
+                  "sync",
+                  "{sync_id}",
+                  "validation",
+                ],
               },
             ],
           },
@@ -3534,16 +4133,22 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uuid",
             "name": "id",
             "short": "Unique identifier for the webhook consumer.",
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "The URL that will consume webhook events dispatched by Codat.",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "webhook",
         "op": {
           "create": {
@@ -3555,14 +4160,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/webhooks",
-                "parts": [
-                  "webhooks",
+                "segments": [
+                  {
+                    "lit": "webhooks",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "webhooks",
+                ],
               },
             ],
           },
@@ -3575,14 +4185,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/webhooks",
-                "parts": [
-                  "webhooks",
+                "segments": [
+                  {
+                    "lit": "webhooks",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "webhooks",
+                ],
               },
             ],
           },
@@ -3606,15 +4221,19 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/webhooks/{webhookId}",
-                "parts": [
-                  "webhooks",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "webhookId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "webhooks",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -3624,6 +4243,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "webhooks",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -3650,16 +4273,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/webhooks/integrationKeys/zapier",
-                "parts": [
-                  "webhooks",
-                  "integrationKeys",
-                  "zapier",
+                "segments": [
+                  {
+                    "lit": "webhooks",
+                  },
+                  {
+                    "lit": "integrationKeys",
+                  },
+                  {
+                    "lit": "zapier",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "webhooks",
+                  "integrationKeys",
+                  "zapier",
+                ],
               },
             ],
           },

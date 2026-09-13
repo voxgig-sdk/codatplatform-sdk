@@ -43,23 +43,11 @@
 ---@field id string
 
 ---@class CompanyListMatch
----@field created? string
----@field createdByUserName? string
----@field dataConnections? table
----@field description? string
----@field id? string
----@field lastSync? string
----@field links? table
----@field name? string
----@field pageNumber? number
----@field pageSize? number
----@field products? table
----@field redirect? string
----@field referenceParentCompany? table
----@field referenceSubsidiaryCompanies? table
----@field results? table
----@field tags? table
----@field totalResults? number
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field query? string
+---@field tag? string
 
 ---@class CompanyCreateData
 ---@field created? string
@@ -139,6 +127,10 @@
 
 ---@class ConnectionListMatch
 ---@field company_id string
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field query? string
 
 ---@class ConnectionCreateData
 ---@field company_id string
@@ -216,6 +208,8 @@
 ---@field company_id? string
 ---@field connection_id? string
 ---@field id string
+---@field page? number
+---@field page_size? number
 ---@field platform_key? string
 
 ---@class CustomUpdateData
@@ -305,23 +299,10 @@
 ---@field id string
 
 ---@class IntegrationListMatch
----@field dataProvidedBy? string
----@field datatypeFeatures? table
----@field enabled? boolean
----@field id? string
----@field integrationId? string
----@field isBeta? boolean
----@field isOfflineConnector? boolean
----@field key? string
----@field links? table
----@field logoUrl? string
----@field name? string
----@field pageNumber? number
----@field pageSize? number
----@field results? table
----@field sourceId? string
----@field sourceType? string
----@field totalResults? number
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field query? string
 
 ---@class Option
 
@@ -379,6 +360,10 @@
 
 ---@class PullOperationListMatch
 ---@field company_id string
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field query? string
 
 ---@class PullOperationCreateData
 ---@field company_id string
@@ -430,6 +415,10 @@
 
 ---@class PushListMatch
 ---@field company_id string
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field query? string
 
 ---@class PushOption
 ---@field description? string

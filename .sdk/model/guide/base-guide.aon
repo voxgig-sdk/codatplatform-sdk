@@ -50,6 +50,7 @@ guide: {
       op: update: method: *PUT
     }
     path: "/companies/{companyId}/products/{productIdentifier}/refresh": {
+      action: "refresh": {}
       rename: param: "companyId": *"id"
       rename: param: "productIdentifier": *"product_identifier"
       op: create: method: *POST

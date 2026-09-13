@@ -72,23 +72,11 @@ class CompanyLoadMatch
 /** Request payload for Company#list. */
 class CompanyListMatch
 {
-    public ?string $created = null;
-    public ?string $createdByUserName = null;
-    public ?array $dataConnections = null;
-    public ?string $description = null;
-    public ?string $id = null;
-    public ?string $lastSync = null;
-    public ?array $links = null;
-    public ?string $name = null;
-    public ?int $pageNumber = null;
-    public ?int $pageSize = null;
-    public ?array $products = null;
-    public ?string $redirect = null;
-    public ?array $referenceParentCompany = null;
-    public ?array $referenceSubsidiaryCompanies = null;
-    public ?array $results = null;
-    public ?array $tags = null;
-    public ?int $totalResults = null;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $query = null;
+    public ?string $tag = null;
 }
 
 /** Request payload for Company#create. */
@@ -192,6 +180,10 @@ class ConnectionLoadMatch
 class ConnectionListMatch
 {
     public string $company_id;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $query = null;
 }
 
 /** Request payload for Connection#create. */
@@ -299,6 +291,8 @@ class CustomLoadMatch
     public ?string $company_id = null;
     public ?string $connection_id = null;
     public string $id;
+    public ?int $page = null;
+    public ?int $page_size = null;
     public ?string $platform_key = null;
 }
 
@@ -412,23 +406,10 @@ class IntegrationLoadMatch
 /** Request payload for Integration#list. */
 class IntegrationListMatch
 {
-    public ?string $dataProvidedBy = null;
-    public ?array $datatypeFeatures = null;
-    public ?bool $enabled = null;
-    public ?string $id = null;
-    public ?string $integrationId = null;
-    public ?bool $isBeta = null;
-    public ?bool $isOfflineConnector = null;
-    public ?string $key = null;
-    public ?array $links = null;
-    public ?string $logoUrl = null;
-    public ?string $name = null;
-    public ?int $pageNumber = null;
-    public ?int $pageSize = null;
-    public ?array $results = null;
-    public ?string $sourceId = null;
-    public ?string $sourceType = null;
-    public ?int $totalResults = null;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $query = null;
 }
 
 /** Option entity data model. */
@@ -510,6 +491,10 @@ class PullOperationLoadMatch
 class PullOperationListMatch
 {
     public string $company_id;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $query = null;
 }
 
 /** Request payload for PullOperation#create. */
@@ -573,6 +558,10 @@ class PushLoadMatch
 class PushListMatch
 {
     public string $company_id;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $query = null;
 }
 
 /** PushOption entity data model. */

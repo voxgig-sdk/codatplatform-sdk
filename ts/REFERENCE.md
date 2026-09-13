@@ -659,6 +659,26 @@ const company = client.Company()
 | `tags` | - | - | - | - | - |
 | `totalResults` | - | - | - | - | - |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refresh` | `/companies/{companyId}/products/{productIdentifier}/refresh` | `client.Company().create({ $action: 'refresh', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Company record — check the API definition for its shape.
+
+```ts
+const result = await client.Company().create({
+  $action: 'refresh',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -842,7 +862,7 @@ const connection = client.Connection()
 | `results` | - | - | - | - | - |
 | `sourceId` | - | - | - | - | - |
 | `sourceType` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
+| `status` | - | - | - | Yes | - |
 | `totalResults` | - | - | - | - | - |
 
 ### Actions
@@ -2267,4 +2287,42 @@ const client = new CodatplatformSDK({
   }
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

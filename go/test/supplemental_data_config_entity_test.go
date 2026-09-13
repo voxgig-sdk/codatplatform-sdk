@@ -50,7 +50,7 @@ func TestSupplementalDataConfigEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		supplementalDataConfigRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.supplemental_data_config", setup.data)))
+		supplementalDataConfigRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.supplemental_data_config")))
 		var supplementalDataConfigRef01Data map[string]any
 		if len(supplementalDataConfigRef01DataRaw) > 0 {
 			supplementalDataConfigRef01Data = core.ToMapAny(supplementalDataConfigRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func supplemental_data_configBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"supplemental_data_config01", "supplemental_data_config02", "supplemental_data_config03", "integration01", "integration02", "integration03", "data_type01", "data_type02", "data_type03", "platform_key01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -117,7 +117,7 @@ func supplemental_data_configBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_SUPPLEMENTAL_DATA_CONFIG_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_SUPPLEMENTAL_DATA_CONFIG_ENTID"])
@@ -126,11 +126,23 @@ func supplemental_data_configBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

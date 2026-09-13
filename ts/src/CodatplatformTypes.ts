@@ -49,23 +49,11 @@ export interface CompanyLoadMatch {
 }
 
 export interface CompanyListMatch {
-  created?: string
-  createdByUserName?: string
-  dataConnections?: any[]
-  description?: string
-  id?: string
-  lastSync?: string
-  links?: Record<string, any>
-  name?: string
-  pageNumber?: number
-  pageSize?: number
-  products?: any[]
-  redirect?: string
-  referenceParentCompany?: Record<string, any>
-  referenceSubsidiaryCompanies?: any[]
-  results?: any[]
-  tags?: Record<string, any>
-  totalResults?: number
+  order_by?: string
+  page?: number
+  page_size?: number
+  query?: string
+  tag?: string
 }
 
 export interface CompanyCreateData {
@@ -86,6 +74,12 @@ export interface CompanyCreateData {
   results?: any[]
   tags?: Record<string, any>
   totalResults: number
+
+  // Selects a custom action instead of the plain create:
+  //   'refresh'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface CompanyUpdateData {
@@ -153,6 +147,10 @@ export interface ConnectionLoadMatch {
 
 export interface ConnectionListMatch {
   company_id: string
+  order_by?: string
+  page?: number
+  page_size?: number
+  query?: string
 }
 
 export interface ConnectionCreateData {
@@ -246,6 +244,8 @@ export interface CustomLoadMatch {
   company_id?: string
   connection_id?: string
   id: string
+  page?: number
+  page_size?: number
   platform_key?: string
 }
 
@@ -343,23 +343,10 @@ export interface IntegrationLoadMatch {
 }
 
 export interface IntegrationListMatch {
-  dataProvidedBy?: string
-  datatypeFeatures?: any[]
-  enabled?: boolean
-  id?: string
-  integrationId?: string
-  isBeta?: boolean
-  isOfflineConnector?: boolean
-  key?: string
-  links?: Record<string, any>
-  logoUrl?: string
-  name?: string
-  pageNumber?: number
-  pageSize?: number
-  results?: any[]
-  sourceId?: string
-  sourceType?: string
-  totalResults?: number
+  order_by?: string
+  page?: number
+  page_size?: number
+  query?: string
 }
 
 export interface Option {
@@ -425,6 +412,10 @@ export interface PullOperationLoadMatch {
 
 export interface PullOperationListMatch {
   company_id: string
+  order_by?: string
+  page?: number
+  page_size?: number
+  query?: string
 }
 
 export interface PullOperationCreateData {
@@ -480,6 +471,10 @@ export interface PushLoadMatch {
 
 export interface PushListMatch {
   company_id: string
+  order_by?: string
+  page?: number
+  page_size?: number
+  query?: string
 }
 
 export interface PushOption {

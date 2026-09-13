@@ -64,23 +64,11 @@ type CompanyLoadMatch struct {
 
 // CompanyListMatch is the typed request payload for Company.ListTyped.
 type CompanyListMatch struct {
-	Created *string `json:"created,omitempty"`
-	CreatedByUserName *string `json:"createdByUserName,omitempty"`
-	DataConnections *[]any `json:"dataConnections,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *string `json:"id,omitempty"`
-	LastSync *string `json:"lastSync,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PageNumber *int `json:"pageNumber,omitempty"`
-	PageSize *int `json:"pageSize,omitempty"`
-	Products *[]any `json:"products,omitempty"`
-	Redirect *string `json:"redirect,omitempty"`
-	ReferenceParentCompany *map[string]any `json:"referenceParentCompany,omitempty"`
-	ReferenceSubsidiaryCompanies *[]any `json:"referenceSubsidiaryCompanies,omitempty"`
-	Results *[]any `json:"results,omitempty"`
-	Tags *map[string]any `json:"tags,omitempty"`
-	TotalResults *int `json:"totalResults,omitempty"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Query *string `json:"query,omitempty"`
+	Tag *string `json:"tag,omitempty"`
 }
 
 // CompanyCreateData is the typed request payload for Company.CreateTyped.
@@ -176,6 +164,10 @@ type ConnectionLoadMatch struct {
 // ConnectionListMatch is the typed request payload for Connection.ListTyped.
 type ConnectionListMatch struct {
 	CompanyId string `json:"company_id"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Query *string `json:"query,omitempty"`
 }
 
 // ConnectionCreateData is the typed request payload for Connection.CreateTyped.
@@ -273,6 +265,8 @@ type CustomLoadMatch struct {
 	CompanyId *string `json:"company_id,omitempty"`
 	ConnectionId *string `json:"connection_id,omitempty"`
 	Id string `json:"id"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
 	PlatformKey *string `json:"platform_key,omitempty"`
 }
 
@@ -378,23 +372,10 @@ type IntegrationLoadMatch struct {
 
 // IntegrationListMatch is the typed request payload for Integration.ListTyped.
 type IntegrationListMatch struct {
-	DataProvidedBy *string `json:"dataProvidedBy,omitempty"`
-	DatatypeFeatures *[]any `json:"datatypeFeatures,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Id *string `json:"id,omitempty"`
-	IntegrationId *string `json:"integrationId,omitempty"`
-	IsBeta *bool `json:"isBeta,omitempty"`
-	IsOfflineConnector *bool `json:"isOfflineConnector,omitempty"`
-	Key *string `json:"key,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	LogoUrl *string `json:"logoUrl,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PageNumber *int `json:"pageNumber,omitempty"`
-	PageSize *int `json:"pageSize,omitempty"`
-	Results *[]any `json:"results,omitempty"`
-	SourceId *string `json:"sourceId,omitempty"`
-	SourceType *string `json:"sourceType,omitempty"`
-	TotalResults *int `json:"totalResults,omitempty"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Query *string `json:"query,omitempty"`
 }
 
 // Option is the typed data model for the option entity.
@@ -468,6 +449,10 @@ type PullOperationLoadMatch struct {
 // PullOperationListMatch is the typed request payload for PullOperation.ListTyped.
 type PullOperationListMatch struct {
 	CompanyId string `json:"company_id"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Query *string `json:"query,omitempty"`
 }
 
 // PullOperationCreateData is the typed request payload for PullOperation.CreateTyped.
@@ -527,6 +512,10 @@ type PushLoadMatch struct {
 // PushListMatch is the typed request payload for Push.ListTyped.
 type PushListMatch struct {
 	CompanyId string `json:"company_id"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Query *string `json:"query,omitempty"`
 }
 
 // PushOption is the typed data model for the push_option entity.

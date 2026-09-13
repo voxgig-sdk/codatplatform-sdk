@@ -101,7 +101,7 @@ func TestConnectionEntity(t *testing.T) {
 		// CREATE
 		connectionRef01Ent := client.Connection(nil)
 		connectionRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "connection"}, setup.data), "connection_ref01"))
+			vs.GetPath(setup.data, []any{"new", "connection"}), "connection_ref01"))
 		connectionRef01Data["company_id"] = setup.idmap["company01"]
 
 		connectionRef01DataResult, err := connectionRef01Ent.Create(connectionRef01Data, nil)
@@ -231,7 +231,7 @@ func connectionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"connection01", "connection02", "connection03", "company01", "company02", "company03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -251,7 +251,7 @@ func connectionBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_CONNECTION_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_CONNECTION_ENTID"])
@@ -264,11 +264,23 @@ func connectionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

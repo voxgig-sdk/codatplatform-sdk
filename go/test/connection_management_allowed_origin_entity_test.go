@@ -100,7 +100,7 @@ func TestConnectionManagementAllowedOriginEntity(t *testing.T) {
 		// CREATE
 		connectionManagementAllowedOriginRef01Ent := client.ConnectionManagementAllowedOrigin(nil)
 		connectionManagementAllowedOriginRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "connection_management_allowed_origin"}, setup.data), "connection_management_allowed_origin_ref01"))
+			vs.GetPath(setup.data, []any{"new", "connection_management_allowed_origin"}), "connection_management_allowed_origin_ref01"))
 
 		connectionManagementAllowedOriginRef01DataResult, err := connectionManagementAllowedOriginRef01Ent.Create(connectionManagementAllowedOriginRef01Data, nil)
 		if err != nil {
@@ -150,7 +150,7 @@ func connection_management_allowed_originBasicSetup(extra map[string]any) *entit
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"connection_management_allowed_origin01", "connection_management_allowed_origin02", "connection_management_allowed_origin03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -170,7 +170,7 @@ func connection_management_allowed_originBasicSetup(extra map[string]any) *entit
 		"CODATPLATFORM_TEST_CONNECTION_MANAGEMENT_ALLOWED_ORIGIN_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_CONNECTION_MANAGEMENT_ALLOWED_ORIGIN_ENTID"])
@@ -179,11 +179,23 @@ func connection_management_allowed_originBasicSetup(extra map[string]any) *entit
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

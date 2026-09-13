@@ -42,6 +42,7 @@ const { CodatplatformEntityBase } = require('./CodatplatformEntityBase')
 const { BaseFeature } = require('./feature/base/BaseFeature')
 
 
+
 const stdutil = new Utility()
 
 
@@ -51,6 +52,7 @@ class CodatplatformSDK {
   _utility = new Utility()
   _features
   _rootctx
+  
 
   constructor(options) {
 
@@ -123,6 +125,8 @@ class CodatplatformSDK {
     return this._utility.struct.clone(this._utility)
   }
 
+  
+
 
   async prepare(fetchargs) {
     const utility = this._utility
@@ -168,6 +172,8 @@ class CodatplatformSDK {
         spec.headers[key] = uheaders[key]
       }
     }
+
+    
 
     // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
@@ -635,6 +641,7 @@ const SDK = CodatplatformSDK
 module.exports = {
   stdutil,
   config,
+  
 
   BaseFeature,
   CodatplatformEntityBase,

@@ -130,74 +130,26 @@ CompanyLoadMatch = Struct.new(
 
 # Request payload for Company#list.
 #
-# @!attribute [rw] created
+# @!attribute [rw] order_by
 #   @return [String, nil]
 #
-# @!attribute [rw] createdByUserName
-#   @return [String, nil]
-#
-# @!attribute [rw] dataConnections
-#   @return [Array, nil]
-#
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] lastSync
-#   @return [String, nil]
-#
-# @!attribute [rw] links
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] pageNumber
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pageSize
+# @!attribute [rw] page_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] products
-#   @return [Array, nil]
-#
-# @!attribute [rw] redirect
+# @!attribute [rw] query
 #   @return [String, nil]
 #
-# @!attribute [rw] referenceParentCompany
-#   @return [Hash, nil]
-#
-# @!attribute [rw] referenceSubsidiaryCompanies
-#   @return [Array, nil]
-#
-# @!attribute [rw] results
-#   @return [Array, nil]
-#
-# @!attribute [rw] tags
-#   @return [Hash, nil]
-#
-# @!attribute [rw] totalResults
-#   @return [Integer, nil]
+# @!attribute [rw] tag
+#   @return [String, nil]
 CompanyListMatch = Struct.new(
-  :created,
-  :createdByUserName,
-  :dataConnections,
-  :description,
-  :id,
-  :lastSync,
-  :links,
-  :name,
-  :pageNumber,
-  :pageSize,
-  :products,
-  :redirect,
-  :referenceParentCompany,
-  :referenceSubsidiaryCompanies,
-  :results,
-  :tags,
-  :totalResults,
+  :order_by,
+  :page,
+  :page_size,
+  :query,
+  :tag,
   keyword_init: true
 )
 
@@ -488,8 +440,24 @@ ConnectionLoadMatch = Struct.new(
 #
 # @!attribute [rw] company_id
 #   @return [String]
+#
+# @!attribute [rw] order_by
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
 ConnectionListMatch = Struct.new(
   :company_id,
+  :order_by,
+  :page,
+  :page_size,
+  :query,
   keyword_init: true
 )
 
@@ -765,12 +733,20 @@ Custom = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 #
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
 # @!attribute [rw] platform_key
 #   @return [String, nil]
 CustomLoadMatch = Struct.new(
   :company_id,
   :connection_id,
   :id,
+  :page,
+  :page_size,
   :platform_key,
   keyword_init: true
 )
@@ -1098,74 +1074,22 @@ IntegrationLoadMatch = Struct.new(
 
 # Request payload for Integration#list.
 #
-# @!attribute [rw] dataProvidedBy
+# @!attribute [rw] order_by
 #   @return [String, nil]
 #
-# @!attribute [rw] datatypeFeatures
-#   @return [Array, nil]
-#
-# @!attribute [rw] enabled
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] integrationId
-#   @return [String, nil]
-#
-# @!attribute [rw] isBeta
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] isOfflineConnector
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] key
-#   @return [String, nil]
-#
-# @!attribute [rw] links
-#   @return [Hash, nil]
-#
-# @!attribute [rw] logoUrl
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] pageNumber
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pageSize
+# @!attribute [rw] page_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
-#
-# @!attribute [rw] sourceId
+# @!attribute [rw] query
 #   @return [String, nil]
-#
-# @!attribute [rw] sourceType
-#   @return [String, nil]
-#
-# @!attribute [rw] totalResults
-#   @return [Integer, nil]
 IntegrationListMatch = Struct.new(
-  :dataProvidedBy,
-  :datatypeFeatures,
-  :enabled,
-  :id,
-  :integrationId,
-  :isBeta,
-  :isOfflineConnector,
-  :key,
-  :links,
-  :logoUrl,
-  :name,
-  :pageNumber,
-  :pageSize,
-  :results,
-  :sourceId,
-  :sourceType,
-  :totalResults,
+  :order_by,
+  :page,
+  :page_size,
+  :query,
   keyword_init: true
 )
 
@@ -1366,8 +1290,24 @@ PullOperationLoadMatch = Struct.new(
 #
 # @!attribute [rw] company_id
 #   @return [String]
+#
+# @!attribute [rw] order_by
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
 PullOperationListMatch = Struct.new(
   :company_id,
+  :order_by,
+  :page,
+  :page_size,
+  :query,
   keyword_init: true
 )
 
@@ -1558,8 +1498,24 @@ PushLoadMatch = Struct.new(
 #
 # @!attribute [rw] company_id
 #   @return [String]
+#
+# @!attribute [rw] order_by
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
 PushListMatch = Struct.new(
   :company_id,
+  :order_by,
+  :page,
+  :page_size,
+  :query,
   keyword_init: true
 )
 

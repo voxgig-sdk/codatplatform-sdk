@@ -98,7 +98,7 @@ func TestValidationEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		validationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.validation", setup.data)))
+		validationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.validation")))
 		var validationRef01Data map[string]any
 		if len(validationRef01DataRaw) > 0 {
 			validationRef01Data = core.ToMapAny(validationRef01DataRaw[0][1])
@@ -150,7 +150,7 @@ func validationBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01", "sync02", "sync03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -170,7 +170,7 @@ func validationBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_VALIDATION_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_VALIDATION_ENTID"])
@@ -179,11 +179,23 @@ func validationBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

@@ -85,7 +85,7 @@ def company_access_token_basic_setup(extra)
     "CODATPLATFORM_TEST_COMPANY_ACCESS_TOKEN_ENTID" => idmap,
     "CODATPLATFORM_TEST_LIVE" => "FALSE",
     "CODATPLATFORM_TEST_EXPLAIN" => "FALSE",
-    "CODATPLATFORM_APIKEY" => "NONE",
+    "CODATPLATFORM_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -96,6 +96,9 @@ def company_access_token_basic_setup(extra)
 
   if env["CODATPLATFORM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["CODATPLATFORM_APIKEY"],
       },

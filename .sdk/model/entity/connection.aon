@@ -22,12 +22,14 @@ main: kit: entity: connection: {
       type: "`$ARRAY`"
     }
     {
+      format: "uuid"
       name: "id"
       req: true
       short: "Unique identifier for a company's data connection."
       type: "`$STRING`"
     }
     {
+      format: "uuid"
       name: "integrationId"
       req: true
       short: "A Codat ID representing the integration."
@@ -46,6 +48,7 @@ main: kit: entity: connection: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "linkUrl"
       req: true
       short: "The link URL your customers can use to authorize access to their business application."
@@ -86,6 +89,7 @@ main: kit: entity: connection: {
       type: "`$ARRAY`"
     }
     {
+      format: "uuid"
       name: "sourceId"
       req: true
       short: "A source-specific ID used to distinguish between different sources originating from the same data connection."
@@ -100,7 +104,7 @@ main: kit: entity: connection: {
     {
       name: "status"
       op: {
-        patch: {
+        update: {
           req: false
           type: "`$STRING`"
         }
@@ -142,16 +146,22 @@ main: kit: entity: connection: {
           }
           method: "POST"
           orig: "/companies/{companyId}/connections"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-          ]
           rename: {
             param: {
               companyId: "company_id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+          ]
           select: {
             exist: [
               "company_id"
@@ -216,16 +226,22 @@ main: kit: entity: connection: {
           }
           method: "GET"
           orig: "/companies/{companyId}/connections"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-          ]
           rename: {
             param: {
               companyId: "company_id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+          ]
           select: {
             exist: [
               "company_id"
@@ -268,18 +284,26 @@ main: kit: entity: connection: {
           }
           method: "GET"
           orig: "/companies/{companyId}/connections/{connectionId}"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-            "{id}"
-          ]
           rename: {
             param: {
               companyId: "company_id"
               connectionId: "id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "company_id"
@@ -288,59 +312,6 @@ main: kit: entity: connection: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
-    patch: {
-      name: "patch"
-      points: [
-        {
-          args: {
-            params: [
-              {
-                example: "8a210b68-6988-11ed-a1eb-0242ac120002"
-                kind: "param"
-                name: "company_id"
-                orig: "company_id"
-                reqd: true
-                type: "`$STRING`"
-              }
-              {
-                example: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-                kind: "param"
-                name: "id"
-                orig: "connection_id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
-          }
-          method: "PATCH"
-          orig: "/companies/{companyId}/connections/{connectionId}"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-            "{id}"
-          ]
-          rename: {
-            param: {
-              companyId: "company_id"
-              connectionId: "id"
-            }
-          }
-          select: {
-            exist: [
-              "company_id"
-              "id"
-            ]
-          }
-          transform: {
-            req: {
-              status: "`reqdata.status`"
-            }
             res: "`body`"
           }
         }
@@ -372,18 +343,26 @@ main: kit: entity: connection: {
           }
           method: "DELETE"
           orig: "/companies/{companyId}/connections/{connectionId}"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-            "{id}"
-          ]
           rename: {
             param: {
               companyId: "company_id"
               connectionId: "id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "company_id"
@@ -421,21 +400,87 @@ main: kit: entity: connection: {
               }
             ]
           }
-          method: "PUT"
-          orig: "/companies/{companyId}/connections/{connectionId}/authorization"
-          parts: [
-            "companies"
-            "{company_id}"
-            "connections"
-            "{id}"
-            "authorization"
-          ]
+          method: "PATCH"
+          orig: "/companies/{companyId}/connections/{connectionId}"
           rename: {
             param: {
               companyId: "company_id"
               connectionId: "id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "company_id"
+              "id"
+            ]
+          }
+          transform: {
+            req: {
+              status: "`reqdata.status`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                kind: "param"
+                name: "company_id"
+                orig: "company_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                kind: "param"
+                name: "id"
+                orig: "connection_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "PUT"
+          orig: "/companies/{companyId}/connections/{connectionId}/authorization"
+          rename: {
+            param: {
+              companyId: "company_id"
+              connectionId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "authorization"
+            }
+          ]
           select: {
             "$action": "authorization"
             exist: [

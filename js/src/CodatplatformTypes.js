@@ -58,23 +58,11 @@
 
 /**
  * @typedef {Object} CompanyListMatch
- * @property {string} [created]
- * @property {string} [createdByUserName]
- * @property {Array} [dataConnections]
- * @property {string} [description]
- * @property {string} [id]
- * @property {string} [lastSync]
- * @property {Object} [links]
- * @property {string} [name]
- * @property {number} [pageNumber]
- * @property {number} [pageSize]
- * @property {Array} [products]
- * @property {string} [redirect]
- * @property {Object} [referenceParentCompany]
- * @property {Array} [referenceSubsidiaryCompanies]
- * @property {Array} [results]
- * @property {Object} [tags]
- * @property {number} [totalResults]
+ * @property {string} [order_by]
+ * @property {number} [page]
+ * @property {number} [page_size]
+ * @property {string} [query]
+ * @property {string} [tag]
  */
 
 /**
@@ -170,6 +158,10 @@
 /**
  * @typedef {Object} ConnectionListMatch
  * @property {string} company_id
+ * @property {string} [order_by]
+ * @property {number} [page]
+ * @property {number} [page_size]
+ * @property {string} [query]
  */
 
 /**
@@ -267,6 +259,8 @@
  * @property {string} [company_id]
  * @property {string} [connection_id]
  * @property {string} id
+ * @property {number} [page]
+ * @property {number} [page_size]
  * @property {string} [platform_key]
  */
 
@@ -372,23 +366,10 @@
 
 /**
  * @typedef {Object} IntegrationListMatch
- * @property {string} [dataProvidedBy]
- * @property {Array} [datatypeFeatures]
- * @property {boolean} [enabled]
- * @property {string} [id]
- * @property {string} [integrationId]
- * @property {boolean} [isBeta]
- * @property {boolean} [isOfflineConnector]
- * @property {string} [key]
- * @property {Object} [links]
- * @property {string} [logoUrl]
- * @property {string} [name]
- * @property {number} [pageNumber]
- * @property {number} [pageSize]
- * @property {Array} [results]
- * @property {string} [sourceId]
- * @property {string} [sourceType]
- * @property {number} [totalResults]
+ * @property {string} [order_by]
+ * @property {number} [page]
+ * @property {number} [page_size]
+ * @property {string} [query]
  */
 
 /**
@@ -462,6 +443,10 @@
 /**
  * @typedef {Object} PullOperationListMatch
  * @property {string} company_id
+ * @property {string} [order_by]
+ * @property {number} [page]
+ * @property {number} [page_size]
+ * @property {string} [query]
  */
 
 /**
@@ -521,6 +506,10 @@
 /**
  * @typedef {Object} PushListMatch
  * @property {string} company_id
+ * @property {string} [order_by]
+ * @property {number} [page]
+ * @property {number} [page_size]
+ * @property {string} [query]
  */
 
 /**

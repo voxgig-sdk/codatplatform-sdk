@@ -76,15 +76,18 @@ def _validation_direct_setup(mockres):
     env = runner.env_override({
         "CODATPLATFORM_TEST_VALIDATION_ENTID": {},
         "CODATPLATFORM_TEST_LIVE": "FALSE",
-        "CODATPLATFORM_APIKEY": "NONE",
+        "CODATPLATFORM_APIKEY": "",
     })
 
     live = env.get("CODATPLATFORM_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("CODATPLATFORM_APIKEY"),
-        }
+        })
         client = CodatplatformSDK(merged_opts)
         return {
             "client": client,

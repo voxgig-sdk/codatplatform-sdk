@@ -101,7 +101,7 @@ func TestCompanyEntity(t *testing.T) {
 		// CREATE
 		companyRef01Ent := client.Company(nil)
 		companyRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "company"}, setup.data), "company_ref01"))
+			vs.GetPath(setup.data, []any{"new", "company"}), "company_ref01"))
 
 		companyRef01DataResult, err := companyRef01Ent.Create(companyRef01Data, nil)
 		if err != nil {
@@ -225,7 +225,7 @@ func companyBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"company01", "company02", "company03", "product01", "product02", "product03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -245,7 +245,7 @@ func companyBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_COMPANY_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_COMPANY_ENTID"])
@@ -254,11 +254,23 @@ func companyBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

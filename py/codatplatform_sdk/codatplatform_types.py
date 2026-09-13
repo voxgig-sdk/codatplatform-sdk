@@ -66,23 +66,11 @@ class CompanyLoadMatch(TypedDict):
 
 
 class CompanyListMatch(TypedDict, total=False):
-    created: str
-    createdByUserName: str
-    dataConnections: list
-    description: str
-    id: str
-    lastSync: str
-    links: dict
-    name: str
-    pageNumber: int
-    pageSize: int
-    products: list
-    redirect: str
-    referenceParentCompany: dict
-    referenceSubsidiaryCompanies: list
-    results: list
-    tags: dict
-    totalResults: int
+    order_by: str
+    page: int
+    page_size: int
+    query: str
+    tag: str
 
 
 class CompanyCreateDataRequired(TypedDict):
@@ -183,8 +171,15 @@ class ConnectionLoadMatch(TypedDict):
     id: str
 
 
-class ConnectionListMatch(TypedDict):
+class ConnectionListMatchRequired(TypedDict):
     company_id: str
+
+
+class ConnectionListMatch(ConnectionListMatchRequired, total=False):
+    order_by: str
+    page: int
+    page_size: int
+    query: str
 
 
 class ConnectionCreateDataRequired(TypedDict):
@@ -281,6 +276,8 @@ class CustomLoadMatchRequired(TypedDict):
 class CustomLoadMatch(CustomLoadMatchRequired, total=False):
     company_id: str
     connection_id: str
+    page: int
+    page_size: int
     platform_key: str
 
 
@@ -386,23 +383,10 @@ class IntegrationLoadMatch(TypedDict):
 
 
 class IntegrationListMatch(TypedDict, total=False):
-    dataProvidedBy: str
-    datatypeFeatures: list
-    enabled: bool
-    id: str
-    integrationId: str
-    isBeta: bool
-    isOfflineConnector: bool
-    key: str
-    links: dict
-    logoUrl: str
-    name: str
-    pageNumber: int
-    pageSize: int
-    results: list
-    sourceId: str
-    sourceType: str
-    totalResults: int
+    order_by: str
+    page: int
+    page_size: int
+    query: str
 
 
 class Option(TypedDict):
@@ -474,8 +458,15 @@ class PullOperationLoadMatch(TypedDict):
     dataset_id: str
 
 
-class PullOperationListMatch(TypedDict):
+class PullOperationListMatchRequired(TypedDict):
     company_id: str
+
+
+class PullOperationListMatch(PullOperationListMatchRequired, total=False):
+    order_by: str
+    page: int
+    page_size: int
+    query: str
 
 
 class PullOperationCreateDataRequired(TypedDict):
@@ -535,8 +526,15 @@ class PushLoadMatch(TypedDict):
     id: str
 
 
-class PushListMatch(TypedDict):
+class PushListMatchRequired(TypedDict):
     company_id: str
+
+
+class PushListMatch(PushListMatchRequired, total=False):
+    order_by: str
+    page: int
+    page_size: int
+    query: str
 
 
 class PushOptionRequired(TypedDict):

@@ -55,16 +55,22 @@ main: kit: entity: company_access_token: {
           }
           method: "GET"
           orig: "/companies/{companyId}/accessToken"
-          parts: [
-            "companies"
-            "{id}"
-            "accessToken"
-          ]
           rename: {
             param: {
               companyId: "id"
             }
           }
+          segments: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "accessToken"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -24,12 +24,14 @@ main: kit: entity: webhook: {
       type: "`$ARRAY`"
     }
     {
+      format: "uuid"
       name: "id"
       req: false
       short: "Unique identifier for the webhook consumer."
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "The URL that will consume webhook events dispatched by Codat."
@@ -50,8 +52,10 @@ main: kit: entity: webhook: {
         {
           method: "POST"
           orig: "/webhooks"
-          parts: [
-            "webhooks"
+          segments: [
+            {
+              lit: "webhooks"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -66,8 +70,10 @@ main: kit: entity: webhook: {
         {
           method: "GET"
           orig: "/webhooks"
-          parts: [
-            "webhooks"
+          segments: [
+            {
+              lit: "webhooks"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -94,15 +100,19 @@ main: kit: entity: webhook: {
           }
           method: "DELETE"
           orig: "/webhooks/{webhookId}"
-          parts: [
-            "webhooks"
-            "{id}"
-          ]
           rename: {
             param: {
               webhookId: "id"
             }
           }
+          segments: [
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

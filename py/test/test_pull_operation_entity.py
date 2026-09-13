@@ -144,7 +144,7 @@ def _pull_operation_basic_setup(extra):
         "CODATPLATFORM_TEST_PULL_OPERATION_ENTID": idmap,
         "CODATPLATFORM_TEST_LIVE": "FALSE",
         "CODATPLATFORM_TEST_EXPLAIN": "FALSE",
-        "CODATPLATFORM_APIKEY": "NONE",
+        "CODATPLATFORM_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -154,6 +154,10 @@ def _pull_operation_basic_setup(extra):
 
     if env.get("CODATPLATFORM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("CODATPLATFORM_APIKEY"),
             },

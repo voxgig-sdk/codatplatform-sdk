@@ -48,7 +48,7 @@ func TestApiKeyEntity(t *testing.T) {
 			return
 		}
 		// Bootstrap entity data from existing test data (no create step in flow).
-		apiKeyRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_key", setup.data)))
+		apiKeyRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.api_key")))
 		var apiKeyRef01Data map[string]any
 		if len(apiKeyRef01DataRaw) > 0 {
 			apiKeyRef01Data = core.ToMapAny(apiKeyRef01DataRaw[0][1])
@@ -84,7 +84,7 @@ func api_keyBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_key01", "api_key02", "api_key03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -104,7 +104,7 @@ func api_keyBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_API_KEY_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_API_KEY_ENTID"])
@@ -113,11 +113,23 @@ func api_keyBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

@@ -100,7 +100,7 @@ func TestPullOperationEntity(t *testing.T) {
 		// CREATE
 		pullOperationRef01Ent := client.PullOperation(nil)
 		pullOperationRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "pull_operation"}, setup.data), "pull_operation_ref01"))
+			vs.GetPath(setup.data, []any{"new", "pull_operation"}), "pull_operation_ref01"))
 		pullOperationRef01Data["company_id"] = setup.idmap["company01"]
 		pullOperationRef01Data["data_type"] = setup.idmap["data_type01"]
 
@@ -178,7 +178,7 @@ func pull_operationBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"pull_operation01", "pull_operation02", "pull_operation03", "company01", "company02", "company03", "history01", "history02", "history03", "queue01", "queue02", "queue03", "connection01", "connection02", "connection03", "custom01", "custom02", "custom03", "data_type01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -198,7 +198,7 @@ func pull_operationBasicSetup(extra map[string]any) *entityTestSetup {
 		"CODATPLATFORM_TEST_PULL_OPERATION_ENTID": idmap,
 		"CODATPLATFORM_TEST_LIVE":      "FALSE",
 		"CODATPLATFORM_TEST_EXPLAIN":   "FALSE",
-		"CODATPLATFORM_APIKEY":         "NONE",
+		"CODATPLATFORM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["CODATPLATFORM_TEST_PULL_OPERATION_ENTID"])
@@ -207,11 +207,23 @@ func pull_operationBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["CODATPLATFORM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["CODATPLATFORM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCodatplatformSDK(core.ToMapAny(mergedOpts))
 	}

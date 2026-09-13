@@ -118,6 +118,7 @@ module CodatplatformConfig
               "type" => "`$OBJECT`",
             },
             {
+              "format" => "uuid",
               "name" => "sourceId",
               "short" => "A source-specific ID used to distinguish between different sources originating from the same data connection.",
               "type" => "`$STRING`",
@@ -145,16 +146,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/integrations/{platformKey}/branding",
-                  "parts" => [
-                    "integrations",
-                    "{platform_key}",
-                    "branding",
-                  ],
                   "rename" => {
                     "param" => {
                       "platformKey" => "platform_key",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "platform_key",
+                    },
+                    {
+                      "lit" => "branding",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "platform_key",
@@ -164,6 +171,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{platform_key}",
+                    "branding",
+                  ],
                 },
               ],
             },
@@ -198,6 +210,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "id",
               "req" => true,
               "short" => "Unique identifier for your SMB in Codat.",
@@ -242,6 +255,7 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uri",
               "name" => "redirect",
               "req" => true,
               "short" => "The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company.",
@@ -273,6 +287,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "company",
           "op" => {
             "create" => {
@@ -302,20 +320,31 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies/{companyId}/products/{productIdentifier}/refresh",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                    "products",
-                    "{product_identifier}",
-                    "refresh",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                       "productIdentifier" => "product_identifier",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "product_identifier",
+                    },
+                    {
+                      "lit" => "refresh",
+                    },
+                  ],
                   "select" => {
+                    "$action" => "refresh",
                     "exist" => [
                       "id",
                       "product_identifier",
@@ -325,20 +354,32 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                    "products",
+                    "{product_identifier}",
+                    "refresh",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies",
-                  "parts" => [
-                    "companies",
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                  ],
                 },
               ],
             },
@@ -389,8 +430,10 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies",
-                  "parts" => [
-                    "companies",
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -405,6 +448,9 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                  ],
                 },
               ],
             },
@@ -428,15 +474,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -446,6 +496,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -469,15 +523,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/companies/{companyId}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -487,6 +545,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -517,18 +579,26 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/companies/{companyId}/products/{productIdentifier}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                    "products",
-                    "{product_identifier}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                       "productIdentifier" => "product_identifier",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "product_identifier",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -539,6 +609,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                    "products",
+                    "{product_identifier}",
+                  ],
                 },
                 {
                   "args" => {
@@ -556,15 +632,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/companies/{companyId}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -574,6 +654,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -604,18 +688,26 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/companies/{companyId}/products/{productIdentifier}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                    "products",
-                    "{product_identifier}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                       "productIdentifier" => "product_identifier",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "product_identifier",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -626,6 +718,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                    "products",
+                    "{product_identifier}",
+                  ],
                 },
                 {
                   "args" => {
@@ -643,15 +741,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/companies/{companyId}",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -661,6 +763,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -698,6 +804,10 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "company_access_token",
           "op" => {
             "load" => {
@@ -720,16 +830,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/accessToken",
-                  "parts" => [
-                    "companies",
-                    "{id}",
-                    "accessToken",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "accessToken",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -739,6 +855,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{id}",
+                    "accessToken",
+                  ],
                 },
               ],
             },
@@ -764,12 +885,14 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uuid",
               "name" => "id",
               "req" => true,
               "short" => "Unique identifier for a company's data connection.",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "integrationId",
               "req" => true,
               "short" => "A Codat ID representing the integration.",
@@ -787,6 +910,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "linkUrl",
               "req" => true,
               "short" => "The link URL your customers can use to authorize access to their business application.",
@@ -825,6 +949,7 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uuid",
               "name" => "sourceId",
               "req" => true,
               "short" => "A source-specific ID used to distinguish between different sources originating from the same data connection.",
@@ -839,7 +964,7 @@ module CodatplatformConfig
             {
               "name" => "status",
               "op" => {
-                "patch" => {
+                "update" => {
                   "type" => "`$STRING`",
                 },
               },
@@ -854,6 +979,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "connection",
           "op" => {
             "create" => {
@@ -876,16 +1005,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies/{companyId}/connections",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -895,6 +1030,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                  ],
                 },
               ],
             },
@@ -948,16 +1088,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/connections",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -971,6 +1117,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                  ],
                 },
               ],
             },
@@ -1002,18 +1153,26 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/connections/{connectionId}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "connectionId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -1024,61 +1183,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                },
-              ],
-            },
-            "patch" => {
-              "input" => "data",
-              "name" => "patch",
-              "points" => [
-                {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "8a210b68-6988-11ed-a1eb-0242ac120002",
-                        "kind" => "param",
-                        "name" => "company_id",
-                        "orig" => "company_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "connection_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
-                  "kind" => "http",
-                  "method" => "PATCH",
-                  "orig" => "/companies/{companyId}/connections/{connectionId}",
                   "parts" => [
                     "companies",
                     "{company_id}",
                     "connections",
                     "{id}",
                   ],
-                  "rename" => {
-                    "param" => {
-                      "companyId" => "company_id",
-                      "connectionId" => "id",
-                    },
-                  },
-                  "select" => {
-                    "exist" => [
-                      "company_id",
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => {
-                      "status" => "`reqdata.status`",
-                    },
-                    "res" => "`body`",
-                  },
                 },
               ],
             },
@@ -1110,18 +1220,26 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/companies/{companyId}/connections/{connectionId}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "connectionId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -1132,6 +1250,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1161,21 +1285,94 @@ module CodatplatformConfig
                     ],
                   },
                   "kind" => "http",
-                  "method" => "PUT",
-                  "orig" => "/companies/{companyId}/connections/{connectionId}/authorization",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{id}",
-                    "authorization",
-                  ],
+                  "method" => "PATCH",
+                  "orig" => "/companies/{companyId}/connections/{connectionId}",
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "connectionId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
+                  "select" => {
+                    "exist" => [
+                      "company_id",
+                      "id",
+                    ],
+                  },
+                  "transform" => {
+                    "req" => {
+                      "status" => "`reqdata.status`",
+                    },
+                    "res" => "`body`",
+                  },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{id}",
+                  ],
+                },
+                {
+                  "args" => {
+                    "params" => [
+                      {
+                        "example" => "8a210b68-6988-11ed-a1eb-0242ac120002",
+                        "kind" => "param",
+                        "name" => "company_id",
+                        "orig" => "company_id",
+                        "reqd" => true,
+                        "type" => "`$STRING`",
+                      },
+                      {
+                        "example" => "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                        "kind" => "param",
+                        "name" => "id",
+                        "orig" => "connection_id",
+                        "reqd" => true,
+                        "type" => "`$STRING`",
+                      },
+                    ],
+                  },
+                  "kind" => "http",
+                  "method" => "PUT",
+                  "orig" => "/companies/{companyId}/connections/{connectionId}/authorization",
+                  "rename" => {
+                    "param" => {
+                      "companyId" => "company_id",
+                      "connectionId" => "id",
+                    },
+                  },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "authorization",
+                    },
+                  ],
                   "select" => {
                     "$action" => "authorization",
                     "exist" => [
@@ -1187,6 +1384,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{id}",
+                    "authorization",
+                  ],
                 },
               ],
             },
@@ -1229,17 +1433,25 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/connectionManagement/accessToken",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connectionManagement",
-                    "accessToken",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connectionManagement",
+                    },
+                    {
+                      "lit" => "accessToken",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -1249,6 +1461,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connectionManagement",
+                    "accessToken",
+                  ],
                 },
               ],
             },
@@ -1280,29 +1498,42 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/connectionManagement/corsSettings",
-                  "parts" => [
-                    "connectionManagement",
-                    "corsSettings",
+                  "segments" => [
+                    {
+                      "lit" => "connectionManagement",
+                    },
+                    {
+                      "lit" => "corsSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "connectionManagement",
+                    "corsSettings",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/corsSettings",
-                  "parts" => [
-                    "corsSettings",
+                  "segments" => [
+                    {
+                      "lit" => "corsSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "corsSettings",
+                  ],
                 },
               ],
             },
@@ -1315,29 +1546,42 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/connectionManagement/corsSettings",
-                  "parts" => [
-                    "connectionManagement",
-                    "corsSettings",
+                  "segments" => [
+                    {
+                      "lit" => "connectionManagement",
+                    },
+                    {
+                      "lit" => "corsSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.allowedOrigins`",
                   },
+                  "parts" => [
+                    "connectionManagement",
+                    "corsSettings",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/corsSettings",
-                  "parts" => [
-                    "corsSettings",
+                  "segments" => [
+                    {
+                      "lit" => "corsSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.allowedOrigins`",
                   },
+                  "parts" => [
+                    "corsSettings",
+                  ],
                 },
               ],
             },
@@ -1392,6 +1636,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "custom",
           "op" => {
             "load" => {
@@ -1446,15 +1694,6 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{connection_id}",
-                    "data",
-                    "custom",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
@@ -1462,6 +1701,29 @@ module CodatplatformConfig
                       "customDataIdentifier" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "connection_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "custom",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -1475,6 +1737,15 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{connection_id}",
+                    "data",
+                    "custom",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {
@@ -1500,19 +1771,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
-                  "parts" => [
-                    "integrations",
-                    "{platform_key}",
-                    "dataTypes",
-                    "custom",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "customDataIdentifier" => "id",
                       "platformKey" => "platform_key",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "platform_key",
+                    },
+                    {
+                      "lit" => "dataTypes",
+                    },
+                    {
+                      "lit" => "custom",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -1523,6 +1804,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{platform_key}",
+                    "dataTypes",
+                    "custom",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1554,19 +1842,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
-                  "parts" => [
-                    "integrations",
-                    "{platform_key}",
-                    "dataTypes",
-                    "custom",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "customDataIdentifier" => "id",
                       "platformKey" => "platform_key",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "platform_key",
+                    },
+                    {
+                      "lit" => "dataTypes",
+                    },
+                    {
+                      "lit" => "custom",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -1577,6 +1875,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{platform_key}",
+                    "dataTypes",
+                    "custom",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1876,16 +2181,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/dataStatus",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "dataStatus",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "dataStatus",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -1895,6 +2206,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "dataStatus",
+                  ],
                 },
               ],
             },
@@ -1953,6 +2269,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "integrationId",
               "short" => "A Codat ID representing the integration.",
               "type" => "`$STRING`",
@@ -1979,6 +2296,7 @@ module CodatplatformConfig
               "type" => "`$OBJECT`",
             },
             {
+              "format" => "uri",
               "name" => "logoUrl",
               "req" => true,
               "short" => "Static url for integration's logo.",
@@ -2007,6 +2325,7 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uuid",
               "name" => "sourceId",
               "short" => "A source-specific ID used to distinguish between different sources originating from the same data connection.",
               "type" => "`$STRING`",
@@ -2023,6 +2342,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "integration",
           "op" => {
             "list" => {
@@ -2065,8 +2388,10 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/integrations",
-                  "parts" => [
-                    "integrations",
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -2080,6 +2405,9 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                  ],
                 },
               ],
             },
@@ -2103,15 +2431,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/integrations/{platformKey}",
-                  "parts" => [
-                    "integrations",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "platformKey" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -2121,6 +2453,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -2165,11 +2501,13 @@ module CodatplatformConfig
         "profile" => {
           "fields" => [
             {
+              "deprecated" => true,
               "name" => "apiKey",
               "short" => "The API key for this Codat instance.",
               "type" => "`$STRING`",
             },
             {
+              "deprecated" => true,
               "name" => "confirmCompanyName",
               "short" => "`True` if the company name has been confirmed.",
               "type" => "`$BOOLEAN`",
@@ -2213,14 +2551,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/profile",
-                  "parts" => [
-                    "profile",
+                  "segments" => [
+                    {
+                      "lit" => "profile",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.whiteListUrls`",
                   },
+                  "parts" => [
+                    "profile",
+                  ],
                 },
               ],
             },
@@ -2233,14 +2576,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/profile",
-                  "parts" => [
-                    "profile",
+                  "segments" => [
+                    {
+                      "lit" => "profile",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "profile",
+                  ],
                 },
               ],
             },
@@ -2252,6 +2600,7 @@ module CodatplatformConfig
         "pull_operation" => {
           "fields" => [
             {
+              "format" => "uuid",
               "name" => "companyId",
               "req" => true,
               "short" => "Unique identifier of the company associated to this pull operation.",
@@ -2263,6 +2612,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "connectionId",
               "req" => true,
               "short" => "Unique identifier of the connection associated to this pull operation.",
@@ -2280,6 +2630,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "id",
               "req" => true,
               "short" => "Unique identifier of the pull operation.",
@@ -2348,6 +2699,10 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "pull_operation",
           "op" => {
             "create" => {
@@ -2386,16 +2741,6 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{connection_id}",
-                    "data",
-                    "queue",
-                    "custom",
-                    "{custom_data_identifier}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
@@ -2403,6 +2748,32 @@ module CodatplatformConfig
                       "customDataIdentifier" => "custom_data_identifier",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "connection_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "queue",
+                    },
+                    {
+                      "lit" => "custom",
+                    },
+                    {
+                      "var" => "custom_data_identifier",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2414,6 +2785,16 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{connection_id}",
+                    "data",
+                    "queue",
+                    "custom",
+                    "{custom_data_identifier}",
+                  ],
                 },
                 {
                   "args" => {
@@ -2447,19 +2828,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies/{companyId}/data/queue/{dataType}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "data",
-                    "queue",
-                    "{data_type}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "dataType" => "data_type",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "queue",
+                    },
+                    {
+                      "var" => "data_type",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2471,6 +2862,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "data",
+                    "queue",
+                    "{data_type}",
+                  ],
                 },
               ],
             },
@@ -2524,17 +2922,25 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/data/history",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "data",
-                    "history",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "history",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2548,6 +2954,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "data",
+                    "history",
+                  ],
                 },
               ],
             },
@@ -2578,19 +2990,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/data/history/{datasetId}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "data",
-                    "history",
-                    "{dataset_id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "datasetId" => "dataset_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "history",
+                    },
+                    {
+                      "var" => "dataset_id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2601,6 +3023,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "data",
+                    "history",
+                    "{dataset_id}",
+                  ],
                 },
               ],
             },
@@ -2634,6 +3063,7 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uuid",
               "name" => "companyId",
               "req" => true,
               "short" => "Unique identifier for your SMB in Codat.",
@@ -2645,6 +3075,7 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uuid",
               "name" => "dataConnectionKey",
               "req" => true,
               "short" => "Unique identifier for a company's data connection.",
@@ -2682,6 +3113,7 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uuid",
               "name" => "pushOperationKey",
               "req" => true,
               "short" => "A unique identifier generated by Codat to represent this single push operation.",
@@ -2710,11 +3142,14 @@ module CodatplatformConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "int32",
               "name" => "timeoutInMinutes",
               "short" => "Number of minutes the push operation must complete within before it times out.",
               "type" => "`$INTEGER`",
             },
             {
+              "deprecated" => true,
+              "format" => "int32",
               "name" => "timeoutInSeconds",
               "short" => "Number of seconds the push operation must complete within before it times out.",
               "type" => "`$INTEGER`",
@@ -2731,6 +3166,10 @@ module CodatplatformConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "push",
           "op" => {
             "list" => {
@@ -2783,16 +3222,22 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/push",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "push",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "push",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2806,6 +3251,11 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "push",
+                  ],
                 },
               ],
             },
@@ -2836,18 +3286,26 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/push/{pushOperationKey}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "push",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "pushOperationKey" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "push",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2858,6 +3316,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "push",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -2912,6 +3376,10 @@ module CodatplatformConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "push_option",
           "op" => {
             "load" => {
@@ -2950,14 +3418,6 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/connections/{connectionId}/options/{dataType}",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "connections",
-                    "{connection_id}",
-                    "options",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
@@ -2965,6 +3425,26 @@ module CodatplatformConfig
                       "dataType" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "connections",
+                    },
+                    {
+                      "var" => "connection_id",
+                    },
+                    {
+                      "lit" => "options",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -2976,6 +3456,14 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "connections",
+                    "{connection_id}",
+                    "options",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -3025,17 +3513,25 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/companies/{companyId}/data/all",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "data",
-                    "all",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "data",
+                    },
+                    {
+                      "lit" => "all",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -3045,6 +3541,12 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "data",
+                    "all",
+                  ],
                 },
               ],
             },
@@ -3080,6 +3582,10 @@ module CodatplatformConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "setting",
           "op" => {
             "create" => {
@@ -3091,29 +3597,42 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/apiKeys",
-                  "parts" => [
-                    "apiKeys",
+                  "segments" => [
+                    {
+                      "lit" => "apiKeys",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "apiKeys",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/profile/syncSettings",
-                  "parts" => [
-                    "profile",
-                    "syncSettings",
+                  "segments" => [
+                    {
+                      "lit" => "profile",
+                    },
+                    {
+                      "lit" => "syncSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "profile",
+                    "syncSettings",
+                  ],
                 },
               ],
             },
@@ -3126,14 +3645,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/apiKeys",
-                  "parts" => [
-                    "apiKeys",
+                  "segments" => [
+                    {
+                      "lit" => "apiKeys",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "apiKeys",
+                  ],
                 },
               ],
             },
@@ -3157,15 +3681,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/apiKeys/{apiKeyId}",
-                  "parts" => [
-                    "apiKeys",
-                    "{api_key_id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "apiKeyId" => "api_key_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "apiKeys",
+                    },
+                    {
+                      "var" => "api_key_id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "api_key_id",
@@ -3175,6 +3703,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "apiKeys",
+                    "{api_key_id}",
+                  ],
                 },
               ],
             },
@@ -3224,19 +3756,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig",
-                  "parts" => [
-                    "integrations",
-                    "{platform_key}",
-                    "dataTypes",
-                    "{data_type_id}",
-                    "supplementalDataConfig",
-                  ],
                   "rename" => {
                     "param" => {
                       "dataType" => "data_type_id",
                       "platformKey" => "platform_key",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "platform_key",
+                    },
+                    {
+                      "lit" => "dataTypes",
+                    },
+                    {
+                      "var" => "data_type_id",
+                    },
+                    {
+                      "lit" => "supplementalDataConfig",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "data_type_id",
@@ -3247,6 +3789,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{platform_key}",
+                    "dataTypes",
+                    "{data_type_id}",
+                    "supplementalDataConfig",
+                  ],
                 },
               ],
             },
@@ -3308,19 +3857,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig",
-                  "parts" => [
-                    "integrations",
-                    "{platform_key}",
-                    "dataTypes",
-                    "{data_type_id}",
-                    "supplementalDataConfig",
-                  ],
                   "rename" => {
                     "param" => {
                       "dataType" => "data_type_id",
                       "platformKey" => "platform_key",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "integrations",
+                    },
+                    {
+                      "var" => "platform_key",
+                    },
+                    {
+                      "lit" => "dataTypes",
+                    },
+                    {
+                      "var" => "data_type_id",
+                    },
+                    {
+                      "lit" => "supplementalDataConfig",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "data_type_id",
@@ -3331,6 +3890,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body.supplementalDataConfig`",
                   },
+                  "parts" => [
+                    "integrations",
+                    "{platform_key}",
+                    "dataTypes",
+                    "{data_type_id}",
+                    "supplementalDataConfig",
+                  ],
                 },
               ],
             },
@@ -3414,15 +3980,23 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/profile/syncSettings",
-                  "parts" => [
-                    "profile",
-                    "syncSettings",
+                  "segments" => [
+                    {
+                      "lit" => "profile",
+                    },
+                    {
+                      "lit" => "syncSettings",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.settings`",
                   },
+                  "parts" => [
+                    "profile",
+                    "syncSettings",
+                  ],
                 },
               ],
             },
@@ -3471,19 +4045,29 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/companies/{companyId}/sync/{datasetId}/validation",
-                  "parts" => [
-                    "companies",
-                    "{company_id}",
-                    "sync",
-                    "{sync_id}",
-                    "validation",
-                  ],
                   "rename" => {
                     "param" => {
                       "companyId" => "company_id",
                       "datasetId" => "sync_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "companies",
+                    },
+                    {
+                      "var" => "company_id",
+                    },
+                    {
+                      "lit" => "sync",
+                    },
+                    {
+                      "var" => "sync_id",
+                    },
+                    {
+                      "lit" => "validation",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "company_id",
@@ -3494,6 +4078,13 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "companies",
+                    "{company_id}",
+                    "sync",
+                    "{sync_id}",
+                    "validation",
+                  ],
                 },
               ],
             },
@@ -3525,16 +4116,22 @@ module CodatplatformConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uuid",
               "name" => "id",
               "short" => "Unique identifier for the webhook consumer.",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "short" => "The URL that will consume webhook events dispatched by Codat.",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "webhook",
           "op" => {
             "create" => {
@@ -3546,14 +4143,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/webhooks",
-                  "parts" => [
-                    "webhooks",
+                  "segments" => [
+                    {
+                      "lit" => "webhooks",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "webhooks",
+                  ],
                 },
               ],
             },
@@ -3566,14 +4168,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/webhooks",
-                  "parts" => [
-                    "webhooks",
+                  "segments" => [
+                    {
+                      "lit" => "webhooks",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "webhooks",
+                  ],
                 },
               ],
             },
@@ -3597,15 +4204,19 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/webhooks/{webhookId}",
-                  "parts" => [
-                    "webhooks",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "webhookId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "webhooks",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -3615,6 +4226,10 @@ module CodatplatformConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "webhooks",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -3641,16 +4256,27 @@ module CodatplatformConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/webhooks/integrationKeys/zapier",
-                  "parts" => [
-                    "webhooks",
-                    "integrationKeys",
-                    "zapier",
+                  "segments" => [
+                    {
+                      "lit" => "webhooks",
+                    },
+                    {
+                      "lit" => "integrationKeys",
+                    },
+                    {
+                      "lit" => "zapier",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "webhooks",
+                    "integrationKeys",
+                    "zapier",
+                  ],
                 },
               ],
             },

@@ -94,14 +94,22 @@ func connection_management_allowed_originDirectSetup(mockres any) *connection_ma
 	env := envOverride(map[string]any{
 		"CODATPLATFORM_TEST_CONNECTION_MANAGEMENT_ALLOWED_ORIGIN_ENTID": map[string]any{},
 		"CODATPLATFORM_TEST_LIVE":    "FALSE",
-		"CODATPLATFORM_APIKEY":       "NONE",
+		"CODATPLATFORM_APIKEY":       "",
 	})
 
 	live := env["CODATPLATFORM_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["CODATPLATFORM_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewCodatplatformSDK(mergedOpts)
 
