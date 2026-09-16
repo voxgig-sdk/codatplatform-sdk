@@ -10,5 +10,6 @@
     "sync": {
       "sync_ref01": {}
     }
-  }
+  },
+  "requests": {}
 }

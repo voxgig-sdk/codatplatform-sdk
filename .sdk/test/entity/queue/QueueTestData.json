@@ -10,5 +10,6 @@
     "queue": {
       "queue_ref01": {}
     }
-  }
+  },
+  "requests": {}
 }

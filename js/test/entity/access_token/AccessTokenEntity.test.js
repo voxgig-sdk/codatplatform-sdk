@@ -1,12 +1,14 @@
 
 const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
+require('../../utility').loadEnvLocal(envlocal)
 
 const Path = require('node:path')
 const Fs = require('node:fs')
 
 const { test, describe, afterEach } = require('node:test')
 const assert = require('node:assert')
+const { createLiveTransport } = require('../../live-runner')
+const { runLiveEntity } = require('../../live-entity')
 
 
 const { CodatplatformSDK, BaseFeature, stdutil, config } = require('../../..')
@@ -36,9 +38,13 @@ describe('AccessTokenEntity', async () => {
   })
 
 
-  test('basic', async () => {
+  test('basic', async (t) => {
 
+    
     const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"access_token","op":{},"relations":{"ancestors":[["company"]]},"key$":"access_token","name__orig":"access_token","Name":"AccessToken","name_":"access_token","name-":"access-token","NAME":"ACCESS_TOKEN","index$":0}, {"active":true,"entity":"access_token","key$":"BasicAccessTokenFlow","kind":"basic","name":"BasicAccessTokenFlow","param":{},"step":[]}, 'AccessToken')
+    }
     const client = setup.client
     const struct = setup.struct
 
@@ -92,7 +98,14 @@ function basicSetup(extra) {
 
   idmap = env['CODATPLATFORM_TEST_ACCESS_TOKEN_ENTID']
 
-  if ('TRUE' === env.CODATPLATFORM_TEST_LIVE) {
+  const live = 'TRUE' === env.CODATPLATFORM_TEST_LIVE
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['CODATPLATFORM_TEST_ACCESS_TOKEN_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CodatplatformSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -104,7 +117,8 @@ function basicSetup(extra) {
       // the last entry is undefined, and basicSetup is normally called with no
       // argument at all - so a bare 'extra' silently discarded the apikey and
       // server values above and handed the SDK undefined.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -116,6 +130,8 @@ function basicSetup(extra) {
     struct,
     data: entityData,
     explain: 'TRUE' === env.CODATPLATFORM_TEST_EXPLAIN,
+    live,
+    transport,
     now: Date.now(),
   }
 

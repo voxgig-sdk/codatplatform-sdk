@@ -1,0 +1,1969 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Push | Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/codatplatform-sdk">voxgig-sdk/codatplatform-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/access_token.html">AccessToken</a>
+<a href="../api/all.html">All</a>
+<a href="../api/api_key.html">ApiKey</a>
+<a href="../api/branding.html">Branding</a>
+<a href="../api/company.html">Company</a>
+<a href="../api/company_access_token.html">CompanyAccessToken</a>
+<a href="../api/connection.html">Connection</a>
+<a href="../api/connection_management_access_token.html">ConnectionManagementAccessToken</a>
+<a href="../api/connection_management_allowed_origin.html">ConnectionManagementAllowedOrigin</a>
+<a href="../api/custom.html">Custom</a>
+<a href="../api/data_status.html">DataStatus</a>
+<a href="../api/data_type.html">DataType</a>
+<a href="../api/history.html">History</a>
+<a href="../api/integration.html">Integration</a>
+<a href="../api/option.html">Option</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/pull_operation.html">PullOperation</a>
+<a aria-current="page" href="../api/push.html">Push</a><div class="nav-sections"><a class="nav-section" href="#get-companiescompanyidpush">GET /companies/{companyId}/push</a>
+<a class="nav-section" href="#get-companiescompanyidpushpushoperationkey">GET /companies/{companyId}/push/{pushOperationKey}</a></div>
+<a href="../api/push_option.html">PushOption</a>
+<a href="../api/queue.html">Queue</a>
+<a href="../api/refresh_data.html">RefreshData</a>
+<a href="../api/setting.html">Setting</a>
+<a href="../api/supplemental_data.html">SupplementalData</a>
+<a href="../api/supplemental_data_config.html">SupplementalDataConfig</a>
+<a href="../api/sync.html">Sync</a>
+<a href="../api/sync_setting.html">SyncSetting</a>
+<a href="../api/validation.html">Validation</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webhook_zapier_key.html">WebhookZapierKey</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="push">Push</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-companiescompanyidpush"><code>/companies/{companyId}/push</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-companiescompanyidpushpushoperationkey"><code>/companies/{companyId}/push/{pushOperationKey}</code></a></td>
+<td><code>load</code></td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>changes</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Contains a single entry that communicates which record has changed and the manner in which it changed.</td>
+</tr>
+<tr>
+<td><code>companyId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for your SMB in Codat.</td>
+</tr>
+<tr>
+<td><code>completedOnUtc</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime when the push was completed, null if Pending.</td>
+</tr>
+<tr>
+<td><code>dataConnectionKey</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for a company's data connection.</td>
+</tr>
+<tr>
+<td><code>dataType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of data being pushed, eg invoices, customers.</td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message about the error.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pageNumber</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Current page number.</td>
+</tr>
+<tr>
+<td><code>pageSize</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Number of items to return in results array.</td>
+</tr>
+<tr>
+<td><code>pushOperationKey</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier generated by Codat to represent this single push operation.</td>
+</tr>
+<tr>
+<td><code>requestedOnUtc</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The datetime when the push was requested.</td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The current status of the push operation.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Push status code.</td>
+</tr>
+<tr>
+<td><code>timeoutInMinutes</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Number of minutes the push operation must complete within before it times out.</td>
+</tr>
+<tr>
+<td><code>timeoutInSeconds</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Number of seconds the push operation must complete within before it times out.</td>
+</tr>
+<tr>
+<td><code>totalResults</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Total number of items.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made when pushing data into the platform.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-companiescompanyidpush" class="operation" data-method="get"><code>GET</code> /companies/{companyId}/push</h3>
+<p>Operation ID: <code>get-company-push-history</code>.</p>
+<p>Authentication: API key in the header (<code>auth_header</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>companyId</code> | <code>path</code> | <code>string (uuid)</code> | Yes | Unique identifier for a company. |
+| <code>page</code> | <code>query</code> | <code>integer (int32)</code> | No | Page number. <a href="https://docs.codat.io/using-the-api/paging">Read more</a>. |
+| <code>pageSize</code> | <code>query</code> | <code>integer (int32)</code> | No | Number of records to return in a page. <a href="https://docs.codat.io/using-the-api/paging">Read more</a>. |
+| <code>query</code> | <code>query</code> | <code>string</code> | No | Codat query string. <a href="https://docs.codat.io/using-the-api/querying">Read more</a>. |
+| <code>orderBy</code> | <code>query</code> | <code>string</code> | No | Field to order results by. <a href="https://docs.codat.io/using-the-api/ordering-results">Read more</a>. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<h5 id="400-your-query-parameter-was-not-correctly-formed" class="status" data-status="4xx">400: Your <code>query</code> parameter was not correctly formed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-your-api-request-was-not-properly-authorized" class="status" data-status="4xx">401: Your API request was not properly authorized</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="402-an-account-limit-has-been-exceeded-the-type-of-limit-is-described-in-the-error-property---you-have-exceeded-the-50-company-limit-that-applies-to-a-free-plan-delete-any-companies-you-no-longer-need-and-retry-the-request---the-requested-sync-schedule-is-not-allowed-you-requested-an-hourly-sync-schedule-but-this-functionality-is-not-included-in-the-free-plan---your-free-account-is-older-than-365-days-and-has-expired-contact-supportcodatio" class="status" data-status="4xx">402: An account limit has been exceeded. The type of limit is described in the error property: - You have exceeded the 50-company limit that applies to a Free plan. Delete any companies you no longer need and retry the request. - The requested sync schedule is not allowed. You requested an hourly sync schedule but this functionality is not included in the Free plan. - Your Free account is older than 365 days and has expired. Contact support@codat.io.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="403-you-are-using-an-outdated-api-key-or-a-key-not-associated-with-that-resource" class="status" data-status="4xx">403: You are using an outdated API key or a key not associated with that resource</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-one-or-more-of-the-resources-you-referenced-could-not-be-found-this-might-be-because-your-company-or-data-connection-id-is-wrong-or-was-already-deleted" class="status" data-status="4xx">404: One or more of the resources you referenced could not be found. This might be because your company or data connection id is wrong, or was already deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-too-many-requests-were-made-in-a-given-amount-of-time-wait-a-short-period-and-then-try-again" class="status" data-status="4xx">429: Too many requests were made in a given amount of time. Wait a short period and then try again</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-there-is-a-problem-with-our-server-please-try-again-later" class="status" data-status="5xx">500: There is a problem with our server. Please try again later</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="503-the-codat-api-is-temporarily-offline-for-maintenance-please-try-again-later" class="status" data-status="5xx">503: The Codat API is temporarily offline for maintenance. Please try again later</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-companiescompanyidpushpushoperationkey" class="operation" data-method="get"><code>GET</code> /companies/{companyId}/push/{pushOperationKey}</h3>
+<p>Operation ID: <code>get-push-operation</code>.</p>
+<p>Authentication: API key in the header (<code>auth_header</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>companyId</code> | <code>path</code> | <code>string (uuid)</code> | Yes | Unique identifier for a company. |
+| <code>pushOperationKey</code> | <code>path</code> | <code>string (uuid)</code> | Yes | Push operation key. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok-1" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>changes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Contains a single entry that communicates which record has changed and the manner in which it changed.</td>
+</tr>
+<tr>
+<td><code>changes[].attachmentId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the attachment created otherwise null.</td>
+</tr>
+<tr>
+<td><code>changes[].recordRef</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Push operation reference</td>
+</tr>
+<tr>
+<td><code>changes[].recordRef.dataType</code></td>
+<td><code>enum: accountTransactions, balanceSheet, bankAccounts, bankTransactions, billCreditNotes, billPayments, ...</code></td>
+<td>No</td>
+<td>Available data types</td>
+</tr>
+<tr>
+<td><code>changes[].recordRef.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a push operation.</td>
+</tr>
+<tr>
+<td><code>changes[].type</code></td>
+<td><code>enum: Unknown, Created, Modified, Deleted, AttachmentUploaded</code></td>
+<td>No</td>
+<td>Type of change being applied to record in third party platform.</td>
+</tr>
+<tr>
+<td><code>companyId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier for your SMB in Codat.</td>
+</tr>
+<tr>
+<td><code>completedOnUtc</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime when the push was completed, null if Pending.</td>
+</tr>
+<tr>
+<td><code>dataConnectionKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier for a company's data connection.</td>
+</tr>
+<tr>
+<td><code>dataType</code></td>
+<td><code>enum: accountTransactions, balanceSheet, bankAccounts, bankTransactions, billCreditNotes, billPayments, ...</code></td>
+<td>No</td>
+<td>The type of data being pushed, eg invoices, customers.</td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message about the error.</td>
+</tr>
+<tr>
+<td><code>pushOperationKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier generated by Codat to represent this single push operation. This identifier can be used to track the status of the push, and should be persisted.</td>
+</tr>
+<tr>
+<td><code>requestedOnUtc</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The datetime when the push was requested.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: Pending, Failed, Success, TimedOut</code></td>
+<td>Yes</td>
+<td>The current status of the push operation.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Push status code.</td>
+</tr>
+<tr>
+<td><code>timeoutInMinutes</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Number of minutes the push operation must complete within before it times out.</td>
+</tr>
+<tr>
+<td><code>timeoutInSeconds</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Number of seconds the push operation must complete within before it times out.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-your-api-request-was-not-properly-authorized-1" class="status" data-status="4xx">401: Your API request was not properly authorized</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="402-an-account-limit-has-been-exceeded-the-type-of-limit-is-described-in-the-error-property---you-have-exceeded-the-50-company-limit-that-applies-to-a-free-plan-delete-any-companies-you-no-longer-need-and-retry-the-request---the-requested-sync-schedule-is-not-allowed-you-requested-an-hourly-sync-schedule-but-this-functionality-is-not-included-in-the-free-plan---your-free-account-is-older-than-365-days-and-has-expired-contact-supportcodatio-1" class="status" data-status="4xx">402: An account limit has been exceeded. The type of limit is described in the error property: - You have exceeded the 50-company limit that applies to a Free plan. Delete any companies you no longer need and retry the request. - The requested sync schedule is not allowed. You requested an hourly sync schedule but this functionality is not included in the Free plan. - Your Free account is older than 365 days and has expired. Contact support@codat.io.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="403-you-are-using-an-outdated-api-key-or-a-key-not-associated-with-that-resource-1" class="status" data-status="4xx">403: You are using an outdated API key or a key not associated with that resource</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-one-or-more-of-the-resources-you-referenced-could-not-be-found-this-might-be-because-your-company-or-data-connection-id-is-wrong-or-was-already-deleted-1" class="status" data-status="4xx">404: One or more of the resources you referenced could not be found. This might be because your company or data connection id is wrong, or was already deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-too-many-requests-were-made-in-a-given-amount-of-time-wait-a-short-period-and-then-try-again-1" class="status" data-status="4xx">429: Too many requests were made in a given amount of time. Wait a short period and then try again</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-there-is-a-problem-with-our-server-please-try-again-later-1" class="status" data-status="5xx">500: There is a problem with our server. Please try again later</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="503-the-codat-api-is-temporarily-offline-for-maintenance-please-try-again-later-1" class="status" data-status="5xx">503: The Codat API is temporarily offline for maintenance. Please try again later</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canBeRetried</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>True</code> if the error occurred transiently and can be retried.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier used to propagate to all downstream services and determine the source of the error.</td>
+</tr>
+<tr>
+<td><code>detailedErrorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Machine readable error code used to automate processes based on the code returned.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A brief description of the error.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Codat's service the returned the error.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status code returned by the error.</td>
+</tr>
+<tr>
+<td><code>validation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.</td>
+</tr>
+<tr>
+<td><code>validation.errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.errors[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.errors[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+<tr>
+<td><code>validation.warnings</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>validation.warnings[].itemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for a validation item.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message outlining validation item's issue.</td>
+</tr>
+<tr>
+<td><code>validation.warnings[].validatorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of validator.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>
