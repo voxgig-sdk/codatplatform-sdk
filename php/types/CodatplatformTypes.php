@@ -3,29 +3,14 @@ declare(strict_types=1);
 
 // Typed models for the Codatplatform SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
 // These are documentation-grade value objects (PHP 8 typed properties),
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
-
-/** AccessToken entity data model. */
-class AccessToken
-{
-}
-
-/** All entity data model. */
-class All
-{
-}
-
-/** ApiKey entity data model. */
-class ApiKey
-{
-}
 
 /** Branding entity data model. */
 class Branding
@@ -365,16 +350,6 @@ class DataStatusLoadMatch
     public string $company_id;
 }
 
-/** DataType entity data model. */
-class DataType
-{
-}
-
-/** History entity data model. */
-class History
-{
-}
-
 /** Integration entity data model. */
 class Integration
 {
@@ -410,16 +385,6 @@ class IntegrationListMatch
     public ?int $page = null;
     public ?int $page_size = null;
     public ?string $query = null;
-}
-
-/** Option entity data model. */
-class Option
-{
-}
-
-/** Product entity data model. */
-class Product
-{
 }
 
 /** Profile entity data model. */
@@ -585,11 +550,6 @@ class PushOptionLoadMatch
     public string $id;
 }
 
-/** Queue entity data model. */
-class Queue
-{
-}
-
 /** RefreshData entity data model. */
 class RefreshData
 {
@@ -661,11 +621,6 @@ class SupplementalDataConfigLoadMatch
 {
     public string $data_type_id;
     public string $platform_key;
-}
-
-/** Sync entity data model. */
-class Sync
-{
 }
 
 /** SyncSetting entity data model. */

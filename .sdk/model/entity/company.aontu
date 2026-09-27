@@ -1,0 +1,614 @@
+# Entity: company
+
+main: kit: entity: company: {
+
+  alias: field: {}
+
+  fields: {
+    created: {
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>."
+      t: "`$STRING`"
+    }
+    createdByUserName: {
+      h: "Created By User Name"
+      n: "createdByUserName"
+      r: false
+      sh: "Name of user that created the company in Codat."
+      t: "`$STRING`"
+    }
+    dataConnections: {
+      h: "Data Connections"
+      n: "dataConnections"
+      r: false
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Additional information about the company."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for your SMB in Codat."
+      t: "`$STRING`"
+    }
+    lastSync: {
+      h: "Last Sync"
+      n: "lastSync"
+      r: false
+      sh: "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The name of the company"
+      t: "`$STRING`"
+    }
+    pageNumber: {
+      h: "Page Number"
+      n: "pageNumber"
+      r: true
+      sh: "Current page number."
+      t: "`$INTEGER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: true
+      sh: "Number of items to return in results array."
+      t: "`$INTEGER`"
+    }
+    products: {
+      h: "Products"
+      n: "products"
+      r: false
+      sh: "An array of products that are currently enabled for the company."
+      t: "`$ARRAY`"
+    }
+    redirect: {
+      fo: "uri"
+      h: "Redirect"
+      n: "redirect"
+      r: true
+      sh: "The `redirect` [Link URL](https://docs.codat.io/auth-flow/authorize-hosted-link) enabling the customer to start their auth flow journey for the company."
+      t: "`$STRING`"
+    }
+    referenceParentCompany: {
+      h: "Reference Parent Company"
+      n: "referenceParentCompany"
+      r: false
+      sh: "The parent entity or controlling organization of this company."
+      t: "`$OBJECT`"
+    }
+    referenceSubsidiaryCompanies: {
+      h: "Reference Subsidiary Companies"
+      n: "referenceSubsidiaryCompanies"
+      r: false
+      sh: "A list of subsidiary companies owned or controlled by this entity."
+      t: "`$ARRAY`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "A collection of user-defined key-value pairs that store custom metadata against the company."
+      t: "`$OBJECT`"
+    }
+    totalResults: {
+      h: "Total Results"
+      n: "totalResults"
+      r: true
+      sh: "Total number of items."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "company"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /companies/{companyId}/products/{productIdentifier}/refresh"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "product_identifier"
+                or: "product_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/companies/{companyId}/products/{productIdentifier}/refresh"
+          q: {
+            "$action": "refresh"
+            exist: [
+              "id"
+              "product_identifier"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+              productIdentifier: "product_identifier"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "product_identifier"
+            }
+            {
+              lit: "refresh"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /companies"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/companies"
+          s: [
+            {
+              lit: "companies"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /companies"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "-modifiedDate"
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "region=uk && team=invoice-finance"
+                k: "query"
+                n: "tag"
+                or: "tag"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies"
+          q: {
+            exist: [
+              "order_by"
+              "page"
+              "page_size"
+              "query"
+              "tag"
+            ]
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /companies/{companyId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/companies/{companyId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /companies/{companyId}/products/{productIdentifier}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "product_identifier"
+                or: "product_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/companies/{companyId}/products/{productIdentifier}"
+          q: {
+            exist: [
+              "id"
+              "product_identifier"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+              productIdentifier: "product_identifier"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "product_identifier"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /companies/{companyId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/companies/{companyId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /companies/{companyId}/products/{productIdentifier}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "product_identifier"
+                or: "product_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/companies/{companyId}/products/{productIdentifier}"
+          q: {
+            exist: [
+              "id"
+              "product_identifier"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+              productIdentifier: "product_identifier"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "product_identifier"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /companies/{companyId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/companies/{companyId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

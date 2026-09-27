@@ -307,24 +307,6 @@ class CodatplatformSDK:
         return res
 
 
-    def AccessToken(self, data=None) -> "AccessTokenEntity":
-        """Entity factory: client.AccessToken().list() / client.AccessToken().load({"id": ...})."""
-        from codatplatform_sdk.entity.access_token_entity import AccessTokenEntity
-        return AccessTokenEntity(self, data)
-
-
-    def All(self, data=None) -> "AllEntity":
-        """Entity factory: client.All().list() / client.All().load({"id": ...})."""
-        from codatplatform_sdk.entity.all_entity import AllEntity
-        return AllEntity(self, data)
-
-
-    def ApiKey(self, data=None) -> "ApiKeyEntity":
-        """Entity factory: client.ApiKey().list() / client.ApiKey().load({"id": ...})."""
-        from codatplatform_sdk.entity.api_key_entity import ApiKeyEntity
-        return ApiKeyEntity(self, data)
-
-
     def Branding(self, data=None) -> "BrandingEntity":
         """Entity factory: client.Branding().list() / client.Branding().load({"id": ...})."""
         from codatplatform_sdk.entity.branding_entity import BrandingEntity
@@ -373,34 +355,10 @@ class CodatplatformSDK:
         return DataStatusEntity(self, data)
 
 
-    def DataType(self, data=None) -> "DataTypeEntity":
-        """Entity factory: client.DataType().list() / client.DataType().load({"id": ...})."""
-        from codatplatform_sdk.entity.data_type_entity import DataTypeEntity
-        return DataTypeEntity(self, data)
-
-
-    def History(self, data=None) -> "HistoryEntity":
-        """Entity factory: client.History().list() / client.History().load({"id": ...})."""
-        from codatplatform_sdk.entity.history_entity import HistoryEntity
-        return HistoryEntity(self, data)
-
-
     def Integration(self, data=None) -> "IntegrationEntity":
         """Entity factory: client.Integration().list() / client.Integration().load({"id": ...})."""
         from codatplatform_sdk.entity.integration_entity import IntegrationEntity
         return IntegrationEntity(self, data)
-
-
-    def Option(self, data=None) -> "OptionEntity":
-        """Entity factory: client.Option().list() / client.Option().load({"id": ...})."""
-        from codatplatform_sdk.entity.option_entity import OptionEntity
-        return OptionEntity(self, data)
-
-
-    def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
-        from codatplatform_sdk.entity.product_entity import ProductEntity
-        return ProductEntity(self, data)
 
 
     def Profile(self, data=None) -> "ProfileEntity":
@@ -427,12 +385,6 @@ class CodatplatformSDK:
         return PushOptionEntity(self, data)
 
 
-    def Queue(self, data=None) -> "QueueEntity":
-        """Entity factory: client.Queue().list() / client.Queue().load({"id": ...})."""
-        from codatplatform_sdk.entity.queue_entity import QueueEntity
-        return QueueEntity(self, data)
-
-
     def RefreshData(self, data=None) -> "RefreshDataEntity":
         """Entity factory: client.RefreshData().list() / client.RefreshData().load({"id": ...})."""
         from codatplatform_sdk.entity.refresh_data_entity import RefreshDataEntity
@@ -455,12 +407,6 @@ class CodatplatformSDK:
         """Entity factory: client.SupplementalDataConfig().list() / client.SupplementalDataConfig().load({"id": ...})."""
         from codatplatform_sdk.entity.supplemental_data_config_entity import SupplementalDataConfigEntity
         return SupplementalDataConfigEntity(self, data)
-
-
-    def Sync(self, data=None) -> "SyncEntity":
-        """Entity factory: client.Sync().list() / client.Sync().load({"id": ...})."""
-        from codatplatform_sdk.entity.sync_entity import SyncEntity
-        return SyncEntity(self, data)
 
 
     def SyncSetting(self, data=None) -> "SyncSettingEntity":
@@ -514,9 +460,6 @@ class CodatplatformSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from codatplatform_sdk.entity.access_token_entity import AccessTokenEntity
-    from codatplatform_sdk.entity.all_entity import AllEntity
-    from codatplatform_sdk.entity.api_key_entity import ApiKeyEntity
     from codatplatform_sdk.entity.branding_entity import BrandingEntity
     from codatplatform_sdk.entity.company_entity import CompanyEntity
     from codatplatform_sdk.entity.company_access_token_entity import CompanyAccessTokenEntity
@@ -525,21 +468,15 @@ if TYPE_CHECKING:
     from codatplatform_sdk.entity.connection_management_allowed_origin_entity import ConnectionManagementAllowedOriginEntity
     from codatplatform_sdk.entity.custom_entity import CustomEntity
     from codatplatform_sdk.entity.data_status_entity import DataStatusEntity
-    from codatplatform_sdk.entity.data_type_entity import DataTypeEntity
-    from codatplatform_sdk.entity.history_entity import HistoryEntity
     from codatplatform_sdk.entity.integration_entity import IntegrationEntity
-    from codatplatform_sdk.entity.option_entity import OptionEntity
-    from codatplatform_sdk.entity.product_entity import ProductEntity
     from codatplatform_sdk.entity.profile_entity import ProfileEntity
     from codatplatform_sdk.entity.pull_operation_entity import PullOperationEntity
     from codatplatform_sdk.entity.push_entity import PushEntity
     from codatplatform_sdk.entity.push_option_entity import PushOptionEntity
-    from codatplatform_sdk.entity.queue_entity import QueueEntity
     from codatplatform_sdk.entity.refresh_data_entity import RefreshDataEntity
     from codatplatform_sdk.entity.setting_entity import SettingEntity
     from codatplatform_sdk.entity.supplemental_data_entity import SupplementalDataEntity
     from codatplatform_sdk.entity.supplemental_data_config_entity import SupplementalDataConfigEntity
-    from codatplatform_sdk.entity.sync_entity import SyncEntity
     from codatplatform_sdk.entity.sync_setting_entity import SyncSettingEntity
     from codatplatform_sdk.entity.validation_entity import ValidationEntity
     from codatplatform_sdk.entity.webhook_entity import WebhookEntity

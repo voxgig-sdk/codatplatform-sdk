@@ -1,8 +1,5 @@
 // Codatplatform Js SDK
 
-const { AccessTokenEntity } = require('./entity/AccessTokenEntity')
-const { AllEntity } = require('./entity/AllEntity')
-const { ApiKeyEntity } = require('./entity/ApiKeyEntity')
 const { BrandingEntity } = require('./entity/BrandingEntity')
 const { CompanyEntity } = require('./entity/CompanyEntity')
 const { CompanyAccessTokenEntity } = require('./entity/CompanyAccessTokenEntity')
@@ -11,21 +8,15 @@ const { ConnectionManagementAccessTokenEntity } = require('./entity/ConnectionMa
 const { ConnectionManagementAllowedOriginEntity } = require('./entity/ConnectionManagementAllowedOriginEntity')
 const { CustomEntity } = require('./entity/CustomEntity')
 const { DataStatusEntity } = require('./entity/DataStatusEntity')
-const { DataTypeEntity } = require('./entity/DataTypeEntity')
-const { HistoryEntity } = require('./entity/HistoryEntity')
 const { IntegrationEntity } = require('./entity/IntegrationEntity')
-const { OptionEntity } = require('./entity/OptionEntity')
-const { ProductEntity } = require('./entity/ProductEntity')
 const { ProfileEntity } = require('./entity/ProfileEntity')
 const { PullOperationEntity } = require('./entity/PullOperationEntity')
 const { PushEntity } = require('./entity/PushEntity')
 const { PushOptionEntity } = require('./entity/PushOptionEntity')
-const { QueueEntity } = require('./entity/QueueEntity')
 const { RefreshDataEntity } = require('./entity/RefreshDataEntity')
 const { SettingEntity } = require('./entity/SettingEntity')
 const { SupplementalDataEntity } = require('./entity/SupplementalDataEntity')
 const { SupplementalDataConfigEntity } = require('./entity/SupplementalDataConfigEntity')
-const { SyncEntity } = require('./entity/SyncEntity')
 const { SyncSettingEntity } = require('./entity/SyncSettingEntity')
 const { ValidationEntity } = require('./entity/ValidationEntity')
 const { WebhookEntity } = require('./entity/WebhookEntity')
@@ -322,33 +313,6 @@ class CodatplatformSDK {
 
 
 
-  // Entity access: `client.AccessToken().list()` / `client.AccessToken().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  AccessToken(entopts) {
-    const self = this
-    return new AccessTokenEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.All().list()` / `client.All().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  All(entopts) {
-    const self = this
-    return new AllEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.ApiKey().list()` / `client.ApiKey().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  ApiKey(entopts) {
-    const self = this
-    return new ApiKeyEntity(self, entopts)
-  }
-
-
   // Entity access: `client.Branding().list()` / `client.Branding().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -421,48 +385,12 @@ class CodatplatformSDK {
   }
 
 
-  // Entity access: `client.DataType().list()` / `client.DataType().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  DataType(entopts) {
-    const self = this
-    return new DataTypeEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.History().list()` / `client.History().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  History(entopts) {
-    const self = this
-    return new HistoryEntity(self, entopts)
-  }
-
-
   // Entity access: `client.Integration().list()` / `client.Integration().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   Integration(entopts) {
     const self = this
     return new IntegrationEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Option().list()` / `client.Option().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Option(entopts) {
-    const self = this
-    return new OptionEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Product(entopts) {
-    const self = this
-    return new ProductEntity(self, entopts)
   }
 
 
@@ -502,15 +430,6 @@ class CodatplatformSDK {
   }
 
 
-  // Entity access: `client.Queue().list()` / `client.Queue().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Queue(entopts) {
-    const self = this
-    return new QueueEntity(self, entopts)
-  }
-
-
   // Entity access: `client.RefreshData().list()` / `client.RefreshData().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -544,15 +463,6 @@ class CodatplatformSDK {
   SupplementalDataConfig(entopts) {
     const self = this
     return new SupplementalDataConfigEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Sync().list()` / `client.Sync().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Sync(entopts) {
-    const self = this
-    return new SyncEntity(self, entopts)
   }
 
 

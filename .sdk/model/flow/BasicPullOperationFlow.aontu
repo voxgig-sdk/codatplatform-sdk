@@ -1,0 +1,62 @@
+# BasicPullOperationFlow
+
+main: kit: flow: BasicPullOperationFlow:
+{
+  entity: "pull_operation",
+  kind: "basic",
+  name: "BasicPullOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_operation_ref01"
+      }
+
+      m: {
+        company_id: "company01",
+        data_type: "data_type01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        company_id: "company01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pull_operation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pull_operation_ref01",
+        srcdatavar: "pull_operation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        company_id: "company01",
+        id: "pull_operation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pull_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPullOperationFlow"
+}

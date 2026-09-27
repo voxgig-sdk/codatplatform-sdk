@@ -6,9 +6,6 @@
 <div class="site-notice" role="note"></div>
 <div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Platform API</a></details>
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
-<a href="../api/access_token.html">AccessToken</a>
-<a href="../api/all.html">All</a>
-<a href="../api/api_key.html">ApiKey</a>
 <a href="../api/branding.html">Branding</a>
 <a href="../api/company.html">Company</a>
 <a href="../api/company_access_token.html">CompanyAccessToken</a>
@@ -17,21 +14,15 @@
 <a href="../api/connection_management_allowed_origin.html">ConnectionManagementAllowedOrigin</a>
 <a href="../api/custom.html">Custom</a>
 <a aria-current="page" href="../api/data_status.html">DataStatus</a><div class="nav-sections"><a class="nav-section" href="#get-companiescompanyiddatastatus">GET /companies/{companyId}/dataStatus</a></div>
-<a href="../api/data_type.html">DataType</a>
-<a href="../api/history.html">History</a>
 <a href="../api/integration.html">Integration</a>
-<a href="../api/option.html">Option</a>
-<a href="../api/product.html">Product</a>
 <a href="../api/profile.html">Profile</a>
 <a href="../api/pull_operation.html">PullOperation</a>
 <a href="../api/push.html">Push</a>
 <a href="../api/push_option.html">PushOption</a>
-<a href="../api/queue.html">Queue</a>
 <a href="../api/refresh_data.html">RefreshData</a>
 <a href="../api/setting.html">Setting</a>
 <a href="../api/supplemental_data.html">SupplementalData</a>
 <a href="../api/supplemental_data_config.html">SupplementalDataConfig</a>
-<a href="../api/sync.html">Sync</a>
 <a href="../api/sync_setting.html">SyncSetting</a>
 <a href="../api/validation.html">Validation</a>
 <a href="../api/webhook.html">Webhook</a>
@@ -47,14 +38,14 @@
 <a href="../sdks/py.html">Python</a>
 <a href="../sdks/rb.html">Ruby</a>
 <a href="../sdks/ts.html">TypeScript</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="datastatus">DataStatus</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="datastatus">DataStatus</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -75,6 +66,40 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">data_status, err := client.DataStatus(nil).Load(map[string]any{&quot;company_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(data_status)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const data_status = await client.DataStatus().load({ company_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local data_status, err = client:DataStatus():load({ company_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$data_status = $client-&gt;DataStatus()-&gt;load([&quot;company_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">data_status = client.DataStatus().load({&quot;company_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">data_status = client.DataStatus.load({ &quot;company_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const data_status = await client.DataStatus().load({ company_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -389,7 +414,7 @@
 <td><code>accountTransactions.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>accountTransactions.latestSuccessfulSyncId</code></td>
@@ -425,7 +450,7 @@
 <td><code>balanceSheet.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>balanceSheet.latestSuccessfulSyncId</code></td>
@@ -461,7 +486,7 @@
 <td><code>bankAccounts.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>bankAccounts.latestSuccessfulSyncId</code></td>
@@ -497,7 +522,7 @@
 <td><code>bankTransactions.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>bankTransactions.latestSuccessfulSyncId</code></td>
@@ -533,7 +558,7 @@
 <td><code>banking-accountBalances.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>banking-accountBalances.latestSuccessfulSyncId</code></td>
@@ -569,7 +594,7 @@
 <td><code>banking-accounts.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>banking-accounts.latestSuccessfulSyncId</code></td>
@@ -605,7 +630,7 @@
 <td><code>banking-transactionCategories.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>banking-transactionCategories.latestSuccessfulSyncId</code></td>
@@ -641,7 +666,7 @@
 <td><code>banking-transactions.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>banking-transactions.latestSuccessfulSyncId</code></td>
@@ -677,7 +702,7 @@
 <td><code>billCreditNotes.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>billCreditNotes.latestSuccessfulSyncId</code></td>
@@ -713,7 +738,7 @@
 <td><code>billPayments.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>billPayments.latestSuccessfulSyncId</code></td>
@@ -749,7 +774,7 @@
 <td><code>bills.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>bills.latestSuccessfulSyncId</code></td>
@@ -785,7 +810,7 @@
 <td><code>cashFlowStatement.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>cashFlowStatement.latestSuccessfulSyncId</code></td>
@@ -821,7 +846,7 @@
 <td><code>chartOfAccounts.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>chartOfAccounts.latestSuccessfulSyncId</code></td>
@@ -857,7 +882,7 @@
 <td><code>commerce-companyInfo.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-companyInfo.latestSuccessfulSyncId</code></td>
@@ -893,7 +918,7 @@
 <td><code>commerce-customers.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-customers.latestSuccessfulSyncId</code></td>
@@ -929,7 +954,7 @@
 <td><code>commerce-disputes.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-disputes.latestSuccessfulSyncId</code></td>
@@ -965,7 +990,7 @@
 <td><code>commerce-locations.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-locations.latestSuccessfulSyncId</code></td>
@@ -1001,7 +1026,7 @@
 <td><code>commerce-orders.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-orders.latestSuccessfulSyncId</code></td>
@@ -1037,7 +1062,7 @@
 <td><code>commerce-paymentMethods.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-paymentMethods.latestSuccessfulSyncId</code></td>
@@ -1073,7 +1098,7 @@
 <td><code>commerce-payments.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-payments.latestSuccessfulSyncId</code></td>
@@ -1109,7 +1134,7 @@
 <td><code>commerce-productCategories.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-productCategories.latestSuccessfulSyncId</code></td>
@@ -1145,7 +1170,7 @@
 <td><code>commerce-products.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-products.latestSuccessfulSyncId</code></td>
@@ -1181,7 +1206,7 @@
 <td><code>commerce-taxComponents.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-taxComponents.latestSuccessfulSyncId</code></td>
@@ -1217,7 +1242,7 @@
 <td><code>commerce-transactions.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>commerce-transactions.latestSuccessfulSyncId</code></td>
@@ -1253,7 +1278,7 @@
 <td><code>company.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>company.latestSuccessfulSyncId</code></td>
@@ -1289,7 +1314,7 @@
 <td><code>creditNotes.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>creditNotes.latestSuccessfulSyncId</code></td>
@@ -1325,7 +1350,7 @@
 <td><code>customers.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>customers.latestSuccessfulSyncId</code></td>
@@ -1361,7 +1386,7 @@
 <td><code>directCosts.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>directCosts.latestSuccessfulSyncId</code></td>
@@ -1397,7 +1422,7 @@
 <td><code>directIncomes.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>directIncomes.latestSuccessfulSyncId</code></td>
@@ -1433,7 +1458,7 @@
 <td><code>invoices.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>invoices.latestSuccessfulSyncId</code></td>
@@ -1469,7 +1494,7 @@
 <td><code>itemReceipts.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>itemReceipts.latestSuccessfulSyncId</code></td>
@@ -1505,7 +1530,7 @@
 <td><code>items.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>items.latestSuccessfulSyncId</code></td>
@@ -1541,7 +1566,7 @@
 <td><code>journalEntries.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>journalEntries.latestSuccessfulSyncId</code></td>
@@ -1577,7 +1602,7 @@
 <td><code>journals.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>journals.latestSuccessfulSyncId</code></td>
@@ -1613,7 +1638,7 @@
 <td><code>paymentMethods.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>paymentMethods.latestSuccessfulSyncId</code></td>
@@ -1649,7 +1674,7 @@
 <td><code>payments.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>payments.latestSuccessfulSyncId</code></td>
@@ -1685,7 +1710,7 @@
 <td><code>profitAndLoss.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>profitAndLoss.latestSuccessfulSyncId</code></td>
@@ -1721,7 +1746,7 @@
 <td><code>purchaseOrders.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>purchaseOrders.latestSuccessfulSyncId</code></td>
@@ -1757,7 +1782,7 @@
 <td><code>salesOrders.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>salesOrders.latestSuccessfulSyncId</code></td>
@@ -1793,7 +1818,7 @@
 <td><code>suppliers.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>suppliers.latestSuccessfulSyncId</code></td>
@@ -1829,7 +1854,7 @@
 <td><code>taxRates.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>taxRates.latestSuccessfulSyncId</code></td>
@@ -1865,7 +1890,7 @@
 <td><code>trackingCategories.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>trackingCategories.latestSuccessfulSyncId</code></td>
@@ -1901,7 +1926,7 @@
 <td><code>transfers.lastSuccessfulSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>transfers.latestSuccessfulSyncId</code></td>

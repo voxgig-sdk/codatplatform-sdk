@@ -12,19 +12,20 @@ Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua, JavaScript SDKs — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `debug`, `idempotency`, `metrics`, `paging`, `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **30 semantic entities** that you
+This SDK exposes the API as **21 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`, `create`, `update`, `remove`, `patch`):
 
 ```ts
 const client = new CodatplatformSDK()
+const branding = await client.Branding().load({ platform_key: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -112,20 +113,20 @@ console.log(pushoption)
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/codatplatform` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
-| Python | `voxgig-sdk-codatplatform` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
-| PHP | `voxgig-sdk/codatplatform` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
+| TypeScript | `@voxgig-sdk/codatplatform-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
+| Python | `voxgig-sdk-codatplatform-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
+| PHP | `voxgig-sdk/codatplatform-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/codatplatform-sdk/go` | `go get github.com/voxgig-sdk/codatplatform-sdk/go@latest` |
-| Ruby | `voxgig-sdk-codatplatform` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
-| Lua | `voxgig-sdk-codatplatform` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
-| JavaScript | `@voxgig-sdk/codatplatform-js` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/releases) |
+| Ruby | `voxgig-sdk-codatplatform-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
+| Lua | `voxgig-sdk-codatplatform-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
+| JavaScript | `@voxgig-sdk/codatplatform-sdk-js` | publish pending — [install from git tag](https://github.com/voxgig-sdk/codatplatform-sdk/tags) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { CodatplatformSDK } from '@voxgig-sdk/codatplatform'
+import { CodatplatformSDK } from '@voxgig-sdk/codatplatform-sdk'
 
 const client = new CodatplatformSDK({
   apikey: process.env.CODATPLATFORM_APIKEY,
@@ -149,13 +150,10 @@ See the [TypeScript README](ts/README.md) for the full guide.
 
 ## Entities
 
-The API exposes 30 entities:
+The API exposes 21 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **AccessToken** | The AccessToken entity. | `` |
-| **All** | The All entity. | `` |
-| **ApiKey** | The ApiKey entity. | `` |
 | **Branding** | The Branding entity (load). | `/integrations/{platformKey}/branding` |
 | **Company** | The Company entity (create, list, load, patch, remove, update). | `/companies` |
 | **CompanyAccessToken** | The CompanyAccessToken entity (load). | `/companies/{companyId}/accessToken` |
@@ -164,21 +162,15 @@ The API exposes 30 entities:
 | **ConnectionManagementAllowedOrigin** | The ConnectionManagementAllowedOrigin entity (create, list). | `/connectionManagement/corsSettings` |
 | **Custom** | The Custom entity (load, update). | `/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}` |
 | **DataStatus** | The DataStatus entity (load). | `/companies/{companyId}/dataStatus` |
-| **DataType** | The DataType entity. | `` |
-| **History** | The History entity. | `` |
 | **Integration** | The Integration entity (list, load). | `/integrations` |
-| **Option** | The Option entity. | `` |
-| **Product** | The Product entity. | `` |
 | **Profile** | The Profile entity (list, update). | `/profile` |
 | **PullOperation** | The PullOperation entity (create, list, load). | `/companies/{companyId}/data/history` |
 | **Push** | The Push entity (list, load). | `/companies/{companyId}/push` |
 | **PushOption** | The PushOption entity (load). | `/companies/{companyId}/connections/{connectionId}/options/{dataType}` |
-| **Queue** | The Queue entity. | `` |
 | **RefreshData** | The RefreshData entity (create). | `/companies/{companyId}/data/all` |
 | **Setting** | The Setting entity (create, list, remove). | `/apiKeys` |
 | **SupplementalData** | The SupplementalData entity (update). | `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig` |
 | **SupplementalDataConfig** | The SupplementalDataConfig entity (load). | `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig` |
-| **Sync** | The Sync entity. | `` |
 | **SyncSetting** | The SyncSetting entity (list). | `/profile/syncSettings` |
 | **Validation** | The Validation entity (list). | `/companies/{companyId}/sync/{datasetId}/validation` |
 | **Webhook** | The Webhook entity (create, list, remove). | `/webhooks` |
@@ -199,6 +191,10 @@ client = CodatplatformSDK({
     "apikey": os.environ.get("CODATPLATFORM_APIKEY"),
 })
 
+
+# Load a specific branding (returns the record, raises on error)
+branding = client.Branding().load({"platform_key": "example_platform_key"})
+print(branding)
 ```
 
 ### PHP
@@ -211,6 +207,10 @@ $client = new CodatplatformSDK([
     "apikey" => getenv("CODATPLATFORM_APIKEY"),
 ]);
 
+
+// Load a specific branding (returns the ENTITY; call data_get() for the record; throws on error)
+$branding = $client->Branding()->load(["platform_key" => "example_platform_key"]);
+print_r($branding->data_get());
 ```
 
 ### Golang
@@ -242,6 +242,10 @@ client = CodatplatformSDK.new({
   "apikey" => ENV["CODATPLATFORM_APIKEY"],
 })
 
+
+# Load a specific branding (returns the ENTITY; call data_get for the record)
+branding = client.Branding.load({ "platform_key" => "example_platform_key" })
+puts branding
 ```
 
 ### Lua
@@ -253,12 +257,16 @@ local client = sdk.new({
   apikey = os.getenv("CODATPLATFORM_APIKEY"),
 })
 
+
+-- Load a specific branding
+local branding, err = client:Branding():load({ platform_key = "example_platform_key" })
+print(branding)
 ```
 
 ### JavaScript
 
 ```js
-const { CodatplatformSDK } = require('@voxgig-sdk/codatplatform-js')
+const { CodatplatformSDK } = require('@voxgig-sdk/codatplatform-sdk-js')
 
 const client = new CodatplatformSDK({
   apikey: process.env.CODATPLATFORM_APIKEY,
@@ -384,14 +392,14 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **DebugFeature** | Request/response capture ring buffer for debugging |
-| **IdempotencyFeature** | Idempotency keys for safe retries of mutating operations |
-| **MetricsFeature** | Statistics capture: per-operation counters and latency |
-| **PagingFeature** | Pagination signals for list operations |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **DebugFeature** | Debug capture |
+| **IdempotencyFeature** | Idempotency |
+| **MetricsFeature** | Metrics |
+| **PagingFeature** | Paging |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 

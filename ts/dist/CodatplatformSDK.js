@@ -2,9 +2,6 @@
 // Codatplatform Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.CodatplatformSDK = exports.CodatplatformEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
-const AccessTokenEntity_1 = require("./entity/AccessTokenEntity");
-const AllEntity_1 = require("./entity/AllEntity");
-const ApiKeyEntity_1 = require("./entity/ApiKeyEntity");
 const BrandingEntity_1 = require("./entity/BrandingEntity");
 const CompanyEntity_1 = require("./entity/CompanyEntity");
 const CompanyAccessTokenEntity_1 = require("./entity/CompanyAccessTokenEntity");
@@ -13,21 +10,15 @@ const ConnectionManagementAccessTokenEntity_1 = require("./entity/ConnectionMana
 const ConnectionManagementAllowedOriginEntity_1 = require("./entity/ConnectionManagementAllowedOriginEntity");
 const CustomEntity_1 = require("./entity/CustomEntity");
 const DataStatusEntity_1 = require("./entity/DataStatusEntity");
-const DataTypeEntity_1 = require("./entity/DataTypeEntity");
-const HistoryEntity_1 = require("./entity/HistoryEntity");
 const IntegrationEntity_1 = require("./entity/IntegrationEntity");
-const OptionEntity_1 = require("./entity/OptionEntity");
-const ProductEntity_1 = require("./entity/ProductEntity");
 const ProfileEntity_1 = require("./entity/ProfileEntity");
 const PullOperationEntity_1 = require("./entity/PullOperationEntity");
 const PushEntity_1 = require("./entity/PushEntity");
 const PushOptionEntity_1 = require("./entity/PushOptionEntity");
-const QueueEntity_1 = require("./entity/QueueEntity");
 const RefreshDataEntity_1 = require("./entity/RefreshDataEntity");
 const SettingEntity_1 = require("./entity/SettingEntity");
 const SupplementalDataEntity_1 = require("./entity/SupplementalDataEntity");
 const SupplementalDataConfigEntity_1 = require("./entity/SupplementalDataConfigEntity");
-const SyncEntity_1 = require("./entity/SyncEntity");
 const SyncSettingEntity_1 = require("./entity/SyncSettingEntity");
 const ValidationEntity_1 = require("./entity/ValidationEntity");
 const WebhookEntity_1 = require("./entity/WebhookEntity");
@@ -113,7 +104,6 @@ class CodatplatformSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -127,14 +117,12 @@ class CodatplatformSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -209,18 +197,6 @@ class CodatplatformSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -253,27 +229,6 @@ class CodatplatformSDK {
             return { ok: false, status: res.status, headers: res.headers, err, data: res.data };
         }
         return res;
-    }
-    // Entity access: `client.AccessToken().list()` / `client.AccessToken().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    AccessToken(entopts) {
-        const self = this;
-        return new AccessTokenEntity_1.AccessTokenEntity(self, entopts);
-    }
-    // Entity access: `client.All().list()` / `client.All().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    All(entopts) {
-        const self = this;
-        return new AllEntity_1.AllEntity(self, entopts);
-    }
-    // Entity access: `client.ApiKey().list()` / `client.ApiKey().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    ApiKey(entopts) {
-        const self = this;
-        return new ApiKeyEntity_1.ApiKeyEntity(self, entopts);
     }
     // Entity access: `client.Branding().list()` / `client.Branding().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -331,40 +286,12 @@ class CodatplatformSDK {
         const self = this;
         return new DataStatusEntity_1.DataStatusEntity(self, entopts);
     }
-    // Entity access: `client.DataType().list()` / `client.DataType().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    DataType(entopts) {
-        const self = this;
-        return new DataTypeEntity_1.DataTypeEntity(self, entopts);
-    }
-    // Entity access: `client.History().list()` / `client.History().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    History(entopts) {
-        const self = this;
-        return new HistoryEntity_1.HistoryEntity(self, entopts);
-    }
     // Entity access: `client.Integration().list()` / `client.Integration().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     Integration(entopts) {
         const self = this;
         return new IntegrationEntity_1.IntegrationEntity(self, entopts);
-    }
-    // Entity access: `client.Option().list()` / `client.Option().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Option(entopts) {
-        const self = this;
-        return new OptionEntity_1.OptionEntity(self, entopts);
-    }
-    // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Product(entopts) {
-        const self = this;
-        return new ProductEntity_1.ProductEntity(self, entopts);
     }
     // Entity access: `client.Profile().list()` / `client.Profile().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -394,13 +321,6 @@ class CodatplatformSDK {
         const self = this;
         return new PushOptionEntity_1.PushOptionEntity(self, entopts);
     }
-    // Entity access: `client.Queue().list()` / `client.Queue().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Queue(entopts) {
-        const self = this;
-        return new QueueEntity_1.QueueEntity(self, entopts);
-    }
     // Entity access: `client.RefreshData().list()` / `client.RefreshData().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -428,13 +348,6 @@ class CodatplatformSDK {
     SupplementalDataConfig(entopts) {
         const self = this;
         return new SupplementalDataConfigEntity_1.SupplementalDataConfigEntity(self, entopts);
-    }
-    // Entity access: `client.Sync().list()` / `client.Sync().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Sync(entopts) {
-        const self = this;
-        return new SyncEntity_1.SyncEntity(self, entopts);
     }
     // Entity access: `client.SyncSetting().list()` / `client.SyncSetting().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

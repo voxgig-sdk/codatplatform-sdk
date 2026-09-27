@@ -1,0 +1,18 @@
+# BasicWebhookZapierKeyFlow
+
+main: kit: flow: BasicWebhookZapierKeyFlow:
+{
+  entity: "webhook_zapier_key",
+  kind: "basic",
+  name: "BasicWebhookZapierKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "webhook_zapier_key_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWebhookZapierKeyFlow"
+}

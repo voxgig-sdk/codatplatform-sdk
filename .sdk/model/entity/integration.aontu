@@ -1,0 +1,254 @@
+# Entity: integration
+
+main: kit: entity: integration: {
+
+  alias: field: {}
+
+  fields: {
+    dataProvidedBy: {
+      h: "Data Provided By"
+      n: "dataProvidedBy"
+      r: false
+      sh: "The name of the data provider."
+      t: "`$STRING`"
+    }
+    datatypeFeatures: {
+      h: "Datatype Features"
+      n: "datatypeFeatures"
+      r: false
+      t: "`$ARRAY`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      sh: "Whether this integration is enabled for your customers to use."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    integrationId: {
+      fo: "uuid"
+      h: "Integration Id"
+      n: "integrationId"
+      r: false
+      sh: "A Codat ID representing the integration."
+      t: "`$STRING`"
+    }
+    isBeta: {
+      h: "Is Beta"
+      n: "isBeta"
+      r: false
+      sh: "`True` if the integration is currently in beta release."
+      t: "`$BOOLEAN`"
+    }
+    isOfflineConnector: {
+      h: "Is Offline Connector"
+      n: "isOfflineConnector"
+      r: false
+      sh: "`True` if the integration is to an application installed and run locally on an SMBs computer."
+      t: "`$BOOLEAN`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "A unique 4-letter key to represent a platform in each integration."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      t: "`$OBJECT`"
+    }
+    logoUrl: {
+      fo: "uri"
+      h: "Logo Url"
+      n: "logoUrl"
+      r: true
+      sh: "Static url for integration's logo."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Name of integration."
+      t: "`$STRING`"
+    }
+    pageNumber: {
+      h: "Page Number"
+      n: "pageNumber"
+      r: true
+      sh: "Current page number."
+      t: "`$INTEGER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: true
+      sh: "Number of items to return in results array."
+      t: "`$INTEGER`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    sourceId: {
+      fo: "uuid"
+      h: "Source Id"
+      n: "sourceId"
+      r: false
+      sh: "A source-specific ID used to distinguish between different sources originating from the same data connection."
+      t: "`$STRING`"
+    }
+    sourceType: {
+      h: "Source Type"
+      n: "sourceType"
+      r: false
+      sh: "The type of platform of the connection."
+      t: "`$STRING`"
+    }
+    totalResults: {
+      h: "Total Results"
+      n: "totalResults"
+      r: true
+      sh: "Total number of items."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "integration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "-modifiedDate"
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/integrations"
+          q: {
+            exist: [
+              "order_by"
+              "page"
+              "page_size"
+              "query"
+            ]
+          }
+          s: [
+            {
+              lit: "integrations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /integrations/{platformKey}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "gbol"
+                k: "param"
+                n: "id"
+                or: "platform_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/integrations/{platformKey}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              platformKey: "id"
+            }
+          }
+          s: [
+            {
+              lit: "integrations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

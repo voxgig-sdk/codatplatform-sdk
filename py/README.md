@@ -4,7 +4,7 @@
 
 The Python SDK for the Codatplatform API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.AccessToken()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Branding()` — each
 carrying a small, uniform set of operations (`list`, `load`, `create`, `update`, `remove`, `patch`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -207,9 +207,6 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `AccessToken` | `(data) -> AccessTokenEntity` | Create an AccessToken entity instance. |
-| `All` | `(data) -> AllEntity` | Create an All entity instance. |
-| `ApiKey` | `(data) -> ApiKeyEntity` | Create an ApiKey entity instance. |
 | `Branding` | `(data) -> BrandingEntity` | Create a Branding entity instance. |
 | `Company` | `(data) -> CompanyEntity` | Create a Company entity instance. |
 | `CompanyAccessToken` | `(data) -> CompanyAccessTokenEntity` | Create a CompanyAccessToken entity instance. |
@@ -218,21 +215,15 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `ConnectionManagementAllowedOrigin` | `(data) -> ConnectionManagementAllowedOriginEntity` | Create a ConnectionManagementAllowedOrigin entity instance. |
 | `Custom` | `(data) -> CustomEntity` | Create a Custom entity instance. |
 | `DataStatus` | `(data) -> DataStatusEntity` | Create a DataStatus entity instance. |
-| `DataType` | `(data) -> DataTypeEntity` | Create a DataType entity instance. |
-| `History` | `(data) -> HistoryEntity` | Create a History entity instance. |
 | `Integration` | `(data) -> IntegrationEntity` | Create an Integration entity instance. |
-| `Option` | `(data) -> OptionEntity` | Create an Option entity instance. |
-| `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `Profile` | `(data) -> ProfileEntity` | Create a Profile entity instance. |
 | `PullOperation` | `(data) -> PullOperationEntity` | Create a PullOperation entity instance. |
 | `Push` | `(data) -> PushEntity` | Create a Push entity instance. |
 | `PushOption` | `(data) -> PushOptionEntity` | Create a PushOption entity instance. |
-| `Queue` | `(data) -> QueueEntity` | Create a Queue entity instance. |
 | `RefreshData` | `(data) -> RefreshDataEntity` | Create a RefreshData entity instance. |
 | `Setting` | `(data) -> SettingEntity` | Create a Setting entity instance. |
 | `SupplementalData` | `(data) -> SupplementalDataEntity` | Create a SupplementalData entity instance. |
 | `SupplementalDataConfig` | `(data) -> SupplementalDataConfigEntity` | Create a SupplementalDataConfig entity instance. |
-| `Sync` | `(data) -> SyncEntity` | Create a Sync entity instance. |
 | `SyncSetting` | `(data) -> SyncSettingEntity` | Create a SyncSetting entity instance. |
 | `Validation` | `(data) -> ValidationEntity` | Create a Validation entity instance. |
 | `Webhook` | `(data) -> WebhookEntity` | Create a Webhook entity instance. |
@@ -275,33 +266,6 @@ you branch on via `result["ok"]`:
 On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
-
-#### AccessToken
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### All
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### ApiKey
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Branding
 
@@ -471,24 +435,6 @@ Operations: Load.
 
 API path: `/companies/{companyId}/dataStatus`
 
-#### DataType
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### History
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
 #### Integration
 
 | Field | Description |
@@ -514,24 +460,6 @@ API path: ``
 Operations: List, Load.
 
 API path: `/integrations`
-
-#### Option
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### Product
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Profile
 
@@ -620,15 +548,6 @@ Operations: Load.
 
 API path: `/companies/{companyId}/connections/{connectionId}/options/{dataType}`
 
-#### Queue
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
 #### RefreshData
 
 | Field | Description |
@@ -672,15 +591,6 @@ API path: `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConf
 Operations: Load.
 
 API path: `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig`
-
-#### Sync
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### SyncSetting
 
@@ -737,21 +647,6 @@ API path: `/webhooks/integrationKeys/zapier`
 
 
 ## Entities
-
-
-### AccessToken
-
-Create an instance: `access_token = client.AccessToken()`
-
-
-### All
-
-Create an instance: `all = client.All()`
-
-
-### ApiKey
-
-Create an instance: `api_key = client.ApiKey()`
 
 
 ### Branding
@@ -1090,16 +985,6 @@ data_status = client.DataStatus().load({"company_id": "company_id"})
 ```
 
 
-### DataType
-
-Create an instance: `data_type = client.DataType()`
-
-
-### History
-
-Create an instance: `history = client.History()`
-
-
 ### Integration
 
 Create an instance: `integration = client.Integration()`
@@ -1144,16 +1029,6 @@ integration = client.Integration().load({"id": "integration_id"})
 ```python
 integrations = client.Integration().list()
 ```
-
-
-### Option
-
-Create an instance: `option = client.Option()`
-
-
-### Product
-
-Create an instance: `product = client.Product()`
 
 
 ### Profile
@@ -1332,11 +1207,6 @@ push_option = client.PushOption().load({"id": "push_option_id", "company_id": "c
 ```
 
 
-### Queue
-
-Create an instance: `queue = client.Queue()`
-
-
 ### RefreshData
 
 Create an instance: `refresh_data = client.RefreshData()`
@@ -1431,11 +1301,6 @@ Create an instance: `supplemental_data_config = client.SupplementalDataConfig()`
 ```python
 supplemental_data_config = client.SupplementalDataConfig().load({"data_type_id": "data_type_id", "platform_key": "platform_key"})
 ```
-
-
-### Sync
-
-Create an instance: `sync = client.Sync()`
 
 
 ### SyncSetting
@@ -1562,14 +1427,14 @@ above:
 
 | Feature | What it does |
 |---|---|
-| [`debug`](#debug) | Request/response capture ring buffer for debugging |
-| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
-| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
-| [`paging`](#paging) | Pagination signals for list operations |
-| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
-| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
-| [`test`](#test) | In-memory mock transport for testing without a live server |
-| [`timeout`](#timeout) | Per-request timeout with transport abort |
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
 
 > **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
@@ -1578,7 +1443,7 @@ above:
 
 ### debug
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 | Option | Default |
 |---|---|
@@ -1590,7 +1455,7 @@ Set `feature.debug.active` to enable it, then override any of the options above.
 
 ### idempotency
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 | Option | Default |
 |---|---|
@@ -1603,7 +1468,7 @@ Set `feature.idempotency.active` to enable it, then override any of the options 
 
 ### metrics
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 | Option | Default |
 |---|---|
@@ -1613,7 +1478,7 @@ Set `feature.metrics.active` to enable it, then override any of the options abov
 
 ### paging
 
-Pagination signals for list operations.
+Paging.
 
 | Option | Default |
 |---|---|
@@ -1629,7 +1494,7 @@ Set `feature.paging.active` to enable it, then override any of the options above
 
 ### ratelimit
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 | Option | Default |
 |---|---|
@@ -1645,7 +1510,7 @@ activated earlier.
 
 ### retry
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 | Option | Default |
 |---|---|
@@ -1664,7 +1529,7 @@ activated earlier.
 
 ### test
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 | Option | Default |
 |---|---|
@@ -1674,7 +1539,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ### timeout
 
-Per-request timeout with transport abort.
+Timeout.
 
 | Option | Default |
 |---|---|
@@ -1726,14 +1591,14 @@ with hook methods named after pipeline stages (e.g. `PrePoint`,
 
 The SDK ships with built-in features:
 
-- **DebugFeature**: Request/response capture ring buffer for debugging
-- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
-- **MetricsFeature**: Statistics capture: per-operation counters and latency
-- **PagingFeature**: Pagination signals for list operations
-- **RatelimitFeature**: Client-side rate limiting via a token bucket
-- **RetryFeature**: Automatic retry of transient failures with exponential backoff
-- **TestFeature**: In-memory mock transport for testing without a live server
-- **TimeoutFeature**: Per-request timeout with transport abort
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.
@@ -1753,6 +1618,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── codatplatform_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

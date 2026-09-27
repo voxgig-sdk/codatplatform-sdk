@@ -353,48 +353,6 @@ end
 
 
 
--- Idiomatic facade: client:AccessToken():list() / client:AccessToken():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:AccessToken(data)
-  local EntityMod = require("entity.access_token_entity")
-  if data == nil then
-    if self._access_token == nil then
-      self._access_token = EntityMod.new(self, nil)
-    end
-    return self._access_token
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:All():list() / client:All():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:All(data)
-  local EntityMod = require("entity.all_entity")
-  if data == nil then
-    if self._all == nil then
-      self._all = EntityMod.new(self, nil)
-    end
-    return self._all
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:ApiKey():list() / client:ApiKey():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:ApiKey(data)
-  local EntityMod = require("entity.api_key_entity")
-  if data == nil then
-    if self._api_key == nil then
-      self._api_key = EntityMod.new(self, nil)
-    end
-    return self._api_key
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:Branding():list() / client:Branding():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function CodatplatformSDK:Branding(data)
@@ -507,34 +465,6 @@ function CodatplatformSDK:DataStatus(data)
 end
 
 
--- Idiomatic facade: client:DataType():list() / client:DataType():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:DataType(data)
-  local EntityMod = require("entity.data_type_entity")
-  if data == nil then
-    if self._data_type == nil then
-      self._data_type = EntityMod.new(self, nil)
-    end
-    return self._data_type
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:History():list() / client:History():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:History(data)
-  local EntityMod = require("entity.history_entity")
-  if data == nil then
-    if self._history == nil then
-      self._history = EntityMod.new(self, nil)
-    end
-    return self._history
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:Integration():list() / client:Integration():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function CodatplatformSDK:Integration(data)
@@ -544,34 +474,6 @@ function CodatplatformSDK:Integration(data)
       self._integration = EntityMod.new(self, nil)
     end
     return self._integration
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:Option():list() / client:Option():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:Option(data)
-  local EntityMod = require("entity.option_entity")
-  if data == nil then
-    if self._option == nil then
-      self._option = EntityMod.new(self, nil)
-    end
-    return self._option
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:Product(data)
-  local EntityMod = require("entity.product_entity")
-  if data == nil then
-    if self._product == nil then
-      self._product = EntityMod.new(self, nil)
-    end
-    return self._product
   end
   return EntityMod.new(self, data)
 end
@@ -633,20 +535,6 @@ function CodatplatformSDK:PushOption(data)
 end
 
 
--- Idiomatic facade: client:Queue():list() / client:Queue():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:Queue(data)
-  local EntityMod = require("entity.queue_entity")
-  if data == nil then
-    if self._queue == nil then
-      self._queue = EntityMod.new(self, nil)
-    end
-    return self._queue
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:RefreshData():list() / client:RefreshData():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function CodatplatformSDK:RefreshData(data)
@@ -698,20 +586,6 @@ function CodatplatformSDK:SupplementalDataConfig(data)
       self._supplemental_data_config = EntityMod.new(self, nil)
     end
     return self._supplemental_data_config
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:Sync():list() / client:Sync():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function CodatplatformSDK:Sync(data)
-  local EntityMod = require("entity.sync_entity")
-  if data == nil then
-    if self._sync == nil then
-      self._sync = EntityMod.new(self, nil)
-    end
-    return self._sync
   end
   return EntityMod.new(self, data)
 end

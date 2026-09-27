@@ -1,0 +1,32 @@
+# BasicConnectionManagementAccessTokenFlow
+
+main: kit: flow: BasicConnectionManagementAccessTokenFlow:
+{
+  entity: "connection_management_access_token",
+  kind: "basic",
+  name: "BasicConnectionManagementAccessTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "connection_management_access_token_ref01",
+        srcdatavar: "connection_management_access_token_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "connection_management_access_token01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-connection_management_access_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionManagementAccessTokenFlow"
+}

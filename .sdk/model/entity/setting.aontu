@@ -1,0 +1,164 @@
+# Entity: setting
+
+main: kit: entity: setting: {
+
+  alias: field: {}
+
+  fields: {
+    apiKey: {
+      h: "Api Key"
+      n: "apiKey"
+      r: false
+      sh: "The API key value used to make authenticated http requests."
+      t: "`$STRING`"
+    }
+    createdDate: {
+      h: "Created Date"
+      n: "createdDate"
+      r: false
+      sh: "The date the entity was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the API key."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "A meaningful name assigned to the API key."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "setting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /apiKeys"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/apiKeys"
+          s: [
+            {
+              lit: "apiKeys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /profile/syncSettings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/profile/syncSettings"
+          s: [
+            {
+              lit: "profile"
+            }
+            {
+              lit: "syncSettings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /apiKeys"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/apiKeys"
+          s: [
+            {
+              lit: "apiKeys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /apiKeys/{apiKeyId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "api_key_id"
+                or: "api_key_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/apiKeys/{apiKeyId}"
+          q: {
+            exist: [
+              "api_key_id"
+            ]
+          }
+          r: {
+            param: {
+              apiKeyId: "api_key_id"
+            }
+          }
+          s: [
+            {
+              lit: "apiKeys"
+            }
+            {
+              var: "api_key_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

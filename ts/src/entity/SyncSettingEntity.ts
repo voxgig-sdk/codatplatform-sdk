@@ -19,7 +19,6 @@ import type {
   SyncSettingListMatch,
 } from '../CodatplatformTypes'
 
-// TODO: needs Entity superclass
 class SyncSettingEntity extends CodatplatformEntityBase<SyncSetting> {
 
   constructor(client: CodatplatformSDK, entopts: any) {

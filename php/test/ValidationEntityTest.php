@@ -113,7 +113,7 @@ function validation_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01", "sync02", "sync03"] as $k) {
+    foreach (["validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

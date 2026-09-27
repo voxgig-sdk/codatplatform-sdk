@@ -140,7 +140,7 @@ function setting_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "setting01", "setting02", "setting03", "api_key01", "api_key02", "api_key03" },
+    { "setting01", "setting02", "setting03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

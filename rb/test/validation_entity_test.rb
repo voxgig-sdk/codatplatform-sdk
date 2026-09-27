@@ -102,7 +102,7 @@ def validation_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01", "sync02", "sync03"],
+    ["validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

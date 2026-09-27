@@ -1,0 +1,32 @@
+# BasicCompanyAccessTokenFlow
+
+main: kit: flow: BasicCompanyAccessTokenFlow:
+{
+  entity: "company_access_token",
+  kind: "basic",
+  name: "BasicCompanyAccessTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "company_access_token_ref01",
+        srcdatavar: "company_access_token_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "company_access_token01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-company_access_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompanyAccessTokenFlow"
+}

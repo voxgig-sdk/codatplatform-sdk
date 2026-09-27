@@ -49,42 +49,6 @@ const client = CodatplatformSDK.test()
 
 ### Instance Methods
 
-#### `AccessToken(data?: object)`
-
-Create a new `AccessToken` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `AccessTokenEntity` instance.
-
-#### `All(data?: object)`
-
-Create a new `All` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `AllEntity` instance.
-
-#### `ApiKey(data?: object)`
-
-Create a new `ApiKey` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `ApiKeyEntity` instance.
-
 #### `Branding(data?: object)`
 
 Create a new `Branding` entity instance.
@@ -181,30 +145,6 @@ Create a new `DataStatus` entity instance.
 
 **Returns:** `DataStatusEntity` instance.
 
-#### `DataType(data?: object)`
-
-Create a new `DataType` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `DataTypeEntity` instance.
-
-#### `History(data?: object)`
-
-Create a new `History` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `HistoryEntity` instance.
-
 #### `Integration(data?: object)`
 
 Create a new `Integration` entity instance.
@@ -216,30 +156,6 @@ Create a new `Integration` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `IntegrationEntity` instance.
-
-#### `Option(data?: object)`
-
-Create a new `Option` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `OptionEntity` instance.
-
-#### `Product(data?: object)`
-
-Create a new `Product` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `ProductEntity` instance.
 
 #### `Profile(data?: object)`
 
@@ -289,18 +205,6 @@ Create a new `PushOption` entity instance.
 
 **Returns:** `PushOptionEntity` instance.
 
-#### `Queue(data?: object)`
-
-Create a new `Queue` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `QueueEntity` instance.
-
 #### `RefreshData(data?: object)`
 
 Create a new `RefreshData` entity instance.
@@ -348,18 +252,6 @@ Create a new `SupplementalDataConfig` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `SupplementalDataConfigEntity` instance.
-
-#### `Sync(data?: object)`
-
-Create a new `Sync` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `SyncEntity` instance.
 
 #### `SyncSetting(data?: object)`
 
@@ -451,108 +343,6 @@ same parameters as `direct()`.
 Alias for `CodatplatformSDK.test()`.
 
 **Returns:** `CodatplatformSDK` instance in test mode.
-
-
----
-
-## AccessTokenEntity
-
-```ts
-const access_token = client.AccessToken()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `AccessTokenEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## AllEntity
-
-```ts
-const all = client.All()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `AllEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## ApiKeyEntity
-
-```ts
-const api_key = client.ApiKey()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `ApiKeyEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
 
 
 ---
@@ -1205,74 +995,6 @@ Return a copy of the entity options.
 
 ---
 
-## DataTypeEntity
-
-```ts
-const data_type = client.DataType()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `DataTypeEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## HistoryEntity
-
-```ts
-const history = client.History()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `HistoryEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## IntegrationEntity
 
 ```ts
@@ -1334,74 +1056,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `IntegrationEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## OptionEntity
-
-```ts
-const option = client.Option()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `OptionEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## ProductEntity
-
-```ts
-const product = client.Product()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -1711,40 +1365,6 @@ Return a copy of the entity options.
 
 ---
 
-## QueueEntity
-
-```ts
-const queue = client.Queue()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `QueueEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## RefreshDataEntity
 
 ```ts
@@ -1954,40 +1574,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SupplementalDataConfigEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `CodatplatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## SyncEntity
-
-```ts
-const sync = client.Sync()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `SyncEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -2235,14 +1821,14 @@ Return a copy of the entity options.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2288,7 +1874,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2319,7 +1905,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2350,7 +1936,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2378,7 +1964,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2413,7 +1999,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2444,7 +2030,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2478,7 +2064,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2509,7 +2095,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

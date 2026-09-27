@@ -53,15 +53,6 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewAccessTokenEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewAccessTokenEntity(client, entopts)
-	}
-	core.NewAllEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewAllEntity(client, entopts)
-	}
-	core.NewApiKeyEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewApiKeyEntity(client, entopts)
-	}
 	core.NewBrandingEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewBrandingEntity(client, entopts)
 	}
@@ -86,20 +77,8 @@ func init() {
 	core.NewDataStatusEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewDataStatusEntity(client, entopts)
 	}
-	core.NewDataTypeEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewDataTypeEntity(client, entopts)
-	}
-	core.NewHistoryEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewHistoryEntity(client, entopts)
-	}
 	core.NewIntegrationEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewIntegrationEntity(client, entopts)
-	}
-	core.NewOptionEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewOptionEntity(client, entopts)
-	}
-	core.NewProductEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewProductEntity(client, entopts)
 	}
 	core.NewProfileEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewProfileEntity(client, entopts)
@@ -113,9 +92,6 @@ func init() {
 	core.NewPushOptionEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewPushOptionEntity(client, entopts)
 	}
-	core.NewQueueEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewQueueEntity(client, entopts)
-	}
 	core.NewRefreshDataEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewRefreshDataEntity(client, entopts)
 	}
@@ -127,9 +103,6 @@ func init() {
 	}
 	core.NewSupplementalDataConfigEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewSupplementalDataConfigEntity(client, entopts)
-	}
-	core.NewSyncEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
-		return entity.NewSyncEntity(client, entopts)
 	}
 	core.NewSyncSettingEntityFunc = func(client *core.CodatplatformSDK, entopts map[string]any) core.CodatplatformEntity {
 		return entity.NewSyncSettingEntity(client, entopts)

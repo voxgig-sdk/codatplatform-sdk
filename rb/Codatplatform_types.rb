@@ -2,23 +2,11 @@
 
 # Typed models for the Codatplatform SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
-
-# AccessToken entity data model.
-class AccessToken
-end
-
-# All entity data model.
-class All
-end
-
-# ApiKey entity data model.
-class ApiKey
-end
 
 # Branding entity data model.
 #
@@ -982,14 +970,6 @@ DataStatusLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# DataType entity data model.
-class DataType
-end
-
-# History entity data model.
-class History
-end
-
 # Integration entity data model.
 #
 # @!attribute [rw] dataProvidedBy
@@ -1092,14 +1072,6 @@ IntegrationListMatch = Struct.new(
   :query,
   keyword_init: true
 )
-
-# Option entity data model.
-class Option
-end
-
-# Product entity data model.
-class Product
-end
 
 # Profile entity data model.
 #
@@ -1573,10 +1545,6 @@ PushOptionLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Queue entity data model.
-class QueueType
-end
-
 # RefreshData entity data model.
 class RefreshData
 end
@@ -1717,10 +1685,6 @@ SupplementalDataConfigLoadMatch = Struct.new(
   :platform_key,
   keyword_init: true
 )
-
-# Sync entity data model.
-class Sync
-end
 
 # SyncSetting entity data model.
 #

@@ -1,22 +1,10 @@
 // Typed models for the Codatplatform SDK (JSDoc typedefs).
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 // edit by hand.
-
-/**
- * @typedef {Object} AccessToken
- */
-
-/**
- * @typedef {Object} All
- */
-
-/**
- * @typedef {Object} ApiKey
- */
 
 /**
  * @typedef {Object} Branding
@@ -331,14 +319,6 @@
  */
 
 /**
- * @typedef {Object} DataType
- */
-
-/**
- * @typedef {Object} History
- */
-
-/**
  * @typedef {Object} Integration
  * @property {string} [dataProvidedBy]
  * @property {Array} [datatypeFeatures]
@@ -370,14 +350,6 @@
  * @property {number} [page]
  * @property {number} [page_size]
  * @property {string} [query]
- */
-
-/**
- * @typedef {Object} Option
- */
-
-/**
- * @typedef {Object} Product
  */
 
 /**
@@ -532,10 +504,6 @@
  */
 
 /**
- * @typedef {Object} Queue
- */
-
-/**
  * @typedef {Object} RefreshData
  */
 
@@ -596,10 +564,6 @@
  * @typedef {Object} SupplementalDataConfigLoadMatch
  * @property {string} data_type_id
  * @property {string} platform_key
- */
-
-/**
- * @typedef {Object} Sync
  */
 
 /**

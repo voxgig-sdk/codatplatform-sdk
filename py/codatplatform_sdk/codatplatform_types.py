@@ -1,7 +1,7 @@
 # Typed models for the Codatplatform SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -14,18 +14,6 @@
 from __future__ import annotations
 
 from typing import TypedDict, Any
-
-
-class AccessToken(TypedDict):
-    pass
-
-
-class All(TypedDict):
-    pass
-
-
-class ApiKey(TypedDict):
-    pass
 
 
 class Branding(TypedDict, total=False):
@@ -347,14 +335,6 @@ class DataStatusLoadMatch(TypedDict):
     company_id: str
 
 
-class DataType(TypedDict):
-    pass
-
-
-class History(TypedDict):
-    pass
-
-
 class IntegrationRequired(TypedDict):
     enabled: bool
     key: str
@@ -387,14 +367,6 @@ class IntegrationListMatch(TypedDict, total=False):
     page: int
     page_size: int
     query: str
-
-
-class Option(TypedDict):
-    pass
-
-
-class Product(TypedDict):
-    pass
 
 
 class ProfileRequired(TypedDict):
@@ -557,10 +529,6 @@ class PushOptionLoadMatch(TypedDict):
     id: str
 
 
-class Queue(TypedDict):
-    pass
-
-
 class RefreshData(TypedDict):
     pass
 
@@ -616,10 +584,6 @@ class SupplementalDataConfig(TypedDict, total=False):
 class SupplementalDataConfigLoadMatch(TypedDict):
     data_type_id: str
     platform_key: str
-
-
-class Sync(TypedDict):
-    pass
 
 
 class SyncSettingRequired(TypedDict):

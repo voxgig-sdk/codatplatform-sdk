@@ -1,0 +1,371 @@
+# Entity: data_status
+
+main: kit: entity: data_status: {
+
+  alias: field: {}
+
+  fields: {
+    accountTransactions: {
+      h: "Account Transactions"
+      n: "accountTransactions"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    balanceSheet: {
+      h: "Balance Sheet"
+      n: "balanceSheet"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankAccounts: {
+      h: "Bank Accounts"
+      n: "bankAccounts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankTransactions: {
+      h: "Bank Transactions"
+      n: "bankTransactions"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankingaccountBalances: {
+      h: "Bankingaccount Balances"
+      n: "bankingaccountBalances"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankingaccounts: {
+      h: "Bankingaccounts"
+      n: "bankingaccounts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankingtransactionCategories: {
+      h: "Bankingtransaction Categories"
+      n: "bankingtransactionCategories"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bankingtransactions: {
+      h: "Bankingtransactions"
+      n: "bankingtransactions"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    billCreditNotes: {
+      h: "Bill Credit Notes"
+      n: "billCreditNotes"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    billPayments: {
+      h: "Bill Payments"
+      n: "billPayments"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    bills: {
+      h: "Bills"
+      n: "bills"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    cashFlowStatement: {
+      h: "Cash Flow Statement"
+      n: "cashFlowStatement"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    chartOfAccounts: {
+      h: "Chart Of Accounts"
+      n: "chartOfAccounts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercecompanyInfo: {
+      h: "Commercecompany Info"
+      n: "commercecompanyInfo"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercecustomers: {
+      h: "Commercecustomers"
+      n: "commercecustomers"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercedisputes: {
+      h: "Commercedisputes"
+      n: "commercedisputes"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercelocations: {
+      h: "Commercelocations"
+      n: "commercelocations"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commerceorders: {
+      h: "Commerceorders"
+      n: "commerceorders"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercepaymentMethods: {
+      h: "Commercepayment Methods"
+      n: "commercepaymentMethods"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercepayments: {
+      h: "Commercepayments"
+      n: "commercepayments"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commerceproductCategories: {
+      h: "Commerceproduct Categories"
+      n: "commerceproductCategories"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commerceproducts: {
+      h: "Commerceproducts"
+      n: "commerceproducts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercetaxComponents: {
+      h: "Commercetax Components"
+      n: "commercetaxComponents"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    commercetransactions: {
+      h: "Commercetransactions"
+      n: "commercetransactions"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    company: {
+      h: "Company"
+      n: "company"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    creditNotes: {
+      h: "Credit Notes"
+      n: "creditNotes"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    customers: {
+      h: "Customers"
+      n: "customers"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    directCosts: {
+      h: "Direct Costs"
+      n: "directCosts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    directIncomes: {
+      h: "Direct Incomes"
+      n: "directIncomes"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    invoices: {
+      h: "Invoices"
+      n: "invoices"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    itemReceipts: {
+      h: "Item Receipts"
+      n: "itemReceipts"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    journalEntries: {
+      h: "Journal Entries"
+      n: "journalEntries"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    journals: {
+      h: "Journals"
+      n: "journals"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    paymentMethods: {
+      h: "Payment Methods"
+      n: "paymentMethods"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    payments: {
+      h: "Payments"
+      n: "payments"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    profitAndLoss: {
+      h: "Profit And Loss"
+      n: "profitAndLoss"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    purchaseOrders: {
+      h: "Purchase Orders"
+      n: "purchaseOrders"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    salesOrders: {
+      h: "Sales Orders"
+      n: "salesOrders"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    suppliers: {
+      h: "Suppliers"
+      n: "suppliers"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    taxRates: {
+      h: "Tax Rates"
+      n: "taxRates"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    trackingCategories: {
+      h: "Tracking Categories"
+      n: "trackingCategories"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+    transfers: {
+      h: "Transfers"
+      n: "transfers"
+      r: true
+      sh: "Describes the state of data in the Codat cache for a company and data type"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "data_status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}/dataStatus"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}/dataStatus"
+          q: {
+            exist: [
+              "company_id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "dataStatus"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.company")]
+  ]
+
+}

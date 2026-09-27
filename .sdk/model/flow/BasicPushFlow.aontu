@@ -1,0 +1,49 @@
+# BasicPushFlow
+
+main: kit: flow: BasicPushFlow:
+{
+  entity: "push",
+  kind: "basic",
+  name: "BasicPushFlow",
+  step: [
+    {
+      m: {
+        company_id: "company01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "push_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "push_ref01",
+        srcdatavar: "push_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        company_id: "company01",
+        id: "push01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-push_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPushFlow"
+}

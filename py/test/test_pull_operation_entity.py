@@ -124,7 +124,7 @@ def _pull_operation_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["pull_operation01", "pull_operation02", "pull_operation03", "company01", "company02", "company03", "history01", "history02", "history03", "queue01", "queue02", "queue03", "connection01", "connection02", "connection03", "custom01", "custom02", "custom03", "data_type01"],
+        ["pull_operation01", "pull_operation02", "pull_operation03", "company01", "company02", "company03", "connection01", "connection02", "connection03", "custom01", "custom02", "custom03", "data_type01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

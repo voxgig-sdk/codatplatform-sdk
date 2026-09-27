@@ -151,7 +151,7 @@ func validationBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01", "sync02", "sync03"},
+		[]any{"validation01", "validation02", "validation03", "company01", "company02", "company03", "sync01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

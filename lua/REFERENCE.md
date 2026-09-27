@@ -41,18 +41,6 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `AccessToken(data)`
-
-Create a new `AccessToken` entity instance. Pass `nil` for no initial data.
-
-#### `All(data)`
-
-Create a new `All` entity instance. Pass `nil` for no initial data.
-
-#### `ApiKey(data)`
-
-Create a new `ApiKey` entity instance. Pass `nil` for no initial data.
-
 #### `Branding(data)`
 
 Create a new `Branding` entity instance. Pass `nil` for no initial data.
@@ -85,25 +73,9 @@ Create a new `Custom` entity instance. Pass `nil` for no initial data.
 
 Create a new `DataStatus` entity instance. Pass `nil` for no initial data.
 
-#### `DataType(data)`
-
-Create a new `DataType` entity instance. Pass `nil` for no initial data.
-
-#### `History(data)`
-
-Create a new `History` entity instance. Pass `nil` for no initial data.
-
 #### `Integration(data)`
 
 Create a new `Integration` entity instance. Pass `nil` for no initial data.
-
-#### `Option(data)`
-
-Create a new `Option` entity instance. Pass `nil` for no initial data.
-
-#### `Product(data)`
-
-Create a new `Product` entity instance. Pass `nil` for no initial data.
 
 #### `Profile(data)`
 
@@ -121,10 +93,6 @@ Create a new `Push` entity instance. Pass `nil` for no initial data.
 
 Create a new `PushOption` entity instance. Pass `nil` for no initial data.
 
-#### `Queue(data)`
-
-Create a new `Queue` entity instance. Pass `nil` for no initial data.
-
 #### `RefreshData(data)`
 
 Create a new `RefreshData` entity instance. Pass `nil` for no initial data.
@@ -140,10 +108,6 @@ Create a new `SupplementalData` entity instance. Pass `nil` for no initial data.
 #### `SupplementalDataConfig(data)`
 
 Create a new `SupplementalDataConfig` entity instance. Pass `nil` for no initial data.
-
-#### `Sync(data)`
-
-Create a new `Sync` entity instance. Pass `nil` for no initial data.
 
 #### `SyncSetting(data)`
 
@@ -193,114 +157,6 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `direct()`.
 
 **Returns:** `table, err`
-
-
----
-
-## AccessTokenEntity
-
-```lua
-local access_token = client:AccessToken(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `AccessTokenEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## AllEntity
-
-```lua
-local all = client:All(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `AllEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## ApiKeyEntity
-
-```lua
-local api_key = client:ApiKey(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `ApiKeyEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
 
 
 ---
@@ -969,78 +825,6 @@ Return the entity name.
 
 ---
 
-## DataTypeEntity
-
-```lua
-local data_type = client:DataType(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `DataTypeEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## HistoryEntity
-
-```lua
-local history = client:History(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `HistoryEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## IntegrationEntity
 
 ```lua
@@ -1108,78 +892,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `IntegrationEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## OptionEntity
-
-```lua
-local option = client:Option(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `OptionEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## ProductEntity
-
-```lua
-local product = client:Product(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1493,42 +1205,6 @@ Return the entity name.
 
 ---
 
-## QueueEntity
-
-```lua
-local queue = client:Queue(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `QueueEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## RefreshDataEntity
 
 ```lua
@@ -1750,42 +1426,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SupplementalDataConfigEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## SyncEntity
-
-```lua
-local sync = client:Sync(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `SyncEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -2037,14 +1677,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2090,7 +1730,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2121,7 +1761,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2152,7 +1792,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2180,7 +1820,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2215,7 +1855,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2246,7 +1886,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2280,7 +1920,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2311,7 +1951,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

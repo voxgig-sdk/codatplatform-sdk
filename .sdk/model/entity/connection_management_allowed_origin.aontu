@@ -1,0 +1,111 @@
+# Entity: connection_management_allowed_origin
+
+main: kit: entity: connection_management_allowed_origin: {
+
+  alias: field: {}
+
+  fields: {
+    allowedOrigins: {
+      h: "Allowed Origins"
+      n: "allowedOrigins"
+      r: false
+      sh: "An array of allowed origins (i.e."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "connection_management_allowed_origin"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /connectionManagement/corsSettings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/connectionManagement/corsSettings"
+          s: [
+            {
+              lit: "connectionManagement"
+            }
+            {
+              lit: "corsSettings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corsSettings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/corsSettings"
+          s: [
+            {
+              lit: "corsSettings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /connectionManagement/corsSettings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/connectionManagement/corsSettings"
+          s: [
+            {
+              lit: "connectionManagement"
+            }
+            {
+              lit: "corsSettings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.allowedOrigins`"
+          }
+        }
+        {
+          co: {
+            id: "GET /corsSettings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/corsSettings"
+          s: [
+            {
+              lit: "corsSettings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.allowedOrigins`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,10 @@
+# SDK Targets.
+
+
+@"./go.aontu"
+@"./js.aontu"
+@"./lua.aontu"
+@"./php.aontu"
+@"./py.aontu"
+@"./rb.aontu"
+@"./ts.aontu"

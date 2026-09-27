@@ -1,0 +1,32 @@
+# BasicSupplementalDataFlow
+
+main: kit: flow: BasicSupplementalDataFlow:
+{
+  entity: "supplemental_data",
+  kind: "basic",
+  name: "BasicSupplementalDataFlow",
+  step: [
+    {
+      d: {
+        platform_key: "platform_key01"
+      }
+
+      i: {
+        ref: "supplemental_data_ref01",
+        srcdatavar: "supplemental_data_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-supplemental_data_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSupplementalDataFlow"
+}

@@ -1,0 +1,553 @@
+# Entity: connection
+
+main: kit: entity: connection: {
+
+  alias: field: {}
+
+  fields: {
+    connectionInfo: {
+      h: "Connection Info"
+      n: "connectionInfo"
+      r: false
+      t: "`$OBJECT`"
+    }
+    created: {
+      h: "Created"
+      n: "created"
+      r: true
+      sh: "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>."
+      t: "`$STRING`"
+    }
+    dataConnectionErrors: {
+      h: "Data Connection Errors"
+      n: "dataConnectionErrors"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for a company's data connection."
+      t: "`$STRING`"
+    }
+    integrationId: {
+      fo: "uuid"
+      h: "Integration Id"
+      n: "integrationId"
+      r: true
+      sh: "A Codat ID representing the integration."
+      t: "`$STRING`"
+    }
+    integrationKey: {
+      h: "Integration Key"
+      n: "integrationKey"
+      r: true
+      sh: "A unique four-character ID that identifies the platform of the company's data connection."
+      t: "`$STRING`"
+    }
+    lastSync: {
+      h: "Last Sync"
+      n: "lastSync"
+      r: false
+      sh: "In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>."
+      t: "`$STRING`"
+    }
+    linkUrl: {
+      fo: "uri"
+      h: "Link Url"
+      n: "linkUrl"
+      r: true
+      sh: "The link URL your customers can use to authorize access to their business application."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      t: "`$OBJECT`"
+    }
+    pageNumber: {
+      h: "Page Number"
+      n: "pageNumber"
+      r: true
+      sh: "Current page number."
+      t: "`$INTEGER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: true
+      sh: "Number of items to return in results array."
+      t: "`$INTEGER`"
+    }
+    platformKey: {
+      h: "Platform Key"
+      n: "platformKey"
+      r: false
+      sh: "A unique 4-letter key to represent a platform in each integration."
+      t: "`$STRING`"
+    }
+    platformName: {
+      h: "Platform Name"
+      n: "platformName"
+      r: true
+      sh: "Name of integration connected to company."
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    sourceId: {
+      fo: "uuid"
+      h: "Source Id"
+      n: "sourceId"
+      r: true
+      sh: "A source-specific ID used to distinguish between different sources originating from the same data connection."
+      t: "`$STRING`"
+    }
+    sourceType: {
+      h: "Source Type"
+      n: "sourceType"
+      r: true
+      sh: "The type of platform of the connection."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The current authorization status of the data connection."
+      t: "`$STRING`"
+    }
+    totalResults: {
+      h: "Total Results"
+      n: "totalResults"
+      r: true
+      sh: "Total number of items."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "connection"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /companies/{companyId}/connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/companies/{companyId}/connections"
+          q: {
+            exist: [
+              "company_id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}/connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "-modifiedDate"
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}/connections"
+          q: {
+            exist: [
+              "company_id"
+              "order_by"
+              "page"
+              "page_size"
+              "query"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}/connections/{connectionId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                k: "param"
+                n: "id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}/connections/{connectionId}"
+          q: {
+            exist: [
+              "company_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+              connectionId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /companies/{companyId}/connections/{connectionId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                k: "param"
+                n: "id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/companies/{companyId}/connections/{connectionId}"
+          q: {
+            exist: [
+              "company_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+              connectionId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /companies/{companyId}/connections/{connectionId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                k: "param"
+                n: "id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/companies/{companyId}/connections/{connectionId}"
+          q: {
+            exist: [
+              "company_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+              connectionId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              status: "`reqdata.status`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /companies/{companyId}/connections/{connectionId}/authorization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                k: "param"
+                n: "id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/companies/{companyId}/connections/{connectionId}/authorization"
+          q: {
+            "$action": "authorization"
+            exist: [
+              "company_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+              connectionId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "authorization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.company")]
+  ]
+
+}

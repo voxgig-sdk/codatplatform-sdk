@@ -1,9 +1,3 @@
-export interface AccessToken {
-}
-export interface All {
-}
-export interface ApiKey {
-}
 export interface Branding {
     button?: Record<string, any>;
     logo?: Record<string, any>;
@@ -268,10 +262,6 @@ export interface DataStatus {
 export interface DataStatusLoadMatch {
     company_id: string;
 }
-export interface DataType {
-}
-export interface History {
-}
 export interface Integration {
     dataProvidedBy?: string;
     datatypeFeatures?: any[];
@@ -299,10 +289,6 @@ export interface IntegrationListMatch {
     page?: number;
     page_size?: number;
     query?: string;
-}
-export interface Option {
-}
-export interface Product {
 }
 export interface Profile {
     apiKey?: string;
@@ -431,8 +417,6 @@ export interface PushOptionLoadMatch {
     connection_id: string;
     id: string;
 }
-export interface Queue {
-}
 export interface RefreshData {
 }
 export interface RefreshDataCreateData {
@@ -475,8 +459,6 @@ export interface SupplementalDataConfig {
 export interface SupplementalDataConfigLoadMatch {
     data_type_id: string;
     platform_key: string;
-}
-export interface Sync {
 }
 export interface SyncSetting {
     dataType: string;

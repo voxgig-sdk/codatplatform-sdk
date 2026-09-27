@@ -48,18 +48,6 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `AccessToken(data map[string]any) CodatplatformEntity`
-
-Create a new `AccessToken` entity instance. Pass `nil` for no initial data.
-
-#### `All(data map[string]any) CodatplatformEntity`
-
-Create a new `All` entity instance. Pass `nil` for no initial data.
-
-#### `ApiKey(data map[string]any) CodatplatformEntity`
-
-Create a new `ApiKey` entity instance. Pass `nil` for no initial data.
-
 #### `Branding(data map[string]any) CodatplatformEntity`
 
 Create a new `Branding` entity instance. Pass `nil` for no initial data.
@@ -92,25 +80,9 @@ Create a new `Custom` entity instance. Pass `nil` for no initial data.
 
 Create a new `DataStatus` entity instance. Pass `nil` for no initial data.
 
-#### `DataType(data map[string]any) CodatplatformEntity`
-
-Create a new `DataType` entity instance. Pass `nil` for no initial data.
-
-#### `History(data map[string]any) CodatplatformEntity`
-
-Create a new `History` entity instance. Pass `nil` for no initial data.
-
 #### `Integration(data map[string]any) CodatplatformEntity`
 
 Create a new `Integration` entity instance. Pass `nil` for no initial data.
-
-#### `Option(data map[string]any) CodatplatformEntity`
-
-Create a new `Option` entity instance. Pass `nil` for no initial data.
-
-#### `Product(data map[string]any) CodatplatformEntity`
-
-Create a new `Product` entity instance. Pass `nil` for no initial data.
 
 #### `Profile(data map[string]any) CodatplatformEntity`
 
@@ -128,10 +100,6 @@ Create a new `Push` entity instance. Pass `nil` for no initial data.
 
 Create a new `PushOption` entity instance. Pass `nil` for no initial data.
 
-#### `Queue(data map[string]any) CodatplatformEntity`
-
-Create a new `Queue` entity instance. Pass `nil` for no initial data.
-
 #### `RefreshData(data map[string]any) CodatplatformEntity`
 
 Create a new `RefreshData` entity instance. Pass `nil` for no initial data.
@@ -147,10 +115,6 @@ Create a new `SupplementalData` entity instance. Pass `nil` for no initial data.
 #### `SupplementalDataConfig(data map[string]any) CodatplatformEntity`
 
 Create a new `SupplementalDataConfig` entity instance. Pass `nil` for no initial data.
-
-#### `Sync(data map[string]any) CodatplatformEntity`
-
-Create a new `Sync` entity instance. Pass `nil` for no initial data.
 
 #### `SyncSetting(data map[string]any) CodatplatformEntity`
 
@@ -200,99 +164,6 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `Direct()`.
 
 **Returns:** `(map[string]any, error)`
-
-
----
-
-## AccessTokenEntity
-
-```go
-accessToken := client.AccessToken(nil)
-fmt.Println(accessToken.GetName()) // "access_token"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `AccessTokenEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## AllEntity
-
-```go
-all := client.All(nil)
-fmt.Println(all.GetName()) // "all"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `AllEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## ApiKeyEntity
-
-```go
-apiKey := client.ApiKey(nil)
-fmt.Println(apiKey.GetName()) // "api_key"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `ApiKeyEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
 
 
 ---
@@ -993,68 +864,6 @@ Return the entity name.
 
 ---
 
-## DataTypeEntity
-
-```go
-dataType := client.DataType(nil)
-fmt.Println(dataType.GetName()) // "data_type"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `DataTypeEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## HistoryEntity
-
-```go
-history := client.History(nil)
-fmt.Println(history.GetName()) // "history"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `HistoryEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## IntegrationEntity
 
 ```go
@@ -1125,68 +934,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `IntegrationEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## OptionEntity
-
-```go
-option := client.Option(nil)
-fmt.Println(option.GetName()) // "option"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `OptionEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## ProductEntity
-
-```go
-product := client.Product(nil)
-fmt.Println(product.GetName()) // "product"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -1512,37 +1259,6 @@ Return the entity name.
 
 ---
 
-## QueueEntity
-
-```go
-queue := client.Queue(nil)
-fmt.Println(queue.GetName()) // "queue"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `QueueEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## RefreshDataEntity
 
 ```go
@@ -1768,37 +1484,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `SupplementalDataConfigEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## SyncEntity
-
-```go
-sync := client.Sync(nil)
-fmt.Println(sync.GetName()) // "sync"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `SyncEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -2054,14 +1739,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2107,7 +1792,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2138,7 +1823,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2169,7 +1854,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2197,7 +1882,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2232,7 +1917,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2263,7 +1948,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2297,7 +1982,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2328,7 +2013,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

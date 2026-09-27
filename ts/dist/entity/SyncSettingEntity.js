@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SyncSettingEntity = void 0;
 const CodatplatformEntityBase_1 = require("../CodatplatformEntityBase");
-// TODO: needs Entity superclass
 class SyncSettingEntity extends CodatplatformEntityBase_1.CodatplatformEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

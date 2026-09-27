@@ -1,8 +1,5 @@
 // Codatplatform Ts SDK
 
-import { AccessTokenEntity } from './entity/AccessTokenEntity'
-import { AllEntity } from './entity/AllEntity'
-import { ApiKeyEntity } from './entity/ApiKeyEntity'
 import { BrandingEntity } from './entity/BrandingEntity'
 import { CompanyEntity } from './entity/CompanyEntity'
 import { CompanyAccessTokenEntity } from './entity/CompanyAccessTokenEntity'
@@ -11,21 +8,15 @@ import { ConnectionManagementAccessTokenEntity } from './entity/ConnectionManage
 import { ConnectionManagementAllowedOriginEntity } from './entity/ConnectionManagementAllowedOriginEntity'
 import { CustomEntity } from './entity/CustomEntity'
 import { DataStatusEntity } from './entity/DataStatusEntity'
-import { DataTypeEntity } from './entity/DataTypeEntity'
-import { HistoryEntity } from './entity/HistoryEntity'
 import { IntegrationEntity } from './entity/IntegrationEntity'
-import { OptionEntity } from './entity/OptionEntity'
-import { ProductEntity } from './entity/ProductEntity'
 import { ProfileEntity } from './entity/ProfileEntity'
 import { PullOperationEntity } from './entity/PullOperationEntity'
 import { PushEntity } from './entity/PushEntity'
 import { PushOptionEntity } from './entity/PushOptionEntity'
-import { QueueEntity } from './entity/QueueEntity'
 import { RefreshDataEntity } from './entity/RefreshDataEntity'
 import { SettingEntity } from './entity/SettingEntity'
 import { SupplementalDataEntity } from './entity/SupplementalDataEntity'
 import { SupplementalDataConfigEntity } from './entity/SupplementalDataConfigEntity'
-import { SyncEntity } from './entity/SyncEntity'
 import { SyncSettingEntity } from './entity/SyncSettingEntity'
 import { ValidationEntity } from './entity/ValidationEntity'
 import { WebhookEntity } from './entity/WebhookEntity'
@@ -153,7 +144,6 @@ class CodatplatformSDK {
 
     const options = this._options
 
-    // Build spec directly from SDK options + user-provided fetch args.
     const spec: any = {
       base: options.base,
       prefix: options.prefix,
@@ -169,7 +159,6 @@ class CodatplatformSDK {
 
     ctx.spec = spec
 
-    // Merge user-provided headers over SDK defaults.
     if (fetchargs.headers) {
       const uheaders = fetchargs.headers
       for (let key in uheaders) {
@@ -179,7 +168,6 @@ class CodatplatformSDK {
 
     
 
-    // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
     if (authResult instanceof Error) {
       return authResult
@@ -272,18 +260,6 @@ class CodatplatformSDK {
 
 
 
-  // Raw GraphQL access: the pressure valve that makes the generated
-  // surface's deliberate omissions (per-call selection sets, typed filter
-  // builders, batching, subscriptions) livable — the whole schema stays
-  // reachable.
-  //
-  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-  // HTTP 200 as a top-level `errors` array, so status alone would report a
-  // failed query as ok.
-  //
-  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-  // ratelimit or paging features apply.
   async graphql(query: string, variables?: any, ctrl?: any) {
     const options = this._options
 
@@ -324,33 +300,6 @@ class CodatplatformSDK {
     return res
   }
 
-
-
-  // Entity access: `client.AccessToken().list()` / `client.AccessToken().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  AccessToken(entopts?: Record<string, any>) {
-    const self = this
-    return new AccessTokenEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.All().list()` / `client.All().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  All(entopts?: Record<string, any>) {
-    const self = this
-    return new AllEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.ApiKey().list()` / `client.ApiKey().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  ApiKey(entopts?: Record<string, any>) {
-    const self = this
-    return new ApiKeyEntity(self, entopts)
-  }
 
 
   // Entity access: `client.Branding().list()` / `client.Branding().load({ id })`.
@@ -425,48 +374,12 @@ class CodatplatformSDK {
   }
 
 
-  // Entity access: `client.DataType().list()` / `client.DataType().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  DataType(entopts?: Record<string, any>) {
-    const self = this
-    return new DataTypeEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.History().list()` / `client.History().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  History(entopts?: Record<string, any>) {
-    const self = this
-    return new HistoryEntity(self, entopts)
-  }
-
-
   // Entity access: `client.Integration().list()` / `client.Integration().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   Integration(entopts?: Record<string, any>) {
     const self = this
     return new IntegrationEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Option().list()` / `client.Option().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Option(entopts?: Record<string, any>) {
-    const self = this
-    return new OptionEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Product(entopts?: Record<string, any>) {
-    const self = this
-    return new ProductEntity(self, entopts)
   }
 
 
@@ -506,15 +419,6 @@ class CodatplatformSDK {
   }
 
 
-  // Entity access: `client.Queue().list()` / `client.Queue().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Queue(entopts?: Record<string, any>) {
-    const self = this
-    return new QueueEntity(self, entopts)
-  }
-
-
   // Entity access: `client.RefreshData().list()` / `client.RefreshData().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -548,15 +452,6 @@ class CodatplatformSDK {
   SupplementalDataConfig(entopts?: Record<string, any>) {
     const self = this
     return new SupplementalDataConfigEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Sync().list()` / `client.Sync().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Sync(entopts?: Record<string, any>) {
-    const self = this
-    return new SyncEntity(self, entopts)
   }
 
 

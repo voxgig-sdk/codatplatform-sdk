@@ -133,7 +133,7 @@ function setting_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["setting01", "setting02", "setting03", "api_key01", "api_key02", "api_key03"] as $k) {
+    foreach (["setting01", "setting02", "setting03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

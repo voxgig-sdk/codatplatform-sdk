@@ -1,0 +1,30 @@
+# BasicConnectionManagementAllowedOriginFlow
+
+main: kit: flow: BasicConnectionManagementAllowedOriginFlow:
+{
+  entity: "connection_management_allowed_origin",
+  kind: "basic",
+  name: "BasicConnectionManagementAllowedOriginFlow",
+  step: [
+    {
+      i: {
+        ref: "connection_management_allowed_origin_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "connection_management_allowed_origin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionManagementAllowedOriginFlow"
+}

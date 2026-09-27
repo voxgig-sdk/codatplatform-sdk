@@ -1,0 +1,318 @@
+# Entity: custom
+
+main: kit: entity: custom: {
+
+  alias: field: {}
+
+  fields: {
+    dataSource: {
+      h: "Data Source"
+      n: "dataSource"
+      r: false
+      sh: "Underlying endpoint of the source platform that will serve as a data source for the custom data type."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    keyBy: {
+      h: "Key By"
+      n: "keyBy"
+      r: false
+      sh: "An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type."
+      t: "`$ARRAY`"
+    }
+    pageNumber: {
+      h: "Page Number"
+      n: "pageNumber"
+      r: false
+      sh: "Current page number."
+      t: "`$INTEGER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: false
+      sh: "Number of items to return in results array."
+      t: "`$INTEGER`"
+    }
+    requiredData: {
+      h: "Required Data"
+      n: "requiredData"
+      r: false
+      sh: "Properties required to be fetched from the underlying platform for the custom data type that is being configured."
+      t: "`$OBJECT`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    sourceModifiedDate: {
+      h: "Source Modified Date"
+      n: "sourceModifiedDate"
+      r: false
+      sh: "Property in the source platform nominated by the client that defines the date when a record was last modified there."
+      t: "`$ARRAY`"
+    }
+    totalResults: {
+      h: "Total Results"
+      n: "totalResults"
+      r: false
+      sh: "Total number of items."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "company_id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+                k: "param"
+                n: "connection_id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "DynamicsPurchaseOrders"
+                k: "param"
+                n: "id"
+                or: "custom_data_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}"
+          q: {
+            exist: [
+              "company_id"
+              "connection_id"
+              "id"
+              "page"
+              "page_size"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "company_id"
+              connectionId: "connection_id"
+              customDataIdentifier: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "company_id"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "connection_id"
+            }
+            {
+              lit: "data"
+            }
+            {
+              lit: "custom"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "DynamicsPurchaseOrders"
+                k: "param"
+                n: "id"
+                or: "custom_data_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "gbol"
+                k: "param"
+                n: "platform_key"
+                or: "platform_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}"
+          q: {
+            exist: [
+              "id"
+              "platform_key"
+            ]
+          }
+          r: {
+            param: {
+              customDataIdentifier: "id"
+              platformKey: "platform_key"
+            }
+          }
+          s: [
+            {
+              lit: "integrations"
+            }
+            {
+              var: "platform_key"
+            }
+            {
+              lit: "dataTypes"
+            }
+            {
+              lit: "custom"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "DynamicsPurchaseOrders"
+                k: "param"
+                n: "id"
+                or: "custom_data_identifier"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "gbol"
+                k: "param"
+                n: "platform_key"
+                or: "platform_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}"
+          q: {
+            exist: [
+              "id"
+              "platform_key"
+            ]
+          }
+          r: {
+            param: {
+              customDataIdentifier: "id"
+              platformKey: "platform_key"
+            }
+          }
+          s: [
+            {
+              lit: "integrations"
+            }
+            {
+              var: "platform_key"
+            }
+            {
+              lit: "dataTypes"
+            }
+            {
+              lit: "custom"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.integration")]
+    [path("$.main.kit.entity.company") path("$.main.kit.entity.connection")]
+  ]
+
+}

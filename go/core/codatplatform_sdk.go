@@ -264,7 +264,6 @@ func (sdk *CodatplatformSDK) rawRequest(fetchargs map[string]any) (map[string]an
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *CodatplatformSDK) rawRequest(fetchargs map[string]any) (map[string]an
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *CodatplatformSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -335,30 +323,6 @@ func (sdk *CodatplatformSDK) Graphql(
 	}
 
 	return res, nil
-}
-
-
-// AccessToken returns a AccessToken entity bound to this client.
-// Idiomatic usage: client.AccessToken(nil).List(nil, nil) or
-// client.AccessToken(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) AccessToken(data map[string]any) CodatplatformEntity {
-	return NewAccessTokenEntityFunc(sdk, data)
-}
-
-
-// All returns a All entity bound to this client.
-// Idiomatic usage: client.All(nil).List(nil, nil) or
-// client.All(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) All(data map[string]any) CodatplatformEntity {
-	return NewAllEntityFunc(sdk, data)
-}
-
-
-// ApiKey returns a ApiKey entity bound to this client.
-// Idiomatic usage: client.ApiKey(nil).List(nil, nil) or
-// client.ApiKey(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) ApiKey(data map[string]any) CodatplatformEntity {
-	return NewApiKeyEntityFunc(sdk, data)
 }
 
 
@@ -426,43 +390,11 @@ func (sdk *CodatplatformSDK) DataStatus(data map[string]any) CodatplatformEntity
 }
 
 
-// DataType returns a DataType entity bound to this client.
-// Idiomatic usage: client.DataType(nil).List(nil, nil) or
-// client.DataType(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) DataType(data map[string]any) CodatplatformEntity {
-	return NewDataTypeEntityFunc(sdk, data)
-}
-
-
-// History returns a History entity bound to this client.
-// Idiomatic usage: client.History(nil).List(nil, nil) or
-// client.History(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) History(data map[string]any) CodatplatformEntity {
-	return NewHistoryEntityFunc(sdk, data)
-}
-
-
 // Integration returns a Integration entity bound to this client.
 // Idiomatic usage: client.Integration(nil).List(nil, nil) or
 // client.Integration(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CodatplatformSDK) Integration(data map[string]any) CodatplatformEntity {
 	return NewIntegrationEntityFunc(sdk, data)
-}
-
-
-// Option returns a Option entity bound to this client.
-// Idiomatic usage: client.Option(nil).List(nil, nil) or
-// client.Option(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) Option(data map[string]any) CodatplatformEntity {
-	return NewOptionEntityFunc(sdk, data)
-}
-
-
-// Product returns a Product entity bound to this client.
-// Idiomatic usage: client.Product(nil).List(nil, nil) or
-// client.Product(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) Product(data map[string]any) CodatplatformEntity {
-	return NewProductEntityFunc(sdk, data)
 }
 
 
@@ -498,14 +430,6 @@ func (sdk *CodatplatformSDK) PushOption(data map[string]any) CodatplatformEntity
 }
 
 
-// Queue returns a Queue entity bound to this client.
-// Idiomatic usage: client.Queue(nil).List(nil, nil) or
-// client.Queue(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) Queue(data map[string]any) CodatplatformEntity {
-	return NewQueueEntityFunc(sdk, data)
-}
-
-
 // RefreshData returns a RefreshData entity bound to this client.
 // Idiomatic usage: client.RefreshData(nil).List(nil, nil) or
 // client.RefreshData(nil).Load(map[string]any{"id": ...}, nil).
@@ -535,14 +459,6 @@ func (sdk *CodatplatformSDK) SupplementalData(data map[string]any) Codatplatform
 // client.SupplementalDataConfig(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CodatplatformSDK) SupplementalDataConfig(data map[string]any) CodatplatformEntity {
 	return NewSupplementalDataConfigEntityFunc(sdk, data)
-}
-
-
-// Sync returns a Sync entity bound to this client.
-// Idiomatic usage: client.Sync(nil).List(nil, nil) or
-// client.Sync(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CodatplatformSDK) Sync(data map[string]any) CodatplatformEntity {
-	return NewSyncEntityFunc(sdk, data)
 }
 
 

@@ -1,16 +1,10 @@
 -- Typed models for the Codatplatform SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
-
----@class AccessToken
-
----@class All
-
----@class ApiKey
 
 ---@class Branding
 ---@field button? table
@@ -272,10 +266,6 @@
 ---@class DataStatusLoadMatch
 ---@field company_id string
 
----@class DataType
-
----@class History
-
 ---@class Integration
 ---@field dataProvidedBy? string
 ---@field datatypeFeatures? table
@@ -303,10 +293,6 @@
 ---@field page? number
 ---@field page_size? number
 ---@field query? string
-
----@class Option
-
----@class Product
 
 ---@class Profile
 ---@field apiKey? string
@@ -435,8 +421,6 @@
 ---@field connection_id string
 ---@field id string
 
----@class Queue
-
 ---@class RefreshData
 
 ---@class RefreshDataCreateData
@@ -479,8 +463,6 @@
 ---@class SupplementalDataConfigLoadMatch
 ---@field data_type_id string
 ---@field platform_key string
-
----@class Sync
 
 ---@class SyncSetting
 ---@field dataType string

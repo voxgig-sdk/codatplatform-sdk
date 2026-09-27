@@ -1,0 +1,113 @@
+# Entity: profile
+
+main: kit: entity: profile: {
+
+  alias: field: {}
+
+  fields: {
+    apiKey: {
+      de: true
+      h: "Api Key"
+      n: "apiKey"
+      r: false
+      sh: "The API key for this Codat instance."
+      t: "`$STRING`"
+    }
+    confirmCompanyName: {
+      de: true
+      h: "Confirm Company Name"
+      n: "confirmCompanyName"
+      r: false
+      sh: "`True` if the company name has been confirmed."
+      t: "`$BOOLEAN`"
+    }
+    iconUrl: {
+      h: "Icon Url"
+      n: "iconUrl"
+      r: false
+      sh: "Static url to your organization's icon."
+      t: "`$STRING`"
+    }
+    logoUrl: {
+      h: "Logo Url"
+      n: "logoUrl"
+      r: false
+      sh: "Static url to your organization's logo."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name given to the instance."
+      t: "`$STRING`"
+    }
+    redirectUrl: {
+      h: "Redirect Url"
+      n: "redirectUrl"
+      r: true
+      sh: "The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB."
+      t: "`$STRING`"
+    }
+    whiteListUrls: {
+      h: "White List Urls"
+      n: "whiteListUrls"
+      r: false
+      sh: "A list of urls that are allowed to communicate with Codat."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "profile"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profile"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/profile"
+          s: [
+            {
+              lit: "profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.whiteListUrls`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /profile"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/profile"
+          s: [
+            {
+              lit: "profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

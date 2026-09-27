@@ -289,27 +289,6 @@ class CodatplatformSDK
   end
 
 
-  # Canonical facade: client.AccessToken.list / client.AccessToken.load({ "id" => ... })
-  def AccessToken(data = nil)
-    require_relative 'entity/access_token_entity'
-    AccessTokenEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.All.list / client.All.load({ "id" => ... })
-  def All(data = nil)
-    require_relative 'entity/all_entity'
-    AllEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.ApiKey.list / client.ApiKey.load({ "id" => ... })
-  def ApiKey(data = nil)
-    require_relative 'entity/api_key_entity'
-    ApiKeyEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.Branding.list / client.Branding.load({ "id" => ... })
   def Branding(data = nil)
     require_relative 'entity/branding_entity'
@@ -366,38 +345,10 @@ class CodatplatformSDK
   end
 
 
-  # Canonical facade: client.DataType.list / client.DataType.load({ "id" => ... })
-  def DataType(data = nil)
-    require_relative 'entity/data_type_entity'
-    DataTypeEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.History.list / client.History.load({ "id" => ... })
-  def History(data = nil)
-    require_relative 'entity/history_entity'
-    HistoryEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.Integration.list / client.Integration.load({ "id" => ... })
   def Integration(data = nil)
     require_relative 'entity/integration_entity'
     IntegrationEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.Option.list / client.Option.load({ "id" => ... })
-  def Option(data = nil)
-    require_relative 'entity/option_entity'
-    OptionEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.Product.list / client.Product.load({ "id" => ... })
-  def Product(data = nil)
-    require_relative 'entity/product_entity'
-    ProductEntity.new(self, data)
   end
 
 
@@ -429,13 +380,6 @@ class CodatplatformSDK
   end
 
 
-  # Canonical facade: client.Queue.list / client.Queue.load({ "id" => ... })
-  def Queue(data = nil)
-    require_relative 'entity/queue_entity'
-    QueueEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.RefreshData.list / client.RefreshData.load({ "id" => ... })
   def RefreshData(data = nil)
     require_relative 'entity/refresh_data_entity'
@@ -461,13 +405,6 @@ class CodatplatformSDK
   def SupplementalDataConfig(data = nil)
     require_relative 'entity/supplemental_data_config_entity'
     SupplementalDataConfigEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.Sync.list / client.Sync.load({ "id" => ... })
-  def Sync(data = nil)
-    require_relative 'entity/sync_entity'
-    SyncEntity.new(self, data)
   end
 
 

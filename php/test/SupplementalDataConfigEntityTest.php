@@ -70,7 +70,7 @@ function supplemental_data_config_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["supplemental_data_config01", "supplemental_data_config02", "supplemental_data_config03", "integration01", "integration02", "integration03", "data_type01", "data_type02", "data_type03", "platform_key01"] as $k) {
+    foreach (["supplemental_data_config01", "supplemental_data_config02", "supplemental_data_config03", "integration01", "integration02", "integration03", "platform_key01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

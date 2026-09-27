@@ -157,7 +157,7 @@ function company_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["company01", "company02", "company03", "product01", "product02", "product03"] as $k) {
+    foreach (["company01", "company02", "company03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

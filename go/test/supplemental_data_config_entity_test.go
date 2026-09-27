@@ -98,7 +98,7 @@ func supplemental_data_configBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"supplemental_data_config01", "supplemental_data_config02", "supplemental_data_config03", "integration01", "integration02", "integration03", "data_type01", "data_type02", "data_type03", "platform_key01"},
+		[]any{"supplemental_data_config01", "supplemental_data_config02", "supplemental_data_config03", "integration01", "integration02", "integration03", "platform_key01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -73,7 +73,7 @@ def _supplemental_data_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["supplemental_data01", "supplemental_data02", "supplemental_data03", "integration01", "integration02", "integration03", "data_type01", "data_type02", "data_type03", "platform_key01"],
+        ["supplemental_data01", "supplemental_data02", "supplemental_data03", "integration01", "integration02", "integration03", "platform_key01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

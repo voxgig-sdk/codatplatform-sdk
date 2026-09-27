@@ -1,0 +1,99 @@
+# Entity: company_access_token
+
+main: kit: entity: company_access_token: {
+
+  alias: field: {}
+
+  fields: {
+    accessToken: {
+      h: "Access Token"
+      n: "accessToken"
+      r: true
+      sh: "The access token for the company."
+      t: "`$STRING`"
+    }
+    expiresIn: {
+      h: "Expires In"
+      n: "expiresIn"
+      r: true
+      sh: "The number of seconds until the access token expires."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    tokenType: {
+      h: "Token Type"
+      n: "tokenType"
+      r: true
+      sh: "The type of token."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "company_access_token"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /companies/{companyId}/accessToken"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "8a210b68-6988-11ed-a1eb-0242ac120002"
+                k: "param"
+                n: "id"
+                or: "company_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/companies/{companyId}/accessToken"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              companyId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "companies"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "accessToken"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

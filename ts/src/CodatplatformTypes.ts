@@ -1,18 +1,9 @@
 // Typed models for the Codatplatform SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
-
-export interface AccessToken {
-}
-
-export interface All {
-}
-
-export interface ApiKey {
-}
 
 export interface Branding {
   button?: Record<string, any>
@@ -312,12 +303,6 @@ export interface DataStatusLoadMatch {
   company_id: string
 }
 
-export interface DataType {
-}
-
-export interface History {
-}
-
 export interface Integration {
   dataProvidedBy?: string
   datatypeFeatures?: any[]
@@ -347,12 +332,6 @@ export interface IntegrationListMatch {
   page?: number
   page_size?: number
   query?: string
-}
-
-export interface Option {
-}
-
-export interface Product {
 }
 
 export interface Profile {
@@ -494,9 +473,6 @@ export interface PushOptionLoadMatch {
   id: string
 }
 
-export interface Queue {
-}
-
 export interface RefreshData {
 }
 
@@ -548,9 +524,6 @@ export interface SupplementalDataConfig {
 export interface SupplementalDataConfigLoadMatch {
   data_type_id: string
   platform_key: string
-}
-
-export interface Sync {
 }
 
 export interface SyncSetting {

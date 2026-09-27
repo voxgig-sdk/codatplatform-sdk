@@ -151,7 +151,7 @@ def _company_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["company01", "company02", "company03", "product01", "product02", "product03"],
+        ["company01", "company02", "company03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

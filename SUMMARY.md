@@ -6,23 +6,11 @@ An API for the common components of all of Codat&#39;s products. These end point
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 30 entities and 50 HTTP routes. There are 7 SDK targets.
+The selected API surface contains 21 entities and 50 HTTP routes. There are 7 SDK targets.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
 ## What the API provides
-
-### [AccessToken](docs/api/access_token.html)
-
-SDK operations: .
-
-### [All](docs/api/all.html)
-
-SDK operations: .
-
-### [ApiKey](docs/api/api_key.html)
-
-SDK operations: .
 
 ### [Branding](docs/api/branding.html)
 
@@ -105,10 +93,10 @@ SDK operations: `load`, `update`.
 Key fields to recognise:
 
 - `dataSource`: Underlying endpoint of the source platform that will serve as a data source for the custom data type. This value is not validated by Codat.
+- `id`: Unique identifier of the record.
 - `keyBy`: An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. This value is not validated by Codat.
 - `pageNumber`: Current page number.
 - `pageSize`: Number of items to return in results array.
-- `requiredData`: Properties required to be fetched from the underlying platform for the custom data type that is being configured. This value is not validated by Codat.
 
 ### [DataStatus](docs/api/data_status.html)
 
@@ -124,14 +112,6 @@ Key fields to recognise:
 - `bankTransactions`: Describes the state of data in the Codat cache for a company and data type
 - `bankingaccountBalances`: Describes the state of data in the Codat cache for a company and data type
 
-### [DataType](docs/api/data_type.html)
-
-SDK operations: .
-
-### [History](docs/api/history.html)
-
-SDK operations: .
-
 ### [Integration](docs/api/integration.html)
 
 Results: OK.
@@ -145,14 +125,6 @@ Key fields to recognise:
 - `integrationId`: A Codat ID representing the integration.
 - `isBeta`: `True` if the integration is currently in beta release.
 - `isOfflineConnector`: `True` if the integration is to an application installed and run locally on an SMBs computer.
-
-### [Option](docs/api/option.html)
-
-SDK operations: .
-
-### [Product](docs/api/product.html)
-
-SDK operations: .
 
 ### [Profile](docs/api/profile.html)
 
@@ -208,10 +180,7 @@ Key fields to recognise:
 - `displayName`: The property&#39;s display name.
 - `required`: The property is required if `True`.
 - `type`: The option type.
-
-### [Queue](docs/api/queue.html)
-
-SDK operations: .
+- `validation`: A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.
 
 ### [RefreshData](docs/api/refresh_data.html)
 
@@ -249,10 +218,6 @@ Key fields to recognise:
 - `dataSource`: The underlying endpoint of the source system which the configuration is targeting.
 - `pullData`: The additional properties that are required when pulling records.
 - `pushData`: The additional properties that are required to create and/or update records.
-
-### [Sync](docs/api/sync.html)
-
-SDK operations: .
 
 ### [SyncSetting](docs/api/sync_setting.html)
 
@@ -293,6 +258,10 @@ Key fields to recognise:
 Results: OK.
 
 SDK operations: `create`.
+
+Key fields to recognise:
+
+- `key`: Integration key used to authorize Zapier&#39;s HTTP requests with Codat.
 
 ### Route map
 

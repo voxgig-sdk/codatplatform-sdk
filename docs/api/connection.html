@@ -6,9 +6,6 @@
 <div class="site-notice" role="note"></div>
 <div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Platform API</a></details>
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
-<a href="../api/access_token.html">AccessToken</a>
-<a href="../api/all.html">All</a>
-<a href="../api/api_key.html">ApiKey</a>
 <a href="../api/branding.html">Branding</a>
 <a href="../api/company.html">Company</a>
 <a href="../api/company_access_token.html">CompanyAccessToken</a>
@@ -22,21 +19,15 @@
 <a href="../api/connection_management_allowed_origin.html">ConnectionManagementAllowedOrigin</a>
 <a href="../api/custom.html">Custom</a>
 <a href="../api/data_status.html">DataStatus</a>
-<a href="../api/data_type.html">DataType</a>
-<a href="../api/history.html">History</a>
 <a href="../api/integration.html">Integration</a>
-<a href="../api/option.html">Option</a>
-<a href="../api/product.html">Product</a>
 <a href="../api/profile.html">Profile</a>
 <a href="../api/pull_operation.html">PullOperation</a>
 <a href="../api/push.html">Push</a>
 <a href="../api/push_option.html">PushOption</a>
-<a href="../api/queue.html">Queue</a>
 <a href="../api/refresh_data.html">RefreshData</a>
 <a href="../api/setting.html">Setting</a>
 <a href="../api/supplemental_data.html">SupplementalData</a>
 <a href="../api/supplemental_data_config.html">SupplementalDataConfig</a>
-<a href="../api/sync.html">Sync</a>
 <a href="../api/sync_setting.html">SyncSetting</a>
 <a href="../api/validation.html">Validation</a>
 <a href="../api/webhook.html">Webhook</a>
@@ -52,14 +43,14 @@
 <a href="../sdks/py.html">Python</a>
 <a href="../sdks/rb.html">Ruby</a>
 <a href="../sdks/ts.html">TypeScript</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="connection">Connection</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="connection">Connection</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -110,6 +101,84 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">connections, err := client.Connection(nil).List(map[string]any{&quot;company_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(connections)
+connection, err := client.Connection(nil).Load(map[string]any{&quot;company_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(connection)
+created, err := client.Connection(nil).Create(map[string]any{&quot;company_id&quot;: &quot;example&quot;, &quot;created&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;integrationId&quot;: &quot;example&quot;, &quot;integrationKey&quot;: &quot;example&quot;, &quot;linkUrl&quot;: &quot;example&quot;, &quot;links&quot;: map[string]any{}, &quot;pageNumber&quot;: 1, &quot;pageSize&quot;: 1, &quot;platformName&quot;: &quot;example&quot;, &quot;sourceId&quot;: &quot;example&quot;, &quot;sourceType&quot;: &quot;example&quot;, &quot;status&quot;: &quot;example&quot;, &quot;totalResults&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Connection(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;company_id&quot;: &quot;example&quot;, &quot;connectionInfo&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Connection(nil).Remove(map[string]any{&quot;company_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const connections = await client.Connection().list({ company_id: &quot;example&quot; })
+const connection = await client.Connection().load({ company_id: &quot;example&quot;, id: &quot;example_id&quot; })
+const created = await client.Connection().create({ company_id: &quot;example&quot;, created: &quot;example&quot;, id: &quot;example&quot;, integrationId: &quot;example&quot;, integrationKey: &quot;example&quot;, linkUrl: &quot;example&quot;, links: {}, pageNumber: 1, pageSize: 1, platformName: &quot;example&quot;, sourceId: &quot;example&quot;, sourceType: &quot;example&quot;, status: &quot;example&quot;, totalResults: 1 })
+const updated = await client.Connection().update({ id: &quot;example_id&quot;, company_id: &quot;example&quot;, connectionInfo: {} })
+await client.Connection().remove({ company_id: &quot;example&quot;, id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local connections, err = client:Connection():list({ company_id = &quot;example&quot; })
+local connection, err = client:Connection():load({ company_id = &quot;example&quot;, id = &quot;example_id&quot; })
+local created, err = client:Connection():create({ company_id = &quot;example&quot;, created = &quot;example&quot;, id = &quot;example&quot;, integrationId = &quot;example&quot;, integrationKey = &quot;example&quot;, linkUrl = &quot;example&quot;, links = {}, pageNumber = 1, pageSize = 1, platformName = &quot;example&quot;, sourceId = &quot;example&quot;, sourceType = &quot;example&quot;, status = &quot;example&quot;, totalResults = 1 })
+local updated, err = client:Connection():update({ id = &quot;example_id&quot;, company_id = &quot;example&quot;, connectionInfo = {} })
+local removed, err = client:Connection():remove({ company_id = &quot;example&quot;, id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$connections = $client-&gt;Connection()-&gt;list([&quot;company_id&quot; =&gt; &quot;example&quot;]);
+$connection = $client-&gt;Connection()-&gt;load([&quot;company_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Connection()-&gt;create([&quot;company_id&quot; =&gt; &quot;example&quot;, &quot;created&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;integrationId&quot; =&gt; &quot;example&quot;, &quot;integrationKey&quot; =&gt; &quot;example&quot;, &quot;linkUrl&quot; =&gt; &quot;example&quot;, &quot;links&quot; =&gt; [], &quot;pageNumber&quot; =&gt; 1, &quot;pageSize&quot; =&gt; 1, &quot;platformName&quot; =&gt; &quot;example&quot;, &quot;sourceId&quot; =&gt; &quot;example&quot;, &quot;sourceType&quot; =&gt; &quot;example&quot;, &quot;status&quot; =&gt; &quot;example&quot;, &quot;totalResults&quot; =&gt; 1]);
+$updated = $client-&gt;Connection()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;company_id&quot; =&gt; &quot;example&quot;, &quot;connectionInfo&quot; =&gt; []]);
+$client-&gt;Connection()-&gt;remove([&quot;company_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">connections = client.Connection().list({&quot;company_id&quot;: &quot;example&quot;})
+connection = client.Connection().load({&quot;company_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+created = client.Connection().create({ &quot;company_id&quot;: &quot;example&quot;, &quot;created&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;integrationId&quot;: &quot;example&quot;, &quot;integrationKey&quot;: &quot;example&quot;, &quot;linkUrl&quot;: &quot;example&quot;, &quot;links&quot;: {}, &quot;pageNumber&quot;: 1, &quot;pageSize&quot;: 1, &quot;platformName&quot;: &quot;example&quot;, &quot;sourceId&quot;: &quot;example&quot;, &quot;sourceType&quot;: &quot;example&quot;, &quot;status&quot;: &quot;example&quot;, &quot;totalResults&quot;: 1 })
+updated = client.Connection().update({&quot;id&quot;: &quot;example_id&quot;, &quot;company_id&quot;: &quot;example&quot;, &quot;connectionInfo&quot;: {}})
+client.Connection().remove({&quot;company_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">connections = client.Connection.list({ &quot;company_id&quot; =&gt; &quot;example&quot; })
+connection = client.Connection.load({ &quot;company_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Connection.create({ &quot;company_id&quot; =&gt; &quot;example&quot;, &quot;created&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;integrationId&quot; =&gt; &quot;example&quot;, &quot;integrationKey&quot; =&gt; &quot;example&quot;, &quot;linkUrl&quot; =&gt; &quot;example&quot;, &quot;links&quot; =&gt; {}, &quot;pageNumber&quot; =&gt; 1, &quot;pageSize&quot; =&gt; 1, &quot;platformName&quot; =&gt; &quot;example&quot;, &quot;sourceId&quot; =&gt; &quot;example&quot;, &quot;sourceType&quot; =&gt; &quot;example&quot;, &quot;status&quot; =&gt; &quot;example&quot;, &quot;totalResults&quot; =&gt; 1 })
+updated = client.Connection.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;company_id&quot; =&gt; &quot;example&quot;, &quot;connectionInfo&quot; =&gt; {} })
+client.Connection.remove({ &quot;company_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const connections = await client.Connection().list({ company_id: &quot;example&quot; })
+const connection = await client.Connection().load({ company_id: &quot;example&quot;, id: &quot;example_id&quot; })
+const created = await client.Connection().create({ company_id: &quot;example&quot;, created: &quot;example&quot;, id: &quot;example&quot;, integrationId: &quot;example&quot;, integrationKey: &quot;example&quot;, linkUrl: &quot;example&quot;, links: {}, pageNumber: 1, pageSize: 1, platformName: &quot;example&quot;, sourceId: &quot;example&quot;, sourceType: &quot;example&quot;, status: &quot;example&quot;, totalResults: 1 })
+const updated = await client.Connection().update({ id: &quot;example_id&quot;, company_id: &quot;example&quot;, connectionInfo: {} })
+await client.Connection().remove({ company_id: &quot;example&quot;, id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -125,19 +194,19 @@
 <td><code>connectionInfo</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Connection Info</td>
 </tr>
 <tr>
 <td><code>created</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Data Connection Errors</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -161,7 +230,7 @@
 <td><code>lastSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;.</td>
 </tr>
 <tr>
 <td><code>linkUrl</code></td>
@@ -173,7 +242,7 @@
 <td><code>links</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Links</td>
 </tr>
 <tr>
 <td><code>pageNumber</code></td>
@@ -203,7 +272,7 @@
 <td><code>results</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Results</td>
 </tr>
 <tr>
 <td><code>sourceId</code></td>
@@ -282,7 +351,7 @@
 <td><code>created</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors</code></td>
@@ -300,7 +369,7 @@
 <td><code>dataConnectionErrors[].erroredOnUtc</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors[].resolvedOnUtc</code></td>
@@ -348,7 +417,7 @@
 <td><code>lastSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>linkUrl</code></td>
@@ -1990,7 +2059,7 @@
 <td><code>created</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors</code></td>
@@ -2008,7 +2077,7 @@
 <td><code>dataConnectionErrors[].erroredOnUtc</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors[].resolvedOnUtc</code></td>
@@ -2056,7 +2125,7 @@
 <td><code>lastSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>linkUrl</code></td>
@@ -3609,7 +3678,7 @@
 <td><code>created</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors</code></td>
@@ -3627,7 +3696,7 @@
 <td><code>dataConnectionErrors[].erroredOnUtc</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors[].resolvedOnUtc</code></td>
@@ -3675,7 +3744,7 @@
 <td><code>lastSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>linkUrl</code></td>
@@ -4471,7 +4540,7 @@
 <td><code>created</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors</code></td>
@@ -4489,7 +4558,7 @@
 <td><code>dataConnectionErrors[].erroredOnUtc</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>dataConnectionErrors[].resolvedOnUtc</code></td>
@@ -4537,7 +4606,7 @@
 <td><code>lastSync</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ISO_8601&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
+<td>In Codat's data model, dates and times are represented using the &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/<code>ISO_8601</code>&quot; target=&quot;_blank&quot;&gt;ISO 8601 standard&lt;/a&gt;. Date and time fields are formatted as strings; for example: <code>2020-10-08T22:40:50Z 2021-01-01T00:00:00</code> When syncing data that contains <code>DateTime</code> fields from Codat, make sure you support the following cases when reading time information: - Coordinated Universal Time (UTC): <code>2021-11-15T06:00:00Z</code> - Unqualified local time: <code>2021-11-15T01:00:00</code> - UTC time offsets: <code>2021-11-15T01:00:00-05:00</code> &gt; Time zones &gt; &gt; Not all dates from Codat will contain information about time zones. &gt; Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.</td>
 </tr>
 <tr>
 <td><code>linkUrl</code></td>

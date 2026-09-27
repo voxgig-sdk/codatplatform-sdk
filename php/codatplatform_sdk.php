@@ -341,60 +341,6 @@ class CodatplatformSDK
     }
 
 
-    private $_access_token = null;
-
-    // Canonical facade: $client->AccessToken()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->access_token()
-    // resolves here too.
-    public function AccessToken($data = null)
-    {
-        require_once __DIR__ . '/entity/access_token_entity.php';
-        if ($data === null) {
-            if ($this->_access_token === null) {
-                $this->_access_token = new AccessTokenEntity($this, null);
-            }
-            return $this->_access_token;
-        }
-        return new AccessTokenEntity($this, $data);
-    }
-
-
-    private $_all = null;
-
-    // Canonical facade: $client->All()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->all()
-    // resolves here too.
-    public function All($data = null)
-    {
-        require_once __DIR__ . '/entity/all_entity.php';
-        if ($data === null) {
-            if ($this->_all === null) {
-                $this->_all = new AllEntity($this, null);
-            }
-            return $this->_all;
-        }
-        return new AllEntity($this, $data);
-    }
-
-
-    private $_api_key = null;
-
-    // Canonical facade: $client->ApiKey()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->api_key()
-    // resolves here too.
-    public function ApiKey($data = null)
-    {
-        require_once __DIR__ . '/entity/api_key_entity.php';
-        if ($data === null) {
-            if ($this->_api_key === null) {
-                $this->_api_key = new ApiKeyEntity($this, null);
-            }
-            return $this->_api_key;
-        }
-        return new ApiKeyEntity($this, $data);
-    }
-
-
     private $_branding = null;
 
     // Canonical facade: $client->Branding()->list() / ->load(["id" => ...]).
@@ -539,42 +485,6 @@ class CodatplatformSDK
     }
 
 
-    private $_data_type = null;
-
-    // Canonical facade: $client->DataType()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->data_type()
-    // resolves here too.
-    public function DataType($data = null)
-    {
-        require_once __DIR__ . '/entity/data_type_entity.php';
-        if ($data === null) {
-            if ($this->_data_type === null) {
-                $this->_data_type = new DataTypeEntity($this, null);
-            }
-            return $this->_data_type;
-        }
-        return new DataTypeEntity($this, $data);
-    }
-
-
-    private $_history = null;
-
-    // Canonical facade: $client->History()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->history()
-    // resolves here too.
-    public function History($data = null)
-    {
-        require_once __DIR__ . '/entity/history_entity.php';
-        if ($data === null) {
-            if ($this->_history === null) {
-                $this->_history = new HistoryEntity($this, null);
-            }
-            return $this->_history;
-        }
-        return new HistoryEntity($this, $data);
-    }
-
-
     private $_integration = null;
 
     // Canonical facade: $client->Integration()->list() / ->load(["id" => ...]).
@@ -590,42 +500,6 @@ class CodatplatformSDK
             return $this->_integration;
         }
         return new IntegrationEntity($this, $data);
-    }
-
-
-    private $_option = null;
-
-    // Canonical facade: $client->Option()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->option()
-    // resolves here too.
-    public function Option($data = null)
-    {
-        require_once __DIR__ . '/entity/option_entity.php';
-        if ($data === null) {
-            if ($this->_option === null) {
-                $this->_option = new OptionEntity($this, null);
-            }
-            return $this->_option;
-        }
-        return new OptionEntity($this, $data);
-    }
-
-
-    private $_product = null;
-
-    // Canonical facade: $client->Product()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->product()
-    // resolves here too.
-    public function Product($data = null)
-    {
-        require_once __DIR__ . '/entity/product_entity.php';
-        if ($data === null) {
-            if ($this->_product === null) {
-                $this->_product = new ProductEntity($this, null);
-            }
-            return $this->_product;
-        }
-        return new ProductEntity($this, $data);
     }
 
 
@@ -701,24 +575,6 @@ class CodatplatformSDK
     }
 
 
-    private $_queue = null;
-
-    // Canonical facade: $client->Queue()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->queue()
-    // resolves here too.
-    public function Queue($data = null)
-    {
-        require_once __DIR__ . '/entity/queue_entity.php';
-        if ($data === null) {
-            if ($this->_queue === null) {
-                $this->_queue = new QueueEntity($this, null);
-            }
-            return $this->_queue;
-        }
-        return new QueueEntity($this, $data);
-    }
-
-
     private $_refresh_data = null;
 
     // Canonical facade: $client->RefreshData()->list() / ->load(["id" => ...]).
@@ -788,24 +644,6 @@ class CodatplatformSDK
             return $this->_supplemental_data_config;
         }
         return new SupplementalDataConfigEntity($this, $data);
-    }
-
-
-    private $_sync = null;
-
-    // Canonical facade: $client->Sync()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->sync()
-    // resolves here too.
-    public function Sync($data = null)
-    {
-        require_once __DIR__ . '/entity/sync_entity.php';
-        if ($data === null) {
-            if ($this->_sync === null) {
-                $this->_sync = new SyncEntity($this, null);
-            }
-            return $this->_sync;
-        }
-        return new SyncEntity($this, $data);
     }
 
 

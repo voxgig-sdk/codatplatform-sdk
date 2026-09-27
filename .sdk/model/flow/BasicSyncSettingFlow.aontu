@@ -1,0 +1,22 @@
+# BasicSyncSettingFlow
+
+main: kit: flow: BasicSyncSettingFlow:
+{
+  entity: "sync_setting",
+  kind: "basic",
+  name: "BasicSyncSettingFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "sync_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSyncSettingFlow"
+}

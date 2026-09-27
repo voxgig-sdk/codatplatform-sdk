@@ -19,7 +19,6 @@ import type {
   ValidationListMatch,
 } from '../CodatplatformTypes'
 
-// TODO: needs Entity superclass
 class ValidationEntity extends CodatplatformEntityBase<Validation> {
 
   constructor(client: CodatplatformSDK, entopts: any) {

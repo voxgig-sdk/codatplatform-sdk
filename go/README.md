@@ -4,7 +4,7 @@
 
 The Golang SDK for the Codatplatform API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.AccessToken(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`, `Patch`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Branding(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`, `Patch`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `js`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
@@ -43,6 +43,7 @@ directly.
 package main
 
 import (
+    "fmt"
     "os"
     sdk "github.com/voxgig-sdk/codatplatform-sdk/go"
 )
@@ -52,7 +53,12 @@ func main() {
         "apikey": os.Getenv("CODATPLATFORM_APIKEY"),
     })
 
-    _ = client
+    // Load a single branding — the value is the loaded record.
+    branding, err := client.Branding(nil).Load(map[string]any{"platform_key": "example_platform_key"}, nil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(branding)
 }
 ```
 
@@ -217,9 +223,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `AccessToken` | `(data map[string]any) CodatplatformEntity` | Create an AccessToken entity instance. |
-| `All` | `(data map[string]any) CodatplatformEntity` | Create an All entity instance. |
-| `ApiKey` | `(data map[string]any) CodatplatformEntity` | Create an ApiKey entity instance. |
 | `Branding` | `(data map[string]any) CodatplatformEntity` | Create a Branding entity instance. |
 | `Company` | `(data map[string]any) CodatplatformEntity` | Create a Company entity instance. |
 | `CompanyAccessToken` | `(data map[string]any) CodatplatformEntity` | Create a CompanyAccessToken entity instance. |
@@ -228,21 +231,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ConnectionManagementAllowedOrigin` | `(data map[string]any) CodatplatformEntity` | Create a ConnectionManagementAllowedOrigin entity instance. |
 | `Custom` | `(data map[string]any) CodatplatformEntity` | Create a Custom entity instance. |
 | `DataStatus` | `(data map[string]any) CodatplatformEntity` | Create a DataStatus entity instance. |
-| `DataType` | `(data map[string]any) CodatplatformEntity` | Create a DataType entity instance. |
-| `History` | `(data map[string]any) CodatplatformEntity` | Create a History entity instance. |
 | `Integration` | `(data map[string]any) CodatplatformEntity` | Create an Integration entity instance. |
-| `Option` | `(data map[string]any) CodatplatformEntity` | Create an Option entity instance. |
-| `Product` | `(data map[string]any) CodatplatformEntity` | Create a Product entity instance. |
 | `Profile` | `(data map[string]any) CodatplatformEntity` | Create a Profile entity instance. |
 | `PullOperation` | `(data map[string]any) CodatplatformEntity` | Create a PullOperation entity instance. |
 | `Push` | `(data map[string]any) CodatplatformEntity` | Create a Push entity instance. |
 | `PushOption` | `(data map[string]any) CodatplatformEntity` | Create a PushOption entity instance. |
-| `Queue` | `(data map[string]any) CodatplatformEntity` | Create a Queue entity instance. |
 | `RefreshData` | `(data map[string]any) CodatplatformEntity` | Create a RefreshData entity instance. |
 | `Setting` | `(data map[string]any) CodatplatformEntity` | Create a Setting entity instance. |
 | `SupplementalData` | `(data map[string]any) CodatplatformEntity` | Create a SupplementalData entity instance. |
 | `SupplementalDataConfig` | `(data map[string]any) CodatplatformEntity` | Create a SupplementalDataConfig entity instance. |
-| `Sync` | `(data map[string]any) CodatplatformEntity` | Create a Sync entity instance. |
 | `SyncSetting` | `(data map[string]any) CodatplatformEntity` | Create a SyncSetting entity instance. |
 | `Validation` | `(data map[string]any) CodatplatformEntity` | Create a Validation entity instance. |
 | `Webhook` | `(data map[string]any) CodatplatformEntity` | Create a Webhook entity instance. |
@@ -286,33 +283,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
-
-#### AccessToken
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### All
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### ApiKey
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Branding
 
@@ -482,24 +452,6 @@ Operations: Load.
 
 API path: `/companies/{companyId}/dataStatus`
 
-#### DataType
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### History
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
 #### Integration
 
 | Field | Description |
@@ -525,24 +477,6 @@ API path: ``
 Operations: List, Load.
 
 API path: `/integrations`
-
-#### Option
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
-#### Product
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Profile
 
@@ -631,15 +565,6 @@ Operations: Load.
 
 API path: `/companies/{companyId}/connections/{connectionId}/options/{dataType}`
 
-#### Queue
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
-
 #### RefreshData
 
 | Field | Description |
@@ -683,15 +608,6 @@ API path: `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConf
 Operations: Load.
 
 API path: `/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig`
-
-#### Sync
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### SyncSetting
 
@@ -748,21 +664,6 @@ API path: `/webhooks/integrationKeys/zapier`
 
 
 ## Entities
-
-
-### AccessToken
-
-Create an instance: `accessToken := client.AccessToken(nil)`
-
-
-### All
-
-Create an instance: `all := client.All(nil)`
-
-
-### ApiKey
-
-Create an instance: `apiKey := client.ApiKey(nil)`
 
 
 ### Branding
@@ -1153,16 +1054,6 @@ fmt.Println(dataStatus) // the loaded record
 ```
 
 
-### DataType
-
-Create an instance: `dataType := client.DataType(nil)`
-
-
-### History
-
-Create an instance: `history := client.History(nil)`
-
-
 ### Integration
 
 Create an instance: `integration := client.Integration(nil)`
@@ -1215,16 +1106,6 @@ if err != nil {
 }
 fmt.Println(integrations) // the array of records
 ```
-
-
-### Option
-
-Create an instance: `option := client.Option(nil)`
-
-
-### Product
-
-Create an instance: `product := client.Product(nil)`
 
 
 ### Profile
@@ -1431,11 +1312,6 @@ fmt.Println(pushOption) // the loaded record
 ```
 
 
-### Queue
-
-Create an instance: `queue := client.Queue(nil)`
-
-
 ### RefreshData
 
 Create an instance: `refreshData := client.RefreshData(nil)`
@@ -1546,11 +1422,6 @@ if err != nil {
 }
 fmt.Println(supplementalDataConfig) // the loaded record
 ```
-
-
-### Sync
-
-Create an instance: `sync := client.Sync(nil)`
 
 
 ### SyncSetting
@@ -1697,14 +1568,14 @@ above:
 
 | Feature | What it does |
 |---|---|
-| [`debug`](#debug) | Request/response capture ring buffer for debugging |
-| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
-| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
-| [`paging`](#paging) | Pagination signals for list operations |
-| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
-| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
-| [`test`](#test) | In-memory mock transport for testing without a live server |
-| [`timeout`](#timeout) | Per-request timeout with transport abort |
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
 
 > **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
@@ -1713,7 +1584,7 @@ above:
 
 ### debug
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 | Option | Default |
 |---|---|
@@ -1725,7 +1596,7 @@ Set `feature.debug.active` to enable it, then override any of the options above.
 
 ### idempotency
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 | Option | Default |
 |---|---|
@@ -1738,7 +1609,7 @@ Set `feature.idempotency.active` to enable it, then override any of the options 
 
 ### metrics
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 | Option | Default |
 |---|---|
@@ -1748,7 +1619,7 @@ Set `feature.metrics.active` to enable it, then override any of the options abov
 
 ### paging
 
-Pagination signals for list operations.
+Paging.
 
 | Option | Default |
 |---|---|
@@ -1764,7 +1635,7 @@ Set `feature.paging.active` to enable it, then override any of the options above
 
 ### ratelimit
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 | Option | Default |
 |---|---|
@@ -1780,7 +1651,7 @@ activated earlier.
 
 ### retry
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 | Option | Default |
 |---|---|
@@ -1799,7 +1670,7 @@ activated earlier.
 
 ### test
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 | Option | Default |
 |---|---|
@@ -1809,7 +1680,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ### timeout
 
-Per-request timeout with transport abort.
+Timeout.
 
 | Option | Default |
 |---|---|
@@ -1861,14 +1732,14 @@ stage names.
 
 The SDK ships with built-in features:
 
-- **DebugFeature**: Request/response capture ring buffer for debugging
-- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
-- **MetricsFeature**: Statistics capture: per-operation counters and latency
-- **PagingFeature**: Pagination signals for list operations
-- **RatelimitFeature**: Client-side rate limiting via a token bucket
-- **RetryFeature**: Automatic retry of transient failures with exponential backoff
-- **TestFeature**: In-memory mock transport for testing without a live server
-- **TimeoutFeature**: Per-request timeout with transport abort
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.
